@@ -1,8 +1,9 @@
 <template>
-  <div class="header-warp" flex="main:center">
+  <div class="header-warp" flex="main:justify cross:center">
+    <p>主页／代理商办公室／客户名单</p>
     <Dropdown @on-click="userHandle($event)">
       <a href="javascript:void(0)">
-        <img :src="'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'" width="35" class="user_ico" alt="">
+        <img :src="'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'" width="35" class="user_avator" alt="">
         {{'王二'}}
         <Icon type="arrow-down-b"></Icon>
       </a>

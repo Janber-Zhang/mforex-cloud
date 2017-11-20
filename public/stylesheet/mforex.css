@@ -207,3 +207,10 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   padding: 10px 0 20px;
   color: #9ea7b4;
 }
+.header-warp {
+  padding: 15px;
+  height: 100%;
+}
+.header-warp .user_avator {
+  border-radius: 50%;
+}

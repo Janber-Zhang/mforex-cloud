@@ -62,11 +62,11 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _index = __webpack_require__(24);
+	var _index = __webpack_require__(16);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _iview = __webpack_require__(28);
+	var _iview = __webpack_require__(20);
 
 	var _iview2 = _interopRequireDefault(_iview);
 
@@ -14646,10 +14646,10 @@
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(12)
+	__vue_script__ = __webpack_require__(8)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/main.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(29)
+	__vue_template__ = __webpack_require__(15)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14674,11 +14674,7 @@
 	})()}
 
 /***/ },
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14687,11 +14683,11 @@
 	  value: true
 	});
 
-	var _header = __webpack_require__(13);
+	var _header = __webpack_require__(9);
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _footer = __webpack_require__(18);
+	var _footer = __webpack_require__(12);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -14793,15 +14789,15 @@
 	};
 
 /***/ },
-/* 13 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(16)
+	__vue_script__ = __webpack_require__(10)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/header.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(33)
+	__vue_template__ = __webpack_require__(11)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14826,9 +14822,7 @@
 	})()}
 
 /***/ },
-/* 14 */,
-/* 15 */,
-/* 16 */
+/* 10 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14837,10 +14831,11 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="header-warp" flex="main:center">
+	//   <div class="header-warp" flex="main:justify cross:center">
+	//     <p>主页／代理商办公室／客户名单</p>
 	//     <Dropdown @on-click="userHandle($event)">
 	//       <a href="javascript:void(0)">
-	//         <img :src="'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'" width="35" class="user_ico" alt="">
+	//         <img :src="'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'" width="35" class="user_avator" alt="">
 	//         {{'王二'}}
 	//         <Icon type="arrow-down-b"></Icon>
 	//       </a>
@@ -14885,16 +14880,21 @@
 	};
 
 /***/ },
-/* 17 */,
-/* 18 */
+/* 11 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"header-warp\" flex=\"main:justify cross:center\">\n  <p>主页／代理商办公室／客户名单</p>\n  <Dropdown @on-click=\"userHandle($event)\">\n    <a href=\"javascript:void(0)\">\n      <img :src=\"'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'\" width=\"35\" class=\"user_avator\" alt=\"\">\n      {{'王二'}}\n      <Icon type=\"arrow-down-b\"></Icon>\n    </a>\n    <Dropdown-menu slot=\"list\">\n      <Dropdown-item name=\"myProfile\">我的信息</Dropdown-item>\n      <Dropdown-item name=\"logout\">注销登录</Dropdown-item>\n    </Dropdown-menu>\n  </Dropdown>\n</div>\n";
+
+/***/ },
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(21)
+	__vue_script__ = __webpack_require__(13)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/footer.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(22)
+	__vue_template__ = __webpack_require__(14)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14919,9 +14919,7 @@
 	})()}
 
 /***/ },
-/* 19 */,
-/* 20 */,
-/* 21 */
+/* 13 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14950,14 +14948,19 @@
 	};
 
 /***/ },
-/* 22 */
+/* 14 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<p class=\"copyright\">Copyright © 2017 Janber-Zhang. All rights reserved.</p>\n";
 
 /***/ },
-/* 23 */,
-/* 24 */
+/* 15 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"main\">\n  <div class=\"left-bar\">\n    <i-Menu :active-name=\"openStatus.classItem\" theme=\"dark\" width=\"auto\" :open-names=\"openStatus.class\">\n      <div class=\"left-bar-logo\">mforex-cloud</div>\n      <Submenu name=\"1\">\n          <template slot=\"title\">\n              <Icon type=\"social-usd\"></Icon>\n              资金操作\n          </template>\n          <menu-item name=\"1-1\">账户入金</menu-item>\n          <menu-item name=\"1-2\">入金记录</menu-item>\n          <menu-item name=\"1-3\">账户出金</menu-item>\n          <menu-item name=\"1-4\">出金记录</menu-item>\n      </Submenu>\n      <Submenu name=\"2\">\n          <template slot=\"title\">\n              <Icon type=\"arrow-graph-up-right\"></Icon>\n              数据统计\n          </template>\n          <menu-item name=\"2-1\">历史交易订单</menu-item>\n          <menu-item name=\"2-2\">当前交易订单</menu-item>\n      </Submenu>\n      <Submenu name=\"3\">\n          <template slot=\"title\">\n              <Icon type=\"person-stalker\"></Icon>\n              代理商办公室\n          </template>\n          <menu-item name=\"3-1\">客户名单</menu-item>\n          <menu-item name=\"3-2\">佣金查询</menu-item>\n          <menu-item name=\"3-3\">交易单查询</menu-item>\n          <menu-item name=\"3-4\">出入金查询</menu-item>\n          <menu-item name=\"3-5\">我的邀请链接</menu-item>\n      </Submenu>\n      <Submenu name=\"4\">\n          <template slot=\"title\">\n              <Icon type=\"android-bicycle\"></Icon>\n              跟单系统\n          </template>\n          <menu-item name=\"4-1\">牛人榜</menu-item>\n          <menu-item name=\"4-2\">成为牛人</menu-item>\n          <menu-item name=\"4-3\">我的粉丝</menu-item>\n          <menu-item name=\"4-4\">我的牛人</menu-item>\n      </Submenu>\n      <Submenu name=\"5\">\n          <template slot=\"title\">\n              <Icon type=\"person\"></Icon>\n              个人设置\n          </template>\n          <menu-item name=\"5-1\">账户设置</menu-item>\n          <menu-item name=\"5-2\">实名认证</menu-item>\n      </Submenu>\n    </i-Menu>\n  </div>\n  <div class=\"content-body\">\n    <div class=\"content-header\">\n      <main-header></main-header>\n    </div>\n    <div class=\"content-app\">\n      Content\n    </div>\n    <div class=\"content-copy\">\n      2008-2017 &copy; MT4 用户交易平台。\n    </div>\n  </div>\n</div>\n";
+
+/***/ },
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14974,15 +14977,15 @@
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _getters = __webpack_require__(25);
+	var _getters = __webpack_require__(17);
 
 	var _getters2 = _interopRequireDefault(_getters);
 
-	var _mutations = __webpack_require__(26);
+	var _mutations = __webpack_require__(18);
 
 	var _mutations2 = _interopRequireDefault(_mutations);
 
-	var _actions = __webpack_require__(27);
+	var _actions = __webpack_require__(19);
 
 	var _actions2 = _interopRequireDefault(_actions);
 
@@ -15003,7 +15006,7 @@
 	});
 
 /***/ },
-/* 25 */
+/* 17 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15020,7 +15023,7 @@
 	exports.default = getters;
 
 /***/ },
-/* 26 */
+/* 18 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15037,7 +15040,7 @@
 	exports.default = mutations;
 
 /***/ },
-/* 27 */
+/* 19 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15078,7 +15081,7 @@
 	exports.default = actions;
 
 /***/ },
-/* 28 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -49261,21 +49264,6 @@
 	/***/ })
 	/******/ ]);
 	});
-
-/***/ },
-/* 29 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"main\">\n  <div class=\"left-bar\">\n    <i-Menu :active-name=\"openStatus.classItem\" theme=\"dark\" width=\"auto\" :open-names=\"openStatus.class\">\n      <div class=\"left-bar-logo\">mforex-cloud</div>\n      <Submenu name=\"1\">\n          <template slot=\"title\">\n              <Icon type=\"social-usd\"></Icon>\n              资金操作\n          </template>\n          <menu-item name=\"1-1\">账户入金</menu-item>\n          <menu-item name=\"1-2\">入金记录</menu-item>\n          <menu-item name=\"1-3\">账户出金</menu-item>\n          <menu-item name=\"1-4\">出金记录</menu-item>\n      </Submenu>\n      <Submenu name=\"2\">\n          <template slot=\"title\">\n              <Icon type=\"arrow-graph-up-right\"></Icon>\n              数据统计\n          </template>\n          <menu-item name=\"2-1\">历史交易订单</menu-item>\n          <menu-item name=\"2-2\">当前交易订单</menu-item>\n      </Submenu>\n      <Submenu name=\"3\">\n          <template slot=\"title\">\n              <Icon type=\"person-stalker\"></Icon>\n              代理商办公室\n          </template>\n          <menu-item name=\"3-1\">客户名单</menu-item>\n          <menu-item name=\"3-2\">佣金查询</menu-item>\n          <menu-item name=\"3-3\">交易单查询</menu-item>\n          <menu-item name=\"3-4\">出入金查询</menu-item>\n          <menu-item name=\"3-5\">我的邀请链接</menu-item>\n      </Submenu>\n      <Submenu name=\"4\">\n          <template slot=\"title\">\n              <Icon type=\"android-bicycle\"></Icon>\n              跟单系统\n          </template>\n          <menu-item name=\"4-1\">牛人榜</menu-item>\n          <menu-item name=\"4-2\">成为牛人</menu-item>\n          <menu-item name=\"4-3\">我的粉丝</menu-item>\n          <menu-item name=\"4-4\">我的牛人</menu-item>\n      </Submenu>\n      <Submenu name=\"5\">\n          <template slot=\"title\">\n              <Icon type=\"person\"></Icon>\n              个人设置\n          </template>\n          <menu-item name=\"5-1\">账户设置</menu-item>\n          <menu-item name=\"5-2\">实名认证</menu-item>\n      </Submenu>\n    </i-Menu>\n  </div>\n  <div class=\"content-body\">\n    <div class=\"content-header\">\n      <main-header></main-header>\n    </div>\n    <div class=\"content-app\">\n      Content\n    </div>\n    <div class=\"content-copy\">\n      2008-2017 &copy; MT4 用户交易平台。\n    </div>\n  </div>\n</div>\n";
-
-/***/ },
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"header-warp\" flex=\"main:center\">\n  <Dropdown @on-click=\"userHandle($event)\">\n    <a href=\"javascript:void(0)\">\n      <img :src=\"'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'\" width=\"35\" class=\"user_ico\" alt=\"\">\n      {{'王二'}}\n      <Icon type=\"arrow-down-b\"></Icon>\n    </a>\n    <Dropdown-menu slot=\"list\">\n      <Dropdown-item name=\"myProfile\">我的信息</Dropdown-item>\n      <Dropdown-item name=\"logout\">注销登录</Dropdown-item>\n    </Dropdown-menu>\n  </Dropdown>\n</div>\n";
 
 /***/ }
 /******/ ]);
