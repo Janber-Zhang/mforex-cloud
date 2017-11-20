@@ -1,0 +1,11 @@
+{
+	"desc": "test",
+	"port":"3000",
+	"session":{
+		"secret": "B*W&LX$S",
+		"key": "exchange",
+		"maxAge": 3600000
+	},
+	"apiWhitelist": ["Login", "Register", "GetCrmConfig"],
+	"basicAPI": "http://59.46.80.233:8002/API/Platform/Service.asmx"
+}

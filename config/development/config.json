@@ -1,0 +1,10 @@
+{
+	"desc": "test",
+	"port":"3000",
+	"session":{
+		"secret": "B*W&LX$S",
+		"key": "exchange",
+		"maxAge": 3600000
+	},
+	"apiWhitelist": ["users/user/add", "users/user/login", "users/user/checkexist"]
+}
