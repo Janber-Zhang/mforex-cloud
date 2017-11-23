@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="app_main">
     <div class="left-bar">
       <i-Menu :active-name="openStatus.classItem" theme="dark" width="auto" :open-names="openStatus.class">
         <div class="left-bar-logo">mforex-cloud</div>
