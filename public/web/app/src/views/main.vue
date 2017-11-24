@@ -59,9 +59,7 @@
       <div class="content-app">
         Content
       </div>
-      <div class="content-copy">
-        2008-2017 &copy; MT4 用户交易平台。
-      </div>
+      <copy-footer></copy-footer>
     </div>
   </div>
 </template>

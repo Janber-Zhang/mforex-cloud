@@ -214,3 +214,17 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 .app_header .user_avator {
   border-radius: 50%;
 }
+.app_footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 10px 15px 20px;
+  color: #9ea7b4;
+}
+.app_footer .tips {
+  margin: 10px 20px;
+  color: #70757c;
+  font-size: 14px;
+}
