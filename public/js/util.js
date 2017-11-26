@@ -3,10 +3,7 @@ var util = {
 		$('#loading').show();
 		var promise_ =  axios.post('/query/queryData', param).then(function(res){
 			$('#loading').hide();
-			// if (res.data.errno == 1111) {
-			// 	location.href = '/login';
-			// 	return
-			// }
+			console.log(res)
 			if (cb) {
 				cb(res.data)
 			}
@@ -17,7 +14,7 @@ var util = {
 	logout: function() {						//登出
 		var param = {
 			httpType      :    'post',
-			serviceUrl    :    'user/logout'
+			serviceUrl    :    'Logout'
 		}
 		var queryUserInfo = util.ajaxQuery(param, function(){
 			location.href = '/login';

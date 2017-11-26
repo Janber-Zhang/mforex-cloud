@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var axios = require('axios');
+var request = require('request');
+var qs = require('querystring');
 var config = require('../config/config.json');
 var utils = require('../libs/utils.js')
 function checkSession(serviceUrl,session){
@@ -13,7 +14,7 @@ function checkSession(serviceUrl,session){
 };
 
 function canSetSession(serviceUrl){
-  var routerList = ["users/user/add", "users/user/login"];
+  var routerList = ["Login"];
   var result = false;
   for (var i = 0, len = routerList.length; i < len; i++) {
     var item = routerList[i];
@@ -33,6 +34,11 @@ router.post('/queryData', (req, res, next) => {
     res.send('{"refresh":1}');
     return;
   }
+  if (params.serviceUrl === 'Logout' ) {  //退出登录，强行置空session
+    req.session.user=null;
+    res.send('{"code":"0","data":"true"}');
+  }
+  var timeout = 50000;                 //超时时间 50s
   var serviceUrl = params.serviceUrl;
   var httpType = params.httpType;
   delete params["serviceUrl"];
@@ -46,16 +52,14 @@ router.post('/queryData', (req, res, next) => {
     res.send({errno: '1111', errmsg: 'need login'});
     return
   }
-  params['domain'] = 'www.baidu.com'; //暂时将domain放在params里面
-  var headers = {
-    'form-url':  utils.getDomain(req.headers.referer)
+
+  var headers = {                              //header配置
+    'custom-version': 50000,
+    'custom-os': 'web'
   };
   if (req.session && req.session.user && req.session.user_id) {
-    headers['user-id'] = req.session.user.user_id;
+    // headers['user-id'] = req.session.user.user_id;
   }
-  var queryConfig = {
-    headers: headers
-  };
 
   var serviceUrl = apiUrl + '/' + serviceUrl;         //拼装实际请求URL
   if (httpType == 'get') {
@@ -71,27 +75,45 @@ router.post('/queryData', (req, res, next) => {
         i++
       }
     }
-    console.log('----------------------------')
     console.log('GET-URL:' + serviceUrl);
-    axios.get(serviceUrl, queryConfig)
-    .then((res_) => {
-      res.send(res_.data);
-    })
-    .catch(function(err){
-      console.log(err);
+    request({
+      headers: headers,
+      uri: encodeURI(serviceUrl),
+      method: "GET",
+      timeout: timeout
+    }, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        res.send(body)
+      }
+      else {
+        res.send('{"result":"ServerError"}')
+        console.log(error);
+      }
     });
   }
   if (httpType == 'post') {
-      queryConfig.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-      axios.post(serviceUrl, params, queryConfig).then((res_) => {
-        if(canSetSession(serviceUrl)) {               //登录或注册成功后写入session
-          req.session.user = res_.data.data.user;
+    var postData = '';
+    postData = qs.stringify(params);
+    headers['content-type'] = 'application/x-www-form-urlencoded';
+    console.log(serviceUrl + '?' + postData)
+    request.post({
+      headers: headers,
+      uri: encodeURI(serviceUrl),
+      body: postData,
+      timeout: timeout
+    }, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        if (canSetSession(serviceUrl)) {
+          req.session.user = JSON.parse(body).data;
+          console.log(JSON.parse(body).data);
         }
-        res.send(res_.data);
-      })
-      .catch(function(err){
-        console.log(err);
-      });
+        res.send(body)
+      }
+      else {
+        res.send('{"result":"ServerError"}')
+        console.log(error);
+      }
+    });
   }
 });
 

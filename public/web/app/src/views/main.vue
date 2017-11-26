@@ -37,8 +37,8 @@ export default {
   },
   computed:{
     isready(){
-        return this.$store.getters.getReadyState
-      }
+      return this.$store.getters.getReadyState
+    }
   }
 }
 </script>

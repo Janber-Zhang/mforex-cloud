@@ -37,7 +37,7 @@
             console.log('123')
             break;
           case 'logout':
-            location.href = '/login'
+            util.logout();
             break;
         }
       }
