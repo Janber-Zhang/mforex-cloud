@@ -15189,6 +15189,20 @@
 	          res.data.dealedorders.forEach(function (item) {
 	            item.OpenTime = DateFormat.format(new Date(item.OpenTime), 'yyyy-MM-dd hh:mm:ss');
 	            item.CloseTime = DateFormat.format(new Date(item.CloseTime), 'yyyy-MM-dd hh:mm:ss');
+	            switch (item.Cmd) {
+	              case 'Balance':
+	                if (item.Profit > 0) {
+	                  item.Cmd = '入金';
+	                } else {
+	                  item.Cms = '出金';
+	                }
+	                break;
+	              case 'Sell':
+	                item.Cmd = '卖出';
+	                break;
+	              default:
+	                console.log('other type');
+	            }
 	          });
 	          vm.data_list = res.data.dealedorders;
 	        } else {
