@@ -1,53 +1,13 @@
 <template>
 	<div class="left-bar">
-		<i-Menu :active-name="openStatus.classItem" theme="dark" width="auto" :open-names="openStatus.class">
+		<i-Menu :active-name="openStatus.classItem" @on-select="onchange" theme="dark" width="auto" :open-names="openStatus.class">
 			<div class="left-bar-logo">mforex-cloud</div>
-			<Submenu name="1">
+			<Submenu v-for="submenuItem in menuList" :name="submenuItem.submenuName" :key="submenuItem.submenuName">
 				<template slot="title">
-					<Icon type="social-usd"></Icon>
-					资金操作
+					<Icon :type="submenuItem.icon"></Icon>
+					{{submenuItem.submenu}}
 				</template>
-				<menu-item name="1-1">账户入金</menu-item>
-				<menu-item name="1-2">入金记录</menu-item>
-				<menu-item name="1-3">账户出金</menu-item>
-				<menu-item name="1-4">出金记录</menu-item>
-			</Submenu>
-			<Submenu name="2">
-				<template slot="title">
-					<Icon type="arrow-graph-up-right"></Icon>
-					数据统计
-				</template>
-				<menu-item name="2-1">历史交易订单</menu-item>
-				<menu-item name="2-2">当前交易订单</menu-item>
-			</Submenu>
-			<Submenu name="3">
-				<template slot="title">
-					<Icon type="person-stalker"></Icon>
-					代理商办公室
-				</template>
-				<menu-item name="3-1">客户名单</menu-item>
-				<menu-item name="3-2">佣金查询</menu-item>
-				<menu-item name="3-3">交易单查询</menu-item>
-				<menu-item name="3-4">出入金查询</menu-item>
-				<menu-item name="3-5">我的邀请链接</menu-item>
-			</Submenu>
-			<Submenu name="4">
-				<template slot="title">
-					<Icon type="android-bicycle"></Icon>
-					跟单系统
-				</template>
-				<menu-item name="4-1">牛人榜</menu-item>
-				<menu-item name="4-2">成为牛人</menu-item>
-				<menu-item name="4-3">我的粉丝</menu-item>
-				<menu-item name="4-4">我的牛人</menu-item>
-			</Submenu>
-			<Submenu name="5">
-				<template slot="title">
-					<Icon type="person"></Icon>
-					个人设置
-				</template>
-				<menu-item name="5-1">账户设置</menu-item>
-				<menu-item name="5-2">实名认证</menu-item>
+				<menu-item v-for="menuItem in submenuItem.items" :name="menuItem.name" :key="menuItem.name">{{menuItem.show}}</menu-item>
 			</Submenu>
 		</i-Menu>
 	</div>
@@ -55,22 +15,105 @@
 <script>
 export default {
 	created(){
-
+		this.initLeftbar();
 	},
 	ready(){
 
 	},
 	data(){
 		return {
+			menuList:[
+				{
+					submenu: '资金操作',
+					icon: 'social-usd',
+					submenuName: 'fundOption',
+					items: [
+						{show : '账户入金',name : 'in_come'},
+						{show : '入金记录',name : 'in_come_his'},
+						{show : '账户出金',name : 'out_come'},
+						{show : '出金记录',name : 'out_come_his'}
+					]
+				},
+				{
+					submenu: '数据统计',
+					icon: 'arrow-graph-up-right',
+					submenuName: 'dataStatistics',
+					items: [
+						{show : '历史交易订单',name : 'history_orders'},
+						{show : '当前交易订单',name : 'current_orders'}
+					]
+				},
+				{
+					submenu: '代理商办公室',
+					icon: 'social-usd',
+					submenuName: 'agentRoom',
+					items: [
+						{show : '客户名单',name : 'customer_list'},
+						{show : '佣金查询',name : 'commission_list'},
+						{show : '交易单查询',name : 'transaction_list'},
+						{show : '出入金查询',name : 'in_out_come_list'},
+						{show : '我的邀请链接',name : 'my_link'}
+					]
+				},
+				{
+					submenu: '跟单系统',
+					icon: 'android-bicycle',
+					submenuName: 'documentary',
+					items: [
+						{show : '牛人榜',name : 'ranking_list'},
+						{show : '成为牛人',name : 'to_be_big'},
+						{show : '我的粉丝',name : 'my_fans'},
+						{show : '我的牛人',name : 'my_big'}
+					]
+				},
+				{
+					submenu: '个人设置',
+					icon: 'person',
+					submenuName: 'personalSetting',
+					items: [
+						{show : '账户设置',name : 'prifile'},
+						{show : '实名认证',name : 'certification'}
+					]
+				},
+			],
 			openStatus:{
-				class: ['1'],
-				classItem: '1-2'
+				class: [],
+				classItem: ''
 			}
 		}
 	},
 	methods:{
-
+		onchange: function(name){
+			this.$router.push({ path: `/${name}` });
+		},
+		initLeftbar: function(){
+			let path_ = this.$route.path;
+			let subName, itemName;
+			for (let i=0,len=this.menuList.length;i<len;i++) {
+				let submenu = this.menuList[i];
+				var is_found = false;
+				for (let i_=0,len_=submenu.items.length;i_<len_;i_++) {
+					let item = submenu.items[i_];
+					if (path_.indexOf(item.name) != -1) {
+						is_found = true;
+						this.openStatus.class = [submenu.submenuName];
+						this.openStatus.classItem = item.name;
+						subName = submenu.submenu;
+						itemName = item.show;
+						break
+					}
+				}
+				if (is_found) {
+					break
+				}
+			}
+			let headerTitle = subName? [subName, itemName]:[]
+			this.$store.dispatch('initHeaderTitle',headerTitle);
+		}
 	},
+	watch: {
+    	'$route' : 'initLeftbar' // 如果路由有变化，会再次执行该方法
+    },
 	components:{
 
 	},

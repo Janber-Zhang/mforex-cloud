@@ -1,6 +1,9 @@
 const getters = {
-	getReadyState: (state)=>{
-		return state.readyState
+	getUserInfo: (state)=>{
+		return state.userInfo
+	},
+	getHeaderTitle: (state)=>{
+		return state.headerTitle
 	}
 };
 

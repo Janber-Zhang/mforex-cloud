@@ -12,14 +12,10 @@
 	<script src="js/dist/other.min.js"></script>
 </head>
 <body>
+	<input type="hidden" id="user_info" value="<%=userinfo%>">
 	<div id="main" style="display: relative;">
 		<%-body%>
 	</div>
 	<div id="loading"></div>
 </body>
-<script>
-	$(document).ready(function() {
-		console.log('hellow word!')
-	});
-</script>
 </html>

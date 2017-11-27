@@ -8,7 +8,7 @@ Vue.use(Vuex);
 
 const state = {
 	userInfo:{name: 'test'},
-	data:{}
+	headerTitle: []
 };
 
 export default new Vuex.Store({

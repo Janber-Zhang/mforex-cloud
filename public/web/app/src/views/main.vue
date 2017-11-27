@@ -17,7 +17,9 @@ import footer from './footer.vue'
 import leftBar from './leftBar.vue'
 export default {
   created(){
-
+    let userinfo = $('#user_info').val();
+    let userInfo = JSON.parse(userinfo);
+    this.$store.dispatch('initUserInfo',userInfo);
   },
   ready(){
 

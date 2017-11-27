@@ -6,8 +6,10 @@ router.get('/', function(req, res, next) {
   if (!req.session.user) {
     res.redirect('/login');
   }
+  var userInfo = JSON.stringify(req.session.user)
   res.render('web/app/index', {
   	layout: '../public/web/layout.ejs',
+    userinfo: userInfo,
   	title: 'index'
   });
 });

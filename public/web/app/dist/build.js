@@ -62,11 +62,11 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _index = __webpack_require__(16);
+	var _index = __webpack_require__(22);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _iview = __webpack_require__(20);
+	var _iview = __webpack_require__(26);
 
 	var _iview2 = _interopRequireDefault(_iview);
 
@@ -14632,7 +14632,7 @@
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _historyOrders = __webpack_require__(24);
+	var _historyOrders = __webpack_require__(19);
 
 	var _historyOrders2 = _interopRequireDefault(_historyOrders);
 
@@ -14643,6 +14643,9 @@
 		component: _main2.default,
 		children: [{
 			path: 'history_orders',
+			component: _historyOrders2.default
+		}, {
+			path: 'current_orders',
 			component: _historyOrders2.default
 		}]
 	}];
@@ -14657,7 +14660,7 @@
 	__vue_script__ = __webpack_require__(8)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/main.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(15)
+	__vue_template__ = __webpack_require__(18)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14699,14 +14702,18 @@
 
 	var _footer2 = _interopRequireDefault(_footer);
 
-	var _leftBar = __webpack_require__(21);
+	var _leftBar = __webpack_require__(15);
 
 	var _leftBar2 = _interopRequireDefault(_leftBar);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
-	  created: function created() {},
+	  created: function created() {
+	    var userinfo = $('#user_info').val();
+	    var userInfo = JSON.parse(userinfo);
+	    this.$store.dispatch('initUserInfo', userInfo);
+	  },
 	  ready: function ready() {},
 	  data: function data() {
 	    return {};
@@ -14784,11 +14791,16 @@
 	});
 	// <template>
 	//   <div class="app_header" flex="main:justify cross:center">
-	//     <p>主页／代理商办公室／客户名单</p>
+	//     <Breadcrumb>
+	//         <breadcrumb-item to="/">主页</breadcrumb-item>
+	//         <template v-if="headerTitle.length">
+	//           <breadcrumb-item v-for="item in headerTitle" :key="item">{{item}}</breadcrumb-item>
+	//         </template>
+	//     </Breadcrumb>
 	//     <Dropdown @on-click="userHandle($event)">
 	//       <a href="javascript:void(0)">
 	//         <img :src="'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'" width="35" class="user_avator" alt="">
-	//         {{'王二'}}
+	//         {{userInfo.Name}}
 	//         <Icon type="arrow-down-b"></Icon>
 	//       </a>
 	//       <Dropdown-menu slot="list">
@@ -14801,15 +14813,11 @@
 	//
 	// <script>
 	exports.default = {
-	  created: function created() {
-	    // let users = JSON.parse(JSON.stringify(this.userInfo));
-
-	  },
+	  created: function created() {},
 	  ready: function ready() {},
 	  data: function data() {
 	    return {
-	      msg: 'Welcome to Exciting-hub',
-	      userInfo: {}
+	      msg: 'Welcome to Exciting-hub'
 	    };
 	  },
 
@@ -14826,7 +14834,14 @@
 	    }
 	  },
 	  components: {},
-	  computed: {}
+	  computed: {
+	    userInfo: function userInfo() {
+	      return this.$store.getters.getUserInfo;
+	    },
+	    headerTitle: function headerTitle() {
+	      return this.$store.getters.getHeaderTitle;
+	    }
+	  }
 	  // </script>
 
 	};
@@ -14835,7 +14850,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"app_header\" flex=\"main:justify cross:center\">\n  <p>主页／代理商办公室／客户名单</p>\n  <Dropdown @on-click=\"userHandle($event)\">\n    <a href=\"javascript:void(0)\">\n      <img :src=\"'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'\" width=\"35\" class=\"user_avator\" alt=\"\">\n      {{'王二'}}\n      <Icon type=\"arrow-down-b\"></Icon>\n    </a>\n    <Dropdown-menu slot=\"list\">\n      <Dropdown-item name=\"myProfile\">我的信息</Dropdown-item>\n      <Dropdown-item name=\"logout\">注销登录</Dropdown-item>\n    </Dropdown-menu>\n  </Dropdown>\n</div>\n";
+	module.exports = "\n<div class=\"app_header\" flex=\"main:justify cross:center\">\n  <Breadcrumb>\n      <breadcrumb-item to=\"/\">主页</breadcrumb-item>\n      <template v-if=\"headerTitle.length\">\n        <breadcrumb-item v-for=\"item in headerTitle\" :key=\"item\">{{item}}</breadcrumb-item>\n      </template>\n  </Breadcrumb>\n  <Dropdown @on-click=\"userHandle($event)\">\n    <a href=\"javascript:void(0)\">\n      <img :src=\"'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'\" width=\"35\" class=\"user_avator\" alt=\"\">\n      {{userInfo.Name}}\n      <Icon type=\"arrow-down-b\"></Icon>\n    </a>\n    <Dropdown-menu slot=\"list\">\n      <Dropdown-item name=\"myProfile\">我的信息</Dropdown-item>\n      <Dropdown-item name=\"logout\">注销登录</Dropdown-item>\n    </Dropdown-menu>\n  </Dropdown>\n</div>\n";
 
 /***/ },
 /* 12 */
@@ -14918,12 +14933,282 @@
 
 /***/ },
 /* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(16)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/leftBar.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(17)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-49b09b8d/leftBar.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <template>
+	// 	<div class="left-bar">
+	// 		<i-Menu :active-name="openStatus.classItem" @on-select="onchange" theme="dark" width="auto" :open-names="openStatus.class">
+	// 			<div class="left-bar-logo">mforex-cloud</div>
+	// 			<Submenu v-for="submenuItem in menuList" :name="submenuItem.submenuName" :key="submenuItem.submenuName">
+	// 				<template slot="title">
+	// 					<Icon :type="submenuItem.icon"></Icon>
+	// 					{{submenuItem.submenu}}
+	// 				</template>
+	// 				<menu-item v-for="menuItem in submenuItem.items" :name="menuItem.name" :key="menuItem.name">{{menuItem.show}}</menu-item>
+	// 			</Submenu>
+	// 		</i-Menu>
+	// 	</div>
+	// </template>
+	// <script>
+	exports.default = {
+		created: function created() {
+			this.initLeftbar();
+		},
+		ready: function ready() {},
+		data: function data() {
+			return {
+				menuList: [{
+					submenu: '资金操作',
+					icon: 'social-usd',
+					submenuName: 'fundOption',
+					items: [{ show: '账户入金', name: 'in_come' }, { show: '入金记录', name: 'in_come_his' }, { show: '账户出金', name: 'out_come' }, { show: '出金记录', name: 'out_come_his' }]
+				}, {
+					submenu: '数据统计',
+					icon: 'arrow-graph-up-right',
+					submenuName: 'dataStatistics',
+					items: [{ show: '历史交易订单', name: 'history_orders' }, { show: '当前交易订单', name: 'current_orders' }]
+				}, {
+					submenu: '代理商办公室',
+					icon: 'social-usd',
+					submenuName: 'agentRoom',
+					items: [{ show: '客户名单', name: 'customer_list' }, { show: '佣金查询', name: 'commission_list' }, { show: '交易单查询', name: 'transaction_list' }, { show: '出入金查询', name: 'in_out_come_list' }, { show: '我的邀请链接', name: 'my_link' }]
+				}, {
+					submenu: '跟单系统',
+					icon: 'android-bicycle',
+					submenuName: 'documentary',
+					items: [{ show: '牛人榜', name: 'ranking_list' }, { show: '成为牛人', name: 'to_be_big' }, { show: '我的粉丝', name: 'my_fans' }, { show: '我的牛人', name: 'my_big' }]
+				}, {
+					submenu: '个人设置',
+					icon: 'person',
+					submenuName: 'personalSetting',
+					items: [{ show: '账户设置', name: 'prifile' }, { show: '实名认证', name: 'certification' }]
+				}],
+				openStatus: {
+					class: [],
+					classItem: ''
+				}
+			};
+		},
+
+		methods: {
+			onchange: function onchange(name) {
+				this.$router.push({ path: '/' + name });
+			},
+			initLeftbar: function initLeftbar() {
+				var path_ = this.$route.path;
+				var subName = void 0,
+				    itemName = void 0;
+				for (var i = 0, len = this.menuList.length; i < len; i++) {
+					var submenu = this.menuList[i];
+					var is_found = false;
+					for (var i_ = 0, len_ = submenu.items.length; i_ < len_; i_++) {
+						var item = submenu.items[i_];
+						if (path_.indexOf(item.name) != -1) {
+							is_found = true;
+							this.openStatus.class = [submenu.submenuName];
+							this.openStatus.classItem = item.name;
+							subName = submenu.submenu;
+							itemName = item.show;
+							break;
+						}
+					}
+					if (is_found) {
+						break;
+					}
+				}
+				var headerTitle = subName ? [subName, itemName] : [];
+				this.$store.dispatch('initHeaderTitle', headerTitle);
+			}
+		},
+		watch: {
+			'$route': 'initLeftbar' // 如果路由有变化，会再次执行该方法
+		},
+		components: {},
+		computed: {}
+		// </script>
+
+	};
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"left-bar\">\n\t<i-Menu :active-name=\"openStatus.classItem\" @on-select=\"onchange\" theme=\"dark\" width=\"auto\" :open-names=\"openStatus.class\">\n\t\t<div class=\"left-bar-logo\">mforex-cloud</div>\n\t\t<Submenu v-for=\"submenuItem in menuList\" :name=\"submenuItem.submenuName\" :key=\"submenuItem.submenuName\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon :type=\"submenuItem.icon\"></Icon>\n\t\t\t\t{{submenuItem.submenu}}\n\t\t\t</template>\n\t\t\t<menu-item v-for=\"menuItem in submenuItem.items\" :name=\"menuItem.name\" :key=\"menuItem.name\">{{menuItem.show}}</menu-item>\n\t\t</Submenu>\n\t</i-Menu>\n</div>\n";
+
+/***/ },
+/* 18 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"app_main\">\n  <left-bar></left-bar>\n  <div class=\"content-body\">\n    <main-header></main-header>\n    <div class=\"content-app\">\n      <router-view></router-view>\n    </div>\n    <copy-footer></copy-footer>\n  </div>\n</div>\n";
 
 /***/ },
-/* 16 */
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(20)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/historyOrders.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(21)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-2075e40f/historyOrders.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="app-warp">
+	//     <i-table stripe :columns="table_columns" :data="data_list"></i-table>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.getHistotyOrder();
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      table_columns: [],
+	      data_list: []
+	    };
+	  },
+
+	  methods: {
+	    getHistotyOrder: function getHistotyOrder() {
+	      var vm = this;
+	      var param = {
+	        httpType: 'get',
+	        serviceUrl: 'GetDealedOrder',
+	        apiModule: 'basicAPI',
+	        domain: 'www.sohu.com',
+	        login: '4',
+	        page: 1,
+	        pageSize: 25
+	      };
+	      util.ajaxQuery(param, function (res) {
+	        if (res.code === '0') {
+	          vm.table_columns = [{
+	            title: '订单号',
+	            key: '_Order'
+	          }, {
+	            title: '订单品种',
+	            key: 'Symbol'
+	          }, {
+	            title: '交易类型',
+	            key: 'Cmd'
+	          }, {
+	            title: '数量',
+	            key: 'Volume'
+	          }, {
+	            title: '开仓价格',
+	            key: 'OpenPrice'
+	          }, {
+	            title: '开仓时间',
+	            width: 150,
+	            key: 'OpenTime'
+	          }, {
+	            title: '平仓价格',
+	            key: 'ClosePrice'
+	          }, {
+	            title: '平仓时间',
+	            width: 150,
+	            key: 'CloseTime'
+	          }, {
+	            title: '利润',
+	            key: 'Profit'
+	          }];
+	          res.data.dealedorders.forEach(function (item) {
+	            item.OpenTime = DateFormat.format(new Date(item.OpenTime), 'yyyy-MM-dd hh:mm:ss');
+	            item.CloseTime = DateFormat.format(new Date(item.CloseTime), 'yyyy-MM-dd hh:mm:ss');
+	          });
+	          vm.data_list = res.data.dealedorders;
+	        } else {
+	          // alert('账号密码错误')
+	        }
+	      });
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"app-warp\">\n  <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n</div>\n";
+
+/***/ },
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14940,15 +15225,15 @@
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _getters = __webpack_require__(17);
+	var _getters = __webpack_require__(23);
 
 	var _getters2 = _interopRequireDefault(_getters);
 
-	var _mutations = __webpack_require__(18);
+	var _mutations = __webpack_require__(24);
 
 	var _mutations2 = _interopRequireDefault(_mutations);
 
-	var _actions = __webpack_require__(19);
+	var _actions = __webpack_require__(25);
 
 	var _actions2 = _interopRequireDefault(_actions);
 
@@ -14958,7 +15243,7 @@
 
 	var state = {
 	    userInfo: { name: 'test' },
-	    data: {}
+	    headerTitle: []
 	};
 
 	exports.default = new _vuex2.default.Store({
@@ -14969,7 +15254,7 @@
 	});
 
 /***/ },
-/* 17 */
+/* 23 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -14978,15 +15263,18 @@
 		value: true
 	});
 	var getters = {
-		getReadyState: function getReadyState(state) {
-			return state.readyState;
+		getUserInfo: function getUserInfo(state) {
+			return state.userInfo;
+		},
+		getHeaderTitle: function getHeaderTitle(state) {
+			return state.headerTitle;
 		}
 	};
 
 	exports.default = getters;
 
 /***/ },
-/* 18 */
+/* 24 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -14997,13 +15285,16 @@
 	var mutations = {
 		initUserInfo: function initUserInfo(state, data) {
 			state.userInfo = data;
+		},
+		initHeaderTitle: function initHeaderTitle(state, data) {
+			state.headerTitle = data;
 		}
 	};
 
 	exports.default = mutations;
 
 /***/ },
-/* 19 */
+/* 25 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15012,39 +15303,18 @@
 		value: true
 	});
 	var actions = {
-		initUserInfo: function initUserInfo(context) {
-			var param = {
-				httpType: 'get',
-				serviceUrl: 'users/user/getuserinfo',
-				apiModule: 'newAPI'
-			};
-			var default_info = {
-				nickname: '测试',
-				avatar: [],
-				sex: 'unknown',
-				introduction: '这个人很懒，什么也没写...',
-				birthday: ''
-				// context.commit('initUserInfo',default_info);
-			};context.commit('initReadyState', true);
-			// let queryUserInfo = util.ajaxQuery(param, (res)=>{
-			// 	let default_info = {
-			// 		nickname     : '测试',
-			// 		avatar       : [],
-			// 		sex          : 'unknown',
-			// 		introduction : '这个人很懒，什么也没写...',
-			// 		birthday     : ''
-			// 	}
-			// 	let userInfo = $.extend({}, default_info, res.data.user);
-			// 	context.commit('initUserInfo',userInfo);
-			// 	context.commit('initReadyState',true);
-			// });
+		initUserInfo: function initUserInfo(context, data) {
+			context.commit('initUserInfo', data);
+		},
+		initHeaderTitle: function initHeaderTitle(context, data) {
+			context.commit('initHeaderTitle', data);
 		}
 	};
 
 	exports.default = actions;
 
 /***/ },
-/* 20 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -49227,256 +49497,6 @@
 	/***/ })
 	/******/ ]);
 	});
-
-/***/ },
-/* 21 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(22)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/leftBar.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(23)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-49b09b8d/leftBar.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	// <template>
-	// 	<div class="left-bar">
-	// 		<i-Menu :active-name="openStatus.classItem" theme="dark" width="auto" :open-names="openStatus.class">
-	// 			<div class="left-bar-logo">mforex-cloud</div>
-	// 			<Submenu name="1">
-	// 				<template slot="title">
-	// 					<Icon type="social-usd"></Icon>
-	// 					资金操作
-	// 				</template>
-	// 				<menu-item name="1-1">账户入金</menu-item>
-	// 				<menu-item name="1-2">入金记录</menu-item>
-	// 				<menu-item name="1-3">账户出金</menu-item>
-	// 				<menu-item name="1-4">出金记录</menu-item>
-	// 			</Submenu>
-	// 			<Submenu name="2">
-	// 				<template slot="title">
-	// 					<Icon type="arrow-graph-up-right"></Icon>
-	// 					数据统计
-	// 				</template>
-	// 				<menu-item name="2-1">历史交易订单</menu-item>
-	// 				<menu-item name="2-2">当前交易订单</menu-item>
-	// 			</Submenu>
-	// 			<Submenu name="3">
-	// 				<template slot="title">
-	// 					<Icon type="person-stalker"></Icon>
-	// 					代理商办公室
-	// 				</template>
-	// 				<menu-item name="3-1">客户名单</menu-item>
-	// 				<menu-item name="3-2">佣金查询</menu-item>
-	// 				<menu-item name="3-3">交易单查询</menu-item>
-	// 				<menu-item name="3-4">出入金查询</menu-item>
-	// 				<menu-item name="3-5">我的邀请链接</menu-item>
-	// 			</Submenu>
-	// 			<Submenu name="4">
-	// 				<template slot="title">
-	// 					<Icon type="android-bicycle"></Icon>
-	// 					跟单系统
-	// 				</template>
-	// 				<menu-item name="4-1">牛人榜</menu-item>
-	// 				<menu-item name="4-2">成为牛人</menu-item>
-	// 				<menu-item name="4-3">我的粉丝</menu-item>
-	// 				<menu-item name="4-4">我的牛人</menu-item>
-	// 			</Submenu>
-	// 			<Submenu name="5">
-	// 				<template slot="title">
-	// 					<Icon type="person"></Icon>
-	// 					个人设置
-	// 				</template>
-	// 				<menu-item name="5-1">账户设置</menu-item>
-	// 				<menu-item name="5-2">实名认证</menu-item>
-	// 			</Submenu>
-	// 		</i-Menu>
-	// 	</div>
-	// </template>
-	// <script>
-	exports.default = {
-		created: function created() {},
-		ready: function ready() {},
-		data: function data() {
-			return {
-				openStatus: {
-					class: ['1'],
-					classItem: '1-2'
-				}
-			};
-		},
-
-		methods: {},
-		components: {},
-		computed: {}
-		// </script>
-
-	};
-
-/***/ },
-/* 23 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"left-bar\">\n\t<i-Menu :active-name=\"openStatus.classItem\" theme=\"dark\" width=\"auto\" :open-names=\"openStatus.class\">\n\t\t<div class=\"left-bar-logo\">mforex-cloud</div>\n\t\t<Submenu name=\"1\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon type=\"social-usd\"></Icon>\n\t\t\t\t资金操作\n\t\t\t</template>\n\t\t\t<menu-item name=\"1-1\">账户入金</menu-item>\n\t\t\t<menu-item name=\"1-2\">入金记录</menu-item>\n\t\t\t<menu-item name=\"1-3\">账户出金</menu-item>\n\t\t\t<menu-item name=\"1-4\">出金记录</menu-item>\n\t\t</Submenu>\n\t\t<Submenu name=\"2\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon type=\"arrow-graph-up-right\"></Icon>\n\t\t\t\t数据统计\n\t\t\t</template>\n\t\t\t<menu-item name=\"2-1\">历史交易订单</menu-item>\n\t\t\t<menu-item name=\"2-2\">当前交易订单</menu-item>\n\t\t</Submenu>\n\t\t<Submenu name=\"3\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon type=\"person-stalker\"></Icon>\n\t\t\t\t代理商办公室\n\t\t\t</template>\n\t\t\t<menu-item name=\"3-1\">客户名单</menu-item>\n\t\t\t<menu-item name=\"3-2\">佣金查询</menu-item>\n\t\t\t<menu-item name=\"3-3\">交易单查询</menu-item>\n\t\t\t<menu-item name=\"3-4\">出入金查询</menu-item>\n\t\t\t<menu-item name=\"3-5\">我的邀请链接</menu-item>\n\t\t</Submenu>\n\t\t<Submenu name=\"4\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon type=\"android-bicycle\"></Icon>\n\t\t\t\t跟单系统\n\t\t\t</template>\n\t\t\t<menu-item name=\"4-1\">牛人榜</menu-item>\n\t\t\t<menu-item name=\"4-2\">成为牛人</menu-item>\n\t\t\t<menu-item name=\"4-3\">我的粉丝</menu-item>\n\t\t\t<menu-item name=\"4-4\">我的牛人</menu-item>\n\t\t</Submenu>\n\t\t<Submenu name=\"5\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon type=\"person\"></Icon>\n\t\t\t\t个人设置\n\t\t\t</template>\n\t\t\t<menu-item name=\"5-1\">账户设置</menu-item>\n\t\t\t<menu-item name=\"5-2\">实名认证</menu-item>\n\t\t</Submenu>\n\t</i-Menu>\n</div>\n";
-
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(25)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/historyOrders.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(26)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-2075e40f/historyOrders.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 25 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="app-warp">
-	//     <i-table stripe :columns="table_columns" :data="data_list"></i-table>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {
-	    this.getHistotyOrder();
-	  },
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      table_columns: [],
-	      data_list: []
-	    };
-	  },
-
-	  methods: {
-	    getHistotyOrder: function getHistotyOrder() {
-	      var vm = this;
-	      var param = {
-	        httpType: 'get',
-	        serviceUrl: 'GetDealedOrder',
-	        apiModule: 'basicAPI',
-	        domain: 'www.sohu.com',
-	        login: '4',
-	        page: 1,
-	        pageSize: 25
-	      };
-	      util.ajaxQuery(param, function (res) {
-	        if (res.code === '0') {
-	          vm.table_columns = [{
-	            title: '订单号',
-	            key: '_Order'
-	          }, {
-	            title: '订单品种',
-	            key: 'Symbol'
-	          }, {
-	            title: '交易类型',
-	            key: 'Cmd'
-	          }, {
-	            title: '数量',
-	            key: 'Volume'
-	          }, {
-	            title: '开仓价格',
-	            key: 'OpenPrice'
-	          }, {
-	            title: '开仓时间',
-	            width: 150,
-	            key: 'OpenTime'
-	          }, {
-	            title: '平仓价格',
-	            key: 'ClosePrice'
-	          }, {
-	            title: '平仓时间',
-	            width: 150,
-	            key: 'CloseTime'
-	          }, {
-	            title: '利润',
-	            key: 'Profit'
-	          }];
-	          res.data.dealedorders.forEach(function (item) {
-	            item.OpenTime = DateFormat.format(new Date(item.OpenTime), 'yyyy-MM-dd hh:mm:ss');
-	            item.CloseTime = DateFormat.format(new Date(item.CloseTime), 'yyyy-MM-dd hh:mm:ss');
-	          });
-	          vm.data_list = res.data.dealedorders;
-	        } else {
-	          // alert('账号密码错误')
-	        }
-	      });
-	    }
-	  },
-	  components: {},
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 26 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"app-warp\">\n  <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n</div>\n";
 
 /***/ }
 /******/ ]);

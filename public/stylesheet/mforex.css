@@ -185,6 +185,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   box-shadow: 0 2px 1px 1px rgba(99, 99, 99, 0.1);
   position: relative;
 }
+.app_header .header_title {
+  font-size: 16px;
+}
 .app_header .user_avator {
   border-radius: 50%;
 }

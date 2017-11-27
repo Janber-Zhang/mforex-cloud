@@ -1,10 +1,15 @@
 <template>
   <div class="app_header" flex="main:justify cross:center">
-    <p>主页／代理商办公室／客户名单</p>
+    <Breadcrumb>
+        <breadcrumb-item to="/">主页</breadcrumb-item>
+        <template v-if="headerTitle.length">
+          <breadcrumb-item v-for="item in headerTitle" :key="item">{{item}}</breadcrumb-item>
+        </template>
+    </Breadcrumb>
     <Dropdown @on-click="userHandle($event)">
       <a href="javascript:void(0)">
         <img :src="'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'" width="35" class="user_avator" alt="">
-        {{'王二'}}
+        {{userInfo.Name}}
         <Icon type="arrow-down-b"></Icon>
       </a>
       <Dropdown-menu slot="list">
@@ -18,16 +23,14 @@
 <script>
   export default {
     created(){
-      // let users = JSON.parse(JSON.stringify(this.userInfo));
-      
+
     },
     ready(){
 
     },
     data(){
       return {
-        msg: 'Welcome to Exciting-hub',
-        userInfo: {}
+        msg: 'Welcome to Exciting-hub'
       }
     },
     methods:{
@@ -46,7 +49,12 @@
 
     },
     computed:{
-      
+      userInfo(){
+        return this.$store.getters.getUserInfo
+      },
+      headerTitle(){
+        return this.$store.getters.getHeaderTitle
+      }
     }
   }
 </script>
