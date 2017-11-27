@@ -9,10 +9,6 @@ const routes = [
 			{
 				path: 'history_orders',
 				component : historyOrders
-			},
-			{
-				path: 'current_orders',
-				component : historyOrders
 			}
 		]
 	}

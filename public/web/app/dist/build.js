@@ -14644,9 +14644,6 @@
 		children: [{
 			path: 'history_orders',
 			component: _historyOrders2.default
-		}, {
-			path: 'current_orders',
-			component: _historyOrders2.default
 		}]
 	}];
 	exports.default = routes;
@@ -15030,6 +15027,11 @@
 
 		methods: {
 			onchange: function onchange(name) {
+				var vm = this;
+				if (['history_orders'].indexOf(name) == -1) {
+					this.$Message.warning('暂未开放改模块！');
+					return;
+				}
 				this.$router.push({ path: '/' + name });
 			},
 			initLeftbar: function initLeftbar() {
