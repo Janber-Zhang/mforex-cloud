@@ -1,17 +1,24 @@
 var express = require('express');
 var router = express.Router();
 
+
+function checkSession(req, res, cb) {
+    if (req.session.user) {
+      cb(req, res);
+    } else {
+      res.render('web/login/login');
+    }
+}
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if (!req.session.user) {
-    res.redirect('/login');
-  }
-  var userInfo = JSON.stringify(req.session.user)
-  res.render('web/app/index', {
-  	layout: '../public/web/layout.ejs',
-    userinfo: userInfo,
-  	title: 'index'
-  });
+  checkSession(req, res, function(req, res){
+    var userInfo = JSON.stringify(req.session.user)
+    res.render('web/app/index', {
+      layout: '../public/web/layout.ejs',
+      userinfo: userInfo,
+      title: 'index'
+    });
+  })
 });
 router.get('/login', function(req, res, next) {
   res.render('web/login/login', { 

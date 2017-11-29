@@ -81,7 +81,11 @@
 					}
 					util.ajaxQuery(param,function(res){
 						if(res.code==='0'){
-							window.location.href='/';
+							if (window.location.href.indexOf('login')>-1) {
+								window.location.href = '/';
+							} else {
+								window.location.reload();
+							}
 						}else{
 							this.iview.Message.error(res.message);
 							vm.errorMsg = res.message;
