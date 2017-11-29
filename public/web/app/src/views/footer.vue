@@ -1,5 +1,5 @@
 <template>
-	<div class="app_footer">
+	<div class="app-footer">
 		<div flex="main:center">
 			<a class="tips" target="_blank" href="/">客户协议</a>
 			<a class="tips" target="_blank" href="/">风险免责声明</a>

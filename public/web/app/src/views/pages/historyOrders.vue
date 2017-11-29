@@ -1,5 +1,17 @@
 <template>
-  <div class="app-warp">
+  <div class="history-orders">
+    <div class="filter-bar" flex="main:left cross:center">
+      <div class="filter-item" flex="main:left cross:center">
+        <span class="filter-item-name">日期范围</span>
+        <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择日期范围" :value="filter_obj.date_range" style="width: 200px"></date-picker>
+      </div>
+      <div class="filter-item">
+        <i-button type="primary">查询</i-button>
+        <i-button>清除</i-button>
+      </div>
+      
+    </div>
+    
     <i-table stripe :columns="table_columns" :data="data_list"></i-table>
   </div>
 </template>
@@ -15,7 +27,10 @@ export default {
   data(){
     return {
       table_columns: [],
-      data_list: []
+      data_list: [],
+      filter_obj: {
+        date_range:[]
+      }
     }
   },
   methods:{
@@ -95,6 +110,9 @@ export default {
           // alert('账号密码错误')
         }
       });
+    },
+    handleDateChange: function(date_arr){        //选择日期后的回调
+      this.filter_obj.date_range = date_arr;
     }
   },
   components:{

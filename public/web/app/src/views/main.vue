@@ -1,5 +1,5 @@
 <template>
-  <div class="app_main">
+  <div class="app-main">
     <left-bar></left-bar>
     <div class="content-body">
       <main-header></main-header>
@@ -38,9 +38,7 @@ export default {
     'left-bar': leftBar
   },
   computed:{
-    isready(){
-      return this.$store.getters.getReadyState
-    }
+    
   }
 }
 </script>

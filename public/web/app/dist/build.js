@@ -14722,15 +14722,11 @@
 	    'copy-footer': _footer2.default,
 	    'left-bar': _leftBar2.default
 	  },
-	  computed: {
-	    isready: function isready() {
-	      return this.$store.getters.getReadyState;
-	    }
-	  }
+	  computed: {}
 	  // </script>
 
 	}; // <template>
-	//   <div class="app_main">
+	//   <div class="app-main">
 	//     <left-bar></left-bar>
 	//     <div class="content-body">
 	//       <main-header></main-header>
@@ -14787,7 +14783,7 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="app_header" flex="main:justify cross:center">
+	//   <div class="app-header" flex="main:justify cross:center">
 	//     <Breadcrumb>
 	//         <breadcrumb-item to="/">主页</breadcrumb-item>
 	//         <template v-if="headerTitle.length">
@@ -14796,7 +14792,7 @@
 	//     </Breadcrumb>
 	//     <Dropdown @on-click="userHandle($event)">
 	//       <a href="javascript:void(0)">
-	//         <img :src="'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'" width="35" class="user_avator" alt="">
+	//         <img :src="'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'" width="35" class="user-avator" alt="">
 	//         {{userInfo.Name}}
 	//         <Icon type="arrow-down-b"></Icon>
 	//       </a>
@@ -14847,7 +14843,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"app_header\" flex=\"main:justify cross:center\">\n  <Breadcrumb>\n      <breadcrumb-item to=\"/\">主页</breadcrumb-item>\n      <template v-if=\"headerTitle.length\">\n        <breadcrumb-item v-for=\"item in headerTitle\" :key=\"item\">{{item}}</breadcrumb-item>\n      </template>\n  </Breadcrumb>\n  <Dropdown @on-click=\"userHandle($event)\">\n    <a href=\"javascript:void(0)\">\n      <img :src=\"'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'\" width=\"35\" class=\"user_avator\" alt=\"\">\n      {{userInfo.Name}}\n      <Icon type=\"arrow-down-b\"></Icon>\n    </a>\n    <Dropdown-menu slot=\"list\">\n      <Dropdown-item name=\"myProfile\">我的信息</Dropdown-item>\n      <Dropdown-item name=\"logout\">注销登录</Dropdown-item>\n    </Dropdown-menu>\n  </Dropdown>\n</div>\n";
+	module.exports = "\n<div class=\"app-header\" flex=\"main:justify cross:center\">\n  <Breadcrumb>\n      <breadcrumb-item to=\"/\">主页</breadcrumb-item>\n      <template v-if=\"headerTitle.length\">\n        <breadcrumb-item v-for=\"item in headerTitle\" :key=\"item\">{{item}}</breadcrumb-item>\n      </template>\n  </Breadcrumb>\n  <Dropdown @on-click=\"userHandle($event)\">\n    <a href=\"javascript:void(0)\">\n      <img :src=\"'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'\" width=\"35\" class=\"user-avator\" alt=\"\">\n      {{userInfo.Name}}\n      <Icon type=\"arrow-down-b\"></Icon>\n    </a>\n    <Dropdown-menu slot=\"list\">\n      <Dropdown-item name=\"myProfile\">我的信息</Dropdown-item>\n      <Dropdown-item name=\"logout\">注销登录</Dropdown-item>\n    </Dropdown-menu>\n  </Dropdown>\n</div>\n";
 
 /***/ },
 /* 12 */
@@ -14892,7 +14888,7 @@
 		value: true
 	});
 	// <template>
-	// 	<div class="app_footer">
+	// 	<div class="app-footer">
 	// 		<div flex="main:center">
 	// 			<a class="tips" target="_blank" href="/">客户协议</a>
 	// 			<a class="tips" target="_blank" href="/">风险免责声明</a>
@@ -14926,7 +14922,7 @@
 /* 14 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"app_footer\">\n\t<div flex=\"main:center\">\n\t\t<a class=\"tips\" target=\"_blank\" href=\"/\">客户协议</a>\n\t\t<a class=\"tips\" target=\"_blank\" href=\"/\">风险免责声明</a>\n\t\t<a class=\"tips\" target=\"_blank\" href=\"/\">法律免责申明</a>\n\t\t<a class=\"tips\" target=\"_blank\" href=\"/\">隐私保护政策</a>\n\t\t<a class=\"tips\" target=\"_blank\" href=\"/\">反洗钱政策</a>\n\t\t<a class=\"tips\" target=\"_blank\" href=\"/\">投诉与建议</a>\n\t</div>\n\t<p class=\"copyright\">2008-2017 &copy; MT4 用户交易平台。</p>\n</div>\n\n";
+	module.exports = "\n<div class=\"app-footer\">\n\t<div flex=\"main:center\">\n\t\t<a class=\"tips\" target=\"_blank\" href=\"/\">客户协议</a>\n\t\t<a class=\"tips\" target=\"_blank\" href=\"/\">风险免责声明</a>\n\t\t<a class=\"tips\" target=\"_blank\" href=\"/\">法律免责申明</a>\n\t\t<a class=\"tips\" target=\"_blank\" href=\"/\">隐私保护政策</a>\n\t\t<a class=\"tips\" target=\"_blank\" href=\"/\">反洗钱政策</a>\n\t\t<a class=\"tips\" target=\"_blank\" href=\"/\">投诉与建议</a>\n\t</div>\n\t<p class=\"copyright\">2008-2017 &copy; MT4 用户交易平台。</p>\n</div>\n\n";
 
 /***/ },
 /* 15 */
@@ -14996,27 +14992,27 @@
 					submenu: '资金操作',
 					icon: 'social-usd',
 					submenuName: 'fundOption',
-					items: [{ show: '账户入金', name: 'in_come' }, { show: '入金记录', name: 'in_come_his' }, { show: '账户出金', name: 'out_come' }, { show: '出金记录', name: 'out_come_his' }]
+					items: [{ show: '账户入金', name: '/in_come' }, { show: '入金记录', name: '/in_come_his' }, { show: '账户出金', name: '/out_come' }, { show: '出金记录', name: '/out_come_his' }]
 				}, {
 					submenu: '数据统计',
 					icon: 'arrow-graph-up-right',
 					submenuName: 'dataStatistics',
-					items: [{ show: '历史交易订单', name: 'history_orders' }, { show: '当前交易订单', name: 'current_orders' }]
+					items: [{ show: '历史交易订单', name: '/history_orders' }, { show: '当前交易订单', name: '/current_orders' }]
 				}, {
 					submenu: '代理商办公室',
 					icon: 'social-usd',
 					submenuName: 'agentRoom',
-					items: [{ show: '客户名单', name: 'customer_list' }, { show: '佣金查询', name: 'commission_list' }, { show: '交易单查询', name: 'transaction_list' }, { show: '出入金查询', name: 'in_out_come_list' }, { show: '我的邀请链接', name: 'my_link' }]
+					items: [{ show: '客户名单', name: '/customer_list' }, { show: '佣金查询', name: '/commission_list' }, { show: '交易单查询', name: '/transaction_list' }, { show: '出入金查询', name: '/in_out_come_list' }, { show: '我的邀请链接', name: '/my_link' }]
 				}, {
 					submenu: '跟单系统',
 					icon: 'android-bicycle',
 					submenuName: 'documentary',
-					items: [{ show: '牛人榜', name: 'ranking_list' }, { show: '成为牛人', name: 'to_be_big' }, { show: '我的粉丝', name: 'my_fans' }, { show: '我的牛人', name: 'my_big' }]
+					items: [{ show: '牛人榜', name: '/ranking_list' }, { show: '成为牛人', name: '/to_be_big' }, { show: '我的粉丝', name: '/my_fans' }, { show: '我的牛人', name: '/my_big' }]
 				}, {
 					submenu: '个人设置',
 					icon: 'person',
 					submenuName: 'personalSetting',
-					items: [{ show: '账户设置', name: 'prifile' }, { show: '实名认证', name: 'certification' }]
+					items: [{ show: '账户设置', name: '/prifile' }, { show: '实名认证', name: '/certification' }]
 				}],
 				openStatus: {
 					class: [],
@@ -15028,11 +15024,11 @@
 		methods: {
 			onchange: function onchange(name) {
 				var vm = this;
-				if (['history_orders'].indexOf(name) == -1) {
-					this.$Message.warning('暂未开放改模块！');
+				if (['/history_orders'].indexOf(name) == -1) {
+					this.$Message.warning('暂未开放该模块！');
 					return;
 				}
-				this.$router.push({ path: '/' + name });
+				this.$router.push({ path: name });
 			},
 			initLeftbar: function initLeftbar() {
 				var path_ = this.$route.path;
@@ -15043,7 +15039,7 @@
 					var is_found = false;
 					for (var i_ = 0, len_ = submenu.items.length; i_ < len_; i_++) {
 						var item = submenu.items[i_];
-						if (path_.indexOf(item.name) != -1) {
+						if (path_ === item.name) {
 							is_found = true;
 							this.openStatus.class = [submenu.submenuName];
 							this.openStatus.classItem = item.name;
@@ -15055,6 +15051,10 @@
 					if (is_found) {
 						break;
 					}
+				}
+				if (!subName) {
+					this.openStatus.class = [];
+					this.openStatus.classItem = ''; //关闭当前已选择项
 				}
 				var headerTitle = subName ? [subName, itemName] : [];
 				this.$store.dispatch('initHeaderTitle', headerTitle);
@@ -15079,7 +15079,7 @@
 /* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"app_main\">\n  <left-bar></left-bar>\n  <div class=\"content-body\">\n    <main-header></main-header>\n    <div class=\"content-app\">\n      <router-view></router-view>\n    </div>\n    <copy-footer></copy-footer>\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"app-main\">\n  <left-bar></left-bar>\n  <div class=\"content-body\">\n    <main-header></main-header>\n    <div class=\"content-app\">\n      <router-view></router-view>\n    </div>\n    <copy-footer></copy-footer>\n  </div>\n</div>\n";
 
 /***/ },
 /* 19 */
@@ -15124,7 +15124,19 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="app-warp">
+	//   <div class="history-orders">
+	//     <div class="filter-bar" flex="main:left cross:center">
+	//       <div class="filter-item" flex="main:left cross:center">
+	//         <span class="filter-item-name">日期范围</span>
+	//         <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择日期范围" :value="filter_obj.date_range" style="width: 200px"></date-picker>
+	//       </div>
+	//       <div class="filter-item">
+	//         <i-button type="primary">查询</i-button>
+	//         <i-button>清除</i-button>
+	//       </div>
+	//
+	//     </div>
+	//
 	//     <i-table stripe :columns="table_columns" :data="data_list"></i-table>
 	//   </div>
 	// </template>
@@ -15138,7 +15150,10 @@
 	  data: function data() {
 	    return {
 	      table_columns: [],
-	      data_list: []
+	      data_list: [],
+	      filter_obj: {
+	        date_range: []
+	      }
 	    };
 	  },
 
@@ -15209,6 +15224,10 @@
 	          // alert('账号密码错误')
 	        }
 	      });
+	    },
+	    handleDateChange: function handleDateChange(date_arr) {
+	      //选择日期后的回调
+	      this.filter_obj.date_range = date_arr;
 	    }
 	  },
 	  components: {},
@@ -15221,7 +15240,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"app-warp\">\n  <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n</div>\n";
+	module.exports = "\n<div class=\"history-orders\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">日期范围</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\">\n      <i-button type=\"primary\">查询</i-button>\n      <i-button>清除</i-button>\n    </div>\n    \n  </div>\n  \n  <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n</div>\n";
 
 /***/ },
 /* 22 */
