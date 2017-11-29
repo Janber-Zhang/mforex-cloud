@@ -68,32 +68,31 @@
 		},
 		methods: {
 			handleSubmit: function () {
-				let vm = this;
-				this.$refs.loginForm.validate((valid) => {
-                if (valid) {
-                	var param = {
-						httpType      :    'post',
-						serviceUrl    :    'Login',
-						apiModule     :    'basicAPI',
-						domain        :    'www.sohu.com',
-						login         :     this.form.userName,
-						password      :     this.form.password
-					}
-					util.ajaxQuery(param,function(res){
-						if(res.code==='0'){
-							if (window.location.href.indexOf('login')>-1) {
-								window.location.href = '/';
-							} else {
-								window.location.reload();
-							}
-						}else{
-							this.iview.Message.error(res.message);
-							vm.errorMsg = res.message;
+				var vm = this;
+				this.$refs.loginForm.validate(function(valid){
+	                if (valid) {
+	                	var param = {
+							httpType      :    'post',
+							serviceUrl    :    'Login',
+							apiModule     :    'basicAPI',
+							domain        :    'www.sohu.com',
+							login         :     vm.form.userName,
+							password      :     vm.form.password
 						}
-					});
-                    
-                }
-            });
+						util.ajaxQuery(param,function(res){
+							if(res.code==='0'){
+								if (window.location.href.indexOf('login')>-1) {   //如果是从登录页面进去则进入首页
+									window.location.href = '/';
+								} else {
+									window.location.reload();
+								}
+							}else{
+								vm.$Message.error(res.message);
+								vm.errorMsg = res.message;
+							}
+						});
+	                }
+            	});
 			}
 		}
 	})
