@@ -15118,7 +15118,7 @@
 /* 20 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -15130,14 +15130,17 @@
 	//         <span class="filter-item-name">日期范围</span>
 	//         <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择日期范围" :value="filter_obj.date_range" style="width: 200px"></date-picker>
 	//       </div>
-	//       <div class="filter-item">
-	//         <i-button type="primary">查询</i-button>
-	//         <i-button>清除</i-button>
+	//       <div class="filter-item" flex="main:left cross:center">
+	//         <span class="filter-item-name">关键字</span>
+	//         <Input v-model="filter_obj.keys" style="width: 200px" placeholder="请输入查询关键字"></Input>
 	//       </div>
-	//
+	//       <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+	//       <i-button @click="clearFilter()">清除</i-button>
 	//     </div>
-	//
-	//     <i-table stripe :columns="table_columns" :data="data_list"></i-table>
+	//     <div class="list-table">
+	//       <i-table stripe :loading="loading" :columns="table_columns" :data="data_list"></i-table>
+	//       <Page :total="pages.total" :current.sync="pages.page" :styles="pages.styles" :page-size="pages.page_size" :page-size-opts="pages.page_size_opts" placement="top" show-sizer show-total @on-change="pageChange" @on-page-size-change="pageSizeChange" v-if="!loading"></Page>
+	//     </div>
 	//   </div>
 	// </template>
 	//
@@ -15149,10 +15152,21 @@
 	  ready: function ready() {},
 	  data: function data() {
 	    return {
+	      loading: false,
 	      table_columns: [],
 	      data_list: [],
+	      pages: {
+	        page_size_opts: [10, 25, 50, 100],
+	        page_size: 25,
+	        page: 1,
+	        total: 0,
+	        styles: {
+	          "margin": "20px auto"
+	        }
+	      },
 	      filter_obj: {
-	        date_range: []
+	        date_range: [],
+	        keys: ''
 	      }
 	    };
 	  },
@@ -15160,47 +15174,19 @@
 	  methods: {
 	    getHistotyOrder: function getHistotyOrder() {
 	      var vm = this;
+	      this.loading = true;
 	      var param = {
 	        httpType: 'get',
 	        serviceUrl: 'GetDealedOrder',
 	        apiModule: 'basicAPI',
 	        domain: 'www.sohu.com',
 	        login: '4',
-	        page: 1,
-	        pageSize: 25
+	        page: this.pages.page,
+	        pageSize: this.pages.page_size
 	      };
 	      util.ajaxQuery(param, function (res) {
 	        if (res.code === '0') {
-	          vm.table_columns = [{
-	            title: '订单号',
-	            key: '_Order'
-	          }, {
-	            title: '订单品种',
-	            key: 'Symbol'
-	          }, {
-	            title: '交易类型',
-	            key: 'Cmd'
-	          }, {
-	            title: '数量',
-	            key: 'Volume'
-	          }, {
-	            title: '开仓价格',
-	            key: 'OpenPrice'
-	          }, {
-	            title: '开仓时间',
-	            width: 150,
-	            key: 'OpenTime'
-	          }, {
-	            title: '平仓价格',
-	            key: 'ClosePrice'
-	          }, {
-	            title: '平仓时间',
-	            width: 150,
-	            key: 'CloseTime'
-	          }, {
-	            title: '利润',
-	            key: 'Profit'
-	          }];
+	          vm.table_columns = [{ title: '订单号', key: '_Order' }, { title: '订单品种', key: 'Symbol' }, { title: '交易类型', key: 'Cmd' }, { title: '数量', key: 'Volume' }, { title: '开仓价格', key: 'OpenPrice' }, { title: '开仓时间', width: 150, key: 'OpenTime' }, { title: '平仓价格', key: 'ClosePrice' }, { title: '平仓时间', width: 150, key: 'CloseTime' }, { title: '利润', key: 'Profit' }];
 	          res.data.dealedorders.forEach(function (item) {
 	            item.OpenTime = DateFormat.format(new Date(item.OpenTime), 'yyyy-MM-dd hh:mm:ss');
 	            item.CloseTime = DateFormat.format(new Date(item.CloseTime), 'yyyy-MM-dd hh:mm:ss');
@@ -15219,15 +15205,34 @@
 	                console.log('other type');
 	            }
 	          });
+	          vm.pages.total = res.data.total;
 	          vm.data_list = res.data.dealedorders;
+	          vm.loading = false;
 	        } else {
-	          // alert('账号密码错误')
+	          vm.$Message.error('服务错误');
 	        }
 	      });
 	    },
 	    handleDateChange: function handleDateChange(date_arr) {
 	      //选择日期后的回调
 	      this.filter_obj.date_range = date_arr;
+	    },
+	    pageChange: function pageChange(page) {
+	      this.getHistotyOrder();
+	    },
+	    pageSizeChange: function pageSizeChange(page_size) {
+	      this.pages.page_size = page_size;
+	      this.pages.page = 1;
+	      this.getHistotyOrder();
+	    },
+	    clearFilter: function clearFilter() {
+	      this.filter_obj = {
+	        date_range: [],
+	        keys: ''
+	      };
+	    },
+	    search: function search() {
+	      this.$Message.warning('暂未开放此功能');
 	    }
 	  },
 	  components: {},
@@ -15240,7 +15245,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"history-orders\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">日期范围</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\">\n      <i-button type=\"primary\">查询</i-button>\n      <i-button>清除</i-button>\n    </div>\n    \n  </div>\n  \n  <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n</div>\n";
+	module.exports = "\n<div class=\"history-orders\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">日期范围</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">关键字</span>\n      <Input v-model=\"filter_obj.keys\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n    </div>\n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :loading=\"loading\" :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
 
 /***/ },
 /* 22 */

@@ -177,6 +177,8 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   height: 100%;
   background-color: #ffffff;
   overflow: auto;
+  border: 1px solid #e9eaec;
+  border-radius: 4px;
 }
 .app-header {
   padding: 15px;
@@ -232,8 +234,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   padding: 0 20px;
 }
 .history-orders .filter-bar .filter-item {
-  width: 300px;
+  width: 280px;
 }
 .history-orders .filter-bar .filter-item .filter-item-name {
   margin-right: 10px;
+}
+.history-orders .list-table {
+  margin: 0 20px;
 }
