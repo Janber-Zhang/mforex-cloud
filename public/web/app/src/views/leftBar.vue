@@ -1,6 +1,6 @@
 <template>
 	<div class="left-bar">
-		<i-Menu :active-name="openStatus.classItem" @on-select="onchange" theme="dark" width="auto" :open-names="openStatus.class">
+		<i-Menu ref="sideMenu" :active-name="openStatus.activeName" @on-select="onchange" theme="dark" width="auto" :open-names="openStatus.openNames">
 			<div class="left-bar-logo">mforex-cloud</div>
 			<Submenu v-for="submenuItem in menuList" :name="submenuItem.submenuName" :key="submenuItem.submenuName">
 				<template slot="title">
@@ -77,11 +77,19 @@ export default {
 				},
 			],
 			openStatus:{
-				class: [],
-				classItem: ''
+				openNames: [],
+				activeName: ''
 			}
 		}
 	},
+    updated () {
+        this.$nextTick(() => {              //手动更新menu状态
+            if (this.$refs.sideMenu) {
+                this.$refs.sideMenu.updateOpened();
+                this.$refs.sideMenu.updateActiveName();
+            }
+        });
+    },
 	methods:{
 		onchange: function(name){
 			let vm = this;
@@ -92,31 +100,21 @@ export default {
 			this.$router.push({ path: name });
 		},
 		initLeftbar: function(){
+			let vm = this;
 			let path_ = this.$route.path;
-			let subName, itemName;
-			for (let i=0,len=this.menuList.length;i<len;i++) {
-				let submenu = this.menuList[i];
-				var is_found = false;
-				for (let i_=0,len_=submenu.items.length;i_<len_;i_++) {
-					let item = submenu.items[i_];
-					if (path_===item.name) {
-						is_found = true;
-						this.openStatus.class = [submenu.submenuName];
-						this.openStatus.classItem = item.name;
-						subName = submenu.submenu;
-						itemName = item.show;
-						break
+			let subName, itemName, headerTitle = [];
+			this.menuList.forEach((submenu)=>{
+				submenu.items.forEach((item)=>{
+					if (path_ === item.name) {
+						headerTitle = [submenu.submenuName, item.show];   //heade中面包屑导航使用
+						vm.openStatus.activeName = item.name;
+						vm.openStatus.openNames = [submenu.submenuName];
 					}
-				}
-				if (is_found) {
-					break
-				}
+				})
+			})
+			if (headerTitle.length === 0) {
+				this.openStatus.activeName = '';  //关闭当前已选择项
 			}
-			if (!subName) {
-				this.openStatus.class = [];
-				this.openStatus.classItem = '';  //关闭当前已选择项
-			}
-			let headerTitle = subName? [subName, itemName]:[]
 			this.$store.dispatch('initHeaderTitle',headerTitle);
 		}
 	},

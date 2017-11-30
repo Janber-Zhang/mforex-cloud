@@ -14636,12 +14636,19 @@
 
 	var _historyOrders2 = _interopRequireDefault(_historyOrders);
 
+	var _homePage = __webpack_require__(27);
+
+	var _homePage2 = _interopRequireDefault(_homePage);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var routes = [{
 		path: '/',
 		component: _main2.default,
 		children: [{
+			path: '/',
+			component: _homePage2.default
+		}, {
 			path: 'history_orders',
 			component: _historyOrders2.default
 		}]
@@ -14968,7 +14975,7 @@
 	});
 	// <template>
 	// 	<div class="left-bar">
-	// 		<i-Menu :active-name="openStatus.classItem" @on-select="onchange" theme="dark" width="auto" :open-names="openStatus.class">
+	// 		<i-Menu ref="sideMenu" :active-name="openStatus.activeName" @on-select="onchange" theme="dark" width="auto" :open-names="openStatus.openNames">
 	// 			<div class="left-bar-logo">mforex-cloud</div>
 	// 			<Submenu v-for="submenuItem in menuList" :name="submenuItem.submenuName" :key="submenuItem.submenuName">
 	// 				<template slot="title">
@@ -15015,10 +15022,21 @@
 					items: [{ show: '账户设置', name: '/prifile' }, { show: '实名认证', name: '/certification' }]
 				}],
 				openStatus: {
-					class: [],
-					classItem: ''
+					openNames: [],
+					activeName: ''
 				}
 			};
+		},
+		updated: function updated() {
+			var _this = this;
+
+			this.$nextTick(function () {
+				//手动更新menu状态
+				if (_this.$refs.sideMenu) {
+					_this.$refs.sideMenu.updateOpened();
+					_this.$refs.sideMenu.updateActiveName();
+				}
+			});
 		},
 
 		methods: {
@@ -15031,32 +15049,23 @@
 				this.$router.push({ path: name });
 			},
 			initLeftbar: function initLeftbar() {
+				var vm = this;
 				var path_ = this.$route.path;
 				var subName = void 0,
-				    itemName = void 0;
-				for (var i = 0, len = this.menuList.length; i < len; i++) {
-					var submenu = this.menuList[i];
-					var is_found = false;
-					for (var i_ = 0, len_ = submenu.items.length; i_ < len_; i_++) {
-						var item = submenu.items[i_];
+				    itemName = void 0,
+				    headerTitle = [];
+				this.menuList.forEach(function (submenu) {
+					submenu.items.forEach(function (item) {
 						if (path_ === item.name) {
-							is_found = true;
-							this.openStatus.class = [submenu.submenuName];
-							this.openStatus.classItem = item.name;
-							subName = submenu.submenu;
-							itemName = item.show;
-							break;
+							headerTitle = [submenu.submenuName, item.show]; //heade中面包屑导航使用
+							vm.openStatus.activeName = item.name;
+							vm.openStatus.openNames = [submenu.submenuName];
 						}
-					}
-					if (is_found) {
-						break;
-					}
+					});
+				});
+				if (headerTitle.length === 0) {
+					this.openStatus.activeName = ''; //关闭当前已选择项
 				}
-				if (!subName) {
-					this.openStatus.class = [];
-					this.openStatus.classItem = ''; //关闭当前已选择项
-				}
-				var headerTitle = subName ? [subName, itemName] : [];
 				this.$store.dispatch('initHeaderTitle', headerTitle);
 			}
 		},
@@ -15073,7 +15082,7 @@
 /* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"left-bar\">\n\t<i-Menu :active-name=\"openStatus.classItem\" @on-select=\"onchange\" theme=\"dark\" width=\"auto\" :open-names=\"openStatus.class\">\n\t\t<div class=\"left-bar-logo\">mforex-cloud</div>\n\t\t<Submenu v-for=\"submenuItem in menuList\" :name=\"submenuItem.submenuName\" :key=\"submenuItem.submenuName\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon :type=\"submenuItem.icon\"></Icon>\n\t\t\t\t{{submenuItem.submenu}}\n\t\t\t</template>\n\t\t\t<menu-item v-for=\"menuItem in submenuItem.items\" :name=\"menuItem.name\" :key=\"menuItem.name\">{{menuItem.show}}</menu-item>\n\t\t</Submenu>\n\t</i-Menu>\n</div>\n";
+	module.exports = "\n<div class=\"left-bar\">\n\t<i-Menu ref=\"sideMenu\" :active-name=\"openStatus.activeName\" @on-select=\"onchange\" theme=\"dark\" width=\"auto\" :open-names=\"openStatus.openNames\">\n\t\t<div class=\"left-bar-logo\">mforex-cloud</div>\n\t\t<Submenu v-for=\"submenuItem in menuList\" :name=\"submenuItem.submenuName\" :key=\"submenuItem.submenuName\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon :type=\"submenuItem.icon\"></Icon>\n\t\t\t\t{{submenuItem.submenu}}\n\t\t\t</template>\n\t\t\t<menu-item v-for=\"menuItem in submenuItem.items\" :name=\"menuItem.name\" :key=\"menuItem.name\">{{menuItem.show}}</menu-item>\n\t\t</Submenu>\n\t</i-Menu>\n</div>\n";
 
 /***/ },
 /* 18 */
@@ -49537,6 +49546,157 @@
 	/***/ })
 	/******/ ]);
 	});
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(28)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/homePage.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(29)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-1bb4a8f0/homePage.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="home-page">
+	//     <h1>首屏</h1>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.getHistotyOrder();
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      loading: false,
+	      table_columns: [],
+	      data_list: [],
+	      pages: {
+	        page_size_opts: [10, 25, 50, 100],
+	        page_size: 25,
+	        page: 1,
+	        total: 0,
+	        styles: {
+	          "margin": "20px auto"
+	        }
+	      },
+	      filter_obj: {
+	        date_range: [],
+	        keys: ''
+	      }
+	    };
+	  },
+
+	  methods: {
+	    getHistotyOrder: function getHistotyOrder() {
+	      var vm = this;
+	      this.loading = true;
+	      var param = {
+	        httpType: 'get',
+	        serviceUrl: 'GetDealedOrder',
+	        apiModule: 'basicAPI',
+	        domain: 'www.sohu.com',
+	        login: '4',
+	        page: this.pages.page,
+	        pageSize: this.pages.page_size
+	      };
+	      util.ajaxQuery(param, function (res) {
+	        if (res.code === '0') {
+	          vm.table_columns = [{ title: '订单号', key: '_Order' }, { title: '订单品种', key: 'Symbol' }, { title: '交易类型', key: 'Cmd' }, { title: '数量', key: 'Volume' }, { title: '开仓价格', key: 'OpenPrice' }, { title: '开仓时间', width: 150, key: 'OpenTime' }, { title: '平仓价格', key: 'ClosePrice' }, { title: '平仓时间', width: 150, key: 'CloseTime' }, { title: '利润', key: 'Profit' }];
+	          res.data.dealedorders.forEach(function (item) {
+	            item.OpenTime = DateFormat.format(new Date(item.OpenTime), 'yyyy-MM-dd hh:mm:ss');
+	            item.CloseTime = DateFormat.format(new Date(item.CloseTime), 'yyyy-MM-dd hh:mm:ss');
+	            switch (item.Cmd) {
+	              case 'Balance':
+	                if (item.Profit > 0) {
+	                  item.Cmd = '入金';
+	                } else {
+	                  item.Cms = '出金';
+	                }
+	                break;
+	              case 'Sell':
+	                item.Cmd = '卖出';
+	                break;
+	              default:
+	                console.log('other type');
+	            }
+	          });
+	          vm.pages.total = res.data.total;
+	          vm.data_list = res.data.dealedorders;
+	          vm.loading = false;
+	        } else {
+	          vm.$Message.error('服务错误');
+	        }
+	      });
+	    },
+	    handleDateChange: function handleDateChange(date_arr) {
+	      //选择日期后的回调
+	      this.filter_obj.date_range = date_arr;
+	    },
+	    pageChange: function pageChange(page) {
+	      this.getHistotyOrder();
+	    },
+	    pageSizeChange: function pageSizeChange(page_size) {
+	      this.pages.page_size = page_size;
+	      this.pages.page = 1;
+	      this.getHistotyOrder();
+	    },
+	    clearFilter: function clearFilter() {
+	      this.filter_obj = {
+	        date_range: [],
+	        keys: ''
+	      };
+	    },
+	    search: function search() {
+	      this.$Message.warning('暂未开放此功能');
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"home-page\">\n  <h1>首屏</h1>\n</div>\n";
 
 /***/ }
 /******/ ]);
