@@ -93,10 +93,6 @@ export default {
 	methods:{
 		onchange: function(name){
 			let vm = this;
-			if (['/history_orders'].indexOf(name)==-1){
-				this.$Message.warning('暂未开放该模块！');
-				return
-			}
 			this.$router.push({ path: name });
 		},
 		initLeftbar: function(){

@@ -14632,6 +14632,10 @@
 
 	var _main2 = _interopRequireDefault(_main);
 
+	var _ = __webpack_require__(31);
+
+	var _2 = _interopRequireDefault(_);
+
 	var _historyOrders = __webpack_require__(19);
 
 	var _historyOrders2 = _interopRequireDefault(_historyOrders);
@@ -14651,6 +14655,9 @@
 		}, {
 			path: 'history_orders',
 			component: _historyOrders2.default
+		}, {
+			path: '*',
+			component: _2.default
 		}]
 	}];
 	exports.default = routes;
@@ -15042,10 +15049,6 @@
 		methods: {
 			onchange: function onchange(name) {
 				var vm = this;
-				if (['/history_orders'].indexOf(name) == -1) {
-					this.$Message.warning('暂未开放该模块！');
-					return;
-				}
 				this.$router.push({ path: name });
 			},
 			initLeftbar: function initLeftbar() {
@@ -49597,95 +49600,13 @@
 	//
 	// <script>
 	exports.default = {
-	  created: function created() {
-	    this.getHistotyOrder();
-	  },
+	  created: function created() {},
 	  ready: function ready() {},
 	  data: function data() {
-	    return {
-	      loading: false,
-	      table_columns: [],
-	      data_list: [],
-	      pages: {
-	        page_size_opts: [10, 25, 50, 100],
-	        page_size: 25,
-	        page: 1,
-	        total: 0,
-	        styles: {
-	          "margin": "20px auto"
-	        }
-	      },
-	      filter_obj: {
-	        date_range: [],
-	        keys: ''
-	      }
-	    };
+	    return {};
 	  },
 
-	  methods: {
-	    getHistotyOrder: function getHistotyOrder() {
-	      var vm = this;
-	      this.loading = true;
-	      var param = {
-	        httpType: 'get',
-	        serviceUrl: 'GetDealedOrder',
-	        apiModule: 'basicAPI',
-	        domain: 'www.sohu.com',
-	        login: '4',
-	        page: this.pages.page,
-	        pageSize: this.pages.page_size
-	      };
-	      util.ajaxQuery(param, function (res) {
-	        if (res.code === '0') {
-	          vm.table_columns = [{ title: '订单号', key: '_Order' }, { title: '订单品种', key: 'Symbol' }, { title: '交易类型', key: 'Cmd' }, { title: '数量', key: 'Volume' }, { title: '开仓价格', key: 'OpenPrice' }, { title: '开仓时间', width: 150, key: 'OpenTime' }, { title: '平仓价格', key: 'ClosePrice' }, { title: '平仓时间', width: 150, key: 'CloseTime' }, { title: '利润', key: 'Profit' }];
-	          res.data.dealedorders.forEach(function (item) {
-	            item.OpenTime = DateFormat.format(new Date(item.OpenTime), 'yyyy-MM-dd hh:mm:ss');
-	            item.CloseTime = DateFormat.format(new Date(item.CloseTime), 'yyyy-MM-dd hh:mm:ss');
-	            switch (item.Cmd) {
-	              case 'Balance':
-	                if (item.Profit > 0) {
-	                  item.Cmd = '入金';
-	                } else {
-	                  item.Cms = '出金';
-	                }
-	                break;
-	              case 'Sell':
-	                item.Cmd = '卖出';
-	                break;
-	              default:
-	                console.log('other type');
-	            }
-	          });
-	          vm.pages.total = res.data.total;
-	          vm.data_list = res.data.dealedorders;
-	          vm.loading = false;
-	        } else {
-	          vm.$Message.error('服务错误');
-	        }
-	      });
-	    },
-	    handleDateChange: function handleDateChange(date_arr) {
-	      //选择日期后的回调
-	      this.filter_obj.date_range = date_arr;
-	    },
-	    pageChange: function pageChange(page) {
-	      this.getHistotyOrder();
-	    },
-	    pageSizeChange: function pageSizeChange(page_size) {
-	      this.pages.page_size = page_size;
-	      this.pages.page = 1;
-	      this.getHistotyOrder();
-	    },
-	    clearFilter: function clearFilter() {
-	      this.filter_obj = {
-	        date_range: [],
-	        keys: ''
-	      };
-	    },
-	    search: function search() {
-	      this.$Message.warning('暂未开放此功能');
-	    }
-	  },
+	  methods: {},
 	  components: {},
 	  computed: {}
 	  // </script>
@@ -49697,6 +49618,84 @@
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"home-page\">\n  <h1>首屏</h1>\n</div>\n";
+
+/***/ },
+/* 30 */,
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(32)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/error_pages/404.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(33)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-72f1c1f7/404.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 32 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="error404">
+	//         <div class="error404-body-con">
+	//             <Card>
+	//                 <div class="error404-body-con-title">4<span><Icon size="230" type="ios-navigate-outline"></Icon></span>4</div>
+	//                 <p class="error404-body-con-message">YOU&nbsp;&nbsp;LOOK&nbsp;&nbsp;LOST</p>
+	//                 <div class="error404-btn-con">
+	//                     <i-button @click="goHome" size="large" style="width: 200px;" type="text">返回首页</i-button>
+	//                     <i-button @click="backPage" size="large" style="width: 200px;margin-left: 40px;" type="primary">返回上一页</i-button>
+	//                 </div>
+	//             </Card>
+	//         </div>
+	//     </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	    name: 'Error404',
+	    methods: {
+	        backPage: function backPage() {
+	            this.$router.go(-1);
+	        },
+	        goHome: function goHome() {
+	            this.$router.push({ path: '/' });
+	        }
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 33 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">YOU&nbsp;&nbsp;LOOK&nbsp;&nbsp;LOST</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
 
 /***/ }
 /******/ ]);
