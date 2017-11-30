@@ -49625,7 +49625,7 @@
 	//         <infor-card
 	//           id-name="user_created_count"
 	//           :end-val="count_1"
-	//           icon-type="log-in"
+	//           icon-type="arrow-swap"
 	//           color="#2d8cf0"
 	//           intro-text="当前盈利"
 	//           ></infor-card>
@@ -49634,7 +49634,7 @@
 	//         <infor-card
 	//           id-name="visit_count"
 	//           :end-val="count_2"
-	//           icon-type="log-out"
+	//           icon-type="ios-albums"
 	//           color="#64d572"
 	//           intro-text="当前订单数"
 	//           ></infor-card>
@@ -49668,7 +49668,7 @@
 /* 29 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"home-page\">\n  <Row :gutter=\"16\">\n    <Col span=\"6\">\n      <infor-card\n        id-name=\"user_created_count\"\n        :end-val=\"count_1\"\n        icon-type=\"log-in\"\n        color=\"#2d8cf0\"\n        intro-text=\"当前盈利\"\n        ></infor-card>\n    </Col>\n    <Col span=\"6\" class-name=\"padding-left-5\">\n      <infor-card\n        id-name=\"visit_count\"\n        :end-val=\"count_2\"\n        icon-type=\"log-out\"\n        color=\"#64d572\"\n        intro-text=\"当前订单数\"\n        ></infor-card>\n    </Col>\n    <Col span=\"6\" class-name=\"padding-left-5\">\n      <infor-card\n        id-name=\"collection_count\"\n        :end-val=\"count_3\"\n        icon-type=\"social-usd\"\n        color=\"#ffd572\"\n        intro-text=\"历史盈利\"\n        ></infor-card>\n    </Col>\n    <Col span=\"6\" class-name=\"padding-left-5\">\n      <infor-card\n        id-name=\"transfer_count\"\n        :end-val=\"count_4\"\n        icon-type=\"shuffle\"\n        color=\"#f25e43\"\n        intro-text=\"历史订单数\"\n        ></infor-card>\n    </Col>\n    </Col>\n  </Row>\n</div>\n";
+	module.exports = "\n<div class=\"home-page\">\n  <Row :gutter=\"16\">\n    <Col span=\"6\">\n      <infor-card\n        id-name=\"user_created_count\"\n        :end-val=\"count_1\"\n        icon-type=\"arrow-swap\"\n        color=\"#2d8cf0\"\n        intro-text=\"当前盈利\"\n        ></infor-card>\n    </Col>\n    <Col span=\"6\" class-name=\"padding-left-5\">\n      <infor-card\n        id-name=\"visit_count\"\n        :end-val=\"count_2\"\n        icon-type=\"ios-albums\"\n        color=\"#64d572\"\n        intro-text=\"当前订单数\"\n        ></infor-card>\n    </Col>\n    <Col span=\"6\" class-name=\"padding-left-5\">\n      <infor-card\n        id-name=\"collection_count\"\n        :end-val=\"count_3\"\n        icon-type=\"social-usd\"\n        color=\"#ffd572\"\n        intro-text=\"历史盈利\"\n        ></infor-card>\n    </Col>\n    <Col span=\"6\" class-name=\"padding-left-5\">\n      <infor-card\n        id-name=\"transfer_count\"\n        :end-val=\"count_4\"\n        icon-type=\"shuffle\"\n        color=\"#f25e43\"\n        intro-text=\"历史订单数\"\n        ></infor-card>\n    </Col>\n    </Col>\n  </Row>\n</div>\n";
 
 /***/ },
 /* 30 */,

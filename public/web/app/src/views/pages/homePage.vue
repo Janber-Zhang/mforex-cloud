@@ -5,7 +5,7 @@
         <infor-card
           id-name="user_created_count"
           :end-val="count_1"
-          icon-type="log-in"
+          icon-type="arrow-swap"
           color="#2d8cf0"
           intro-text="当前盈利"
           ></infor-card>
@@ -14,7 +14,7 @@
         <infor-card
           id-name="visit_count"
           :end-val="count_2"
-          icon-type="log-out"
+          icon-type="ios-albums"
           color="#64d572"
           intro-text="当前订单数"
           ></infor-card>
