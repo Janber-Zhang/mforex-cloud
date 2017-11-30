@@ -15060,7 +15060,7 @@
 				this.menuList.forEach(function (submenu) {
 					submenu.items.forEach(function (item) {
 						if (path_ === item.name) {
-							headerTitle = [submenu.submenuName, item.show]; //heade中面包屑导航使用
+							headerTitle = [submenu.submenu, item.show]; //heade中面包屑导航使用
 							vm.openStatus.activeName = item.name;
 							vm.openStatus.openNames = [submenu.submenuName];
 						}
