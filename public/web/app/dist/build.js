@@ -49585,39 +49585,90 @@
 
 /***/ },
 /* 28 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	// <template>
-	//   <div class="home-page">
-	//     <h1>首屏</h1>
-	//   </div>
-	// </template>
-	//
-	// <script>
+
+	var _inforCard = __webpack_require__(34);
+
+	var _inforCard2 = _interopRequireDefault(_inforCard);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	exports.default = {
 	  created: function created() {},
 	  ready: function ready() {},
 	  data: function data() {
-	    return {};
+	    return {
+	      count_1: 302001,
+	      count_2: 10,
+	      count_3: 30000000,
+	      count_4: 100
+	    };
 	  },
 
 	  methods: {},
-	  components: {},
+	  components: {
+	    inforCard: _inforCard2.default
+	  },
 	  computed: {}
 	  // </script>
 
-	};
+	}; // <template>
+	//   <div class="home-page">
+	//     <Row :gutter="16">
+	//       <Col span="6">
+	//         <infor-card
+	//           id-name="user_created_count"
+	//           :end-val="count_1"
+	//           icon-type="log-in"
+	//           color="#2d8cf0"
+	//           intro-text="当前盈利"
+	//           ></infor-card>
+	//       </Col>
+	//       <Col span="6" class-name="padding-left-5">
+	//         <infor-card
+	//           id-name="visit_count"
+	//           :end-val="count_2"
+	//           icon-type="log-out"
+	//           color="#64d572"
+	//           intro-text="当前订单数"
+	//           ></infor-card>
+	//       </Col>
+	//       <Col span="6" class-name="padding-left-5">
+	//         <infor-card
+	//           id-name="collection_count"
+	//           :end-val="count_3"
+	//           icon-type="social-usd"
+	//           color="#ffd572"
+	//           intro-text="历史盈利"
+	//           ></infor-card>
+	//       </Col>
+	//       <Col span="6" class-name="padding-left-5">
+	//         <infor-card
+	//           id-name="transfer_count"
+	//           :end-val="count_4"
+	//           icon-type="shuffle"
+	//           color="#f25e43"
+	//           intro-text="历史订单数"
+	//           ></infor-card>
+	//       </Col>
+	//       </Col>
+	//     </Row>
+	//   </div>
+	// </template>
+	//
+	// <script>
 
 /***/ },
 /* 29 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"home-page\">\n  <h1>首屏</h1>\n</div>\n";
+	module.exports = "\n<div class=\"home-page\">\n  <Row :gutter=\"16\">\n    <Col span=\"6\">\n      <infor-card\n        id-name=\"user_created_count\"\n        :end-val=\"count_1\"\n        icon-type=\"log-in\"\n        color=\"#2d8cf0\"\n        intro-text=\"当前盈利\"\n        ></infor-card>\n    </Col>\n    <Col span=\"6\" class-name=\"padding-left-5\">\n      <infor-card\n        id-name=\"visit_count\"\n        :end-val=\"count_2\"\n        icon-type=\"log-out\"\n        color=\"#64d572\"\n        intro-text=\"当前订单数\"\n        ></infor-card>\n    </Col>\n    <Col span=\"6\" class-name=\"padding-left-5\">\n      <infor-card\n        id-name=\"collection_count\"\n        :end-val=\"count_3\"\n        icon-type=\"social-usd\"\n        color=\"#ffd572\"\n        intro-text=\"历史盈利\"\n        ></infor-card>\n    </Col>\n    <Col span=\"6\" class-name=\"padding-left-5\">\n      <infor-card\n        id-name=\"transfer_count\"\n        :end-val=\"count_4\"\n        icon-type=\"shuffle\"\n        color=\"#f25e43\"\n        intro-text=\"历史订单数\"\n        ></infor-card>\n    </Col>\n    </Col>\n  </Row>\n</div>\n";
 
 /***/ },
 /* 30 */,
@@ -49696,6 +49747,489 @@
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">YOU&nbsp;&nbsp;LOOK&nbsp;&nbsp;LOST</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(35)
+	__vue_script__ = __webpack_require__(39)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/components/inforCard.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(43)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-5df3d36c/inforCard.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(36);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(38)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../../../../node_modules/_css-loader@0.23.1@css-loader/index.js!../../../../../../node_modules/_vue-loader@8.7.0@vue-loader/lib/style-rewriter.js?id=_v-5df3d36c&scoped=true!../../../../../../node_modules/_vue-loader@8.7.0@vue-loader/lib/selector.js?type=style&index=0!./inforCard.vue", function() {
+				var newContent = require("!!../../../../../../node_modules/_css-loader@0.23.1@css-loader/index.js!../../../../../../node_modules/_vue-loader@8.7.0@vue-loader/lib/style-rewriter.js?id=_v-5df3d36c&scoped=true!../../../../../../node_modules/_vue-loader@8.7.0@vue-loader/lib/selector.js?type=style&index=0!./inforCard.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(37)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 37 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+
+		if (media) {
+			styleElement.setAttribute("media", media);
+		}
+
+		if (sourceMap) {
+			// https://developer.chrome.com/devtools/docs/javascript-debugging
+			// this makes source maps inside style tags work properly in Chrome
+			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+
+/***/ },
+/* 39 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <style scoped>
+	//
+	// </style>
+	//
+	// <template>
+	//     <Card :padding="0">
+	//         <div class="infor-card-con" flex="main:justify corss:center">
+	//             <div class="infor-card-icon-con" :style="{backgroundColor: color, color: 'white'}" flex="dir:top main:center cross:center">
+	//                 <Icon :type="iconType" :size="iconSize"></Icon>
+	//             </div>
+	//             <div class="infor-card-count-con" flex="dir:top main:center">
+	//                 <p :style="{textAlign: 'center', color: color, fontSize: countSize, fontWeight: '800'}"><span v-cloak :id="idName">{{ startVal }}</span><span>{{ unit }}</span></p>
+	//                 <p class="infor-intro-text">{{ introText }}</p>
+	//             </div>
+	//         </div>
+	//     </Card>
+	// </template>
+	//
+	// <script>
+	function transformValue(val) {
+	    var endVal = 0;
+	    var unit = '';
+	    if (val < 1000) {
+	        endVal = val;
+	    } else if (val >= 1000 && val < 1000000) {
+	        endVal = parseInt(val / 1000);
+	        unit = 'K+';
+	    } else if (val >= 1000000 && val < 10000000000) {
+	        endVal = parseInt(val / 1000000);
+	        unit = 'M+';
+	    } else {
+	        endVal = parseInt(val / 1000000000);
+	        unit = 'B+';
+	    }
+	    return {
+	        val: endVal,
+	        unit: unit
+	    };
+	}
+
+	exports.default = {
+	    name: 'inforCard',
+	    components: {},
+	    data: function data() {
+	        return {
+	            unit: '',
+	            demo: {}
+	        };
+	    },
+
+	    props: {
+	        idName: String,
+	        startVal: {
+	            type: Number,
+	            default: 0
+	        },
+	        endVal: Number,
+	        color: String,
+	        iconType: String,
+	        introText: String,
+	        countSize: {
+	            type: String,
+	            default: '30px'
+	        },
+	        countWeight: {
+	            type: Number,
+	            default: 700
+	        },
+	        iconSize: {
+	            type: Number,
+	            default: 40
+	        },
+	        decimals: {
+	            type: Number,
+	            default: 0
+	        },
+	        duration: {
+	            type: Number,
+	            default: 2
+	        },
+	        delay: {
+	            type: Number,
+	            default: 500
+	        }
+	    },
+	    mounted: function mounted() {
+	        var _this = this;
+
+	        this.$nextTick(function () {
+	            setTimeout(function () {
+	                var res = transformValue(_this.endVal);
+	                var endVal = res.val;
+	                _this.unit = res.unit;
+	                var demo = {};
+	                _this.demo = demo = new CountUp(_this.idName, _this.startVal, endVal, _this.decimals, _this.duration, _this.options);
+	                if (!demo.error) {
+	                    demo.start();
+	                }
+	            }, _this.delay);
+	        });
+	    },
+
+	    watch: {
+	        endVal: function endVal(val) {
+	            var res = transformValue(val);
+	            var endVal = res.val;
+	            this.unit = res.unit;
+	            this.demo.update(endVal);
+	        }
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */
+/***/ function(module, exports) {
+
+	module.exports = "\n\n\n\n\n<card :padding=\"0\" _v-5df3d36c=\"\">\n    <div class=\"infor-card-con\" flex=\"main:justify corss:center\" _v-5df3d36c=\"\">\n        <div class=\"infor-card-icon-con\" :style=\"{backgroundColor: color, color: 'white'}\" flex=\"dir:top main:center cross:center\" _v-5df3d36c=\"\">\n            <icon :type=\"iconType\" :size=\"iconSize\" _v-5df3d36c=\"\"></icon>\n        </div>\n        <div class=\"infor-card-count-con\" flex=\"dir:top main:center\" _v-5df3d36c=\"\">\n            <p :style=\"{textAlign: 'center', color: color, fontSize: countSize, fontWeight: '800'}\" _v-5df3d36c=\"\"><span v-cloak=\"\" :id=\"idName\" _v-5df3d36c=\"\">{{ startVal }}</span><span _v-5df3d36c=\"\">{{ unit }}</span></p>\n            <p class=\"infor-intro-text\" _v-5df3d36c=\"\">{{ introText }}</p>\n        </div>\n    </div>\n</card>\n";
 
 /***/ }
 /******/ ]);
