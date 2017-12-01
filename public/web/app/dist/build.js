@@ -62,18 +62,18 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _index = __webpack_require__(35);
+	var _index = __webpack_require__(34);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _iview = __webpack_require__(39);
+	var _iview = __webpack_require__(38);
 
 	var _iview2 = _interopRequireDefault(_iview);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
-	 * Created by janber on 17/3/20.
+	 * Created by janber on 17/11/7.
 	 */
 	_vue2.default.use(_vueRouter2.default);
 	_vue2.default.use(_vuex2.default);
@@ -15345,7 +15345,7 @@
 	__vue_script__ = __webpack_require__(26)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/pages/homePage.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(34)
+	__vue_template__ = __webpack_require__(33)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15383,7 +15383,7 @@
 
 	var _inforCard2 = _interopRequireDefault(_inforCard);
 
-	var _userInfor = __webpack_require__(40);
+	var _userInfor = __webpack_require__(30);
 
 	var _userInfor2 = _interopRequireDefault(_userInfor);
 
@@ -15450,10 +15450,10 @@
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(32)
+	__vue_script__ = __webpack_require__(28)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/components/inforCard.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(43)
+	__vue_template__ = __webpack_require__(29)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15478,11 +15478,7 @@
 	})()}
 
 /***/ },
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */
+/* 28 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15607,14 +15603,123 @@
 	// </script>
 
 /***/ },
-/* 33 */,
-/* 34 */
+/* 29 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<Card :padding=\"0\">\n    <div class=\"infor-card-con\" flex=\"main:justify corss:center\">\n        <div class=\"infor-card-icon-con\" :style=\"{backgroundColor: color, color: 'white'}\" flex=\"dir:top main:center cross:center\">\n            <Icon :type=\"iconType\" :size=\"iconSize\"></Icon>\n        </div>\n        <div class=\"infor-card-count-con\" flex=\"dir:top main:center\">\n            <p :style=\"{textAlign: 'center', color: color, fontSize: countSize, fontWeight: '800'}\"><span v-cloak :id=\"idName\">{{ startVal }}</span><span>{{ unit }}</span></p>\n            <p class=\"infor-intro-text\">{{ introText }}</p>\n        </div>\n    </div>\n</Card>\n";
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(31)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/components/userInfor.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(32)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-259ce98f/userInfor.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="user-infor-card">
+	//     <Card>
+	//       <Row type="flex" class="user-infor">
+	//         <Col span="8">
+	//           <Row class-name="made-child-con-middle" type="flex" align="middle">
+	//               <img class="avator-img" :src="avatorPath" />
+	//           </Row>
+	//         </Col>
+	//         <Col span="16" style="padding-left:6px;">
+	//           <Row class-name="made-child-con-middle" type="flex" align="middle">
+	//             <div>
+	//               <b class="card-user-infor-name">{{userName}}</b>
+	//               <p>{{userTitle}}</p>
+	//             </div>
+	//           </Row>
+	//         </Col>
+	//       </Row>
+	//       <div class="line-gray"></div>
+	//       <Row class="margin-top-8" v-for="item in otherInfo" :key="item.value">
+	//         <Col span="8"><p class="notwrap">{{item.desc + ':'}}</p></Col>
+	//         <Col span="16" class="padding-left-8">{{item.value}}</Col>
+	//       </Row>
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {};
+	  },
+
+	  props: {
+	    avatorPath: {
+	      type: String,
+	      default: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'
+	    },
+	    userName: String,
+	    userTitle: String,
+	    otherInfo: {
+	      type: Array,
+	      default: function _default() {
+	        return [{ desc: '本次登录时间', value: DateFormat.format(new Date(), 'yyyy-MM-dd hh:mm:ss') }, { desc: '上次登录时间', value: DateFormat.format(new Date(), 'yyyy-MM-dd hh:mm:ss') }];
+	      }
+	    }
+	  },
+	  methods: {},
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 32 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"user-infor-card\">\n  <Card>\n    <Row type=\"flex\" class=\"user-infor\">\n      <Col span=\"8\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n            <img class=\"avator-img\" :src=\"avatorPath\" />\n        </Row>\n      </Col>\n      <Col span=\"16\" style=\"padding-left:6px;\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n          <div>\n            <b class=\"card-user-infor-name\">{{userName}}</b>\n            <p>{{userTitle}}</p>\n          </div>\n        </Row>\n      </Col>\n    </Row>\n    <div class=\"line-gray\"></div>\n    <Row class=\"margin-top-8\" v-for=\"item in otherInfo\" :key=\"item.value\">\n      <Col span=\"8\"><p class=\"notwrap\">{{item.desc + ':'}}</p></Col>\n      <Col span=\"16\" class=\"padding-left-8\">{{item.value}}</Col>\n    </Row>\n  </Card>\n</div>\n";
+
+/***/ },
+/* 33 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"home-page\">\n  <Row :gutter=\"12\">\n    <Col span=\"8\" style=\"height:100%;\">\n      <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n    </Col> \n    <Col span=\"16\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row>\n        \n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
 
 /***/ },
-/* 35 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15631,15 +15736,15 @@
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _getters = __webpack_require__(36);
+	var _getters = __webpack_require__(35);
 
 	var _getters2 = _interopRequireDefault(_getters);
 
-	var _mutations = __webpack_require__(37);
+	var _mutations = __webpack_require__(36);
 
 	var _mutations2 = _interopRequireDefault(_mutations);
 
-	var _actions = __webpack_require__(38);
+	var _actions = __webpack_require__(37);
 
 	var _actions2 = _interopRequireDefault(_actions);
 
@@ -15660,7 +15765,7 @@
 	});
 
 /***/ },
-/* 36 */
+/* 35 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15680,7 +15785,7 @@
 	exports.default = getters;
 
 /***/ },
-/* 37 */
+/* 36 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15700,7 +15805,7 @@
 	exports.default = mutations;
 
 /***/ },
-/* 38 */
+/* 37 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15720,7 +15825,7 @@
 	exports.default = actions;
 
 /***/ },
-/* 39 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -49903,116 +50008,6 @@
 	/***/ })
 	/******/ ]);
 	});
-
-/***/ },
-/* 40 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(41)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/components/userInfor.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(42)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-259ce98f/userInfor.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 41 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="user-infor-card">
-	//     <Card>
-	//       <Row type="flex" class="user-infor">
-	//         <Col span="8">
-	//           <Row class-name="made-child-con-middle" type="flex" align="middle">
-	//               <img class="avator-img" :src="avatorPath" />
-	//           </Row>
-	//         </Col>
-	//         <Col span="16" style="padding-left:6px;">
-	//           <Row class-name="made-child-con-middle" type="flex" align="middle">
-	//             <div>
-	//               <b class="card-user-infor-name">{{userName}}</b>
-	//               <p>{{userTitle}}</p>
-	//             </div>
-	//           </Row>
-	//         </Col>
-	//       </Row>
-	//       <div class="line-gray"></div>
-	//       <Row class="margin-top-8" v-for="item in otherInfo" :key="item.value">
-	//         <Col span="8"><p class="notwrap">{{item.desc + ':'}}</p></Col>
-	//         <Col span="16" class="padding-left-8">{{item.value}}</Col>
-	//       </Row>
-	//     </Card>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {};
-	  },
-
-	  props: {
-	    avatorPath: {
-	      type: String,
-	      default: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'
-	    },
-	    userName: String,
-	    userTitle: String,
-	    otherInfo: {
-	      type: Array,
-	      default: function _default() {
-	        return [{ desc: '本次登录时间', value: DateFormat.format(new Date(), 'yyyy-MM-dd hh:mm:ss') }, { desc: '上次登录时间', value: DateFormat.format(new Date(), 'yyyy-MM-dd hh:mm:ss') }];
-	      }
-	    }
-	  },
-	  methods: {},
-	  components: {},
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 42 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"user-infor-card\">\n  <Card>\n    <Row type=\"flex\" class=\"user-infor\">\n      <Col span=\"8\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n            <img class=\"avator-img\" :src=\"avatorPath\" />\n        </Row>\n      </Col>\n      <Col span=\"16\" style=\"padding-left:6px;\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n          <div>\n            <b class=\"card-user-infor-name\">{{userName}}</b>\n            <p>{{userTitle}}</p>\n          </div>\n        </Row>\n      </Col>\n    </Row>\n    <div class=\"line-gray\"></div>\n    <Row class=\"margin-top-8\" v-for=\"item in otherInfo\" :key=\"item.value\">\n      <Col span=\"8\"><p class=\"notwrap\">{{item.desc + ':'}}</p></Col>\n      <Col span=\"16\" class=\"padding-left-8\">{{item.value}}</Col>\n    </Row>\n  </Card>\n</div>\n";
-
-/***/ },
-/* 43 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<Card :padding=\"0\">\n    <div class=\"infor-card-con\" flex=\"main:justify corss:center\">\n        <div class=\"infor-card-icon-con\" :style=\"{backgroundColor: color, color: 'white'}\" flex=\"dir:top main:center cross:center\">\n            <Icon :type=\"iconType\" :size=\"iconSize\"></Icon>\n        </div>\n        <div class=\"infor-card-count-con\" flex=\"dir:top main:center\">\n            <p :style=\"{textAlign: 'center', color: color, fontSize: countSize, fontWeight: '800'}\"><span v-cloak :id=\"idName\">{{ startVal }}</span><span>{{ unit }}</span></p>\n            <p class=\"infor-intro-text\">{{ introText }}</p>\n        </div>\n    </div>\n</Card>\n";
 
 /***/ }
 /******/ ]);

@@ -1,5 +1,5 @@
 /**
- * Created by dcg on 16/8/17.
+ * Created by janber on 17/11/7.
  */
 var webpack = require('webpack');
 var path = require('path');
@@ -30,5 +30,12 @@ module.exports = {
             { test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader'},
         ] 
     },
+    // plugins: [
+    //     new webpack.optimize.UglifyJsPlugin({
+    //         compress: {
+    //             warnings: false
+    //         }
+    //     })
+    // ],
     watch: true
 };

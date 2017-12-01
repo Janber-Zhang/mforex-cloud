@@ -1,5 +1,5 @@
 /**
- * Created by janber on 17/3/20.
+ * Created by janber on 17/11/7.
  */
  import Vue          from 'vue';
  import VueRouter    from 'vue-router';
