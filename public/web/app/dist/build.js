@@ -14983,7 +14983,7 @@
 	// <template>
 	// 	<div class="left-bar">
 	// 		<i-Menu ref="sideMenu" :active-name="openStatus.activeName" @on-select="onchange" theme="dark" width="auto" :open-names="openStatus.openNames">
-	// 			<div class="left-bar-logo">mforex-cloud</div>
+	// 			<div class="left-bar-logo" @click="onchange('/')">mforex-cloud</div>
 	// 			<Submenu v-for="submenuItem in menuList" :name="submenuItem.submenuName" :key="submenuItem.submenuName">
 	// 				<template slot="title">
 	// 					<Icon :type="submenuItem.icon"></Icon>
@@ -15085,7 +15085,7 @@
 /* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"left-bar\">\n\t<i-Menu ref=\"sideMenu\" :active-name=\"openStatus.activeName\" @on-select=\"onchange\" theme=\"dark\" width=\"auto\" :open-names=\"openStatus.openNames\">\n\t\t<div class=\"left-bar-logo\">mforex-cloud</div>\n\t\t<Submenu v-for=\"submenuItem in menuList\" :name=\"submenuItem.submenuName\" :key=\"submenuItem.submenuName\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon :type=\"submenuItem.icon\"></Icon>\n\t\t\t\t{{submenuItem.submenu}}\n\t\t\t</template>\n\t\t\t<menu-item v-for=\"menuItem in submenuItem.items\" :name=\"menuItem.name\" :key=\"menuItem.name\">{{menuItem.show}}</menu-item>\n\t\t</Submenu>\n\t</i-Menu>\n</div>\n";
+	module.exports = "\n<div class=\"left-bar\">\n\t<i-Menu ref=\"sideMenu\" :active-name=\"openStatus.activeName\" @on-select=\"onchange\" theme=\"dark\" width=\"auto\" :open-names=\"openStatus.openNames\">\n\t\t<div class=\"left-bar-logo\" @click=\"onchange('/')\">mforex-cloud</div>\n\t\t<Submenu v-for=\"submenuItem in menuList\" :name=\"submenuItem.submenuName\" :key=\"submenuItem.submenuName\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon :type=\"submenuItem.icon\"></Icon>\n\t\t\t\t{{submenuItem.submenu}}\n\t\t\t</template>\n\t\t\t<menu-item v-for=\"menuItem in submenuItem.items\" :name=\"menuItem.name\" :key=\"menuItem.name\">{{menuItem.show}}</menu-item>\n\t\t</Submenu>\n\t</i-Menu>\n</div>\n";
 
 /***/ },
 /* 18 */

@@ -1,7 +1,7 @@
 <template>
 	<div class="left-bar">
 		<i-Menu ref="sideMenu" :active-name="openStatus.activeName" @on-select="onchange" theme="dark" width="auto" :open-names="openStatus.openNames">
-			<div class="left-bar-logo">mforex-cloud</div>
+			<div class="left-bar-logo" @click="onchange('/')">mforex-cloud</div>
 			<Submenu v-for="submenuItem in menuList" :name="submenuItem.submenuName" :key="submenuItem.submenuName">
 				<template slot="title">
 					<Icon :type="submenuItem.icon"></Icon>
