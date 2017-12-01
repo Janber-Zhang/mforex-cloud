@@ -17,7 +17,7 @@
           </Col>
         </Row>
         <Row>
-          
+          <dashboard style="margin-top:12px;" icon-type="arrow-swap" title="数据来源统计" :source-data="{}"></dashboard>
         </Row>
       </Col> 
     </Row>
@@ -28,6 +28,7 @@
 <script>
 import inforCard    from './../components/inforCard.vue'
 import userInfor    from './../components/userInfor.vue'
+import dashboard    from './../components/dashboard.vue'
 export default {
   created(){
     
@@ -54,7 +55,8 @@ export default {
   },
   components:{
     inforCard,
-    userInfor
+    userInfor,
+    dashboard
   },
   computed:{
     userInfo(){

@@ -15387,9 +15387,39 @@
 
 	var _userInfor2 = _interopRequireDefault(_userInfor);
 
+	var _dashboard = __webpack_require__(39);
+
+	var _dashboard2 = _interopRequireDefault(_dashboard);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// <template>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      infor_card_data: [{ title: '当前盈利', idName: 'current_profit', value: 210320, iconType: 'arrow-swap', color: '#2d8cf0', span: 6 }, { title: '当前订单数', idName: 'current_orders', value: 8, iconType: 'ios-albums', color: '#64d572', span: 6 }, { title: '历史盈利', idName: 'historical_profit', value: 30011231, iconType: 'social-usd', color: '#ffd572', span: 6 }, { title: '历史订单数', idName: 'historical_orders', value: 103, iconType: 'shuffle', color: '#f25e43', span: 6 }],
+	      count_1: 302001,
+	      count_2: 10,
+	      count_3: 30000000,
+	      count_4: 100
+	    };
+	  },
+
+	  methods: {},
+	  components: {
+	    inforCard: _inforCard2.default,
+	    userInfor: _userInfor2.default,
+	    dashboard: _dashboard2.default
+	  },
+	  computed: {
+	    userInfo: function userInfo() {
+	      return this.$store.getters.getUserInfo;
+	    }
+	  }
+	  // </script>
+
+	}; // <template>
 	//   <div class="home-page">
 	//     <Row :gutter="12">
 	//       <Col span="8" style="height:100%;">
@@ -15408,7 +15438,7 @@
 	//           </Col>
 	//         </Row>
 	//         <Row>
-	//
+	//           <dashboard style="margin-top:12px;" icon-type="arrow-swap" title="数据来源统计" :source-data="{}"></dashboard>
 	//         </Row>
 	//       </Col> 
 	//     </Row>
@@ -15417,32 +15447,6 @@
 	// </template>
 	//
 	// <script>
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      infor_card_data: [{ title: '当前盈利', idName: 'current_profit', value: 210320, iconType: 'arrow-swap', color: '#2d8cf0', span: 6 }, { title: '当前订单数', idName: 'current_orders', value: 8, iconType: 'ios-albums', color: '#64d572', span: 6 }, { title: '历史盈利', idName: 'historical_profit', value: 30011231, iconType: 'social-usd', color: '#ffd572', span: 6 }, { title: '历史订单数', idName: 'historical_orders', value: 103, iconType: 'shuffle', color: '#f25e43', span: 6 }],
-	      count_1: 302001,
-	      count_2: 10,
-	      count_3: 30000000,
-	      count_4: 100
-	    };
-	  },
-
-	  methods: {},
-	  components: {
-	    inforCard: _inforCard2.default,
-	    userInfor: _userInfor2.default
-	  },
-	  computed: {
-	    userInfo: function userInfo() {
-	      return this.$store.getters.getUserInfo;
-	    }
-	  }
-	  // </script>
-
-	};
 
 /***/ },
 /* 27 */
@@ -15716,7 +15720,7 @@
 /* 33 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"home-page\">\n  <Row :gutter=\"12\">\n    <Col span=\"8\" style=\"height:100%;\">\n      <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n    </Col> \n    <Col span=\"16\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row>\n        \n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
+	module.exports = "\n<div class=\"home-page\">\n  <Row :gutter=\"12\">\n    <Col span=\"8\" style=\"height:100%;\">\n      <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n    </Col> \n    <Col span=\"16\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row>\n        <dashboard style=\"margin-top:12px;\" icon-type=\"arrow-swap\" title=\"数据来源统计\" :source-data=\"{}\"></dashboard>\n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
 
 /***/ },
 /* 34 */
@@ -50008,6 +50012,94 @@
 	/***/ })
 	/******/ ]);
 	});
+
+/***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(40)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/components/dashboard.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(41)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-3c79522a/dashboard.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 40 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <Card>
+	//     <p slot="title" class="card-title">
+	//       <Icon type="ios-pulse-strong"></Icon>
+	//       数据来源统计
+	//     </p>
+	//     <div class="data-source-row">
+	//
+	//     </div>
+	//   </Card>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {};
+	  },
+
+	  props: {
+	    iconType: {
+	      type: String,
+	      required: true
+	    },
+	    title: {
+	      type: String,
+	      required: true
+	    },
+	    sourceData: {
+	      type: [Object, Array]
+	    }
+	  },
+	  methods: {},
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<Card>\n  <p slot=\"title\" class=\"card-title\">\n    <Icon type=\"ios-pulse-strong\"></Icon>\n    数据来源统计\n  </p>\n  <div class=\"data-source-row\">\n    \n  </div>\n</Card>\n";
 
 /***/ }
 /******/ ]);
