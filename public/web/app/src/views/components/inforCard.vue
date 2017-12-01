@@ -1,7 +1,3 @@
-<style scoped>
-    
-</style>
-
 <template>
     <Card :padding="0">
         <div class="infor-card-con" flex="main:justify corss:center">
@@ -40,13 +36,18 @@ function transformValue (val) {
 
 export default {
     name: 'inforCard',
-    components: {
-
-    },
     data(){
         return {
             unit: '',
-            demo: {}
+            demo: {},
+            count_up_option: {            //countUp配置
+                useEasing: true, 
+                useGrouping: true, 
+                separator: '', 
+                decimal: '', 
+                prefix: '', 
+                suffix: '' 
+            }
         };
     },
     props: {
@@ -91,7 +92,7 @@ export default {
                 let endVal = res.val;
                 this.unit = res.unit;
                 let demo = {};
-                this.demo = demo = new CountUp(this.idName, this.startVal, endVal, this.decimals, this.duration, this.options);
+                this.demo = demo = new CountUp(this.idName, this.startVal, endVal, this.decimals, this.duration, this.count_up_option);
                 if (!demo.error) {
                     demo.start();
                 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="history-orders">
+  <div class="history-orders app-warp">
     <div class="filter-bar" flex="main:left cross:center">
       <div class="filter-item" flex="main:left cross:center">
         <span class="filter-item-name">日期范围</span>

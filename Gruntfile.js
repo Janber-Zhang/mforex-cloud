@@ -28,6 +28,7 @@ module.exports = function (grunt) {
         concat: {
             mainCSS: {
                 src: ['public/css/global.css',
+                    'public/css/common.css',
                     'public/stylesheet/mforex.css'
                 ],
                 dest: 'public/stylesheet/mforex.css'

@@ -62,11 +62,11 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _index = __webpack_require__(22);
+	var _index = __webpack_require__(35);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _iview = __webpack_require__(26);
+	var _iview = __webpack_require__(39);
 
 	var _iview2 = _interopRequireDefault(_iview);
 
@@ -14632,15 +14632,15 @@
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _ = __webpack_require__(31);
+	var _ = __webpack_require__(19);
 
 	var _2 = _interopRequireDefault(_);
 
-	var _historyOrders = __webpack_require__(19);
+	var _historyOrders = __webpack_require__(22);
 
 	var _historyOrders2 = _interopRequireDefault(_historyOrders);
 
-	var _homePage = __webpack_require__(27);
+	var _homePage = __webpack_require__(25);
 
 	var _homePage2 = _interopRequireDefault(_homePage);
 
@@ -15101,8 +15101,85 @@
 	var __vue_styles__ = {}
 	__vue_script__ = __webpack_require__(20)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/historyOrders.vue: named exports in *.vue files are ignored.")}
+	  console.warn("[vue-loader] src/views/error_pages/404.vue: named exports in *.vue files are ignored.")}
 	__vue_template__ = __webpack_require__(21)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-72f1c1f7/404.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="error404">
+	//         <div class="error404-body-con">
+	//             <Card>
+	//                 <div class="error404-body-con-title">4<span><Icon size="230" type="ios-navigate-outline"></Icon></span>4</div>
+	//                 <p class="error404-body-con-message">暂&nbsp;未&nbsp;开&nbsp;放</p>
+	//                 <div class="error404-btn-con">
+	//                     <i-button @click="goHome" size="large" style="width: 200px;" type="text">返回首页</i-button>
+	//                     <i-button @click="backPage" size="large" style="width: 200px;margin-left: 40px;" type="primary">返回上一页</i-button>
+	//                 </div>
+	//             </Card>
+	//         </div>
+	//     </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	    name: 'Error404',
+	    methods: {
+	        backPage: function backPage() {
+	            this.$router.go(-1);
+	        },
+	        goHome: function goHome() {
+	            this.$router.push({ path: '/' });
+	        }
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">暂&nbsp;未&nbsp;开&nbsp;放</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(23)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/historyOrders.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(24)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15127,7 +15204,7 @@
 	})()}
 
 /***/ },
-/* 20 */
+/* 23 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15136,7 +15213,7 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="history-orders">
+	//   <div class="history-orders app-warp">
 	//     <div class="filter-bar" flex="main:left cross:center">
 	//       <div class="filter-item" flex="main:left cross:center">
 	//         <span class="filter-item-name">日期范围</span>
@@ -15254,13 +15331,290 @@
 	};
 
 /***/ },
-/* 21 */
+/* 24 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"history-orders\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">日期范围</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">关键字</span>\n      <Input v-model=\"filter_obj.keys\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n    </div>\n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :loading=\"loading\" :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"history-orders app-warp\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">日期范围</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">关键字</span>\n      <Input v-model=\"filter_obj.keys\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n    </div>\n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :loading=\"loading\" :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
 
 /***/ },
-/* 22 */
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(26)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/homePage.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(34)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-1bb4a8f0/homePage.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _inforCard = __webpack_require__(27);
+
+	var _inforCard2 = _interopRequireDefault(_inforCard);
+
+	var _userInfor = __webpack_require__(40);
+
+	var _userInfor2 = _interopRequireDefault(_userInfor);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// <template>
+	//   <div class="home-page">
+	//     <Row :gutter="12">
+	//       <Col span="8" style="height:100%;">
+	//         <user-infor :user-name="userInfo.Name" :user-title="userInfo.Email"></user-infor>
+	//       </Col> 
+	//       <Col span="16">
+	//         <Row :gutter="12">
+	//           <Col :span="infor.span" v-for="infor in infor_card_data" :key="infor.idName">
+	//             <infor-card
+	//               :id-name="infor.idName"
+	//               :end-val="infor.value"
+	//               :icon-type="infor.iconType"
+	//               :color="infor.color"
+	//               :intro-text="infor.title"
+	//               ></infor-card>
+	//           </Col>
+	//         </Row>
+	//         <Row>
+	//
+	//         </Row>
+	//       </Col> 
+	//     </Row>
+	//
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      infor_card_data: [{ title: '当前盈利', idName: 'current_profit', value: 210320, iconType: 'arrow-swap', color: '#2d8cf0', span: 6 }, { title: '当前订单数', idName: 'current_orders', value: 8, iconType: 'ios-albums', color: '#64d572', span: 6 }, { title: '历史盈利', idName: 'historical_profit', value: 30011231, iconType: 'social-usd', color: '#ffd572', span: 6 }, { title: '历史订单数', idName: 'historical_orders', value: 103, iconType: 'shuffle', color: '#f25e43', span: 6 }],
+	      count_1: 302001,
+	      count_2: 10,
+	      count_3: 30000000,
+	      count_4: 100
+	    };
+	  },
+
+	  methods: {},
+	  components: {
+	    inforCard: _inforCard2.default,
+	    userInfor: _userInfor2.default
+	  },
+	  computed: {
+	    userInfo: function userInfo() {
+	      return this.$store.getters.getUserInfo;
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(32)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/components/inforCard.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(43)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-5df3d36c/inforCard.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <Card :padding="0">
+	//         <div class="infor-card-con" flex="main:justify corss:center">
+	//             <div class="infor-card-icon-con" :style="{backgroundColor: color, color: 'white'}" flex="dir:top main:center cross:center">
+	//                 <Icon :type="iconType" :size="iconSize"></Icon>
+	//             </div>
+	//             <div class="infor-card-count-con" flex="dir:top main:center">
+	//                 <p :style="{textAlign: 'center', color: color, fontSize: countSize, fontWeight: '800'}"><span v-cloak :id="idName">{{ startVal }}</span><span>{{ unit }}</span></p>
+	//                 <p class="infor-intro-text">{{ introText }}</p>
+	//             </div>
+	//         </div>
+	//     </Card>
+	// </template>
+	//
+	// <script>
+	function transformValue(val) {
+	    var endVal = 0;
+	    var unit = '';
+	    if (val < 1000) {
+	        endVal = val;
+	    } else if (val >= 1000 && val < 1000000) {
+	        endVal = parseInt(val / 1000);
+	        unit = 'K+';
+	    } else if (val >= 1000000 && val < 10000000000) {
+	        endVal = parseInt(val / 1000000);
+	        unit = 'M+';
+	    } else {
+	        endVal = parseInt(val / 1000000000);
+	        unit = 'B+';
+	    }
+	    return {
+	        val: endVal,
+	        unit: unit
+	    };
+	}
+
+	exports.default = {
+	    name: 'inforCard',
+	    data: function data() {
+	        return {
+	            unit: '',
+	            demo: {},
+	            count_up_option: { //countUp配置
+	                useEasing: true,
+	                useGrouping: true,
+	                separator: '',
+	                decimal: '',
+	                prefix: '',
+	                suffix: ''
+	            }
+	        };
+	    },
+
+	    props: {
+	        idName: String,
+	        startVal: {
+	            type: Number,
+	            default: 0
+	        },
+	        endVal: Number,
+	        color: String,
+	        iconType: String,
+	        introText: String,
+	        countSize: {
+	            type: String,
+	            default: '30px'
+	        },
+	        countWeight: {
+	            type: Number,
+	            default: 700
+	        },
+	        iconSize: {
+	            type: Number,
+	            default: 40
+	        },
+	        decimals: {
+	            type: Number,
+	            default: 0
+	        },
+	        duration: {
+	            type: Number,
+	            default: 2
+	        },
+	        delay: {
+	            type: Number,
+	            default: 500
+	        }
+	    },
+	    mounted: function mounted() {
+	        var _this = this;
+
+	        this.$nextTick(function () {
+	            setTimeout(function () {
+	                var res = transformValue(_this.endVal);
+	                var endVal = res.val;
+	                _this.unit = res.unit;
+	                var demo = {};
+	                _this.demo = demo = new CountUp(_this.idName, _this.startVal, endVal, _this.decimals, _this.duration, _this.count_up_option);
+	                if (!demo.error) {
+	                    demo.start();
+	                }
+	            }, _this.delay);
+	        });
+	    },
+
+	    watch: {
+	        endVal: function endVal(val) {
+	            var res = transformValue(val);
+	            var endVal = res.val;
+	            this.unit = res.unit;
+	            this.demo.update(endVal);
+	        }
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 33 */,
+/* 34 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"home-page\">\n  <Row :gutter=\"12\">\n    <Col span=\"8\" style=\"height:100%;\">\n      <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n    </Col> \n    <Col span=\"16\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row>\n        \n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
+
+/***/ },
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15277,15 +15631,15 @@
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _getters = __webpack_require__(23);
+	var _getters = __webpack_require__(36);
 
 	var _getters2 = _interopRequireDefault(_getters);
 
-	var _mutations = __webpack_require__(24);
+	var _mutations = __webpack_require__(37);
 
 	var _mutations2 = _interopRequireDefault(_mutations);
 
-	var _actions = __webpack_require__(25);
+	var _actions = __webpack_require__(38);
 
 	var _actions2 = _interopRequireDefault(_actions);
 
@@ -15306,7 +15660,7 @@
 	});
 
 /***/ },
-/* 23 */
+/* 36 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15326,7 +15680,7 @@
 	exports.default = getters;
 
 /***/ },
-/* 24 */
+/* 37 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15346,7 +15700,7 @@
 	exports.default = mutations;
 
 /***/ },
-/* 25 */
+/* 38 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15366,7 +15720,7 @@
 	exports.default = actions;
 
 /***/ },
-/* 26 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -49551,15 +49905,15 @@
 	});
 
 /***/ },
-/* 27 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(28)
+	__vue_script__ = __webpack_require__(41)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/homePage.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(29)
+	  console.warn("[vue-loader] src/views/components/userInfor.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(42)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -49575,7 +49929,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-1bb4a8f0/homePage.vue"
+	  var id = "_v-259ce98f/userInfor.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -49584,652 +49938,81 @@
 	})()}
 
 /***/ },
-/* 28 */
-/***/ function(module, exports, __webpack_require__) {
+/* 41 */
+/***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _inforCard = __webpack_require__(34);
-
-	var _inforCard2 = _interopRequireDefault(_inforCard);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      count_1: 302001,
-	      count_2: 10,
-	      count_3: 30000000,
-	      count_4: 100
-	    };
-	  },
-
-	  methods: {},
-	  components: {
-	    inforCard: _inforCard2.default
-	  },
-	  computed: {}
-	  // </script>
-
-	}; // <template>
-	//   <div class="home-page">
-	//     <Row :gutter="16">
-	//       <Col span="6">
-	//         <infor-card
-	//           id-name="user_created_count"
-	//           :end-val="count_1"
-	//           icon-type="arrow-swap"
-	//           color="#2d8cf0"
-	//           intro-text="当前盈利"
-	//           ></infor-card>
-	//       </Col>
-	//       <Col span="6" class-name="padding-left-5">
-	//         <infor-card
-	//           id-name="visit_count"
-	//           :end-val="count_2"
-	//           icon-type="ios-albums"
-	//           color="#64d572"
-	//           intro-text="当前订单数"
-	//           ></infor-card>
-	//       </Col>
-	//       <Col span="6" class-name="padding-left-5">
-	//         <infor-card
-	//           id-name="collection_count"
-	//           :end-val="count_3"
-	//           icon-type="social-usd"
-	//           color="#ffd572"
-	//           intro-text="历史盈利"
-	//           ></infor-card>
-	//       </Col>
-	//       <Col span="6" class-name="padding-left-5">
-	//         <infor-card
-	//           id-name="transfer_count"
-	//           :end-val="count_4"
-	//           icon-type="shuffle"
-	//           color="#f25e43"
-	//           intro-text="历史订单数"
-	//           ></infor-card>
-	//       </Col>
-	//       </Col>
-	//     </Row>
+	// <template>
+	//   <div class="user-infor-card">
+	//     <Card>
+	//       <Row type="flex" class="user-infor">
+	//         <Col span="8">
+	//           <Row class-name="made-child-con-middle" type="flex" align="middle">
+	//               <img class="avator-img" :src="avatorPath" />
+	//           </Row>
+	//         </Col>
+	//         <Col span="16" style="padding-left:6px;">
+	//           <Row class-name="made-child-con-middle" type="flex" align="middle">
+	//             <div>
+	//               <b class="card-user-infor-name">{{userName}}</b>
+	//               <p>{{userTitle}}</p>
+	//             </div>
+	//           </Row>
+	//         </Col>
+	//       </Row>
+	//       <div class="line-gray"></div>
+	//       <Row class="margin-top-8" v-for="item in otherInfo" :key="item.value">
+	//         <Col span="8"><p class="notwrap">{{item.desc + ':'}}</p></Col>
+	//         <Col span="16" class="padding-left-8">{{item.value}}</Col>
+	//       </Row>
+	//     </Card>
 	//   </div>
 	// </template>
 	//
 	// <script>
-
-/***/ },
-/* 29 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"home-page\">\n  <Row :gutter=\"16\">\n    <Col span=\"6\">\n      <infor-card\n        id-name=\"user_created_count\"\n        :end-val=\"count_1\"\n        icon-type=\"arrow-swap\"\n        color=\"#2d8cf0\"\n        intro-text=\"当前盈利\"\n        ></infor-card>\n    </Col>\n    <Col span=\"6\" class-name=\"padding-left-5\">\n      <infor-card\n        id-name=\"visit_count\"\n        :end-val=\"count_2\"\n        icon-type=\"ios-albums\"\n        color=\"#64d572\"\n        intro-text=\"当前订单数\"\n        ></infor-card>\n    </Col>\n    <Col span=\"6\" class-name=\"padding-left-5\">\n      <infor-card\n        id-name=\"collection_count\"\n        :end-val=\"count_3\"\n        icon-type=\"social-usd\"\n        color=\"#ffd572\"\n        intro-text=\"历史盈利\"\n        ></infor-card>\n    </Col>\n    <Col span=\"6\" class-name=\"padding-left-5\">\n      <infor-card\n        id-name=\"transfer_count\"\n        :end-val=\"count_4\"\n        icon-type=\"shuffle\"\n        color=\"#f25e43\"\n        intro-text=\"历史订单数\"\n        ></infor-card>\n    </Col>\n    </Col>\n  </Row>\n</div>\n";
-
-/***/ },
-/* 30 */,
-/* 31 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(32)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/error_pages/404.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(33)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-72f1c1f7/404.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 32 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	// <template>
-	//     <div class="error404">
-	//         <div class="error404-body-con">
-	//             <Card>
-	//                 <div class="error404-body-con-title">4<span><Icon size="230" type="ios-navigate-outline"></Icon></span>4</div>
-	//                 <p class="error404-body-con-message">暂&nbsp;未&nbsp;开&nbsp;放</p>
-	//                 <div class="error404-btn-con">
-	//                     <i-button @click="goHome" size="large" style="width: 200px;" type="text">返回首页</i-button>
-	//                     <i-button @click="backPage" size="large" style="width: 200px;margin-left: 40px;" type="primary">返回上一页</i-button>
-	//                 </div>
-	//             </Card>
-	//         </div>
-	//     </div>
-	// </template>
-	//
-	// <script>
 	exports.default = {
-	    name: 'Error404',
-	    methods: {
-	        backPage: function backPage() {
-	            this.$router.go(-1);
-	        },
-	        goHome: function goHome() {
-	            this.$router.push({ path: '/' });
-	        }
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {};
+	  },
+
+	  props: {
+	    avatorPath: {
+	      type: String,
+	      default: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'
+	    },
+	    userName: String,
+	    userTitle: String,
+	    otherInfo: {
+	      type: Array,
+	      default: function _default() {
+	        return [{ desc: '本次登录时间', value: DateFormat.format(new Date(), 'yyyy-MM-dd hh:mm:ss') }, { desc: '上次登录时间', value: DateFormat.format(new Date(), 'yyyy-MM-dd hh:mm:ss') }];
+	      }
 	    }
-	};
-	// </script>
+	  },
+	  methods: {},
+	  components: {},
+	  computed: {}
+	  // </script>
 
-/***/ },
-/* 33 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">暂&nbsp;未&nbsp;开&nbsp;放</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
-
-/***/ },
-/* 34 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__webpack_require__(35)
-	__vue_script__ = __webpack_require__(39)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/components/inforCard.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(43)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-5df3d36c/inforCard.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 35 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(36);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(38)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../../../../node_modules/_css-loader@0.23.1@css-loader/index.js!../../../../../../node_modules/_vue-loader@8.7.0@vue-loader/lib/style-rewriter.js?id=_v-5df3d36c&scoped=true!../../../../../../node_modules/_vue-loader@8.7.0@vue-loader/lib/selector.js?type=style&index=0!./inforCard.vue", function() {
-				var newContent = require("!!../../../../../../node_modules/_css-loader@0.23.1@css-loader/index.js!../../../../../../node_modules/_vue-loader@8.7.0@vue-loader/lib/style-rewriter.js?id=_v-5df3d36c&scoped=true!../../../../../../node_modules/_vue-loader@8.7.0@vue-loader/lib/selector.js?type=style&index=0!./inforCard.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 36 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(37)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 37 */
-/***/ function(module, exports) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
-
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
 	};
 
-
 /***/ },
-/* 38 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
-
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
-
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-
-		update(obj);
-
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-
-	var replaceText = (function () {
-		var textStore = [];
-
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-		var sourceMap = obj.sourceMap;
-
-		if (media) {
-			styleElement.setAttribute("media", media);
-		}
-
-		if (sourceMap) {
-			// https://developer.chrome.com/devtools/docs/javascript-debugging
-			// this makes source maps inside style tags work properly in Chrome
-			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-
-
-/***/ },
-/* 39 */
+/* 42 */
 /***/ function(module, exports) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	// <style scoped>
-	//
-	// </style>
-	//
-	// <template>
-	//     <Card :padding="0">
-	//         <div class="infor-card-con" flex="main:justify corss:center">
-	//             <div class="infor-card-icon-con" :style="{backgroundColor: color, color: 'white'}" flex="dir:top main:center cross:center">
-	//                 <Icon :type="iconType" :size="iconSize"></Icon>
-	//             </div>
-	//             <div class="infor-card-count-con" flex="dir:top main:center">
-	//                 <p :style="{textAlign: 'center', color: color, fontSize: countSize, fontWeight: '800'}"><span v-cloak :id="idName">{{ startVal }}</span><span>{{ unit }}</span></p>
-	//                 <p class="infor-intro-text">{{ introText }}</p>
-	//             </div>
-	//         </div>
-	//     </Card>
-	// </template>
-	//
-	// <script>
-	function transformValue(val) {
-	    var endVal = 0;
-	    var unit = '';
-	    if (val < 1000) {
-	        endVal = val;
-	    } else if (val >= 1000 && val < 1000000) {
-	        endVal = parseInt(val / 1000);
-	        unit = 'K+';
-	    } else if (val >= 1000000 && val < 10000000000) {
-	        endVal = parseInt(val / 1000000);
-	        unit = 'M+';
-	    } else {
-	        endVal = parseInt(val / 1000000000);
-	        unit = 'B+';
-	    }
-	    return {
-	        val: endVal,
-	        unit: unit
-	    };
-	}
-
-	exports.default = {
-	    name: 'inforCard',
-	    components: {},
-	    data: function data() {
-	        return {
-	            unit: '',
-	            demo: {}
-	        };
-	    },
-
-	    props: {
-	        idName: String,
-	        startVal: {
-	            type: Number,
-	            default: 0
-	        },
-	        endVal: Number,
-	        color: String,
-	        iconType: String,
-	        introText: String,
-	        countSize: {
-	            type: String,
-	            default: '30px'
-	        },
-	        countWeight: {
-	            type: Number,
-	            default: 700
-	        },
-	        iconSize: {
-	            type: Number,
-	            default: 40
-	        },
-	        decimals: {
-	            type: Number,
-	            default: 0
-	        },
-	        duration: {
-	            type: Number,
-	            default: 2
-	        },
-	        delay: {
-	            type: Number,
-	            default: 500
-	        }
-	    },
-	    mounted: function mounted() {
-	        var _this = this;
-
-	        this.$nextTick(function () {
-	            setTimeout(function () {
-	                var res = transformValue(_this.endVal);
-	                var endVal = res.val;
-	                _this.unit = res.unit;
-	                var demo = {};
-	                _this.demo = demo = new CountUp(_this.idName, _this.startVal, endVal, _this.decimals, _this.duration, _this.options);
-	                if (!demo.error) {
-	                    demo.start();
-	                }
-	            }, _this.delay);
-	        });
-	    },
-
-	    watch: {
-	        endVal: function endVal(val) {
-	            var res = transformValue(val);
-	            var endVal = res.val;
-	            this.unit = res.unit;
-	            this.demo.update(endVal);
-	        }
-	    }
-	};
-	// </script>
+	module.exports = "\n<div class=\"user-infor-card\">\n  <Card>\n    <Row type=\"flex\" class=\"user-infor\">\n      <Col span=\"8\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n            <img class=\"avator-img\" :src=\"avatorPath\" />\n        </Row>\n      </Col>\n      <Col span=\"16\" style=\"padding-left:6px;\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n          <div>\n            <b class=\"card-user-infor-name\">{{userName}}</b>\n            <p>{{userTitle}}</p>\n          </div>\n        </Row>\n      </Col>\n    </Row>\n    <div class=\"line-gray\"></div>\n    <Row class=\"margin-top-8\" v-for=\"item in otherInfo\" :key=\"item.value\">\n      <Col span=\"8\"><p class=\"notwrap\">{{item.desc + ':'}}</p></Col>\n      <Col span=\"16\" class=\"padding-left-8\">{{item.value}}</Col>\n    </Row>\n  </Card>\n</div>\n";
 
 /***/ },
-/* 40 */,
-/* 41 */,
-/* 42 */,
 /* 43 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n<card :padding=\"0\" _v-5df3d36c=\"\">\n    <div class=\"infor-card-con\" flex=\"main:justify corss:center\" _v-5df3d36c=\"\">\n        <div class=\"infor-card-icon-con\" :style=\"{backgroundColor: color, color: 'white'}\" flex=\"dir:top main:center cross:center\" _v-5df3d36c=\"\">\n            <icon :type=\"iconType\" :size=\"iconSize\" _v-5df3d36c=\"\"></icon>\n        </div>\n        <div class=\"infor-card-count-con\" flex=\"dir:top main:center\" _v-5df3d36c=\"\">\n            <p :style=\"{textAlign: 'center', color: color, fontSize: countSize, fontWeight: '800'}\" _v-5df3d36c=\"\"><span v-cloak=\"\" :id=\"idName\" _v-5df3d36c=\"\">{{ startVal }}</span><span _v-5df3d36c=\"\">{{ unit }}</span></p>\n            <p class=\"infor-intro-text\" _v-5df3d36c=\"\">{{ introText }}</p>\n        </div>\n    </div>\n</card>\n";
+	module.exports = "\n<Card :padding=\"0\">\n    <div class=\"infor-card-con\" flex=\"main:justify corss:center\">\n        <div class=\"infor-card-icon-con\" :style=\"{backgroundColor: color, color: 'white'}\" flex=\"dir:top main:center cross:center\">\n            <Icon :type=\"iconType\" :size=\"iconSize\"></Icon>\n        </div>\n        <div class=\"infor-card-count-con\" flex=\"dir:top main:center\">\n            <p :style=\"{textAlign: 'center', color: color, fontSize: countSize, fontWeight: '800'}\"><span v-cloak :id=\"idName\">{{ startVal }}</span><span>{{ unit }}</span></p>\n            <p class=\"infor-intro-text\">{{ introText }}</p>\n        </div>\n    </div>\n</Card>\n";
 
 /***/ }
 /******/ ]);
