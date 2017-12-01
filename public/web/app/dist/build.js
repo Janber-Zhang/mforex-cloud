@@ -15140,7 +15140,7 @@
 	//         <div class="error404-body-con">
 	//             <Card>
 	//                 <div class="error404-body-con-title">4<span><Icon size="230" type="ios-navigate-outline"></Icon></span>4</div>
-	//                 <p class="error404-body-con-message">暂&nbsp;未&nbsp;开&nbsp;放</p>
+	//                 <p class="error404-body-con-message">该模块暂未开放</p>
 	//                 <div class="error404-btn-con">
 	//                     <i-button @click="goHome" size="large" style="width: 200px;" type="text">返回首页</i-button>
 	//                     <i-button @click="backPage" size="large" style="width: 200px;margin-left: 40px;" type="primary">返回上一页</i-button>
@@ -15168,7 +15168,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">暂&nbsp;未&nbsp;开&nbsp;放</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
+	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">该模块暂未开放</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
 
 /***/ },
 /* 22 */
@@ -15394,11 +15394,18 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
-	  created: function created() {},
+	  created: function created() {
+	    var notice_count = util.getRandom(0, 4)[0];
+	    if (notice_count) {
+	      this.notice_index = util.getRandom(0, 3, notice_count, true);
+	    }
+	  },
 	  ready: function ready() {},
 	  data: function data() {
 	    return {
 	      infor_card_data: [{ title: '当前盈利', idName: 'current_profit', value: 210320, iconType: 'arrow-swap', color: '#2d8cf0', span: 6 }, { title: '当前订单数', idName: 'current_orders', value: 8, iconType: 'ios-albums', color: '#64d572', span: 6 }, { title: '历史盈利', idName: 'historical_profit', value: 30011231, iconType: 'social-usd', color: '#ffd572', span: 6 }, { title: '历史订单数', idName: 'historical_orders', value: 103, iconType: 'shuffle', color: '#f25e43', span: 6 }],
+	      notice_data: [{ msg: '这是一条普通通知...', type: 'info' }, { msg: '这是一条成功通知...', type: 'success' }, { msg: '这是一条紧急(一般)通知...', type: 'warning' }, { msg: '这是一条紧急(非常)通知...', type: 'error' }],
+	      notice_index: [],
 	      count_1: 302001,
 	      count_2: 10,
 	      count_3: 30000000,
@@ -15421,6 +15428,7 @@
 
 	}; // <template>
 	//   <div class="home-page">
+	//     <Alert v-for="(notice, index) in notice_data" :key="notice.msg" v-if="notice_index.indexOf(index)>-1" banner closable show-icon :type="notice.type">{{notice.msg}}</Alert>
 	//     <Row :gutter="12">
 	//       <Col span="8" style="height:100%;">
 	//         <user-infor :user-name="userInfo.Name" :user-title="userInfo.Email"></user-infor>
@@ -15720,7 +15728,7 @@
 /* 33 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"home-page\">\n  <Row :gutter=\"12\">\n    <Col span=\"8\" style=\"height:100%;\">\n      <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n    </Col> \n    <Col span=\"16\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row>\n        <dashboard style=\"margin-top:12px;\" icon-type=\"arrow-swap\" title=\"数据来源统计\" :source-data=\"{}\"></dashboard>\n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
+	module.exports = "\n<div class=\"home-page\">\n  <Alert v-for=\"(notice, index) in notice_data\" :key=\"notice.msg\" v-if=\"notice_index.indexOf(index)>-1\" banner closable show-icon :type=\"notice.type\">{{notice.msg}}</Alert>\n  <Row :gutter=\"12\">\n    <Col span=\"8\" style=\"height:100%;\">\n      <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n    </Col> \n    <Col span=\"16\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row>\n        <dashboard style=\"margin-top:12px;\" icon-type=\"arrow-swap\" title=\"数据来源统计\" :source-data=\"{}\"></dashboard>\n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
 
 /***/ },
 /* 34 */
