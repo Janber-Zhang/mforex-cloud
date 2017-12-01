@@ -15009,22 +15009,22 @@
 					items: [{ show: '账户入金', name: '/in_come' }, { show: '入金记录', name: '/in_come_his' }, { show: '账户出金', name: '/out_come' }, { show: '出金记录', name: '/out_come_his' }]
 				}, {
 					submenu: '数据统计',
-					icon: 'arrow-graph-up-right',
+					icon: 'ios-box',
 					submenuName: 'dataStatistics',
 					items: [{ show: '历史交易订单', name: '/history_orders' }, { show: '当前交易订单', name: '/current_orders' }]
 				}, {
 					submenu: '代理商办公室',
-					icon: 'social-usd',
+					icon: 'android-apps',
 					submenuName: 'agentRoom',
 					items: [{ show: '客户名单', name: '/customer_list' }, { show: '佣金查询', name: '/commission_list' }, { show: '交易单查询', name: '/transaction_list' }, { show: '出入金查询', name: '/in_out_come_list' }, { show: '我的邀请链接', name: '/my_link' }]
 				}, {
 					submenu: '跟单系统',
-					icon: 'android-bicycle',
+					icon: 'ios-paperplane',
 					submenuName: 'documentary',
 					items: [{ show: '牛人榜', name: '/ranking_list' }, { show: '成为牛人', name: '/to_be_big' }, { show: '我的粉丝', name: '/my_fans' }, { show: '我的牛人', name: '/my_big' }]
 				}, {
 					submenu: '个人设置',
-					icon: 'person',
+					icon: 'ios-person',
 					submenuName: 'personalSetting',
 					items: [{ show: '账户设置', name: '/prifile' }, { show: '实名认证', name: '/certification' }]
 				}],

@@ -36,7 +36,7 @@ export default {
 				},
 				{
 					submenu: '数据统计',
-					icon: 'arrow-graph-up-right',
+					icon: 'ios-box',
 					submenuName: 'dataStatistics',
 					items: [
 						{show : '历史交易订单',name : '/history_orders'},
@@ -45,7 +45,7 @@ export default {
 				},
 				{
 					submenu: '代理商办公室',
-					icon: 'social-usd',
+					icon: 'android-apps',
 					submenuName: 'agentRoom',
 					items: [
 						{show : '客户名单',name : '/customer_list'},
@@ -57,7 +57,7 @@ export default {
 				},
 				{
 					submenu: '跟单系统',
-					icon: 'android-bicycle',
+					icon: 'ios-paperplane',
 					submenuName: 'documentary',
 					items: [
 						{show : '牛人榜',name : '/ranking_list'},
@@ -68,7 +68,7 @@ export default {
 				},
 				{
 					submenu: '个人设置',
-					icon: 'person',
+					icon: 'ios-person',
 					submenuName: 'personalSetting',
 					items: [
 						{show : '账户设置',name : '/prifile'},
