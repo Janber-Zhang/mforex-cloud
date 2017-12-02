@@ -403,6 +403,22 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 }
 .user-infor-card .made-child-con-middle {
   height: 100%;
+  position: relative;
+}
+.user-infor-card .status {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 20px;
+}
+.user-infor-card .is_authentication {
+  background: url(/images/is_authentication.svg) no-repeat top center;
+  background-size: cover;
+}
+.user-infor-card .not_authentication {
+  background: url(/images/not_authentication.svg) no-repeat top center;
+  background-size: cover;
 }
 .card-title {
   color: #abafbd;

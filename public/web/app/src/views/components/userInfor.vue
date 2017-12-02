@@ -12,6 +12,7 @@
             <div>
               <b class="card-user-infor-name">{{userName}}</b>
               <p>{{userTitle}}</p>
+              <div class="status not_authentication"></div>
             </div>
           </Row>
         </Col>
