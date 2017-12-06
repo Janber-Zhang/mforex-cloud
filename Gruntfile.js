@@ -49,7 +49,8 @@ module.exports = function (grunt) {
                     'public/js/libs/axios.min.js',
                     'public/js/libs/dateformat.js',
                     'public/js/libs/echart.min.js',
-                    'public/js/libs/countUp.js'
+                    'public/js/libs/countUp.js',
+                    'public/js/libs/captcha.js'
                 ],
                 dest: 'public/js/dist/other.js'
             }
