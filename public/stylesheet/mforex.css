@@ -225,6 +225,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   top: 1px;
   border: 1px solid #dddee1;
   border-radius: 4px;
+  background-color: #f7f7f7;
 }
 .app-main {
   border: 1px solid #d7dde4;
