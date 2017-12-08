@@ -13,7 +13,7 @@
       <i-button @click="clearFilter()">清除</i-button>
     </div>
     <div class="list-table">
-      <i-table stripe :loading="loading" :columns="table_columns" :data="data_list"></i-table>
+      <i-table stripe :columns="table_columns" :data="data_list"></i-table>
       <Page :total="pages.total" :current.sync="pages.page" :styles="pages.styles" :page-size="pages.page_size" :page-size-opts="pages.page_size_opts" placement="top" show-sizer show-total @on-change="pageChange" @on-page-size-change="pageSizeChange" v-if="!loading"></Page>
     </div>
   </div>

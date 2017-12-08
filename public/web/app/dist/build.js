@@ -62,11 +62,11 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _index = __webpack_require__(34);
+	var _index = __webpack_require__(37);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _iview = __webpack_require__(38);
+	var _iview = __webpack_require__(41);
 
 	var _iview2 = _interopRequireDefault(_iview);
 
@@ -109,7 +109,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
-	 * Vue.js v2.5.5
+	 * Vue.js v2.5.9
 	 * (c) 2014-2017 Evan You
 	 * Released under the MIT License.
 	 */
@@ -831,9 +831,9 @@
 	  this.elm = elm;
 	  this.ns = undefined;
 	  this.context = context;
-	  this.functionalContext = undefined;
-	  this.functionalOptions = undefined;
-	  this.functionalScopeId = undefined;
+	  this.fnContext = undefined;
+	  this.fnOptions = undefined;
+	  this.fnScopeId = undefined;
 	  this.key = data && data.key;
 	  this.componentOptions = componentOptions;
 	  this.componentInstance = undefined;
@@ -892,6 +892,9 @@
 	  cloned.isStatic = vnode.isStatic;
 	  cloned.key = vnode.key;
 	  cloned.isComment = vnode.isComment;
+	  cloned.fnContext = vnode.fnContext;
+	  cloned.fnOptions = vnode.fnOptions;
+	  cloned.fnScopeId = vnode.fnScopeId;
 	  cloned.isCloned = true;
 	  if (deep) {
 	    if (vnode.children) {
@@ -2047,7 +2050,7 @@
 	function _traverse (val, seen) {
 	  var i, keys;
 	  var isA = Array.isArray(val);
-	  if ((!isA && !isObject(val)) || !Object.isExtensible(val)) {
+	  if ((!isA && !isObject(val)) || Object.isFrozen(val)) {
 	    return
 	  }
 	  if (val.__ob__) {
@@ -2636,7 +2639,7 @@
 	    }
 	    // named slots should only be respected if the vnode was rendered in the
 	    // same context.
-	    if ((child.context === context || child.functionalContext === context) &&
+	    if ((child.context === context || child.fnContext === context) &&
 	      data && data.slot != null
 	    ) {
 	      var name = child.data.slot;
@@ -2856,7 +2859,10 @@
 	    };
 	  }
 
-	  vm._watcher = new Watcher(vm, updateComponent, noop);
+	  // we set this to vm._watcher inside the watcher's constructor
+	  // since the watcher's initial patch may call $forceUpdate (e.g. inside child
+	  // component's mounted hook), which relies on vm._watcher being already defined
+	  new Watcher(vm, updateComponent, noop, null, true /* isRenderWatcher */);
 	  hydrating = false;
 
 	  // manually mounted instance, call mounted on self
@@ -3143,9 +3149,13 @@
 	  vm,
 	  expOrFn,
 	  cb,
-	  options
+	  options,
+	  isRenderWatcher
 	) {
 	  this.vm = vm;
+	  if (isRenderWatcher) {
+	    vm._watcher = this;
+	  }
 	  vm._watchers.push(this);
 	  // options
 	  if (options) {
@@ -4050,8 +4060,8 @@
 	    this._c = function (a, b, c, d) {
 	      var vnode = createElement(contextVm, a, b, c, d, needNormalization);
 	      if (vnode) {
-	        vnode.functionalScopeId = options._scopeId;
-	        vnode.functionalContext = parent;
+	        vnode.fnScopeId = options._scopeId;
+	        vnode.fnContext = parent;
 	      }
 	      return vnode
 	    };
@@ -4092,8 +4102,8 @@
 	  var vnode = options.render.call(null, renderContext._c, renderContext);
 
 	  if (vnode instanceof VNode) {
-	    vnode.functionalContext = contextVm;
-	    vnode.functionalOptions = options;
+	    vnode.fnContext = contextVm;
+	    vnode.fnOptions = options;
 	    if (data.slot) {
 	      (vnode.data || (vnode.data = {})).slot = data.slot;
 	    }
@@ -4921,7 +4931,7 @@
 	  current
 	) {
 	  var cached$$1 = cache[key];
-	  if (cached$$1 && cached$$1 !== current) {
+	  if (cached$$1 && (!current || cached$$1.tag !== current.tag)) {
 	    cached$$1.componentInstance.$destroy();
 	  }
 	  cache[key] = null;
@@ -4969,16 +4979,21 @@
 	    if (componentOptions) {
 	      // check pattern
 	      var name = getComponentName(componentOptions);
-	      if (!name || (
-	        (this.exclude && matches(this.exclude, name)) ||
-	        (this.include && !matches(this.include, name))
-	      )) {
+	      var ref = this;
+	      var include = ref.include;
+	      var exclude = ref.exclude;
+	      if (
+	        // not included
+	        (include && (!name || !matches(include, name))) ||
+	        // excluded
+	        (exclude && name && matches(exclude, name))
+	      ) {
 	        return vnode
 	      }
 
-	      var ref = this;
-	      var cache = ref.cache;
-	      var keys = ref.keys;
+	      var ref$1 = this;
+	      var cache = ref$1.cache;
+	      var keys = ref$1.keys;
 	      var key = vnode.key == null
 	        // same constructor may get registered as different local components
 	        // so cid alone is not enough (#3269)
@@ -5067,7 +5082,7 @@
 	  }
 	});
 
-	Vue$3.version = '2.5.5';
+	Vue$3.version = '2.5.9';
 
 	/*  */
 
@@ -5666,7 +5681,7 @@
 	  // of going through the normal attribute patching process.
 	  function setScope (vnode) {
 	    var i;
-	    if (isDef(i = vnode.functionalScopeId)) {
+	    if (isDef(i = vnode.fnScopeId)) {
 	      nodeOps.setAttribute(vnode.elm, i, '');
 	    } else {
 	      var ancestor = vnode;
@@ -5680,7 +5695,7 @@
 	    // for slot content they should also get the scopeId from the host instance.
 	    if (isDef(i = activeInstance) &&
 	      i !== vnode.context &&
-	      i !== vnode.functionalContext &&
+	      i !== vnode.fnContext &&
 	      isDef(i = i.$options._scopeId)
 	    ) {
 	      nodeOps.setAttribute(vnode.elm, i, '');
@@ -6270,7 +6285,7 @@
 	  // #4391: in IE9, setting type can reset value for input[type=radio]
 	  // #6666: IE/Edge forces progress value down to 1 before setting a max
 	  /* istanbul ignore if */
-	  if ((isIE9 || isEdge) && attrs.value !== oldAttrs.value) {
+	  if ((isIE || isEdge) && attrs.value !== oldAttrs.value) {
 	    setAttr(elm, 'value', attrs.value);
 	  }
 	  for (key in oldAttrs) {
@@ -6310,6 +6325,23 @@
 	    if (isFalsyAttrValue(value)) {
 	      el.removeAttribute(key);
 	    } else {
+	      // #7138: IE10 & 11 fires input event when setting placeholder on
+	      // <textarea>... block the first input event and remove the blocker
+	      // immediately.
+	      /* istanbul ignore if */
+	      if (
+	        isIE && !isIE9 &&
+	        el.tagName === 'TEXTAREA' &&
+	        key === 'placeholder' && !el.__ieph
+	      ) {
+	        var blocker = function (e) {
+	          e.stopImmediatePropagation();
+	          el.removeEventListener('input', blocker);
+	        };
+	        el.addEventListener('input', blocker);
+	        // $flow-disable-line
+	        el.__ieph = true; /* IE placeholder patched */
+	      }
 	      el.setAttribute(key, value);
 	    }
 	  }
@@ -6774,7 +6806,6 @@
 	  var modifiers = dir.modifiers;
 	  var tag = el.tag;
 	  var type = el.attrsMap.type;
-	  var attrsMap = el.attrsMap;
 
 	  {
 	    // inputs with type="file" are read only and setting the input's
@@ -6783,20 +6814,6 @@
 	      warn$1(
 	        "<" + (el.tag) + " v-model=\"" + value + "\" type=\"file\">:\n" +
 	        "File inputs are read only. Use a v-on:change listener instead."
-	      );
-	    }
-
-	    // warn if v-bind:value conflicts with v-model
-	    if (
-	      (attrsMap['v-bind:value'] || attrsMap[':value']) &&
-	      type !== 'checkbox' &&
-	      type !== 'radio' &&
-	      tag !== 'select'
-	    ) {
-	      var vBindValue = attrsMap['v-bind:value'] ? 'v-bind:value' : ':value';
-	      warn$1(
-	        vBindValue + " conflicts with v-model on the same element " +
-	        'because the latter already expands to a value binding internally'
 	      );
 	    }
 	  }
@@ -6896,6 +6913,19 @@
 	  modifiers
 	) {
 	  var type = el.attrsMap.type;
+
+	  // warn if v-bind:value conflicts with v-model
+	  {
+	    var value$1 = el.attrsMap['v-bind:value'] || el.attrsMap[':value'];
+	    if (value$1) {
+	      var binding = el.attrsMap['v-bind:value'] ? 'v-bind:value' : ':value';
+	      warn$1(
+	        binding + "=\"" + value$1 + "\" conflicts with v-model on the same element " +
+	        'because the latter already expands to a value binding internally'
+	      );
+	    }
+	  }
+
 	  var ref = modifiers || {};
 	  var lazy = ref.lazy;
 	  var number = ref.number;
@@ -8926,7 +8956,8 @@
 	var onRE = /^@|^v-on:/;
 	var dirRE = /^v-|^@|^:/;
 	var forAliasRE = /(.*?)\s+(?:in|of)\s+(.*)/;
-	var forIteratorRE = /\((\{[^}]*\}|[^,]*),([^,]*)(?:,([^,]*))?\)/;
+	var forIteratorRE = /\((\{[^}]*\}|[^,{]*),([^,]*)(?:,([^,]*))?\)/;
+	var stripParensRE = /^\(|\)$/g;
 
 	var argRE = /:(.*)$/;
 	var bindRE = /^:|^v-bind:/;
@@ -9267,7 +9298,7 @@
 	        el.iterator2 = iteratorMatch[3].trim();
 	      }
 	    } else {
-	      el.alias = alias;
+	      el.alias = alias.replace(stripParensRE, '');
 	    }
 	  }
 	}
@@ -9363,6 +9394,15 @@
 	      }
 	      el.slotScope = slotScope || getAndRemoveAttr(el, 'slot-scope');
 	    } else if ((slotScope = getAndRemoveAttr(el, 'slot-scope'))) {
+	      /* istanbul ignore if */
+	      if ("development" !== 'production' && el.attrsMap['v-for']) {
+	        warn$2(
+	          "Ambiguous combined usage of slot-scope and v-for on <" + (el.tag) + "> " +
+	          "(v-for takes higher priority). Use a wrapper <template> for the " +
+	          "scoped slot to make it clearer.",
+	          true
+	        );
+	      }
 	      el.slotScope = slotScope;
 	    }
 	    var slotTarget = getBindingAttr(el, 'slot');
@@ -10403,9 +10443,6 @@
 	  'delete,typeof,void'
 	).split(',').join('\\s*\\([^\\)]*\\)|\\b') + '\\s*\\([^\\)]*\\)');
 
-	// check valid identifier for v-for
-	var identRE = /[A-Za-z_$][\w$]*/;
-
 	// strip strings in expressions
 	var stripStringRE = /'(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|`(?:[^`\\]|\\.)*\$\{|\}(?:[^`\\]|\\.)*`|`(?:[^`\\]|\\.)*`/g;
 
@@ -10463,9 +10500,18 @@
 	  checkIdentifier(node.iterator2, 'v-for iterator', text, errors);
 	}
 
-	function checkIdentifier (ident, type, text, errors) {
-	  if (typeof ident === 'string' && !identRE.test(ident)) {
-	    errors.push(("invalid " + type + " \"" + ident + "\" in expression: " + (text.trim())));
+	function checkIdentifier (
+	  ident,
+	  type,
+	  text,
+	  errors
+	) {
+	  if (typeof ident === 'string') {
+	    try {
+	      new Function(("var " + ident + "=_"));
+	    } catch (e) {
+	      errors.push(("invalid " + type + " \"" + ident + "\" in expression: " + (text.trim())));
+	    }
 	  }
 	}
 
@@ -15280,7 +15326,7 @@
 	//       <i-button @click="clearFilter()">清除</i-button>
 	//     </div>
 	//     <div class="list-table">
-	//       <i-table stripe :loading="loading" :columns="table_columns" :data="data_list"></i-table>
+	//       <i-table stripe :columns="table_columns" :data="data_list"></i-table>
 	//       <Page :total="pages.total" :current.sync="pages.page" :styles="pages.styles" :page-size="pages.page_size" :page-size-opts="pages.page_size_opts" placement="top" show-sizer show-total @on-change="pageChange" @on-page-size-change="pageSizeChange" v-if="!loading"></Page>
 	//     </div>
 	//   </div>
@@ -15387,7 +15433,7 @@
 /* 24 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"history-orders app-warp\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">日期范围</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">关键字</span>\n      <Input v-model=\"filter_obj.keys\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n    </div>\n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :loading=\"loading\" :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"history-orders app-warp\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">日期范围</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">关键字</span>\n      <Input v-model=\"filter_obj.keys\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n    </div>\n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
 
 /***/ },
 /* 25 */
@@ -15398,7 +15444,7 @@
 	__vue_script__ = __webpack_require__(26)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/pages/homePage.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(33)
+	__vue_template__ = __webpack_require__(36)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15440,7 +15486,7 @@
 
 	var _userInfor2 = _interopRequireDefault(_userInfor);
 
-	var _dashboard = __webpack_require__(39);
+	var _dashboard = __webpack_require__(33);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
@@ -15780,12 +15826,100 @@
 
 /***/ },
 /* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(34)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/components/dashboard.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(35)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-3c79522a/dashboard.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 34 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <Card>
+	//     <p slot="title" class="card-title">
+	//       <Icon type="ios-pulse-strong"></Icon>
+	//       数据来源统计
+	//     </p>
+	//     <div class="data-source-row">
+	//
+	//     </div>
+	//   </Card>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {};
+	  },
+
+	  props: {
+	    iconType: {
+	      type: String,
+	      required: true
+	    },
+	    title: {
+	      type: String,
+	      required: true
+	    },
+	    sourceData: {
+	      type: [Object, Array]
+	    }
+	  },
+	  methods: {},
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<Card>\n  <p slot=\"title\" class=\"card-title\">\n    <Icon type=\"ios-pulse-strong\"></Icon>\n    数据来源统计\n  </p>\n  <div class=\"data-source-row\">\n    \n  </div>\n</Card>\n";
+
+/***/ },
+/* 36 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"home-page\">\n  <Alert v-for=\"(notice, index) in notice_data\" :key=\"notice.msg\" v-if=\"notice_index.indexOf(index)>-1\" banner closable show-icon :type=\"notice.type\">{{notice.msg}}</Alert>\n  <Row :gutter=\"12\">\n    <Col span=\"8\" style=\"height:100%;\">\n      <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n    </Col> \n    <Col span=\"16\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row>\n        <dashboard style=\"margin-top:12px;\" icon-type=\"arrow-swap\" title=\"数据来源统计\" :source-data=\"{}\"></dashboard>\n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
 
 /***/ },
-/* 34 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15802,15 +15936,15 @@
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _getters = __webpack_require__(35);
+	var _getters = __webpack_require__(38);
 
 	var _getters2 = _interopRequireDefault(_getters);
 
-	var _mutations = __webpack_require__(36);
+	var _mutations = __webpack_require__(39);
 
 	var _mutations2 = _interopRequireDefault(_mutations);
 
-	var _actions = __webpack_require__(37);
+	var _actions = __webpack_require__(40);
 
 	var _actions2 = _interopRequireDefault(_actions);
 
@@ -15831,7 +15965,7 @@
 	});
 
 /***/ },
-/* 35 */
+/* 38 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15851,7 +15985,7 @@
 	exports.default = getters;
 
 /***/ },
-/* 36 */
+/* 39 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15871,7 +16005,7 @@
 	exports.default = mutations;
 
 /***/ },
-/* 37 */
+/* 40 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15891,7 +16025,7 @@
 	exports.default = actions;
 
 /***/ },
-/* 38 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -21581,6 +21715,7 @@
 	var install = function install(Vue) {
 	    var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
+	    if (install.installed) return;
 	    _index2.default.use(opts.locale);
 	    _index2.default.i18n(opts.i18n);
 
@@ -21600,7 +21735,7 @@
 	}
 
 	var API = (0, _extends3.default)({
-	    version: '2.7.3',
+	    version: '2.7.4',
 	    locale: _index2.default.use,
 	    i18n: _index2.default.i18n,
 	    install: install,
@@ -24909,7 +25044,7 @@
 	    props: {
 	        type: {
 	            validator: function validator(value) {
-	                return (0, _assist.oneOf)(value, ['text', 'textarea', 'password']);
+	                return (0, _assist.oneOf)(value, ['text', 'textarea', 'password', 'url', 'email', 'date']);
 	            },
 
 	            default: 'text'
@@ -30772,7 +30907,7 @@
 	    var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
 	    return _c('div', {
 	      staticClass: "ivu-color-picker-alpha"
-	    }, [_vm._m(0), _vm._v(" "), _c('div', {
+	    }, [_vm._m(0, false, false), _vm._v(" "), _c('div', {
 	      staticClass: "ivu-color-picker-alpha-gradient",
 	      style: {
 	        background: _vm.gradientColor
@@ -34646,9 +34781,11 @@
 
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
-	exports.default = {};
+	exports.default = {
+	    name: 'DropdownMenu'
+	};
 
 	/***/ }),
 	/* 330 */
@@ -40569,7 +40706,7 @@
 	      on: {
 	        "click": _vm.prev
 	      }
-	    }, [_vm._m(0)]), _vm._v(" "), _c('div', {
+	    }, [_vm._m(0, false, false)]), _vm._v(" "), _c('div', {
 	      class: _vm.simplePagerClasses,
 	      attrs: {
 	        "title": _vm.currentPage + '/' + _vm.allPages
@@ -40596,7 +40733,7 @@
 	      on: {
 	        "click": _vm.next
 	      }
-	    }, [_vm._m(1)])]) : _c('ul', {
+	    }, [_vm._m(1, false, false)])]) : _c('ul', {
 	      class: _vm.wrapClasses,
 	      style: _vm.styles
 	    }, [_vm.showTotal ? _c('span', {
@@ -40609,7 +40746,7 @@
 	      on: {
 	        "click": _vm.prev
 	      }
-	    }, [_vm._m(2)]), _vm._v(" "), _c('li', {
+	    }, [_vm._m(2, false, false)]), _vm._v(" "), _c('li', {
 	      class: _vm.firstPageClasses,
 	      attrs: {
 	        "title": "1"
@@ -40627,7 +40764,7 @@
 	      on: {
 	        "click": _vm.fastPrev
 	      }
-	    }, [_vm._m(3)]) : _vm._e(), _vm._v(" "), _vm.currentPage - 2 > 1 ? _c('li', {
+	    }, [_vm._m(3, false, false)]) : _vm._e(), _vm._v(" "), _vm.currentPage - 2 > 1 ? _c('li', {
 	      class: [_vm.prefixCls + '-item'],
 	      attrs: {
 	        "title": _vm.currentPage - 2
@@ -40680,7 +40817,7 @@
 	      on: {
 	        "click": _vm.fastNext
 	      }
-	    }, [_vm._m(4)]) : _vm._e(), _vm._v(" "), _vm.allPages > 1 ? _c('li', {
+	    }, [_vm._m(4, false, false)]) : _vm._e(), _vm._v(" "), _vm.allPages > 1 ? _c('li', {
 	      class: _vm.lastPageClasses,
 	      attrs: {
 	        "title": _vm.allPages
@@ -40698,7 +40835,7 @@
 	      on: {
 	        "click": _vm.next
 	      }
-	    }, [_vm._m(5)]), _vm._v(" "), _c('Options', {
+	    }, [_vm._m(5, false, false)]), _vm._v(" "), _c('Options', {
 	      attrs: {
 	        "show-sizer": _vm.showSizer,
 	        "page-size": _vm.currentPageSize,
@@ -46936,7 +47073,7 @@
 	        isInsideHiddenElement: function isInsideHiddenElement() {
 	            var parentNode = this.$el.parentNode;
 	            while (parentNode && parentNode !== document.body) {
-	                if (parentNode.style.display === 'none') {
+	                if (parentNode.style && parentNode.style.display === 'none') {
 	                    return parentNode;
 	                }
 	                parentNode = parentNode.parentNode;
@@ -49972,6 +50109,7 @@
 	exports.Select = _select2.default;
 	exports.Option = _option2.default;
 	exports.OptionGroup = _optionGroup2.default;
+	exports.default = _select2.default;
 
 	/***/ }),
 	/* 530 */
@@ -50074,94 +50212,6 @@
 	/***/ })
 	/******/ ]);
 	});
-
-/***/ },
-/* 39 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(40)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/components/dashboard.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(41)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-3c79522a/dashboard.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 40 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <Card>
-	//     <p slot="title" class="card-title">
-	//       <Icon type="ios-pulse-strong"></Icon>
-	//       数据来源统计
-	//     </p>
-	//     <div class="data-source-row">
-	//
-	//     </div>
-	//   </Card>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {};
-	  },
-
-	  props: {
-	    iconType: {
-	      type: String,
-	      required: true
-	    },
-	    title: {
-	      type: String,
-	      required: true
-	    },
-	    sourceData: {
-	      type: [Object, Array]
-	    }
-	  },
-	  methods: {},
-	  components: {},
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 41 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<Card>\n  <p slot=\"title\" class=\"card-title\">\n    <Icon type=\"ios-pulse-strong\"></Icon>\n    数据来源统计\n  </p>\n  <div class=\"data-source-row\">\n    \n  </div>\n</Card>\n";
 
 /***/ }
 /******/ ]);
