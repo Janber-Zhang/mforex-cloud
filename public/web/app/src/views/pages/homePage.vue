@@ -18,7 +18,7 @@
           </Col>
         </Row>
         <Row>
-          <dashboard style="margin-top:12px;" icon-type="arrow-swap" title="数据来源统计" :source-data="{}"></dashboard>
+          <data-statistics style="margin-top:12px;" icon-type="arrow-swap" title="数据来源统计" :source-data="{}"></data-statistics>
         </Row>
       </Col> 
     </Row>
@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import inforCard    from './../components/inforCard.vue'
-import userInfor    from './../components/userInfor.vue'
-import dashboard    from './../components/dashboard.vue'
+import inforCard         from './../components/inforCard.vue'
+import userInfor         from './../components/userInfor.vue'
+import dataStatistics    from './../components/dataStatistics.vue'
 export default {
   created(){
     let notice_count = util.getRandom(0,4)[0];
@@ -67,7 +67,7 @@ export default {
   components:{
     inforCard,
     userInfor,
-    dashboard
+    dataStatistics
   },
   computed:{
     userInfo(){

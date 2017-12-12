@@ -62,11 +62,11 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _index = __webpack_require__(37);
+	var _index = __webpack_require__(40);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _iview = __webpack_require__(41);
+	var _iview = __webpack_require__(44);
 
 	var _iview2 = _interopRequireDefault(_iview);
 
@@ -14686,7 +14686,11 @@
 
 	var _historyOrders2 = _interopRequireDefault(_historyOrders);
 
-	var _homePage = __webpack_require__(25);
+	var _currentOrders = __webpack_require__(25);
+
+	var _currentOrders2 = _interopRequireDefault(_currentOrders);
+
+	var _homePage = __webpack_require__(28);
 
 	var _homePage2 = _interopRequireDefault(_homePage);
 
@@ -14701,6 +14705,9 @@
 		}, {
 			path: 'history_orders',
 			component: _historyOrders2.default
+		}, {
+			path: 'current_orders',
+			component: _currentOrders2.default
 		}, {
 			path: '*',
 			component: _2.default
@@ -15443,8 +15450,174 @@
 	var __vue_styles__ = {}
 	__vue_script__ = __webpack_require__(26)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/currentOrders.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(27)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-abf0ba98/currentOrders.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="history-orders app-warp">
+	//     <div class="filter-bar" flex="main:left cross:center">
+	//       <div class="filter-item" flex="main:left cross:center">
+	//         <span class="filter-item-name">日期范围</span>
+	//         <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择日期范围" :value="filter_obj.date_range" style="width: 200px"></date-picker>
+	//       </div>
+	//       <div class="filter-item" flex="main:left cross:center">
+	//         <span class="filter-item-name">关键字</span>
+	//         <Input v-model="filter_obj.keys" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//       </div>
+	//       <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+	//       <i-button @click="clearFilter()">清除</i-button>
+	//     </div>
+	//     <div class="list-table">
+	//       <i-table stripe :columns="table_columns" :data="data_list"></i-table>
+	//       <Page :total="pages.total" :current.sync="pages.page" :styles="pages.styles" :page-size="pages.page_size" :page-size-opts="pages.page_size_opts" placement="top" show-sizer show-total @on-change="pageChange" @on-page-size-change="pageSizeChange" v-if="!loading"></Page>
+	//     </div>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.getHistotyOrder();
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      loading: false,
+	      table_columns: [],
+	      data_list: [],
+	      pages: {
+	        page_size_opts: [10, 25, 50, 100],
+	        page_size: 25,
+	        page: 1,
+	        total: 0,
+	        styles: {
+	          "margin": "20px auto"
+	        }
+	      },
+	      filter_obj: {
+	        date_range: [],
+	        keys: ''
+	      }
+	    };
+	  },
+
+	  methods: {
+	    getHistotyOrder: function getHistotyOrder() {
+	      var vm = this;
+	      this.loading = true;
+	      var param = {
+	        httpType: 'get',
+	        serviceUrl: 'GetDealedOrder',
+	        apiModule: 'basicAPI',
+	        domain: 'www.sohu.com',
+	        login: '4',
+	        page: this.pages.page,
+	        pageSize: this.pages.page_size
+	      };
+	      util.ajaxQuery(param, function (res) {
+	        if (res.code === '0') {
+	          vm.table_columns = [{ title: '订单号', key: '_Order' }, { title: '订单品种', key: 'Symbol' }, { title: '交易类型', key: 'Cmd' }, { title: '数量', key: 'Volume' }, { title: '开仓价格', key: 'OpenPrice' }, { title: '开仓时间', width: 150, key: 'OpenTime' }, { title: '平仓价格', key: 'ClosePrice' }, { title: '平仓时间', width: 150, key: 'CloseTime' }, { title: '利润', key: 'Profit' }];
+	          res.data.dealedorders.forEach(function (item) {
+	            item.OpenTime = DateFormat.format(new Date(item.OpenTime), 'yyyy-MM-dd hh:mm:ss');
+	            item.CloseTime = DateFormat.format(new Date(item.CloseTime), 'yyyy-MM-dd hh:mm:ss');
+	            switch (item.Cmd) {
+	              case 'Balance':
+	                if (item.Profit > 0) {
+	                  item.Cmd = '入金';
+	                } else {
+	                  item.Cms = '出金';
+	                }
+	                break;
+	              case 'Sell':
+	                item.Cmd = '卖出';
+	                break;
+	              default:
+	                console.log('other type');
+	            }
+	          });
+	          vm.pages.total = res.data.total;
+	          vm.data_list = res.data.dealedorders;
+	          vm.loading = false;
+	        } else {
+	          vm.$Message.error('服务错误');
+	        }
+	      });
+	    },
+	    handleDateChange: function handleDateChange(date_arr) {
+	      //选择日期后的回调
+	      this.filter_obj.date_range = date_arr;
+	    },
+	    pageChange: function pageChange(page) {
+	      this.getHistotyOrder();
+	    },
+	    pageSizeChange: function pageSizeChange(page_size) {
+	      this.pages.page_size = page_size;
+	      this.pages.page = 1;
+	      this.getHistotyOrder();
+	    },
+	    clearFilter: function clearFilter() {
+	      this.filter_obj = {
+	        date_range: [],
+	        keys: ''
+	      };
+	    },
+	    search: function search() {
+	      this.$Message.warning('暂未开放此功能');
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"history-orders app-warp\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">日期范围</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">关键字</span>\n      <Input v-model=\"filter_obj.keys\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n    </div>\n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(29)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/pages/homePage.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(36)
+	__vue_template__ = __webpack_require__(39)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15469,7 +15642,7 @@
 	})()}
 
 /***/ },
-/* 26 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15478,17 +15651,17 @@
 	  value: true
 	});
 
-	var _inforCard = __webpack_require__(27);
+	var _inforCard = __webpack_require__(30);
 
 	var _inforCard2 = _interopRequireDefault(_inforCard);
 
-	var _userInfor = __webpack_require__(30);
+	var _userInfor = __webpack_require__(33);
 
 	var _userInfor2 = _interopRequireDefault(_userInfor);
 
-	var _dashboard = __webpack_require__(33);
+	var _dataStatistics = __webpack_require__(36);
 
-	var _dashboard2 = _interopRequireDefault(_dashboard);
+	var _dataStatistics2 = _interopRequireDefault(_dataStatistics);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15516,7 +15689,7 @@
 	  components: {
 	    inforCard: _inforCard2.default,
 	    userInfor: _userInfor2.default,
-	    dashboard: _dashboard2.default
+	    dataStatistics: _dataStatistics2.default
 	  },
 	  computed: {
 	    userInfo: function userInfo() {
@@ -15545,7 +15718,7 @@
 	//           </Col>
 	//         </Row>
 	//         <Row>
-	//           <dashboard style="margin-top:12px;" icon-type="arrow-swap" title="数据来源统计" :source-data="{}"></dashboard>
+	//           <data-statistics style="margin-top:12px;" icon-type="arrow-swap" title="数据来源统计" :source-data="{}"></data-statistics>
 	//         </Row>
 	//       </Col> 
 	//     </Row>
@@ -15556,15 +15729,15 @@
 	// <script>
 
 /***/ },
-/* 27 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(28)
+	__vue_script__ = __webpack_require__(31)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/components/inforCard.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(29)
+	__vue_template__ = __webpack_require__(32)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15589,7 +15762,7 @@
 	})()}
 
 /***/ },
-/* 28 */
+/* 31 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15714,21 +15887,21 @@
 	// </script>
 
 /***/ },
-/* 29 */
+/* 32 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<Card :padding=\"0\">\n    <div class=\"infor-card-con\" flex=\"main:justify corss:center\">\n        <div class=\"infor-card-icon-con\" :style=\"{backgroundColor: color, color: 'white'}\" flex=\"dir:top main:center cross:center\">\n            <Icon :type=\"iconType\" :size=\"iconSize\"></Icon>\n        </div>\n        <div class=\"infor-card-count-con\" flex=\"dir:top main:center\">\n            <p :style=\"{textAlign: 'center', color: color, fontSize: countSize, fontWeight: '800'}\"><span v-cloak :id=\"idName\">{{ startVal }}</span><span>{{ unit }}</span></p>\n            <p class=\"infor-intro-text\">{{ introText }}</p>\n        </div>\n    </div>\n</Card>\n";
 
 /***/ },
-/* 30 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(31)
+	__vue_script__ = __webpack_require__(34)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/components/userInfor.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(32)
+	__vue_template__ = __webpack_require__(35)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15753,7 +15926,7 @@
 	})()}
 
 /***/ },
-/* 31 */
+/* 34 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15819,21 +15992,21 @@
 	};
 
 /***/ },
-/* 32 */
+/* 35 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"user-infor-card\">\n  <Card>\n    <Row type=\"flex\" class=\"user-infor\">\n      <Col span=\"8\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n            <img class=\"avator-img\" :src=\"avatorPath\" />\n        </Row>\n      </Col>\n      <Col span=\"16\" style=\"padding-left:6px;\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n          <div>\n            <b class=\"card-user-infor-name\">{{userName}}</b>\n            <p>{{userTitle}}</p>\n            <div class=\"status not_authentication\"></div>\n          </div>\n        </Row>\n      </Col>\n    </Row>\n    <div class=\"line-gray\"></div>\n    <Row class=\"margin-top-8\" v-for=\"item in otherInfo\" :key=\"item.value\">\n      <Col span=\"8\"><p class=\"notwrap\">{{item.desc + ':'}}</p></Col>\n      <Col span=\"16\" class=\"padding-left-8\">{{item.value}}</Col>\n    </Row>\n  </Card>\n</div>\n";
 
 /***/ },
-/* 33 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(34)
+	__vue_script__ = __webpack_require__(37)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/components/dashboard.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(35)
+	  console.warn("[vue-loader] src/views/components/dataStatistics.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(38)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15849,7 +16022,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-3c79522a/dashboard.vue"
+	  var id = "_v-5376b447/dataStatistics.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15858,10 +16031,10 @@
 	})()}
 
 /***/ },
-/* 34 */
+/* 37 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -15872,16 +16045,16 @@
 	//       <Icon type="ios-pulse-strong"></Icon>
 	//       数据来源统计
 	//     </p>
-	//     <div class="data-source-row">
-	//
-	//     </div>
+	//     <div ref="chart" class="data-source-row"></div>
 	//   </Card>
 	// </template>
 	//
 	// <script>
 	exports.default = {
 	  created: function created() {},
-	  ready: function ready() {},
+	  mounted: function mounted() {
+	    this.init();
+	  },
 	  data: function data() {
 	    return {};
 	  },
@@ -15899,7 +16072,69 @@
 	      type: [Object, Array]
 	    }
 	  },
-	  methods: {},
+	  methods: {
+	    init: function init() {
+	      var base = +new Date(1968, 9, 3);
+	      var oneDay = 24 * 3600 * 1000;
+	      var date = [];
+
+	      var data = [Math.random() * 300];
+
+	      for (var i = 1; i < 20000; i++) {
+	        var now = new Date(base += oneDay);
+	        date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
+	        data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
+	      }
+
+	      var option = {
+	        toolbox: {
+	          show: false
+	        },
+	        xAxis: {
+	          type: 'category',
+	          boundaryGap: false,
+	          data: date
+	        },
+	        yAxis: {
+	          type: 'value',
+	          boundaryGap: [0, '100%']
+	        },
+	        dataZoom: [{
+	          type: 'inside',
+	          start: 0,
+	          end: 10
+	        }],
+	        series: [{
+	          name: '模拟数据',
+	          type: 'line',
+	          smooth: true,
+	          symbol: 'none',
+	          sampling: 'average',
+	          itemStyle: {
+	            normal: {
+	              color: 'rgb(255, 70, 131)'
+	            }
+	          },
+	          areaStyle: {
+	            normal: {
+	              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+	                offset: 0,
+	                color: 'rgb(255, 158, 68)'
+	              }, {
+	                offset: 1,
+	                color: 'rgb(255, 70, 131)'
+	              }])
+	            }
+	          },
+	          data: data
+	        }]
+	      };
+	      // 基于准备好的dom，初始化echarts实例s
+	      var myChart = echarts.init(this.$refs.chart);
+	      // 使用刚指定的配置项和数据显示图表。
+	      myChart.setOption(option);
+	    }
+	  },
 	  components: {},
 	  computed: {}
 	  // </script>
@@ -15907,19 +16142,19 @@
 	};
 
 /***/ },
-/* 35 */
+/* 38 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<Card>\n  <p slot=\"title\" class=\"card-title\">\n    <Icon type=\"ios-pulse-strong\"></Icon>\n    数据来源统计\n  </p>\n  <div class=\"data-source-row\">\n    \n  </div>\n</Card>\n";
+	module.exports = "\n<Card>\n  <p slot=\"title\" class=\"card-title\">\n    <Icon type=\"ios-pulse-strong\"></Icon>\n    数据来源统计\n  </p>\n  <div ref=\"chart\" class=\"data-source-row\"></div>\n</Card>\n";
 
 /***/ },
-/* 36 */
+/* 39 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"home-page\">\n  <Alert v-for=\"(notice, index) in notice_data\" :key=\"notice.msg\" v-if=\"notice_index.indexOf(index)>-1\" banner closable show-icon :type=\"notice.type\">{{notice.msg}}</Alert>\n  <Row :gutter=\"12\">\n    <Col span=\"8\" style=\"height:100%;\">\n      <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n    </Col> \n    <Col span=\"16\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row>\n        <dashboard style=\"margin-top:12px;\" icon-type=\"arrow-swap\" title=\"数据来源统计\" :source-data=\"{}\"></dashboard>\n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
+	module.exports = "\n<div class=\"home-page\">\n  <Alert v-for=\"(notice, index) in notice_data\" :key=\"notice.msg\" v-if=\"notice_index.indexOf(index)>-1\" banner closable show-icon :type=\"notice.type\">{{notice.msg}}</Alert>\n  <Row :gutter=\"12\">\n    <Col span=\"8\" style=\"height:100%;\">\n      <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n    </Col> \n    <Col span=\"16\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row>\n        <data-statistics style=\"margin-top:12px;\" icon-type=\"arrow-swap\" title=\"数据来源统计\" :source-data=\"{}\"></data-statistics>\n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
 
 /***/ },
-/* 37 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15936,15 +16171,15 @@
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _getters = __webpack_require__(38);
+	var _getters = __webpack_require__(41);
 
 	var _getters2 = _interopRequireDefault(_getters);
 
-	var _mutations = __webpack_require__(39);
+	var _mutations = __webpack_require__(42);
 
 	var _mutations2 = _interopRequireDefault(_mutations);
 
-	var _actions = __webpack_require__(40);
+	var _actions = __webpack_require__(43);
 
 	var _actions2 = _interopRequireDefault(_actions);
 
@@ -15965,7 +16200,7 @@
 	});
 
 /***/ },
-/* 38 */
+/* 41 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15985,7 +16220,7 @@
 	exports.default = getters;
 
 /***/ },
-/* 39 */
+/* 42 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -16005,7 +16240,7 @@
 	exports.default = mutations;
 
 /***/ },
-/* 40 */
+/* 43 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16025,7 +16260,7 @@
 	exports.default = actions;
 
 /***/ },
-/* 41 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
