@@ -2,8 +2,13 @@
   <div class="home-page">
     <Alert v-for="(notice, index) in notice_data" :key="notice.msg" v-if="notice_index.indexOf(index)>-1" banner closable show-icon :type="notice.type">{{notice.msg}}</Alert>
     <Row :gutter="12">
-      <Col span="8" style="height:100%;">
-        <user-infor :user-name="userInfo.Name" :user-title="userInfo.Email"></user-infor>
+      <Col span="8">
+        <Row>
+          <user-infor :user-name="userInfo.Name" :user-title="userInfo.Email"></user-infor>
+        </Row>
+        <Row class-name="margin-top-10">
+          <income-statistics></income-statistics>
+        </Row>
       </Col> 
       <Col span="16">
         <Row :gutter="12">
@@ -17,8 +22,8 @@
               ></infor-card>
           </Col>
         </Row>
-        <Row>
-          <data-statistics style="margin-top:12px;" icon-type="arrow-swap" title="数据来源统计" :source-data="{}"></data-statistics>
+        <Row class-name="margin-top-10">
+          <data-statistics icon-type="arrow-swap" title="数据来源统计" :source-data="{}"></data-statistics>
         </Row>
       </Col> 
     </Row>
@@ -30,6 +35,7 @@
 import inforCard         from './../components/inforCard.vue'
 import userInfor         from './../components/userInfor.vue'
 import dataStatistics    from './../components/dataStatistics.vue'
+import incomeStatistics    from './../components/incomeStatistics.vue'
 export default {
   created(){
     let notice_count = util.getRandom(0,4)[0];
@@ -67,7 +73,8 @@ export default {
   components:{
     inforCard,
     userInfor,
-    dataStatistics
+    dataStatistics,
+    incomeStatistics
   },
   computed:{
     userInfo(){

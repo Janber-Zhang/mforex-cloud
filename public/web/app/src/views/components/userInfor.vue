@@ -12,7 +12,7 @@
             <div>
               <b class="card-user-infor-name">{{userName}}</b>
               <p>{{userTitle}}</p>
-              <div class="status not_authentication"></div>
+              <div class="status not_authentication" v-bind:class="{is_authentication:isAuthentication}"></div>
             </div>
           </Row>
         </Col>
@@ -41,11 +41,15 @@
     },
     props: {
         avatorPath: {
-            type: String,
-            default: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'
+          type: String,
+          default: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'
         },
         userName: String,
         userTitle: String,
+        isAuthentication: {
+          type: Boolean,
+          default: true
+        },
         otherInfo: {
           type: Array,
           default: function(){

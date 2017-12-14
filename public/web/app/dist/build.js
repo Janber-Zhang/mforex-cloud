@@ -15663,8 +15663,46 @@
 
 	var _dataStatistics2 = _interopRequireDefault(_dataStatistics);
 
+	var _incomeStatistics = __webpack_require__(45);
+
+	var _incomeStatistics2 = _interopRequireDefault(_incomeStatistics);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// <template>
+	//   <div class="home-page">
+	//     <Alert v-for="(notice, index) in notice_data" :key="notice.msg" v-if="notice_index.indexOf(index)>-1" banner closable show-icon :type="notice.type">{{notice.msg}}</Alert>
+	//     <Row :gutter="12">
+	//       <Col span="8">
+	//         <Row>
+	//           <user-infor :user-name="userInfo.Name" :user-title="userInfo.Email"></user-infor>
+	//         </Row>
+	//         <Row class-name="margin-top-10">
+	//           <income-statistics></income-statistics>
+	//         </Row>
+	//       </Col> 
+	//       <Col span="16">
+	//         <Row :gutter="12">
+	//           <Col :span="infor.span" v-for="infor in infor_card_data" :key="infor.idName">
+	//             <infor-card
+	//               :id-name="infor.idName"
+	//               :end-val="infor.value"
+	//               :icon-type="infor.iconType"
+	//               :color="infor.color"
+	//               :intro-text="infor.title"
+	//               ></infor-card>
+	//           </Col>
+	//         </Row>
+	//         <Row class-name="margin-top-10">
+	//           <data-statistics icon-type="arrow-swap" title="数据来源统计" :source-data="{}"></data-statistics>
+	//         </Row>
+	//       </Col> 
+	//     </Row>
+	//
+	//   </div>
+	// </template>
+	//
+	// <script>
 	exports.default = {
 	  created: function created() {
 	    var notice_count = util.getRandom(0, 4)[0];
@@ -15689,7 +15727,8 @@
 	  components: {
 	    inforCard: _inforCard2.default,
 	    userInfor: _userInfor2.default,
-	    dataStatistics: _dataStatistics2.default
+	    dataStatistics: _dataStatistics2.default,
+	    incomeStatistics: _incomeStatistics2.default
 	  },
 	  computed: {
 	    userInfo: function userInfo() {
@@ -15698,35 +15737,7 @@
 	  }
 	  // </script>
 
-	}; // <template>
-	//   <div class="home-page">
-	//     <Alert v-for="(notice, index) in notice_data" :key="notice.msg" v-if="notice_index.indexOf(index)>-1" banner closable show-icon :type="notice.type">{{notice.msg}}</Alert>
-	//     <Row :gutter="12">
-	//       <Col span="8" style="height:100%;">
-	//         <user-infor :user-name="userInfo.Name" :user-title="userInfo.Email"></user-infor>
-	//       </Col> 
-	//       <Col span="16">
-	//         <Row :gutter="12">
-	//           <Col :span="infor.span" v-for="infor in infor_card_data" :key="infor.idName">
-	//             <infor-card
-	//               :id-name="infor.idName"
-	//               :end-val="infor.value"
-	//               :icon-type="infor.iconType"
-	//               :color="infor.color"
-	//               :intro-text="infor.title"
-	//               ></infor-card>
-	//           </Col>
-	//         </Row>
-	//         <Row>
-	//           <data-statistics style="margin-top:12px;" icon-type="arrow-swap" title="数据来源统计" :source-data="{}"></data-statistics>
-	//         </Row>
-	//       </Col> 
-	//     </Row>
-	//
-	//   </div>
-	// </template>
-	//
-	// <script>
+	};
 
 /***/ },
 /* 30 */
@@ -15948,7 +15959,7 @@
 	//             <div>
 	//               <b class="card-user-infor-name">{{userName}}</b>
 	//               <p>{{userTitle}}</p>
-	//               <div class="status not_authentication"></div>
+	//               <div class="status not_authentication" v-bind:class="{is_authentication:isAuthentication}"></div>
 	//             </div>
 	//           </Row>
 	//         </Col>
@@ -15977,6 +15988,10 @@
 	    },
 	    userName: String,
 	    userTitle: String,
+	    isAuthentication: {
+	      type: Boolean,
+	      default: true
+	    },
 	    otherInfo: {
 	      type: Array,
 	      default: function _default() {
@@ -15995,7 +16010,7 @@
 /* 35 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"user-infor-card\">\n  <Card>\n    <Row type=\"flex\" class=\"user-infor\">\n      <Col span=\"8\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n            <img class=\"avator-img\" :src=\"avatorPath\" />\n        </Row>\n      </Col>\n      <Col span=\"16\" style=\"padding-left:6px;\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n          <div>\n            <b class=\"card-user-infor-name\">{{userName}}</b>\n            <p>{{userTitle}}</p>\n            <div class=\"status not_authentication\"></div>\n          </div>\n        </Row>\n      </Col>\n    </Row>\n    <div class=\"line-gray\"></div>\n    <Row class=\"margin-top-8\" v-for=\"item in otherInfo\" :key=\"item.value\">\n      <Col span=\"8\"><p class=\"notwrap\">{{item.desc + ':'}}</p></Col>\n      <Col span=\"16\" class=\"padding-left-8\">{{item.value}}</Col>\n    </Row>\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"user-infor-card\">\n  <Card>\n    <Row type=\"flex\" class=\"user-infor\">\n      <Col span=\"8\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n            <img class=\"avator-img\" :src=\"avatorPath\" />\n        </Row>\n      </Col>\n      <Col span=\"16\" style=\"padding-left:6px;\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n          <div>\n            <b class=\"card-user-infor-name\">{{userName}}</b>\n            <p>{{userTitle}}</p>\n            <div class=\"status not_authentication\" v-bind:class=\"{is_authentication:isAuthentication}\"></div>\n          </div>\n        </Row>\n      </Col>\n    </Row>\n    <div class=\"line-gray\"></div>\n    <Row class=\"margin-top-8\" v-for=\"item in otherInfo\" :key=\"item.value\">\n      <Col span=\"8\"><p class=\"notwrap\">{{item.desc + ':'}}</p></Col>\n      <Col span=\"16\" class=\"padding-left-8\">{{item.value}}</Col>\n    </Row>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 36 */
@@ -16040,10 +16055,10 @@
 	    value: true
 	});
 	// <template>
-	//   <Card>
+	//   <Card class="data-statistics">
 	//     <p slot="title" class="card-title">
 	//       <Icon type="ios-pulse-strong"></Icon>
-	//       数据来源统计
+	//       资金变化统计
 	//     </p>
 	//     <div ref="chart" class="data-source-row"></div>
 	//   </Card>
@@ -16062,82 +16077,17 @@
 	    props: {
 	        iconType: {
 	            type: String,
-	            required: true
+	            required: false
 	        },
 	        title: {
 	            type: String,
-	            required: true
+	            required: false
 	        },
 	        sourceData: {
 	            type: [Object, Array]
 	        }
 	    },
 	    methods: {
-	        // init(){
-	        //   var base = +new Date(1968, 9, 3);
-	        //   var oneDay = 24 * 3600 * 1000;
-	        //   var date = [];
-
-	        //   var data = [Math.random() * 300];
-
-	        //   for (var i = 1; i < 20000; i++) {
-	        //     var now = new Date(base += oneDay);
-	        //     date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
-	        //     data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
-	        //   }
-
-	        //   let option = {
-	        //     toolbox: {
-	        //       show: false
-	        //     },
-	        //     xAxis: {
-	        //       type: 'category',
-	        //       boundaryGap: false,
-	        //       data: date
-	        //     },
-	        //     yAxis: {
-	        //       type: 'value',
-	        //       boundaryGap: [0, '100%']
-	        //     },
-	        //     dataZoom: [
-	        //       {
-	        //         type: 'inside',
-	        //         start: 0,
-	        //         end: 10
-	        //       }
-	        //     ],
-	        //     series: [
-	        //       {
-	        //         name:'模拟数据',
-	        //         type:'line',
-	        //         smooth:true,
-	        //         symbol: 'none',
-	        //         sampling: 'average',
-	        //         itemStyle: {
-	        //           normal: {
-	        //             color: 'rgb(255, 70, 131)'
-	        //           }
-	        //         },
-	        //         areaStyle: {
-	        //           normal: {
-	        //             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-	        //               offset: 0,
-	        //               color: 'rgb(255, 158, 68)'
-	        //             }, {
-	        //               offset: 1,
-	        //               color: 'rgb(255, 70, 131)'
-	        //             }])
-	        //           }
-	        //         },
-	        //         data: data
-	        //       }
-	        //     ]
-	        //   };
-	        //   // 基于准备好的dom，初始化echarts实例s
-	        //   var myChart = echarts.init(this.$refs.chart);
-	        //   // 使用刚指定的配置项和数据显示图表。
-	        //   myChart.setOption(option);
-	        // }
 	        init: function init() {
 	            var option = {
 	                color: ['#2d8cf0', '#7e53c2', '#e14f5f'],
@@ -16218,13 +16168,13 @@
 /* 38 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<Card>\n  <p slot=\"title\" class=\"card-title\">\n    <Icon type=\"ios-pulse-strong\"></Icon>\n    数据来源统计\n  </p>\n  <div ref=\"chart\" class=\"data-source-row\"></div>\n</Card>\n";
+	module.exports = "\n<Card class=\"data-statistics\">\n  <p slot=\"title\" class=\"card-title\">\n    <Icon type=\"ios-pulse-strong\"></Icon>\n    资金变化统计\n  </p>\n  <div ref=\"chart\" class=\"data-source-row\"></div>\n</Card>\n";
 
 /***/ },
 /* 39 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"home-page\">\n  <Alert v-for=\"(notice, index) in notice_data\" :key=\"notice.msg\" v-if=\"notice_index.indexOf(index)>-1\" banner closable show-icon :type=\"notice.type\">{{notice.msg}}</Alert>\n  <Row :gutter=\"12\">\n    <Col span=\"8\" style=\"height:100%;\">\n      <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n    </Col> \n    <Col span=\"16\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row>\n        <data-statistics style=\"margin-top:12px;\" icon-type=\"arrow-swap\" title=\"数据来源统计\" :source-data=\"{}\"></data-statistics>\n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
+	module.exports = "\n<div class=\"home-page\">\n  <Alert v-for=\"(notice, index) in notice_data\" :key=\"notice.msg\" v-if=\"notice_index.indexOf(index)>-1\" banner closable show-icon :type=\"notice.type\">{{notice.msg}}</Alert>\n  <Row :gutter=\"12\">\n    <Col span=\"8\">\n      <Row>\n        <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n      </Row>\n      <Row class-name=\"margin-top-10\">\n        <income-statistics></income-statistics>\n      </Row>\n    </Col> \n    <Col span=\"16\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row class-name=\"margin-top-10\">\n        <data-statistics icon-type=\"arrow-swap\" title=\"数据来源统计\" :source-data=\"{}\"></data-statistics>\n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
 
 /***/ },
 /* 40 */
@@ -50520,6 +50470,127 @@
 	/***/ })
 	/******/ ]);
 	});
+
+/***/ },
+/* 45 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(46)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/components/incomeStatistics.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(47)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-7e5cd8f4/incomeStatistics.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 46 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <Card class="income-statistics">
+	//     <p slot="title" class="card-title">
+	//       <Icon type="ios-pulse-strong"></Icon>
+	//       收入统计
+	//     </p>
+	//     <div ref="chart" class="data-source-row"></div>
+	//   </Card>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  mounted: function mounted() {
+	    this.init();
+	  },
+	  data: function data() {
+	    return {};
+	  },
+
+	  props: {
+	    iconType: {
+	      type: String,
+	      required: false
+	    },
+	    title: {
+	      type: String,
+	      required: false
+	    },
+	    sourceData: {
+	      type: [Object, Array]
+	    }
+	  },
+	  methods: {
+	    init: function init() {
+	      var option = {
+	        tooltip: {
+	          trigger: 'item',
+	          formatter: '{a} <br/>{b} : {c} ({d}%)'
+	        },
+	        legend: {
+	          show: false,
+	          orient: 'vertical',
+	          left: 'right',
+	          data: ['ios', 'android', 'pc', 'web', 'others']
+	        },
+	        series: [{
+	          name: '访问来源',
+	          type: 'pie',
+	          radius: '66%',
+	          center: ['47%', '50%'],
+	          data: [{ value: 2103456, name: 'ios', itemStyle: { normal: { color: '#9bd598' } } }, { value: 1305923, name: 'android', itemStyle: { normal: { color: '#ffd58f' } } }, { value: 543250, name: 'pc', itemStyle: { normal: { color: '#abd5f2' } } }, { value: 798403, name: 'web', itemStyle: { normal: { color: '#ab8df2' } } }, { value: 302340, name: 'others', itemStyle: { normal: { color: '#e14f60' } } }],
+	          itemStyle: {
+	            emphasis: {
+	              shadowBlur: 10,
+	              shadowOffsetX: 0,
+	              shadowColor: 'rgba(0, 0, 0, 0.5)'
+	            }
+	          }
+	        }]
+	      };
+	      // 基于准备好的dom，初始化echarts实例s
+	      var myChart = echarts.init(this.$refs.chart);
+	      // 使用刚指定的配置项和数据显示图表。
+	      myChart.setOption(option);
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 47 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<Card class=\"income-statistics\">\n  <p slot=\"title\" class=\"card-title\">\n    <Icon type=\"ios-pulse-strong\"></Icon>\n    收入统计\n  </p>\n  <div ref=\"chart\" class=\"data-source-row\"></div>\n</Card>\n";
 
 /***/ }
 /******/ ]);

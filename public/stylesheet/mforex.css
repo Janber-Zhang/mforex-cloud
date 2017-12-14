@@ -368,9 +368,6 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   color: #C8C8C8;
   text-align: center;
 }
-.user-infor-card {
-  height: 208px;
-}
 .user-infor-card .user-infor {
   height: 120px;
 }
@@ -396,16 +393,33 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   height: 20px;
 }
 .user-infor-card .is_authentication {
-  background: url(/images/is_authentication.svg) no-repeat top center;
-  background-size: cover;
+  background: url(/images/is_authentication.svg) no-repeat top center !important;
+  background-size: cover !important;
 }
 .user-infor-card .not_authentication {
   background: url(/images/not_authentication.svg) no-repeat top center;
   background-size: cover;
 }
-.card-title {
+.data-statistics .card-title {
   color: #abafbd;
 }
-.data-source-row {
+.data-statistics .data-source-row {
   height: 400px;
+}
+@media (max-width: 1280px) {
+  .data-statistics .data-source-row {
+    height: 300px;
+  }
+}
+.income-statistics .card-title {
+  color: #abafbd;
+}
+.income-statistics .data-source-row {
+  height: 294px;
+  width: 100%;
+}
+@media (max-width: 1280px) {
+  .income-statistics .data-source-row {
+    height: 194px;
+  }
 }
