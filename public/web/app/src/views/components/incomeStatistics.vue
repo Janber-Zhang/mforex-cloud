@@ -2,7 +2,7 @@
   <Card class="income-statistics">
     <p slot="title" class="card-title">
       <Icon type="ios-pulse-strong"></Icon>
-      收入统计
+      盈利来源统计
     </p>
     <div ref="chart" class="data-source-row"></div>
   </Card>
@@ -45,20 +45,20 @@ export default {
           show: false,
           orient: 'vertical',
           left: 'right',
-          data: ['ios', 'android', 'pc', 'web', 'others'],
+          data: ['USD', 'JPY', 'EUR', 'GBP', 'DEM'],
         },
         series: [
           {
-            name: '访问来源',
+            name: '盈利来源',
             type: 'pie',
             radius: '66%',
             center: ['47%', '50%'],
             data: [
-                {value: 2103456, name: 'ios', itemStyle: {normal: {color: '#9bd598'}}},
-                {value: 1305923, name: 'android', itemStyle: {normal: {color: '#ffd58f'}}},
-                {value: 543250, name: 'pc', itemStyle: {normal: {color: '#abd5f2'}}},
-                {value: 798403, name: 'web', itemStyle: {normal: {color: '#ab8df2'}}},
-                {value: 302340, name: 'others', itemStyle: {normal: {color: '#e14f60'}}}
+                {value: 2103456, name: 'USD', itemStyle: {normal: {color: '#9bd598'}}},
+                {value: 1305923, name: 'JPY', itemStyle: {normal: {color: '#ffd58f'}}},
+                {value: 543250, name: 'EUR', itemStyle: {normal: {color: '#abd5f2'}}},
+                {value: 798403, name: 'GBP', itemStyle: {normal: {color: '#ab8df2'}}},
+                {value: 302340, name: 'DEM', itemStyle: {normal: {color: '#e14f60'}}}
             ],
             itemStyle: {
                 emphasis: {
