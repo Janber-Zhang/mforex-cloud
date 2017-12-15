@@ -86,7 +86,7 @@
 			initVerifaacation: function () {
 				if (!this.verif) {
 					this.verif = new captcha(this.$refs.canvas);
-					this.verif.getLetter();
+					this.verif.NumberOrLetter();
 					console.log()
 				} else {
 					this.verif.getLetter();
