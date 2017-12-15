@@ -15672,8 +15672,8 @@
 	// <template>
 	//   <div class="home-page">
 	//     <Alert v-for="(notice, index) in notice_data" :key="notice.msg" v-if="notice_index.indexOf(index)>-1" banner closable show-icon :type="notice.type">{{notice.msg}}</Alert>
-	//     <Row :gutter="12">
-	//       <Col span="8">
+	//     <Row :gutter="12" style="margin-left:0; margin-right:0;overflow:hidden;">
+	//       <Col span="8" style="padding-left:0;">
 	//         <Row>
 	//           <user-infor :user-name="userInfo.Name" :user-title="userInfo.Email"></user-infor>
 	//         </Row>
@@ -15681,7 +15681,7 @@
 	//           <income-statistics></income-statistics>
 	//         </Row>
 	//       </Col> 
-	//       <Col span="16">
+	//       <Col span="16" style="padding-right:0;">
 	//         <Row :gutter="12">
 	//           <Col :span="infor.span" v-for="infor in infor_card_data" :key="infor.idName">
 	//             <infor-card
@@ -16174,7 +16174,7 @@
 /* 39 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"home-page\">\n  <Alert v-for=\"(notice, index) in notice_data\" :key=\"notice.msg\" v-if=\"notice_index.indexOf(index)>-1\" banner closable show-icon :type=\"notice.type\">{{notice.msg}}</Alert>\n  <Row :gutter=\"12\">\n    <Col span=\"8\">\n      <Row>\n        <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n      </Row>\n      <Row class-name=\"margin-top-10\">\n        <income-statistics></income-statistics>\n      </Row>\n    </Col> \n    <Col span=\"16\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row class-name=\"margin-top-10\">\n        <data-statistics icon-type=\"arrow-swap\" title=\"数据来源统计\" :source-data=\"{}\"></data-statistics>\n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
+	module.exports = "\n<div class=\"home-page\">\n  <Alert v-for=\"(notice, index) in notice_data\" :key=\"notice.msg\" v-if=\"notice_index.indexOf(index)>-1\" banner closable show-icon :type=\"notice.type\">{{notice.msg}}</Alert>\n  <Row :gutter=\"12\" style=\"margin-left:0; margin-right:0;overflow:hidden;\">\n    <Col span=\"8\" style=\"padding-left:0;\">\n      <Row>\n        <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n      </Row>\n      <Row class-name=\"margin-top-10\">\n        <income-statistics></income-statistics>\n      </Row>\n    </Col> \n    <Col span=\"16\" style=\"padding-right:0;\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row class-name=\"margin-top-10\">\n        <data-statistics icon-type=\"arrow-swap\" title=\"数据来源统计\" :source-data=\"{}\"></data-statistics>\n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
 
 /***/ },
 /* 40 */

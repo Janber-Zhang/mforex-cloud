@@ -1,8 +1,8 @@
 <template>
   <div class="home-page">
     <Alert v-for="(notice, index) in notice_data" :key="notice.msg" v-if="notice_index.indexOf(index)>-1" banner closable show-icon :type="notice.type">{{notice.msg}}</Alert>
-    <Row :gutter="12">
-      <Col span="8">
+    <Row :gutter="12" style="margin-left:0; margin-right:0;overflow:hidden;">
+      <Col span="8" style="padding-left:0;">
         <Row>
           <user-infor :user-name="userInfo.Name" :user-title="userInfo.Email"></user-infor>
         </Row>
@@ -10,7 +10,7 @@
           <income-statistics></income-statistics>
         </Row>
       </Col> 
-      <Col span="16">
+      <Col span="16" style="padding-right:0;">
         <Row :gutter="12">
           <Col :span="infor.span" v-for="infor in infor_card_data" :key="infor.idName">
             <infor-card
