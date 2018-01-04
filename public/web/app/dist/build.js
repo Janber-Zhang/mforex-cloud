@@ -62,11 +62,11 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _index = __webpack_require__(40);
+	var _index = __webpack_require__(43);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _iview = __webpack_require__(44);
+	var _iview = __webpack_require__(47);
 
 	var _iview2 = _interopRequireDefault(_iview);
 
@@ -15246,7 +15246,7 @@
 	//         <div class="error404-body-con">
 	//             <Card>
 	//                 <div class="error404-body-con-title">4<span><Icon size="230" type="ios-navigate-outline"></Icon></span>4</div>
-	//                 <p class="error404-body-con-message">该模块暂未开放</p>
+	//                 <p class="error404-body-con-message">暂未开放</p>
 	//                 <div class="error404-btn-con">
 	//                     <i-button @click="goHome" size="large" style="width: 200px;" type="text">返回首页</i-button>
 	//                     <i-button @click="backPage" size="large" style="width: 200px;margin-left: 40px;" type="primary">返回上一页</i-button>
@@ -15274,7 +15274,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">该模块暂未开放</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
+	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">暂未开放</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
 
 /***/ },
 /* 22 */
@@ -15617,7 +15617,7 @@
 	__vue_script__ = __webpack_require__(29)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/pages/homePage.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(39)
+	__vue_template__ = __webpack_require__(42)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15663,7 +15663,7 @@
 
 	var _dataStatistics2 = _interopRequireDefault(_dataStatistics);
 
-	var _incomeStatistics = __webpack_require__(45);
+	var _incomeStatistics = __webpack_require__(39);
 
 	var _incomeStatistics2 = _interopRequireDefault(_incomeStatistics);
 
@@ -16172,12 +16172,133 @@
 
 /***/ },
 /* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(40)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/components/incomeStatistics.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(41)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-7e5cd8f4/incomeStatistics.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 40 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <Card class="income-statistics">
+	//     <p slot="title" class="card-title">
+	//       <Icon type="ios-pulse-strong"></Icon>
+	//       盈利来源统计
+	//     </p>
+	//     <div ref="chart" class="data-source-row"></div>
+	//   </Card>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  mounted: function mounted() {
+	    this.init();
+	  },
+	  data: function data() {
+	    return {};
+	  },
+
+	  props: {
+	    iconType: {
+	      type: String,
+	      required: false
+	    },
+	    title: {
+	      type: String,
+	      required: false
+	    },
+	    sourceData: {
+	      type: [Object, Array]
+	    }
+	  },
+	  methods: {
+	    init: function init() {
+	      var option = {
+	        tooltip: {
+	          trigger: 'item',
+	          formatter: '{a} <br/>{b} : {c} ({d}%)'
+	        },
+	        legend: {
+	          show: false,
+	          orient: 'vertical',
+	          left: 'right',
+	          data: ['USD', 'JPY', 'EUR', 'GBP', 'DEM']
+	        },
+	        series: [{
+	          name: '盈利来源',
+	          type: 'pie',
+	          radius: '66%',
+	          center: ['47%', '50%'],
+	          data: [{ value: 2103456, name: 'USD', itemStyle: { normal: { color: '#9bd598' } } }, { value: 1305923, name: 'JPY', itemStyle: { normal: { color: '#ffd58f' } } }, { value: 543250, name: 'EUR', itemStyle: { normal: { color: '#abd5f2' } } }, { value: 798403, name: 'GBP', itemStyle: { normal: { color: '#ab8df2' } } }, { value: 302340, name: 'DEM', itemStyle: { normal: { color: '#e14f60' } } }],
+	          itemStyle: {
+	            emphasis: {
+	              shadowBlur: 10,
+	              shadowOffsetX: 0,
+	              shadowColor: 'rgba(0, 0, 0, 0.5)'
+	            }
+	          }
+	        }]
+	      };
+	      // 基于准备好的dom，初始化echarts实例s
+	      var myChart = echarts.init(this.$refs.chart);
+	      // 使用刚指定的配置项和数据显示图表。
+	      myChart.setOption(option);
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<Card class=\"income-statistics\">\n  <p slot=\"title\" class=\"card-title\">\n    <Icon type=\"ios-pulse-strong\"></Icon>\n    盈利来源统计\n  </p>\n  <div ref=\"chart\" class=\"data-source-row\"></div>\n</Card>\n";
+
+/***/ },
+/* 42 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"home-page\">\n  <Alert v-for=\"(notice, index) in notice_data\" :key=\"notice.msg\" v-if=\"notice_index.indexOf(index)>-1\" banner closable show-icon :type=\"notice.type\">{{notice.msg}}</Alert>\n  <Row :gutter=\"12\" style=\"margin-left:0; margin-right:0;overflow:hidden;\">\n    <Col span=\"8\" style=\"padding-left:0;\">\n      <Row>\n        <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n      </Row>\n      <Row class-name=\"margin-top-10\">\n        <income-statistics></income-statistics>\n      </Row>\n    </Col> \n    <Col span=\"16\" style=\"padding-right:0;\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row class-name=\"margin-top-10\">\n        <data-statistics icon-type=\"arrow-swap\" title=\"数据来源统计\" :source-data=\"{}\"></data-statistics>\n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
 
 /***/ },
-/* 40 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16194,15 +16315,15 @@
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _getters = __webpack_require__(41);
+	var _getters = __webpack_require__(44);
 
 	var _getters2 = _interopRequireDefault(_getters);
 
-	var _mutations = __webpack_require__(42);
+	var _mutations = __webpack_require__(45);
 
 	var _mutations2 = _interopRequireDefault(_mutations);
 
-	var _actions = __webpack_require__(43);
+	var _actions = __webpack_require__(46);
 
 	var _actions2 = _interopRequireDefault(_actions);
 
@@ -16223,7 +16344,7 @@
 	});
 
 /***/ },
-/* 41 */
+/* 44 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -16243,7 +16364,7 @@
 	exports.default = getters;
 
 /***/ },
-/* 42 */
+/* 45 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -16263,7 +16384,7 @@
 	exports.default = mutations;
 
 /***/ },
-/* 43 */
+/* 46 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16283,7 +16404,7 @@
 	exports.default = actions;
 
 /***/ },
-/* 44 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -50470,127 +50591,6 @@
 	/***/ })
 	/******/ ]);
 	});
-
-/***/ },
-/* 45 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(46)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/components/incomeStatistics.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(47)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-7e5cd8f4/incomeStatistics.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 46 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <Card class="income-statistics">
-	//     <p slot="title" class="card-title">
-	//       <Icon type="ios-pulse-strong"></Icon>
-	//       盈利来源统计
-	//     </p>
-	//     <div ref="chart" class="data-source-row"></div>
-	//   </Card>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {},
-	  mounted: function mounted() {
-	    this.init();
-	  },
-	  data: function data() {
-	    return {};
-	  },
-
-	  props: {
-	    iconType: {
-	      type: String,
-	      required: false
-	    },
-	    title: {
-	      type: String,
-	      required: false
-	    },
-	    sourceData: {
-	      type: [Object, Array]
-	    }
-	  },
-	  methods: {
-	    init: function init() {
-	      var option = {
-	        tooltip: {
-	          trigger: 'item',
-	          formatter: '{a} <br/>{b} : {c} ({d}%)'
-	        },
-	        legend: {
-	          show: false,
-	          orient: 'vertical',
-	          left: 'right',
-	          data: ['USD', 'JPY', 'EUR', 'GBP', 'DEM']
-	        },
-	        series: [{
-	          name: '盈利来源',
-	          type: 'pie',
-	          radius: '66%',
-	          center: ['47%', '50%'],
-	          data: [{ value: 2103456, name: 'USD', itemStyle: { normal: { color: '#9bd598' } } }, { value: 1305923, name: 'JPY', itemStyle: { normal: { color: '#ffd58f' } } }, { value: 543250, name: 'EUR', itemStyle: { normal: { color: '#abd5f2' } } }, { value: 798403, name: 'GBP', itemStyle: { normal: { color: '#ab8df2' } } }, { value: 302340, name: 'DEM', itemStyle: { normal: { color: '#e14f60' } } }],
-	          itemStyle: {
-	            emphasis: {
-	              shadowBlur: 10,
-	              shadowOffsetX: 0,
-	              shadowColor: 'rgba(0, 0, 0, 0.5)'
-	            }
-	          }
-	        }]
-	      };
-	      // 基于准备好的dom，初始化echarts实例s
-	      var myChart = echarts.init(this.$refs.chart);
-	      // 使用刚指定的配置项和数据显示图表。
-	      myChart.setOption(option);
-	    }
-	  },
-	  components: {},
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 47 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<Card class=\"income-statistics\">\n  <p slot=\"title\" class=\"card-title\">\n    <Icon type=\"ios-pulse-strong\"></Icon>\n    盈利来源统计\n  </p>\n  <div ref=\"chart\" class=\"data-source-row\"></div>\n</Card>\n";
 
 /***/ }
 /******/ ]);
