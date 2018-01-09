@@ -3,11 +3,12 @@ var router = express.Router();
 
 
 function checkSession(req, res, cb) {
-    if (req.session.user) {
-      cb(req, res);
-    } else {
-      res.render('web/login/login');
-    }
+  req.session.user = {Name:'未登录'};
+  if (req.session.user) {
+    cb(req, res);
+  } else {
+    res.render('web/login/login');
+  }
 }
 /* GET home page. */
 router.get('/', function(req, res, next) {

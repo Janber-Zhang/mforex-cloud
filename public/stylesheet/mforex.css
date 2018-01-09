@@ -378,6 +378,84 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 .history-orders .list-table {
   margin: 0 20px;
 }
+.in-come {
+  padding: 20px 40px;
+  text-align: center;
+}
+.in-come-row {
+  margin: 20px auto 0;
+  width: 300px;
+}
+.in-come-row-title {
+  margin-right: 10px;
+}
+.in-come-row .ivu-input {
+  text-align: center;
+}
+.in-come-his .filter-bar {
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+}
+.in-come-his .filter-bar .filter-item {
+  width: 280px;
+}
+.in-come-his .filter-bar .filter-item .filter-item-name {
+  margin-right: 10px;
+}
+.in-come-his .list-table {
+  margin: 0 20px;
+}
+.out-come {
+  padding: 20px 40px;
+  text-align: center;
+}
+.out-come-tips {
+  width: 50%;
+  margin: 0 auto 20px;
+}
+.out-come-row {
+  margin: 10px auto 0;
+  width: 514px;
+  text-align: left;
+}
+.out-come-row-title {
+  margin-right: 10px;
+  display: inline-block;
+  width: 100px;
+}
+.out-come-his .filter-bar {
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+}
+.out-come-his .filter-bar .filter-item {
+  width: 280px;
+}
+.out-come-his .filter-bar .filter-item .filter-item-name {
+  margin-right: 10px;
+}
+.out-come-his .list-table {
+  margin: 0 20px;
+}
+.extract-commission {
+  padding: 20px 40px;
+  text-align: center;
+}
+.extract-commission-tips {
+  width: 50%;
+  margin: 0 auto 20px;
+}
+.extract-commission-row {
+  margin: 10px auto 0;
+  width: 300px;
+}
+.extract-commission-row-title {
+  margin-right: 10px;
+}
+.extract-commission-row .ivu-input {
+  text-align: center;
+}
 .infor-card-con {
   height: 100px;
 }

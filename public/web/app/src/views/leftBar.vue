@@ -1,6 +1,6 @@
 <template>
 	<div class="left-bar">
-		<i-Menu ref="sideMenu" :active-name="openStatus.activeName" @on-select="onchange" theme="dark" width="auto" :open-names="openStatus.openNames">
+		<i-Menu ref="sideMenu" :active-name="openStatus.activeName" :accordion="false" @on-select="onchange" theme="dark" width="auto" :open-names="openStatus.openNames">
 			<div class="left-bar-logo" @click="onchange('/')">mforex-cloud</div>
 			<Submenu v-for="submenuItem in menuList" :name="submenuItem.submenuName" :key="submenuItem.submenuName">
 				<template slot="title">
@@ -17,7 +17,7 @@ export default {
 	created(){
 		this.initLeftbar();
 	},
-	ready(){
+	mounted(){
 
 	},
 	data(){
@@ -26,12 +26,13 @@ export default {
 				{
 					submenu: '资金操作',
 					icon: 'social-usd',
-					submenuName: 'fundOption',
+					submenuName: 'capitalOperation',
 					items: [
 						{show : '账户入金',name : '/in_come'},
 						{show : '入金记录',name : '/in_come_his'},
 						{show : '账户出金',name : '/out_come'},
-						{show : '出金记录',name : '/out_come_his'}
+						{show : '出金记录',name : '/out_come_his'},
+						{show : '提取佣金',name : '/extract_commission'}
 					]
 				},
 				{

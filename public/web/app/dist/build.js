@@ -62,11 +62,11 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _index = __webpack_require__(43);
+	var _index = __webpack_require__(58);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _iview = __webpack_require__(47);
+	var _iview = __webpack_require__(62);
 
 	var _iview2 = _interopRequireDefault(_iview);
 
@@ -14678,24 +14678,50 @@
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _ = __webpack_require__(19);
-
-	var _2 = _interopRequireDefault(_);
-
-	var _historyOrders = __webpack_require__(22);
-
-	var _historyOrders2 = _interopRequireDefault(_historyOrders);
-
-	var _currentOrders = __webpack_require__(25);
-
-	var _currentOrders2 = _interopRequireDefault(_currentOrders);
-
-	var _homePage = __webpack_require__(28);
+	var _homePage = __webpack_require__(19);
 
 	var _homePage2 = _interopRequireDefault(_homePage);
 
+	var _ = __webpack_require__(34);
+
+	var _2 = _interopRequireDefault(_);
+
+	var _historyOrders = __webpack_require__(37);
+
+	var _historyOrders2 = _interopRequireDefault(_historyOrders);
+
+	var _currentOrders = __webpack_require__(40);
+
+	var _currentOrders2 = _interopRequireDefault(_currentOrders);
+
+	var _inCome = __webpack_require__(43);
+
+	var _inCome2 = _interopRequireDefault(_inCome);
+
+	var _inComeHis = __webpack_require__(46);
+
+	var _inComeHis2 = _interopRequireDefault(_inComeHis);
+
+	var _outCome = __webpack_require__(49);
+
+	var _outCome2 = _interopRequireDefault(_outCome);
+
+	var _outComeHis = __webpack_require__(52);
+
+	var _outComeHis2 = _interopRequireDefault(_outComeHis);
+
+	var _extractCommission = __webpack_require__(55);
+
+	var _extractCommission2 = _interopRequireDefault(_extractCommission);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// 出金记录
+
+	// 账户出金
+	// 账户入金
+	// 历史订单
+	// 主页
 	var routes = [{
 		path: '/',
 		component: _main2.default,
@@ -14709,10 +14735,28 @@
 			path: 'current_orders',
 			component: _currentOrders2.default
 		}, {
+			path: 'in_come',
+			component: _inCome2.default
+		}, {
+			path: 'in_come_his',
+			component: _inComeHis2.default
+		}, {
+			path: 'out_come',
+			component: _outCome2.default
+		}, {
+			path: 'out_come_his',
+			component: _outComeHis2.default
+		}, {
+			path: 'extract_commission',
+			component: _extractCommission2.default
+		}, {
 			path: '*',
 			component: _2.default
 		}]
-	}];
+	}]; // 出金记录
+	// 入金纪录
+	// 当前订单
+	// 未开放模块
 	exports.default = routes;
 
 /***/ },
@@ -15088,7 +15132,7 @@
 	});
 	// <template>
 	// 	<div class="left-bar">
-	// 		<i-Menu ref="sideMenu" :active-name="openStatus.activeName" @on-select="onchange" theme="dark" width="auto" :open-names="openStatus.openNames">
+	// 		<i-Menu ref="sideMenu" :active-name="openStatus.activeName" :accordion="false" @on-select="onchange" theme="dark" width="auto" :open-names="openStatus.openNames">
 	// 			<div class="left-bar-logo" @click="onchange('/')">mforex-cloud</div>
 	// 			<Submenu v-for="submenuItem in menuList" :name="submenuItem.submenuName" :key="submenuItem.submenuName">
 	// 				<template slot="title">
@@ -15105,14 +15149,14 @@
 		created: function created() {
 			this.initLeftbar();
 		},
-		ready: function ready() {},
+		mounted: function mounted() {},
 		data: function data() {
 			return {
 				menuList: [{
 					submenu: '资金操作',
 					icon: 'social-usd',
-					submenuName: 'fundOption',
-					items: [{ show: '账户入金', name: '/in_come' }, { show: '入金记录', name: '/in_come_his' }, { show: '账户出金', name: '/out_come' }, { show: '出金记录', name: '/out_come_his' }]
+					submenuName: 'capitalOperation',
+					items: [{ show: '账户入金', name: '/in_come' }, { show: '入金记录', name: '/in_come_his' }, { show: '账户出金', name: '/out_come' }, { show: '出金记录', name: '/out_come_his' }, { show: '提取佣金', name: '/extract_commission' }]
 				}, {
 					submenu: '数据统计',
 					icon: 'ios-box',
@@ -15191,7 +15235,7 @@
 /* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"left-bar\">\n\t<i-Menu ref=\"sideMenu\" :active-name=\"openStatus.activeName\" @on-select=\"onchange\" theme=\"dark\" width=\"auto\" :open-names=\"openStatus.openNames\">\n\t\t<div class=\"left-bar-logo\" @click=\"onchange('/')\">mforex-cloud</div>\n\t\t<Submenu v-for=\"submenuItem in menuList\" :name=\"submenuItem.submenuName\" :key=\"submenuItem.submenuName\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon :type=\"submenuItem.icon\"></Icon>\n\t\t\t\t{{submenuItem.submenu}}\n\t\t\t</template>\n\t\t\t<menu-item v-for=\"menuItem in submenuItem.items\" :name=\"menuItem.name\" :key=\"menuItem.name\">{{menuItem.show}}</menu-item>\n\t\t</Submenu>\n\t</i-Menu>\n</div>\n";
+	module.exports = "\n<div class=\"left-bar\">\n\t<i-Menu ref=\"sideMenu\" :active-name=\"openStatus.activeName\" :accordion=\"false\" @on-select=\"onchange\" theme=\"dark\" width=\"auto\" :open-names=\"openStatus.openNames\">\n\t\t<div class=\"left-bar-logo\" @click=\"onchange('/')\">mforex-cloud</div>\n\t\t<Submenu v-for=\"submenuItem in menuList\" :name=\"submenuItem.submenuName\" :key=\"submenuItem.submenuName\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon :type=\"submenuItem.icon\"></Icon>\n\t\t\t\t{{submenuItem.submenu}}\n\t\t\t</template>\n\t\t\t<menu-item v-for=\"menuItem in submenuItem.items\" :name=\"menuItem.name\" :key=\"menuItem.name\">{{menuItem.show}}</menu-item>\n\t\t</Submenu>\n\t</i-Menu>\n</div>\n";
 
 /***/ },
 /* 18 */
@@ -15207,417 +15251,8 @@
 	var __vue_styles__ = {}
 	__vue_script__ = __webpack_require__(20)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/error_pages/404.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(21)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-72f1c1f7/404.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 20 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	// <template>
-	//     <div class="error404">
-	//         <div class="error404-body-con">
-	//             <Card>
-	//                 <div class="error404-body-con-title">4<span><Icon size="230" type="ios-navigate-outline"></Icon></span>4</div>
-	//                 <p class="error404-body-con-message">暂未开放</p>
-	//                 <div class="error404-btn-con">
-	//                     <i-button @click="goHome" size="large" style="width: 200px;" type="text">返回首页</i-button>
-	//                     <i-button @click="backPage" size="large" style="width: 200px;margin-left: 40px;" type="primary">返回上一页</i-button>
-	//                 </div>
-	//             </Card>
-	//         </div>
-	//     </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	    name: 'Error404',
-	    methods: {
-	        backPage: function backPage() {
-	            this.$router.go(-1);
-	        },
-	        goHome: function goHome() {
-	            this.$router.push({ path: '/' });
-	        }
-	    }
-	};
-	// </script>
-
-/***/ },
-/* 21 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">暂未开放</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
-
-/***/ },
-/* 22 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(23)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/historyOrders.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(24)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-2075e40f/historyOrders.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 23 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="history-orders app-warp">
-	//     <div class="filter-bar" flex="main:left cross:center">
-	//       <div class="filter-item" flex="main:left cross:center">
-	//         <span class="filter-item-name">日期范围</span>
-	//         <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择日期范围" :value="filter_obj.date_range" style="width: 200px"></date-picker>
-	//       </div>
-	//       <div class="filter-item" flex="main:left cross:center">
-	//         <span class="filter-item-name">关键字</span>
-	//         <Input v-model="filter_obj.keys" style="width: 200px" placeholder="请输入查询关键字"></Input>
-	//       </div>
-	//       <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
-	//       <i-button @click="clearFilter()">清除</i-button>
-	//     </div>
-	//     <div class="list-table">
-	//       <i-table stripe :columns="table_columns" :data="data_list"></i-table>
-	//       <Page :total="pages.total" :current.sync="pages.page" :styles="pages.styles" :page-size="pages.page_size" :page-size-opts="pages.page_size_opts" placement="top" show-sizer show-total @on-change="pageChange" @on-page-size-change="pageSizeChange" v-if="!loading"></Page>
-	//     </div>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {
-	    this.getHistotyOrder();
-	  },
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      loading: false,
-	      table_columns: [],
-	      data_list: [],
-	      pages: {
-	        page_size_opts: [10, 25, 50, 100],
-	        page_size: 25,
-	        page: 1,
-	        total: 0,
-	        styles: {
-	          "margin": "20px auto"
-	        }
-	      },
-	      filter_obj: {
-	        date_range: [],
-	        keys: ''
-	      }
-	    };
-	  },
-
-	  methods: {
-	    getHistotyOrder: function getHistotyOrder() {
-	      var vm = this;
-	      this.loading = true;
-	      var param = {
-	        httpType: 'get',
-	        serviceUrl: 'GetDealedOrder',
-	        apiModule: 'basicAPI',
-	        domain: 'www.sohu.com',
-	        login: '4',
-	        page: this.pages.page,
-	        pageSize: this.pages.page_size
-	      };
-	      util.ajaxQuery(param, function (res) {
-	        if (res.code === '0') {
-	          vm.table_columns = [{ title: '订单号', key: '_Order' }, { title: '订单品种', key: 'Symbol' }, { title: '交易类型', key: 'Cmd' }, { title: '数量', key: 'Volume' }, { title: '开仓价格', key: 'OpenPrice' }, { title: '开仓时间', width: 150, key: 'OpenTime' }, { title: '平仓价格', key: 'ClosePrice' }, { title: '平仓时间', width: 150, key: 'CloseTime' }, { title: '利润', key: 'Profit' }];
-	          res.data.dealedorders.forEach(function (item) {
-	            item.OpenTime = DateFormat.format(new Date(item.OpenTime), 'yyyy-MM-dd hh:mm:ss');
-	            item.CloseTime = DateFormat.format(new Date(item.CloseTime), 'yyyy-MM-dd hh:mm:ss');
-	            switch (item.Cmd) {
-	              case 'Balance':
-	                if (item.Profit > 0) {
-	                  item.Cmd = '入金';
-	                } else {
-	                  item.Cms = '出金';
-	                }
-	                break;
-	              case 'Sell':
-	                item.Cmd = '卖出';
-	                break;
-	              default:
-	                console.log('other type');
-	            }
-	          });
-	          vm.pages.total = res.data.total;
-	          vm.data_list = res.data.dealedorders;
-	          vm.loading = false;
-	        } else {
-	          vm.$Message.error('服务错误');
-	        }
-	      });
-	    },
-	    handleDateChange: function handleDateChange(date_arr) {
-	      //选择日期后的回调
-	      this.filter_obj.date_range = date_arr;
-	    },
-	    pageChange: function pageChange(page) {
-	      this.getHistotyOrder();
-	    },
-	    pageSizeChange: function pageSizeChange(page_size) {
-	      this.pages.page_size = page_size;
-	      this.pages.page = 1;
-	      this.getHistotyOrder();
-	    },
-	    clearFilter: function clearFilter() {
-	      this.filter_obj = {
-	        date_range: [],
-	        keys: ''
-	      };
-	    },
-	    search: function search() {
-	      this.$Message.warning('暂未开放此功能');
-	    }
-	  },
-	  components: {},
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 24 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"history-orders app-warp\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">日期范围</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">关键字</span>\n      <Input v-model=\"filter_obj.keys\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n    </div>\n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
-
-/***/ },
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(26)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/currentOrders.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(27)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-abf0ba98/currentOrders.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 26 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="history-orders app-warp">
-	//     <div class="filter-bar" flex="main:left cross:center">
-	//       <div class="filter-item" flex="main:left cross:center">
-	//         <span class="filter-item-name">日期范围</span>
-	//         <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择日期范围" :value="filter_obj.date_range" style="width: 200px"></date-picker>
-	//       </div>
-	//       <div class="filter-item" flex="main:left cross:center">
-	//         <span class="filter-item-name">关键字</span>
-	//         <Input v-model="filter_obj.keys" style="width: 200px" placeholder="请输入查询关键字"></Input>
-	//       </div>
-	//       <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
-	//       <i-button @click="clearFilter()">清除</i-button>
-	//     </div>
-	//     <div class="list-table">
-	//       <i-table stripe :columns="table_columns" :data="data_list"></i-table>
-	//       <Page :total="pages.total" :current.sync="pages.page" :styles="pages.styles" :page-size="pages.page_size" :page-size-opts="pages.page_size_opts" placement="top" show-sizer show-total @on-change="pageChange" @on-page-size-change="pageSizeChange" v-if="!loading"></Page>
-	//     </div>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {
-	    this.getHistotyOrder();
-	  },
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      loading: false,
-	      table_columns: [],
-	      data_list: [],
-	      pages: {
-	        page_size_opts: [10, 25, 50, 100],
-	        page_size: 25,
-	        page: 1,
-	        total: 0,
-	        styles: {
-	          "margin": "20px auto"
-	        }
-	      },
-	      filter_obj: {
-	        date_range: [],
-	        keys: ''
-	      }
-	    };
-	  },
-
-	  methods: {
-	    getHistotyOrder: function getHistotyOrder() {
-	      var vm = this;
-	      this.loading = true;
-	      var param = {
-	        httpType: 'get',
-	        serviceUrl: 'GetDealedOrder',
-	        apiModule: 'basicAPI',
-	        domain: 'www.sohu.com',
-	        login: '4',
-	        page: this.pages.page,
-	        pageSize: this.pages.page_size
-	      };
-	      util.ajaxQuery(param, function (res) {
-	        if (res.code === '0') {
-	          vm.table_columns = [{ title: '订单号', key: '_Order' }, { title: '订单品种', key: 'Symbol' }, { title: '交易类型', key: 'Cmd' }, { title: '数量', key: 'Volume' }, { title: '开仓价格', key: 'OpenPrice' }, { title: '开仓时间', width: 150, key: 'OpenTime' }, { title: '平仓价格', key: 'ClosePrice' }, { title: '平仓时间', width: 150, key: 'CloseTime' }, { title: '利润', key: 'Profit' }];
-	          res.data.dealedorders.forEach(function (item) {
-	            item.OpenTime = DateFormat.format(new Date(item.OpenTime), 'yyyy-MM-dd hh:mm:ss');
-	            item.CloseTime = DateFormat.format(new Date(item.CloseTime), 'yyyy-MM-dd hh:mm:ss');
-	            switch (item.Cmd) {
-	              case 'Balance':
-	                if (item.Profit > 0) {
-	                  item.Cmd = '入金';
-	                } else {
-	                  item.Cms = '出金';
-	                }
-	                break;
-	              case 'Sell':
-	                item.Cmd = '卖出';
-	                break;
-	              default:
-	                console.log('other type');
-	            }
-	          });
-	          vm.pages.total = res.data.total;
-	          vm.data_list = res.data.dealedorders;
-	          vm.loading = false;
-	        } else {
-	          vm.$Message.error('服务错误');
-	        }
-	      });
-	    },
-	    handleDateChange: function handleDateChange(date_arr) {
-	      //选择日期后的回调
-	      this.filter_obj.date_range = date_arr;
-	    },
-	    pageChange: function pageChange(page) {
-	      this.getHistotyOrder();
-	    },
-	    pageSizeChange: function pageSizeChange(page_size) {
-	      this.pages.page_size = page_size;
-	      this.pages.page = 1;
-	      this.getHistotyOrder();
-	    },
-	    clearFilter: function clearFilter() {
-	      this.filter_obj = {
-	        date_range: [],
-	        keys: ''
-	      };
-	    },
-	    search: function search() {
-	      this.$Message.warning('暂未开放此功能');
-	    }
-	  },
-	  components: {},
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 27 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"history-orders app-warp\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">日期范围</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">关键字</span>\n      <Input v-model=\"filter_obj.keys\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n    </div>\n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
-
-/***/ },
-/* 28 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(29)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/pages/homePage.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(42)
+	__vue_template__ = __webpack_require__(33)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15642,7 +15277,7 @@
 	})()}
 
 /***/ },
-/* 29 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15651,19 +15286,19 @@
 	  value: true
 	});
 
-	var _inforCard = __webpack_require__(30);
+	var _inforCard = __webpack_require__(21);
 
 	var _inforCard2 = _interopRequireDefault(_inforCard);
 
-	var _userInfor = __webpack_require__(33);
+	var _userInfor = __webpack_require__(24);
 
 	var _userInfor2 = _interopRequireDefault(_userInfor);
 
-	var _dataStatistics = __webpack_require__(36);
+	var _dataStatistics = __webpack_require__(27);
 
 	var _dataStatistics2 = _interopRequireDefault(_dataStatistics);
 
-	var _incomeStatistics = __webpack_require__(39);
+	var _incomeStatistics = __webpack_require__(30);
 
 	var _incomeStatistics2 = _interopRequireDefault(_incomeStatistics);
 
@@ -15740,15 +15375,15 @@
 	};
 
 /***/ },
-/* 30 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(31)
+	__vue_script__ = __webpack_require__(22)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/components/inforCard.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(32)
+	__vue_template__ = __webpack_require__(23)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15773,7 +15408,7 @@
 	})()}
 
 /***/ },
-/* 31 */
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15898,21 +15533,21 @@
 	// </script>
 
 /***/ },
-/* 32 */
+/* 23 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<Card :padding=\"0\">\n    <div class=\"infor-card-con\" flex=\"main:justify corss:center\">\n        <div class=\"infor-card-icon-con\" :style=\"{backgroundColor: color, color: 'white'}\" flex=\"dir:top main:center cross:center\">\n            <Icon :type=\"iconType\" :size=\"iconSize\"></Icon>\n        </div>\n        <div class=\"infor-card-count-con\" flex=\"dir:top main:center\">\n            <p :style=\"{textAlign: 'center', color: color, fontSize: countSize, fontWeight: '800'}\"><span v-cloak :id=\"idName\">{{ startVal }}</span><span>{{ unit }}</span></p>\n            <p class=\"infor-intro-text\">{{ introText }}</p>\n        </div>\n    </div>\n</Card>\n";
 
 /***/ },
-/* 33 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(34)
+	__vue_script__ = __webpack_require__(25)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/components/userInfor.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(35)
+	__vue_template__ = __webpack_require__(26)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15937,7 +15572,7 @@
 	})()}
 
 /***/ },
-/* 34 */
+/* 25 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15958,7 +15593,7 @@
 	//           <Row class-name="made-child-con-middle" type="flex" align="middle">
 	//             <div>
 	//               <b class="card-user-infor-name">{{userName}}</b>
-	//               <p>{{userTitle}}</p>
+	//               <p>{{userTitle || 'test_001@mforex.com'}}</p>
 	//               <div class="status not_authentication" v-bind:class="{is_authentication:isAuthentication}"></div>
 	//             </div>
 	//           </Row>
@@ -16007,21 +15642,21 @@
 	};
 
 /***/ },
-/* 35 */
+/* 26 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"user-infor-card\">\n  <Card>\n    <Row type=\"flex\" class=\"user-infor\">\n      <Col span=\"8\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n            <img class=\"avator-img\" :src=\"avatorPath\" />\n        </Row>\n      </Col>\n      <Col span=\"16\" style=\"padding-left:6px;\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n          <div>\n            <b class=\"card-user-infor-name\">{{userName}}</b>\n            <p>{{userTitle}}</p>\n            <div class=\"status not_authentication\" v-bind:class=\"{is_authentication:isAuthentication}\"></div>\n          </div>\n        </Row>\n      </Col>\n    </Row>\n    <div class=\"line-gray\"></div>\n    <Row class=\"margin-top-8\" v-for=\"item in otherInfo\" :key=\"item.value\">\n      <Col span=\"8\"><p class=\"notwrap\">{{item.desc + ':'}}</p></Col>\n      <Col span=\"16\" class=\"padding-left-8\">{{item.value}}</Col>\n    </Row>\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"user-infor-card\">\n  <Card>\n    <Row type=\"flex\" class=\"user-infor\">\n      <Col span=\"8\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n            <img class=\"avator-img\" :src=\"avatorPath\" />\n        </Row>\n      </Col>\n      <Col span=\"16\" style=\"padding-left:6px;\">\n        <Row class-name=\"made-child-con-middle\" type=\"flex\" align=\"middle\">\n          <div>\n            <b class=\"card-user-infor-name\">{{userName}}</b>\n            <p>{{userTitle || 'test_001@mforex.com'}}</p>\n            <div class=\"status not_authentication\" v-bind:class=\"{is_authentication:isAuthentication}\"></div>\n          </div>\n        </Row>\n      </Col>\n    </Row>\n    <div class=\"line-gray\"></div>\n    <Row class=\"margin-top-8\" v-for=\"item in otherInfo\" :key=\"item.value\">\n      <Col span=\"8\"><p class=\"notwrap\">{{item.desc + ':'}}</p></Col>\n      <Col span=\"16\" class=\"padding-left-8\">{{item.value}}</Col>\n    </Row>\n  </Card>\n</div>\n";
 
 /***/ },
-/* 36 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(37)
+	__vue_script__ = __webpack_require__(28)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/components/dataStatistics.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(38)
+	__vue_template__ = __webpack_require__(29)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -16046,7 +15681,7 @@
 	})()}
 
 /***/ },
-/* 37 */
+/* 28 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16165,21 +15800,21 @@
 	};
 
 /***/ },
-/* 38 */
+/* 29 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<Card class=\"data-statistics\">\n  <p slot=\"title\" class=\"card-title\">\n    <Icon type=\"ios-pulse-strong\"></Icon>\n    资金变化统计\n  </p>\n  <div ref=\"chart\" class=\"data-source-row\"></div>\n</Card>\n";
 
 /***/ },
-/* 39 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(40)
+	__vue_script__ = __webpack_require__(31)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/components/incomeStatistics.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(41)
+	__vue_template__ = __webpack_require__(32)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -16204,7 +15839,7 @@
 	})()}
 
 /***/ },
-/* 40 */
+/* 31 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16286,19 +15921,968 @@
 	};
 
 /***/ },
-/* 41 */
+/* 32 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<Card class=\"income-statistics\">\n  <p slot=\"title\" class=\"card-title\">\n    <Icon type=\"ios-pulse-strong\"></Icon>\n    盈利来源统计\n  </p>\n  <div ref=\"chart\" class=\"data-source-row\"></div>\n</Card>\n";
 
 /***/ },
-/* 42 */
+/* 33 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"home-page\">\n  <Alert v-for=\"(notice, index) in notice_data\" :key=\"notice.msg\" v-if=\"notice_index.indexOf(index)>-1\" banner closable show-icon :type=\"notice.type\">{{notice.msg}}</Alert>\n  <Row :gutter=\"12\" style=\"margin-left:0; margin-right:0;overflow:hidden;\">\n    <Col span=\"8\" style=\"padding-left:0;\">\n      <Row>\n        <user-infor :user-name=\"userInfo.Name\" :user-title=\"userInfo.Email\"></user-infor>\n      </Row>\n      <Row class-name=\"margin-top-10\">\n        <income-statistics></income-statistics>\n      </Row>\n    </Col> \n    <Col span=\"16\" style=\"padding-right:0;\">\n      <Row :gutter=\"12\">\n        <Col :span=\"infor.span\" v-for=\"infor in infor_card_data\" :key=\"infor.idName\">\n          <infor-card\n            :id-name=\"infor.idName\"\n            :end-val=\"infor.value\"\n            :icon-type=\"infor.iconType\"\n            :color=\"infor.color\"\n            :intro-text=\"infor.title\"\n            ></infor-card>\n        </Col>\n      </Row>\n      <Row class-name=\"margin-top-10\">\n        <data-statistics icon-type=\"arrow-swap\" title=\"数据来源统计\" :source-data=\"{}\"></data-statistics>\n      </Row>\n    </Col> \n  </Row>\n  \n</div>\n";
 
 /***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(35)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/error_pages/404.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(36)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-72f1c1f7/404.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="error404">
+	//         <div class="error404-body-con">
+	//             <Card>
+	//                 <div class="error404-body-con-title">4<span><Icon size="230" type="ios-navigate-outline"></Icon></span>4</div>
+	//                 <p class="error404-body-con-message">暂未开放</p>
+	//                 <div class="error404-btn-con">
+	//                     <i-button @click="goHome" size="large" style="width: 200px;" type="text">返回首页</i-button>
+	//                     <i-button @click="backPage" size="large" style="width: 200px;margin-left: 40px;" type="primary">返回上一页</i-button>
+	//                 </div>
+	//             </Card>
+	//         </div>
+	//     </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	    name: 'Error404',
+	    methods: {
+	        backPage: function backPage() {
+	            this.$router.go(-1);
+	        },
+	        goHome: function goHome() {
+	            this.$router.push({ path: '/' });
+	        }
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 36 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">暂未开放</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(38)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/data_statistics/historyOrders.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(39)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-2f74ee98/historyOrders.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 38 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="history-orders app-warp">
+	//     <div class="filter-bar" flex="main:left cross:center">
+	//       <div class="filter-item" flex="main:left cross:center">
+	//         <span class="filter-item-name">日期范围</span>
+	//         <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择日期范围" :value="filter_obj.date_range" style="width: 200px"></date-picker>
+	//       </div>
+	//       <div class="filter-item" flex="main:left cross:center">
+	//         <span class="filter-item-name">关键字</span>
+	//         <Input v-model="filter_obj.keys" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//       </div>
+	//       <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+	//       <i-button @click="clearFilter()">清除</i-button>
+	//     </div>
+	//     <div class="list-table">
+	//       <i-table stripe :columns="table_columns" :data="data_list"></i-table>
+	//       <Page :total="pages.total" :current.sync="pages.page" :styles="pages.styles" :page-size="pages.page_size" :page-size-opts="pages.page_size_opts" placement="top" show-sizer show-total @on-change="pageChange" @on-page-size-change="pageSizeChange" v-if="!loading"></Page>
+	//     </div>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.getHistotyOrder();
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      loading: false,
+	      table_columns: [],
+	      data_list: [],
+	      pages: {
+	        page_size_opts: [10, 25, 50, 100],
+	        page_size: 25,
+	        page: 1,
+	        total: 0,
+	        styles: {
+	          "margin": "20px auto"
+	        }
+	      },
+	      filter_obj: {
+	        date_range: [],
+	        keys: ''
+	      }
+	    };
+	  },
+
+	  methods: {
+	    getHistotyOrder: function getHistotyOrder() {
+	      var vm = this;
+	      this.loading = true;
+	      var param = {
+	        httpType: 'get',
+	        serviceUrl: 'GetDealedOrder',
+	        apiModule: 'basicAPI',
+	        domain: 'www.sohu.com',
+	        login: '4',
+	        page: this.pages.page,
+	        pageSize: this.pages.page_size
+	      };
+	      util.ajaxQuery(param, function (res) {
+	        if (res.code === '0') {
+	          vm.table_columns = [{ title: '订单号', key: '_Order' }, { title: '订单品种', key: 'Symbol' }, { title: '交易类型', key: 'Cmd' }, { title: '数量', key: 'Volume' }, { title: '开仓价格', key: 'OpenPrice' }, { title: '开仓时间', width: 150, key: 'OpenTime' }, { title: '平仓价格', key: 'ClosePrice' }, { title: '平仓时间', width: 150, key: 'CloseTime' }, { title: '利润', key: 'Profit' }];
+	          res.data.dealedorders.forEach(function (item) {
+	            item.OpenTime = DateFormat.format(new Date(item.OpenTime), 'yyyy-MM-dd hh:mm:ss');
+	            item.CloseTime = DateFormat.format(new Date(item.CloseTime), 'yyyy-MM-dd hh:mm:ss');
+	            switch (item.Cmd) {
+	              case 'Balance':
+	                if (item.Profit > 0) {
+	                  item.Cmd = '入金';
+	                } else {
+	                  item.Cms = '出金';
+	                }
+	                break;
+	              case 'Sell':
+	                item.Cmd = '卖出';
+	                break;
+	              default:
+	                console.log('other type');
+	            }
+	          });
+	          vm.pages.total = res.data.total;
+	          vm.data_list = res.data.dealedorders;
+	          vm.loading = false;
+	        } else {
+	          vm.$Message.error('服务错误');
+	        }
+	      });
+	    },
+	    handleDateChange: function handleDateChange(date_arr) {
+	      //选择日期后的回调
+	      this.filter_obj.date_range = date_arr;
+	    },
+	    pageChange: function pageChange(page) {
+	      this.getHistotyOrder();
+	    },
+	    pageSizeChange: function pageSizeChange(page_size) {
+	      this.pages.page_size = page_size;
+	      this.pages.page = 1;
+	      this.getHistotyOrder();
+	    },
+	    clearFilter: function clearFilter() {
+	      this.filter_obj = {
+	        date_range: [],
+	        keys: ''
+	      };
+	    },
+	    search: function search() {
+	      this.$Message.warning('暂未开放此功能');
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 39 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"history-orders app-warp\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">日期范围</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">关键字</span>\n      <Input v-model=\"filter_obj.keys\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n    </div>\n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
+
+/***/ },
+/* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(41)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/data_statistics/currentOrders.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(42)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-8df2a586/currentOrders.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="history-orders app-warp">
+	//     <div class="filter-bar" flex="main:left cross:center">
+	//       <div class="filter-item" flex="main:left cross:center">
+	//         <span class="filter-item-name">日期范围</span>
+	//         <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择日期范围" :value="filter_obj.date_range" style="width: 200px"></date-picker>
+	//       </div>
+	//       <div class="filter-item" flex="main:left cross:center">
+	//         <span class="filter-item-name">关键字</span>
+	//         <Input v-model="filter_obj.keys" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//       </div>
+	//       <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+	//       <i-button @click="clearFilter()">清除</i-button>
+	//     </div>
+	//     <div class="list-table">
+	//       <i-table stripe :columns="table_columns" :data="data_list"></i-table>
+	//       <Page :total="pages.total" :current.sync="pages.page" :styles="pages.styles" :page-size="pages.page_size" :page-size-opts="pages.page_size_opts" placement="top" show-sizer show-total @on-change="pageChange" @on-page-size-change="pageSizeChange" v-if="!loading"></Page>
+	//     </div>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.getHistotyOrder();
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      loading: false,
+	      table_columns: [],
+	      data_list: [],
+	      pages: {
+	        page_size_opts: [10, 25, 50, 100],
+	        page_size: 25,
+	        page: 1,
+	        total: 0,
+	        styles: {
+	          "margin": "20px auto"
+	        }
+	      },
+	      filter_obj: {
+	        date_range: [],
+	        keys: ''
+	      }
+	    };
+	  },
+
+	  methods: {
+	    getHistotyOrder: function getHistotyOrder() {
+	      var vm = this;
+	      this.loading = true;
+	      var param = {
+	        httpType: 'get',
+	        serviceUrl: 'GetDealedOrder',
+	        apiModule: 'basicAPI',
+	        domain: 'www.sohu.com',
+	        login: '4',
+	        page: this.pages.page,
+	        pageSize: this.pages.page_size
+	      };
+	      util.ajaxQuery(param, function (res) {
+	        if (res.code === '0') {
+	          vm.table_columns = [{ title: '订单号', key: '_Order' }, { title: '订单品种', key: 'Symbol' }, { title: '交易类型', key: 'Cmd' }, { title: '数量', key: 'Volume' }, { title: '开仓价格', key: 'OpenPrice' }, { title: '开仓时间', width: 150, key: 'OpenTime' }, { title: '平仓价格', key: 'ClosePrice' }, { title: '平仓时间', width: 150, key: 'CloseTime' }, { title: '利润', key: 'Profit' }];
+	          res.data.dealedorders.forEach(function (item) {
+	            item.OpenTime = DateFormat.format(new Date(item.OpenTime), 'yyyy-MM-dd hh:mm:ss');
+	            item.CloseTime = DateFormat.format(new Date(item.CloseTime), 'yyyy-MM-dd hh:mm:ss');
+	            switch (item.Cmd) {
+	              case 'Balance':
+	                if (item.Profit > 0) {
+	                  item.Cmd = '入金';
+	                } else {
+	                  item.Cms = '出金';
+	                }
+	                break;
+	              case 'Sell':
+	                item.Cmd = '卖出';
+	                break;
+	              default:
+	                console.log('other type');
+	            }
+	          });
+	          vm.pages.total = res.data.total;
+	          vm.data_list = res.data.dealedorders;
+	          vm.loading = false;
+	        } else {
+	          vm.$Message.error('服务错误');
+	        }
+	      });
+	    },
+	    handleDateChange: function handleDateChange(date_arr) {
+	      //选择日期后的回调
+	      this.filter_obj.date_range = date_arr;
+	    },
+	    pageChange: function pageChange(page) {
+	      this.getHistotyOrder();
+	    },
+	    pageSizeChange: function pageSizeChange(page_size) {
+	      this.pages.page_size = page_size;
+	      this.pages.page = 1;
+	      this.getHistotyOrder();
+	    },
+	    clearFilter: function clearFilter() {
+	      this.filter_obj = {
+	        date_range: [],
+	        keys: ''
+	      };
+	    },
+	    search: function search() {
+	      this.$Message.warning('暂未开放此功能');
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 42 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"history-orders app-warp\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">日期范围</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">关键字</span>\n      <Input v-model=\"filter_obj.keys\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n    </div>\n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
+
+/***/ },
 /* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(44)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/capital_operation/inCome.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(45)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-53e9583c/inCome.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 44 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="in-come app-warp">
+	//     <div>
+	//       <img src="/images/unionpay.png" alt="">
+	//     </div>
+	//     <div class="in-come-row">
+	//       <span class="in-come-row-title">支付渠道</span>
+	//       <Select v-model="pay_type" style="width:200px">
+	//         <Option v-for="item in pay_options" :value="item" :key="item">{{ item }}</Option>
+	//       </Select>
+	//     </div>
+	//     <div class="in-come-row">
+	//       <span class="in-come-row-title">入金额度</span>
+	//       <Input v-model="value" placeholder="输入入金额度" style="width: 200px;text-align: center;"></Input>
+	//     </div>
+	//     <div class="in-come-row">
+	//       <Button type="primary" @click="submit" style="width: 261px;">提交</Button>
+	//     </div>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  mounted: function mounted() {},
+	  data: function data() {
+	    return {
+	      pay_type: '',
+	      pay_options: ['聪付网银'],
+	      value: ''
+	    };
+	  },
+
+	  methods: {
+	    submit: function submit() {
+	      this.$Message.success('操作成功！');
+	      this.$router.push({ path: 'in_come_his' });
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 45 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"in-come app-warp\">\n  <div>\n    <img src=\"/images/unionpay.png\" alt=\"\">\n  </div>\n  <div class=\"in-come-row\">\n    <span class=\"in-come-row-title\">支付渠道</span>\n    <Select v-model=\"pay_type\" style=\"width:200px\">\n      <Option v-for=\"item in pay_options\" :value=\"item\" :key=\"item\">{{ item }}</Option>\n    </Select>\n  </div>\n  <div class=\"in-come-row\">\n    <span class=\"in-come-row-title\">入金额度</span>\n    <Input v-model=\"value\" placeholder=\"输入入金额度\" style=\"width: 200px;text-align: center;\"></Input>\n  </div>\n  <div class=\"in-come-row\">\n    <Button type=\"primary\" @click=\"submit\" style=\"width: 261px;\">提交</Button>\n  </div>\n</div>\n";
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(47)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/capital_operation/inComeHis.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(48)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-4d93b100/inComeHis.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 47 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="in-come-his app-warp">
+	//     <div class="filter-bar" flex="main:left cross:center">
+	//       <div class="filter-item" flex="main:left cross:center">
+	//         <span class="filter-item-name">关键字</span>
+	//         <Input v-model="search_key" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//       </div>
+	//       <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+	//       <i-button @click="clearFilter()">清除</i-button>
+	//     </div>
+	//     <div class="list-table">
+	//       <i-table stripe :columns="table_columns" :data="data_list"></i-table>
+	//       <Page :total="pages.total" :current.sync="pages.page" :styles="pages.styles" :page-size="pages.page_size" :page-size-opts="pages.page_size_opts" placement="top" show-sizer show-total @on-change="pageChange" @on-page-size-change="pageSizeChange" v-if="!loading"></Page>
+	//     </div>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  mounted: function mounted() {
+	    this.init();
+	  },
+	  data: function data() {
+	    return {
+	      loading: false,
+	      table_columns: [],
+	      data_list: [],
+	      pages: {
+	        page_size_opts: [10, 25, 50, 100],
+	        page_size: 25,
+	        page: 1,
+	        total: 0,
+	        styles: {
+	          "margin": "20px auto"
+	        }
+	      },
+	      search_key: ''
+	    };
+	  },
+
+	  methods: {
+	    init: function init() {
+	      this.table_columns = [{ title: '入金数量', key: 'count' }, { title: '转账金额', key: 'amounts' }, { title: '币种', key: 'type' }, { title: '订单创建时间', width: 200, key: 'created' }, { title: '订单状态', key: 'pay_status' }, { title: '入金状态', key: 'state' }];
+	      var i = 0;
+	      while (i < 10) {
+	        this.data_list.push({
+	          count: '100',
+	          amounts: '100',
+	          type: 'USD',
+	          created: '2017-12-14 15:27:00',
+	          pay_status: '未支付',
+	          state: '未入金'
+	        });
+	        i++;
+	      }
+	    },
+	    getList: function getList() {},
+	    pageSizeChange: function pageSizeChange() {},
+	    pageChange: function pageChange() {},
+	    search: function search() {},
+	    clearFilter: function clearFilter() {}
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 48 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"in-come-his app-warp\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">关键字</span>\n      <Input v-model=\"search_key\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n    </div>\n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
+
+/***/ },
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(50)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/capital_operation/outCome.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(51)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-177c8d29/outCome.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 50 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="out-come app-warp">
+	//     <div>
+	//       <img src="/images/unionpay.png" alt="">
+	//       <p class="out-come-tips">客户可以在自己的任何一张银联卡上在中国的任何一个城市按照当天的汇率取得汇款。</p>
+	//     </div>
+	//     <div class="out-come-row">
+	//       <span class="out-come-row-title">收款人姓名</span>
+	//       <Input v-model="form_data.recive_name" disabled placeholder="输入收款人姓名..." style="width: 400px;text-align: center;"></Input>
+	//     </div>
+	//     <div class="out-come-row">
+	//       <span class="out-come-row-title">银联卡卡号</span>
+	//       <Input v-model="form_data.recive_card" disabled placeholder="输入银联卡卡号..." style="width: 400px;text-align: center;"></Input>
+	//     </div>
+	//     <div class="out-come-row">
+	//       <span class="out-come-row-title">开户行银行全称</span>
+	//       <Input v-model="form_data.recive_bank" disabled placeholder="输入开户行银行全称..." style="width: 400px;text-align: center;"></Input>
+	//     </div>
+	//     <div class="out-come-row">
+	//       <span class="out-come-row-title">开户行支行全称</span>
+	//       <Input v-model="form_data.recive_bank_branch" disabled placeholder="输入开户行支行全称..." style="width: 400px;text-align: center;"></Input>
+	//     </div>
+	//     <div class="out-come-row">
+	//       <span class="out-come-row-title">联系电话</span>
+	//       <Input v-model="form_data.phone" disabled placeholder="输入联系电话..." style="width: 400px;text-align: center;"></Input>
+	//     </div>
+	//     <div class="out-come-row">
+	//       <span class="out-come-row-title">身份证号</span>
+	//       <Input v-model="form_data.id_card" disabled placeholder="输入身份证号码..." style="width: 400px;text-align: center;"></Input>
+	//     </div>
+	//     <div class="out-come-row">
+	//       <span class="out-come-row-title">金额</span>
+	//       <Input v-model="form_data.amount" placeholder="请输入金额..." style="width: 400px;text-align: center;"></Input>
+	//     </div>
+	//     <div class="out-come-row">
+	//       <span class="out-come-row-title">备注</span>
+	//       <Input v-model="form_data.more_info" type="textarea" :rows="4" placeholder="请输入备注..." style="width: 400px;text-align: center;"></Input>
+	//     </div>
+	//     <Button type="primary" @click="submit" style="width: 150px; margin-top: 20px">确认提交</Button>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  mounted: function mounted() {},
+	  data: function data() {
+	    return {
+	      form_data: {
+	        recive_name: '王二',
+	        recive_card: '6227003819008393271',
+	        recive_bank: '中国建设银行',
+	        recive_bank_branch: '中国建设银行春熙路分行',
+	        phone: '18200115617',
+	        id_card: '510723197709102073',
+	        amount: '1000',
+	        more_info: '速度出金！！！'
+	      }
+	    };
+	  },
+
+	  methods: {
+	    submit: function submit() {
+	      this.$Message.success('操作成功！');
+	      this.$router.push({ path: 'out_come_his' });
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 51 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"out-come app-warp\">\n  <div>\n    <img src=\"/images/unionpay.png\" alt=\"\">\n    <p class=\"out-come-tips\">客户可以在自己的任何一张银联卡上在中国的任何一个城市按照当天的汇率取得汇款。</p>\n  </div>\n  <div class=\"out-come-row\">\n    <span class=\"out-come-row-title\">收款人姓名</span>\n    <Input v-model=\"form_data.recive_name\" disabled placeholder=\"输入收款人姓名...\" style=\"width: 400px;text-align: center;\"></Input>\n  </div>\n  <div class=\"out-come-row\">\n    <span class=\"out-come-row-title\">银联卡卡号</span>\n    <Input v-model=\"form_data.recive_card\" disabled placeholder=\"输入银联卡卡号...\" style=\"width: 400px;text-align: center;\"></Input>\n  </div>\n  <div class=\"out-come-row\">\n    <span class=\"out-come-row-title\">开户行银行全称</span>\n    <Input v-model=\"form_data.recive_bank\" disabled placeholder=\"输入开户行银行全称...\" style=\"width: 400px;text-align: center;\"></Input>\n  </div>\n  <div class=\"out-come-row\">\n    <span class=\"out-come-row-title\">开户行支行全称</span>\n    <Input v-model=\"form_data.recive_bank_branch\" disabled placeholder=\"输入开户行支行全称...\" style=\"width: 400px;text-align: center;\"></Input>\n  </div>\n  <div class=\"out-come-row\">\n    <span class=\"out-come-row-title\">联系电话</span>\n    <Input v-model=\"form_data.phone\" disabled placeholder=\"输入联系电话...\" style=\"width: 400px;text-align: center;\"></Input>\n  </div>\n  <div class=\"out-come-row\">\n    <span class=\"out-come-row-title\">身份证号</span>\n    <Input v-model=\"form_data.id_card\" disabled placeholder=\"输入身份证号码...\" style=\"width: 400px;text-align: center;\"></Input>\n  </div>\n  <div class=\"out-come-row\">\n    <span class=\"out-come-row-title\">金额</span>\n    <Input v-model=\"form_data.amount\" placeholder=\"请输入金额...\" style=\"width: 400px;text-align: center;\"></Input>\n  </div>\n  <div class=\"out-come-row\">\n    <span class=\"out-come-row-title\">备注</span>\n    <Input v-model=\"form_data.more_info\" type=\"textarea\" :rows=\"4\" placeholder=\"请输入备注...\" style=\"width: 400px;text-align: center;\"></Input>\n  </div>\n  <Button type=\"primary\" @click=\"submit\" style=\"width: 150px; margin-top: 20px\">确认提交</Button>\n</div>\n";
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(53)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/capital_operation/outComeHis.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(54)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-702e94d9/outComeHis.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 53 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="out-come-his app-warp">
+	//     <div class="filter-bar" flex="main:left cross:center">
+	//       <div class="filter-item" flex="main:left cross:center">
+	//         <span class="filter-item-name">关键字</span>
+	//         <Input v-model="search_key" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//       </div>
+	//       <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+	//       <i-button @click="clearFilter()">清除</i-button>
+	//     </div>
+	//     <div class="list-table">
+	//       <i-table stripe :columns="table_columns" :data="data_list"></i-table>
+	//       <Page :total="pages.total" :current.sync="pages.page" :styles="pages.styles" :page-size="pages.page_size" :page-size-opts="pages.page_size_opts" placement="top" show-sizer show-total @on-change="pageChange" @on-page-size-change="pageSizeChange" v-if="!loading"></Page>
+	//     </div>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  mounted: function mounted() {
+	    this.init();
+	  },
+	  data: function data() {
+	    return {
+	      loading: false,
+	      table_columns: [],
+	      data_list: [],
+	      pages: {
+	        page_size_opts: [10, 25, 50, 100],
+	        page_size: 25,
+	        page: 1,
+	        total: 0,
+	        styles: {
+	          "margin": "20px auto"
+	        }
+	      },
+	      search_key: ''
+	    };
+	  },
+
+	  methods: {
+	    init: function init() {
+	      this.table_columns = [{ title: '金额', width: 100, key: 'amounts' }, { title: '申请时间', key: 'created' }, { title: '审核备注', key: 'approval_info' }, { title: '转账时间', key: 'transfer_time' }, { title: '转账金额', width: 100, key: 'transfer_amounts' }, { title: '转账流水号', key: 'transfer_id' }, { title: '状态', width: 100, key: 'status' }, { title: '操作', width: 100, key: 'handle_his' }];
+	      var i = 0;
+	      while (i < 10) {
+	        this.data_list.push({
+	          amounts: '100',
+	          created: '2017-12-14 15:27:00',
+	          approval_info: '可以出金',
+	          transfer_time: '2017-12-14 15:28:00',
+	          transfer_amounts: '100',
+	          transfer_id: '1900283281237521',
+	          status: '已审核',
+	          handle_his: '执行记录'
+	        });
+	        i++;
+	      }
+	    },
+	    getList: function getList() {},
+	    pageSizeChange: function pageSizeChange() {},
+	    pageChange: function pageChange() {},
+	    search: function search() {},
+	    clearFilter: function clearFilter() {}
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 54 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"out-come-his app-warp\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">关键字</span>\n      <Input v-model=\"search_key\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n    </div>\n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
+
+/***/ },
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(56)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/capital_operation/extractCommission.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(57)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-6e5a0243/extractCommission.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 56 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="extract-commission app-warp">
+	//     <div>
+	//       <img src="/images/unionpay.png" alt="">
+	//       <p class="extract-commission-tips">客户可以将佣金提取到mt4平台中</p>
+	//     </div>
+	//     <div class="in-come-row">
+	//       <span class="in-come-row-title">可提取佣金</span>
+	//       <Input v-model="total" placeholder="输入入金额度" readonly disabled style="width: 200px;text-align: center;"></Input>
+	//     </div>
+	//     <div class="in-come-row">
+	//       <span class="in-come-row-title">提取佣金数</span>
+	//       <Input v-model="value" placeholder="输入入金额度" style="width: 200px;text-align: center;"></Input>
+	//     </div>
+	//     <div class="in-come-row">
+	//       <Button type="primary" @click="submit" style="width: 261px;">提交</Button>
+	//     </div>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  mounted: function mounted() {},
+	  data: function data() {
+	    return {
+	      total: 10200,
+	      value: ''
+	    };
+	  },
+
+	  methods: {
+	    submit: function submit() {
+	      this.$Message.success('操作成功！');
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 57 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"extract-commission app-warp\">\n  <div>\n    <img src=\"/images/unionpay.png\" alt=\"\">\n    <p class=\"extract-commission-tips\">客户可以将佣金提取到mt4平台中</p>\n  </div>\n  <div class=\"in-come-row\">\n    <span class=\"in-come-row-title\">可提取佣金</span>\n    <Input v-model=\"total\" placeholder=\"输入入金额度\" readonly disabled style=\"width: 200px;text-align: center;\"></Input>\n  </div>\n  <div class=\"in-come-row\">\n    <span class=\"in-come-row-title\">提取佣金数</span>\n    <Input v-model=\"value\" placeholder=\"输入入金额度\" style=\"width: 200px;text-align: center;\"></Input>\n  </div>\n  <div class=\"in-come-row\">\n    <Button type=\"primary\" @click=\"submit\" style=\"width: 261px;\">提交</Button>\n  </div>\n</div>\n";
+
+/***/ },
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16315,15 +16899,15 @@
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _getters = __webpack_require__(44);
+	var _getters = __webpack_require__(59);
 
 	var _getters2 = _interopRequireDefault(_getters);
 
-	var _mutations = __webpack_require__(45);
+	var _mutations = __webpack_require__(60);
 
 	var _mutations2 = _interopRequireDefault(_mutations);
 
-	var _actions = __webpack_require__(46);
+	var _actions = __webpack_require__(61);
 
 	var _actions2 = _interopRequireDefault(_actions);
 
@@ -16344,7 +16928,7 @@
 	});
 
 /***/ },
-/* 44 */
+/* 59 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -16364,7 +16948,7 @@
 	exports.default = getters;
 
 /***/ },
-/* 45 */
+/* 60 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -16384,7 +16968,7 @@
 	exports.default = mutations;
 
 /***/ },
-/* 46 */
+/* 61 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16404,7 +16988,7 @@
 	exports.default = actions;
 
 /***/ },
-/* 47 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {

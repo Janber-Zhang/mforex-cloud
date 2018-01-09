@@ -11,7 +11,7 @@
           <Row class-name="made-child-con-middle" type="flex" align="middle">
             <div>
               <b class="card-user-infor-name">{{userName}}</b>
-              <p>{{userTitle}}</p>
+              <p>{{userTitle || 'test_001@mforex.com'}}</p>
               <div class="status not_authentication" v-bind:class="{is_authentication:isAuthentication}"></div>
             </div>
           </Row>
