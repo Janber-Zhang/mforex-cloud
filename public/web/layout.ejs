@@ -14,9 +14,10 @@
 </head>
 <body>
 	<input type="hidden" id="user_info" value="<%=userinfo%>">
+	<!-- loading放在前面，确保框架内的代码执行时已存在DOM中 -->
+	<div id="loading"></div>
 	<div id="main" style="display: relative;">
 		<%-body%>
 	</div>
-	<div id="loading"></div>
 </body>
 </html>
