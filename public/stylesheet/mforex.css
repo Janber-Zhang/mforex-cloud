@@ -364,20 +364,16 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   padding: 20px 0;
   margin-bottom: 40px;
 }
-.history-orders .filter-bar {
-  width: 100%;
-  height: 60px;
-  padding: 0 20px;
-}
-.history-orders .filter-bar .filter-item {
-  width: 280px;
-}
-.history-orders .filter-bar .filter-item .filter-item-name {
-  margin-right: 10px;
-}
-.history-orders .list-table {
-  margin: 0 20px;
-}
+/*
+ * 
+ * @ 首页 样式
+ * 
+ */
+/*
+ * 
+ * @ 资金操作 样式
+ * 
+ */
 .in-come {
   padding: 20px 40px;
   text-align: center;
@@ -455,6 +451,78 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 }
 .extract-commission-row .ivu-input {
   text-align: center;
+}
+/*
+ * 
+ * @ 数据统计 样式
+ * 
+ */
+.history-orders .filter-bar {
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+}
+.history-orders .filter-bar .filter-item {
+  width: 280px;
+}
+.history-orders .filter-bar .filter-item .filter-item-name {
+  margin-right: 10px;
+}
+.history-orders .list-table {
+  margin: 0 20px;
+}
+/*
+ * 
+ * @ 个人设置 样式
+ * 
+ */
+.profile-info-card {
+  margin: 10px 20px 20px;
+  border: 1px dashed #e1e6eb;
+  padding: 10px 30px 10px 20px;
+}
+.profile-info-card-title {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.profile-info-card-base li {
+  padding: 10px 5px;
+  border-radius: 2px;
+}
+.profile-info-card-base li span {
+  display: inline-block;
+}
+.profile-info-card-base li:hover {
+  background-color: #f5f5f5;
+}
+.profile-info-card-base-title {
+  min-width: 300px;
+}
+.profile-info-card:last-child {
+  margin-bottom: 10px;
+}
+.certification-status {
+  color: #007e3b;
+  border: 1px solid #9ce4bc;
+  background-color: #e6f8ee;
+  margin: 10px 20px;
+  border-radius: 0;
+  font-size: 12px;
+  padding: 10px 30px 10px 20px;
+  vertical-align: middle;
+}
+.certification-info {
+  margin: 0 20px;
+  border: 1px dashed #e1e6eb;
+  padding: 10px 30px 10px 20px;
+}
+.certification-info-title {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.certification-info-img {
+  width: 200px;
+  height: 150px;
 }
 .infor-card-con {
   height: 100px;

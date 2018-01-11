@@ -14714,7 +14714,17 @@
 
 	var _extractCommission2 = _interopRequireDefault(_extractCommission);
 
+	var _profile = __webpack_require__(63);
+
+	var _profile2 = _interopRequireDefault(_profile);
+
+	var _certification = __webpack_require__(66);
+
+	var _certification2 = _interopRequireDefault(_certification);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// 实名认证
 
 	// 出金记录
 
@@ -14750,13 +14760,22 @@
 			path: 'extract_commission',
 			component: _extractCommission2.default
 		}, {
+			path: 'profile',
+			component: _profile2.default
+		}, {
+			path: 'certification',
+			component: _certification2.default
+		}, {
 			path: '*',
 			component: _2.default
 		}]
-	}]; // 出金记录
+	}]; // 账户设置
+	// 出金记录
 	// 入金纪录
 	// 当前订单
+
 	// 未开放模块
+
 	exports.default = routes;
 
 /***/ },
@@ -15176,7 +15195,7 @@
 					submenu: '个人设置',
 					icon: 'ios-person',
 					submenuName: 'personalSetting',
-					items: [{ show: '账户设置', name: '/prifile' }, { show: '实名认证', name: '/certification' }]
+					items: [{ show: '账户设置', name: '/profile' }, { show: '实名认证', name: '/certification' }]
 				}],
 				openStatus: {
 					openNames: [],
@@ -51175,6 +51194,238 @@
 	/***/ })
 	/******/ ]);
 	});
+
+/***/ },
+/* 63 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(64)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/personal_setting/profile.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(65)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-47bf2de5/profile.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 64 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="profile app-warp">
+	//     <div class="profile-info-card">
+	//       <h5 class="profile-info-card-title">个人信息</h5>
+	//       <ul class="profile-info-card-base">
+	//         <li><span class="profile-info-card-base-title">账户号码</span> <span>158</span></li>
+	//         <li><span class="profile-info-card-base-title">MT4平台资金余额</span> <span>0</span></li>
+	//         <li><span class="profile-info-card-base-title">MT4平台资金净值</span> <span>0</span></li>
+	//         <li><span class="profile-info-card-base-title">MT4平台资金总利润</span> <span>-10023</span></li>
+	//         <li><span class="profile-info-card-base-title">客户姓名</span> <span>王二</span></li>
+	//         <li><span class="profile-info-card-base-title">电子邮箱</span> <span>test_01@mforex.com</span></li>
+	//         <li><span class="profile-info-card-base-title">杠杆比例</span> <span>1:100</span></li>
+	//       </ul>
+	//     </div>
+	//     <div class="profile-info-card">
+	//       <h5 class="profile-info-card-title">银行信息</h5>
+	//       <ul class="profile-info-card-base">
+	//         <li><span class="profile-info-card-base-title">收款人</span> <span>王二</span></li>
+	//         <li><span class="profile-info-card-base-title">开户银行</span> <span>中国建设银行</span></li>
+	//         <li><span class="profile-info-card-base-title">支行名称</span> <span>中国建设银行中南海支行</span></li>
+	//         <li><span class="profile-info-card-base-title">银行卡号</span> <span>6227993821777238842</span></li>
+	//         <li><span class="profile-info-card-base-title">身份证号</span> <span>510823199309091232</span></li>
+	//         <li><span class="profile-info-card-base-title">联系电话</span> <span>18200115612</span></li>
+	//       </ul>
+	//     </div>
+	//     <div class="profile-info-card">
+	//       <h5 class="profile-info-card-title">密码修改</h5>
+	//       <Button type="primary" @click="pswChange()">点此修改</Button>
+	//     </div>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  mounted: function mounted() {},
+	  data: function data() {
+	    return {
+	      total: 10200,
+	      value: ''
+	    };
+	  },
+
+	  methods: {
+	    submit: function submit() {
+	      this.$Message.success('操作成功！');
+	    },
+	    pswChange: function pswChange() {
+	      this.$Message.success('暂未开放该功能');
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 65 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"profile app-warp\">\n  <div class=\"profile-info-card\">\n    <h5 class=\"profile-info-card-title\">个人信息</h5>\n    <ul class=\"profile-info-card-base\">\n      <li><span class=\"profile-info-card-base-title\">账户号码</span> <span>158</span></li>\n      <li><span class=\"profile-info-card-base-title\">MT4平台资金余额</span> <span>0</span></li>\n      <li><span class=\"profile-info-card-base-title\">MT4平台资金净值</span> <span>0</span></li>\n      <li><span class=\"profile-info-card-base-title\">MT4平台资金总利润</span> <span>-10023</span></li>\n      <li><span class=\"profile-info-card-base-title\">客户姓名</span> <span>王二</span></li>\n      <li><span class=\"profile-info-card-base-title\">电子邮箱</span> <span>test_01@mforex.com</span></li>\n      <li><span class=\"profile-info-card-base-title\">杠杆比例</span> <span>1:100</span></li>\n    </ul>\n  </div>\n  <div class=\"profile-info-card\">\n    <h5 class=\"profile-info-card-title\">银行信息</h5>\n    <ul class=\"profile-info-card-base\">\n      <li><span class=\"profile-info-card-base-title\">收款人</span> <span>王二</span></li>\n      <li><span class=\"profile-info-card-base-title\">开户银行</span> <span>中国建设银行</span></li>\n      <li><span class=\"profile-info-card-base-title\">支行名称</span> <span>中国建设银行中南海支行</span></li>\n      <li><span class=\"profile-info-card-base-title\">银行卡号</span> <span>6227993821777238842</span></li>\n      <li><span class=\"profile-info-card-base-title\">身份证号</span> <span>510823199309091232</span></li>\n      <li><span class=\"profile-info-card-base-title\">联系电话</span> <span>18200115612</span></li>\n    </ul>\n  </div>\n  <div class=\"profile-info-card\">\n    <h5 class=\"profile-info-card-title\">密码修改</h5>\n    <Button type=\"primary\" @click=\"pswChange()\">点此修改</Button>\n  </div>\n</div>\n";
+
+/***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(67)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/personal_setting/certification.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(68)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-c0644514/certification.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 67 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="certification app-warp">
+	//     <p class="certification-status">恭喜，您已完成个人实名认证。如果您的认证信息发生变更，可修改认证</p>
+	//
+	//     <div class="certification-info">
+	//       <h5 class="certification-info-title">认证信息</h5>
+	//       <Row :gutter="16">
+	//         <Col span="12">
+	//           <Card>
+	//             <div style="text-align:center">
+	//
+	//               <h3>身份证正面</h3>
+	//               <img class="certification-info-img" v-bind:src="card_url.idcard_positive">
+	//             </div>
+	//           </Card>
+	//         </Col>
+	//         <Col span="12">
+	//           <Card>
+	//             <div style="text-align:center">
+	//
+	//               <h3>身份证反面</h3>
+	//               <img class="certification-info-img" v-bind:src="card_url.idcard_reverse">
+	//             </div>
+	//           </Card>
+	//         </Col>
+	//       </Row>
+	//       <br>
+	//       <Row :gutter="16">
+	//         <Col span="12">
+	//           <Card>
+	//             <div style="text-align:center">
+	//
+	//               <h3>银行卡正面</h3>
+	//               <img class="certification-info-img" v-bind:src="card_url.bankcard_positive">
+	//             </div>
+	//           </Card>
+	//         </Col>
+	//         <Col span="12">
+	//           <Card>
+	//             <div style="text-align:center">
+	//
+	//               <h3>银行卡反面</h3>
+	//               <img class="certification-info-img" v-bind:src="card_url.bankcard_reverse">
+	//             </div>
+	//           </Card>
+	//         </Col>
+	//       </Row>
+	//     </div>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  mounted: function mounted() {},
+	  data: function data() {
+	    return {
+	      total: 10200,
+	      value: '',
+	      card_url: {
+	        idcard_positive: 'http://m.china-7.net/uploads/14779763653053.jpg',
+	        idcard_reverse: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515686437202&di=57655356795e35db2fbf60abd30bb378&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0824ab18972bd407544066e77b899e510fb30920.jpg',
+	        bankcard_positive: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515686203726&di=ba1b333bda618cc3d96f0b1e1e2c5896&imgtype=0&src=http%3A%2F%2Fh.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F7dd98d1001e939018e5771d07fec54e737d19683.jpg',
+	        bankcard_reverse: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515686399479&di=99a2d9623ed660fcf52cda7e6e984d45&imgtype=0&src=http%3A%2F%2Fwww.23book.com%2Fupload%2F2015%2F12%2F12%2F6c8a8531-d909-4088-9d9a-4d3e49b072e5.jpg'
+	      }
+	    };
+	  },
+
+	  methods: {
+	    submit: function submit() {
+	      this.$Message.success('操作成功！');
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 68 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"certification app-warp\">\n  <p class=\"certification-status\">恭喜，您已完成个人实名认证。如果您的认证信息发生变更，可修改认证</p>\n\n  <div class=\"certification-info\">\n    <h5 class=\"certification-info-title\">认证信息</h5>\n    <Row :gutter=\"16\">\n      <Col span=\"12\">\n        <Card>\n          <div style=\"text-align:center\">\n            \n            <h3>身份证正面</h3>\n            <img class=\"certification-info-img\" v-bind:src=\"card_url.idcard_positive\">\n          </div>\n        </Card>\n      </Col>\n      <Col span=\"12\">\n        <Card>\n          <div style=\"text-align:center\">\n            \n            <h3>身份证反面</h3>\n            <img class=\"certification-info-img\" v-bind:src=\"card_url.idcard_reverse\">\n          </div>\n        </Card>\n      </Col>\n    </Row>\n    <br>\n    <Row :gutter=\"16\">\n      <Col span=\"12\">\n        <Card>\n          <div style=\"text-align:center\">\n            \n            <h3>银行卡正面</h3>\n            <img class=\"certification-info-img\" v-bind:src=\"card_url.bankcard_positive\">\n          </div>\n        </Card>\n      </Col>\n      <Col span=\"12\">\n        <Card>\n          <div style=\"text-align:center\">\n            \n            <h3>银行卡反面</h3>\n            <img class=\"certification-info-img\" v-bind:src=\"card_url.bankcard_reverse\">\n          </div>\n        </Card>\n      </Col>\n    </Row>\n  </div>\n</div>\n";
 
 /***/ }
 /******/ ]);

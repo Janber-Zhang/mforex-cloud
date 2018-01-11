@@ -72,7 +72,7 @@ export default {
 					icon: 'ios-person',
 					submenuName: 'personalSetting',
 					items: [
-						{show : '账户设置',name : '/prifile'},
+						{show : '账户设置',name : '/profile'},
 						{show : '实名认证',name : '/certification'}
 					]
 				},
