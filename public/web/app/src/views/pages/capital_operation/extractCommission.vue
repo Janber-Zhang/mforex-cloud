@@ -13,7 +13,7 @@
       <Input v-model="value" placeholder="输入入金额度" style="width: 200px;text-align: center;"></Input>
     </div>
     <div class="in-come-row">
-      <Button type="primary" @click="submit" style="width: 261px;">提交</Button>
+      <Button type="primary" @click="submit" style="width: 273px;">提交</Button>
     </div>
   </div>
 </template>

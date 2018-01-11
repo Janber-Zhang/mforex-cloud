@@ -16848,7 +16848,7 @@
 	//       <Input v-model="value" placeholder="输入入金额度" style="width: 200px;text-align: center;"></Input>
 	//     </div>
 	//     <div class="in-come-row">
-	//       <Button type="primary" @click="submit" style="width: 261px;">提交</Button>
+	//       <Button type="primary" @click="submit" style="width: 273px;">提交</Button>
 	//     </div>
 	//   </div>
 	// </template>
@@ -16879,7 +16879,7 @@
 /* 57 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"extract-commission app-warp\">\n  <div>\n    <img src=\"/images/unionpay.png\" alt=\"\">\n    <p class=\"extract-commission-tips\">客户可以将佣金提取到mt4平台中</p>\n  </div>\n  <div class=\"in-come-row\">\n    <span class=\"in-come-row-title\">可提取佣金</span>\n    <Input v-model=\"total\" placeholder=\"输入入金额度\" readonly disabled style=\"width: 200px;text-align: center;\"></Input>\n  </div>\n  <div class=\"in-come-row\">\n    <span class=\"in-come-row-title\">提取佣金数</span>\n    <Input v-model=\"value\" placeholder=\"输入入金额度\" style=\"width: 200px;text-align: center;\"></Input>\n  </div>\n  <div class=\"in-come-row\">\n    <Button type=\"primary\" @click=\"submit\" style=\"width: 261px;\">提交</Button>\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"extract-commission app-warp\">\n  <div>\n    <img src=\"/images/unionpay.png\" alt=\"\">\n    <p class=\"extract-commission-tips\">客户可以将佣金提取到mt4平台中</p>\n  </div>\n  <div class=\"in-come-row\">\n    <span class=\"in-come-row-title\">可提取佣金</span>\n    <Input v-model=\"total\" placeholder=\"输入入金额度\" readonly disabled style=\"width: 200px;text-align: center;\"></Input>\n  </div>\n  <div class=\"in-come-row\">\n    <span class=\"in-come-row-title\">提取佣金数</span>\n    <Input v-model=\"value\" placeholder=\"输入入金额度\" style=\"width: 200px;text-align: center;\"></Input>\n  </div>\n  <div class=\"in-come-row\">\n    <Button type=\"primary\" @click=\"submit\" style=\"width: 273px;\">提交</Button>\n  </div>\n</div>\n";
 
 /***/ },
 /* 58 */
