@@ -1,6 +1,8 @@
 <template>
   <div class="my-link app-warp">
-    
+    <h4>我的邀请链接</h4>
+    <p>http://office.andaobo.com/register.aspx?refid=158</p>
+    <img src="http://qr.liantu.com/api.php?text=http://office.andaobo.com/register.aspx?refid=158" alt="">
   </div>
 </template>
 

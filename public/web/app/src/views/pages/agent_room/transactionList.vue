@@ -11,11 +11,11 @@
       </div>
       <div class="filter-item" flex="main:left cross:center">
         <span class="filter-item-name">开仓时间</span>
-        <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange(data_arr, 'open_date')" placeholder="请选择起止时间" :value="filter_obj.date_range" style="width: 200px"></date-picker>
+        <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择起止时间" :value="filter_obj.date_range" style="width: 200px"></date-picker>
       </div>
       <div class="filter-item" flex="main:left cross:center">
         <span class="filter-item-name">平仓时间</span>
-        <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange(data_arr, 'close_date')" placeholder="请选择起止时间" :value="filter_obj.date_range" style="width: 200px"></date-picker>
+        <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择起止时间" :value="filter_obj.date_range" style="width: 200px"></date-picker>
       </div>
       <div class="filter-item" flex="main:left cross:center">
         <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>

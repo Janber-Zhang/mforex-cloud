@@ -51789,34 +51789,95 @@
 /* 95 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	// <template>
 	//   <div class="in-out-come-list app-warp">
+	//     <div class="filter-bar" flex="main:left cross:center">
+	//       <div class="filter-item" flex="main:left cross:center">
+	//         <span class="filter-item-name">交易账号</span>
+	//         <Input v-model="filter_obj.account" style="width: 200px" placeholder="请输入交易账号"></Input>
+	//       </div>
+	//       <div class="filter-item" flex="main:left cross:center">
+	//         <span class="filter-item-name">起止时间</span>
+	//         <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择起止时间" :value="filter_obj.date_range" style="width: 200px"></date-picker>
+	//       </div>
 	//
+	//       <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+	//       <i-button @click="clearFilter()">清除</i-button>
+	//     </div>
+	//     <div class="list-table">
+	//       <i-table stripe :columns="table_columns" :data="data_list"></i-table>
+	//       <Page :total="pages.total" :current.sync="pages.page" :styles="pages.styles" :page-size="pages.page_size" :page-size-opts="pages.page_size_opts" placement="top" show-sizer show-total @on-change="pageChange" @on-page-size-change="pageSizeChange" v-if="!loading"></Page>
+	//     </div>
 	//   </div>
 	// </template>
 	//
 	// <script>
 	exports.default = {
 	  created: function created() {},
-	  mounted: function mounted() {},
+	  ready: function ready() {},
 	  data: function data() {
 	    return {
-	      total: 10200,
-	      value: ''
+	      loading: false,
+	      table_columns: [],
+	      data_list: [],
+	      pages: {
+	        page_size_opts: [10, 25, 50, 100],
+	        page_size: 25,
+	        page: 1,
+	        total: 0,
+	        styles: {
+	          "margin": "20px auto"
+	        }
+	      },
+	      filter_obj: {
+	        date_range: [],
+	        account: ''
+	      }
 	    };
 	  },
 
 	  methods: {
-	    submit: function submit() {
-	      this.$Message.success('操作成功！');
+	    getHistotyOrder: function getHistotyOrder() {
+	      this.table_columns = [{ title: '交易账号', key: 'trans_account' }, { title: '订单号', key: 'order_number' }, { title: '交易类型', key: 'trade_type' }, { title: '数量', key: 'count' }, { title: '时间', key: 'time' }];
+	      var i = 0;
+	      while (i < 10) {
+	        this.data_list.push({
+	          trans_account: '158',
+	          order_number: '123522',
+	          trade_type: 'USD',
+	          count: '122',
+	          time: '2018-12-12'
+	        });
+	        i++;
+	      }
 	    },
-	    pswChange: function pswChange() {
-	      this.$Message.success('暂未开放该功能');
+	    handleDateChange: function handleDateChange(date_arr) {
+	      //选择日期后的回调
+	      this.filter_obj.date_range = date_arr;
+	    },
+	    pageChange: function pageChange(page) {
+	      this.getHistotyOrder();
+	    },
+	    pageSizeChange: function pageSizeChange(page_size) {
+	      this.pages.page_size = page_size;
+	      this.pages.page = 1;
+	      this.getHistotyOrder();
+	    },
+	    clearFilter: function clearFilter() {
+	      this.filter_obj = {
+	        date_range: [],
+	        trans_account: '',
+	        get_account: ''
+	      };
+	    },
+	    search: function search() {
+	      // this.$Message.warning('暂未开放此功能')
+	      this.getHistotyOrder();
 	    }
 	  },
 	  components: {},
@@ -51829,7 +51890,7 @@
 /* 96 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"in-out-come-list app-warp\">\n  \n</div>\n";
+	module.exports = "\n<div class=\"in-out-come-list app-warp\">\n  <div class=\"filter-bar\" flex=\"main:left cross:center\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">交易账号</span>\n      <Input v-model=\"filter_obj.account\" style=\"width: 200px\" placeholder=\"请输入交易账号\"></Input>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">起止时间</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择起止时间\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    \n    <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n    <i-button @click=\"clearFilter()\">清除</i-button>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
 
 /***/ },
 /* 97 */
@@ -51886,11 +51947,11 @@
 	//       </div>
 	//       <div class="filter-item" flex="main:left cross:center">
 	//         <span class="filter-item-name">开仓时间</span>
-	//         <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange(data_arr, 'open_date')" placeholder="请选择起止时间" :value="filter_obj.date_range" style="width: 200px"></date-picker>
+	//         <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择起止时间" :value="filter_obj.date_range" style="width: 200px"></date-picker>
 	//       </div>
 	//       <div class="filter-item" flex="main:left cross:center">
 	//         <span class="filter-item-name">平仓时间</span>
-	//         <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange(data_arr, 'close_date')" placeholder="请选择起止时间" :value="filter_obj.date_range" style="width: 200px"></date-picker>
+	//         <date-picker type="daterange" confirm placement="bottom-start" @on-change="handleDateChange" placeholder="请选择起止时间" :value="filter_obj.date_range" style="width: 200px"></date-picker>
 	//       </div>
 	//       <div class="filter-item" flex="main:left cross:center">
 	//         <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
@@ -51984,7 +52045,7 @@
 /* 99 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"transaction-list app-warp\">\n  <div class=\"filter-bar\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">品种</span>\n      <Input v-model=\"filter_obj.type\" style=\"width: 200px\" placeholder=\"请输入交易账号\"></Input>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">账号</span>\n      <Input v-model=\"filter_obj.account\" style=\"width: 200px\" placeholder=\"请输入获取佣金账号\"></Input>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">开仓时间</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange(data_arr, 'open_date')\" placeholder=\"请选择起止时间\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">平仓时间</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange(data_arr, 'close_date')\" placeholder=\"请选择起止时间\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n      <i-button @click=\"clearFilter()\">清除</i-button>\n    </div>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"transaction-list app-warp\">\n  <div class=\"filter-bar\">\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">品种</span>\n      <Input v-model=\"filter_obj.type\" style=\"width: 200px\" placeholder=\"请输入交易账号\"></Input>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">账号</span>\n      <Input v-model=\"filter_obj.account\" style=\"width: 200px\" placeholder=\"请输入获取佣金账号\"></Input>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">开仓时间</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择起止时间\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <span class=\"filter-item-name\">平仓时间</span>\n      <date-picker type=\"daterange\" confirm placement=\"bottom-start\" @on-change=\"handleDateChange\" placeholder=\"请选择起止时间\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n    </div>\n    <div class=\"filter-item\" flex=\"main:left cross:center\">\n      <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n      <i-button @click=\"clearFilter()\">清除</i-button>\n    </div>\n  </div>\n  <div class=\"list-table\">\n    <i-table stripe :columns=\"table_columns\" :data=\"data_list\"></i-table>\n    <Page :total=\"pages.total\" :current.sync=\"pages.page\" :styles=\"pages.styles\" :page-size=\"pages.page_size\" :page-size-opts=\"pages.page_size_opts\" placement=\"top\" show-sizer show-total @on-change=\"pageChange\" @on-page-size-change=\"pageSizeChange\" v-if=\"!loading\"></Page>\n  </div>\n</div>\n";
 
 /***/ },
 /* 100 */
@@ -52030,7 +52091,9 @@
 	});
 	// <template>
 	//   <div class="my-link app-warp">
-	//
+	//     <h4>我的邀请链接</h4>
+	//     <p>http://office.andaobo.com/register.aspx?refid=158</p>
+	//     <img src="http://qr.liantu.com/api.php?text=http://office.andaobo.com/register.aspx?refid=158" alt="">
 	//   </div>
 	// </template>
 	//
@@ -52063,7 +52126,7 @@
 /* 102 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"my-link app-warp\">\n  \n</div>\n";
+	module.exports = "\n<div class=\"my-link app-warp\">\n  <h4>我的邀请链接</h4>\n  <p>http://office.andaobo.com/register.aspx?refid=158</p>\n  <img src=\"http://qr.liantu.com/api.php?text=http://office.andaobo.com/register.aspx?refid=158\" alt=\"\">\n</div>\n";
 
 /***/ }
 /******/ ]);
