@@ -12,6 +12,12 @@ import outCome              from './src/views/pages/capital_operation/outCome.vu
 import outComeHis           from './src/views/pages/capital_operation/outComeHis.vue'         // 出金记录
 import extractCommission    from './src/views/pages/capital_operation/extractCommission.vue'  // 出金记录
 
+import customerList         from './src/views/pages/agent_room/customerList.vue'              //客户名单
+import commissionList       from './src/views/pages/agent_room/commissionList.vue'            //佣金查询
+import inOutComeList        from './src/views/pages/agent_room/inOutComeList.vue'             //出入金查询
+import transactionList      from './src/views/pages/agent_room/transactionList.vue'           //交易单查询
+import myLink               from './src/views/pages/agent_room/myLink.vue'                    //我的邀请链接
+
 import profile              from './src/views/pages/personal_setting/profile.vue'             // 账户设置
 import certification        from './src/views/pages/personal_setting/certification.vue'       // 实名认证
 
@@ -59,6 +65,26 @@ const routes = [
 			{
 				path: 'certification',
 				component : certification
+			},
+			{
+				path: 'customer_list',
+				component : customerList
+			},
+			{
+				path: 'commission_list',
+				component : commissionList
+			},
+			{
+				path: 'in_out_come_list',
+				component : inOutComeList
+			},
+			{
+				path: 'transaction_list',
+				component : transactionList
+			},
+			{
+				path: 'my_link',
+				component : myLink
 			},
 			{
 				path: '*',

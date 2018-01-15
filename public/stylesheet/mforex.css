@@ -374,6 +374,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
  * @ 资金操作 样式
  * 
  */
+/*
+ * 
+ * @ 资金操作 样式
+ * 
+ */
 .in-come {
   padding: 20px 40px;
   text-align: center;
@@ -457,6 +462,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
  * @ 数据统计 样式
  * 
  */
+/*
+ * 
+ * @ 数据统计 样式
+ * 
+ */
 .history-orders .filter-bar {
   width: 100%;
   height: 60px;
@@ -471,6 +481,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 .history-orders .list-table {
   margin: 0 20px;
 }
+/*
+ * 
+ * @ 个人设置 样式
+ * 
+ */
 /*
  * 
  * @ 个人设置 样式
@@ -523,6 +538,60 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 .certification-info-img {
   width: 200px;
   height: 150px;
+}
+/*
+ * 
+ * @ 代理办公室 样式
+ * 
+ */
+/*
+ * 
+ * @ 代理办公室 样式
+ * 
+ */
+.customer-list .filter-bar {
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+}
+.customer-list .filter-bar .filter-item {
+  width: 280px;
+}
+.customer-list .filter-bar .filter-item .filter-item-name {
+  margin-right: 10px;
+}
+.customer-list .list-table {
+  margin: 0 20px;
+}
+.commission-list .filter-bar {
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+}
+.commission-list .filter-bar .filter-item {
+  width: 280px;
+}
+.commission-list .filter-bar .filter-item .filter-item-name {
+  margin-right: 10px;
+}
+.commission-list .list-table {
+  margin: 0 20px;
+}
+.transaction-list .filter-bar {
+  width: 100%;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.transaction-list .filter-bar .filter-item {
+  width: 280px;
+  float: left;
+  margin: 14px 0;
+}
+.transaction-list .filter-bar .filter-item .filter-item-name {
+  margin-right: 10px;
+}
+.transaction-list .list-table {
+  margin: 0 20px;
 }
 .infor-card-con {
   height: 100px;
