@@ -56,17 +56,17 @@ export default {
 						{show : '我的邀请链接',name : '/my_link'}
 					]
 				},
-				{
-					submenu: '跟单系统',
-					icon: 'ios-paperplane',
-					submenuName: 'documentary',
-					items: [
-						{show : '牛人榜',name : '/ranking_list'},
-						{show : '成为牛人',name : '/to_be_big'},
-						{show : '我的粉丝',name : '/my_fans'},
-						{show : '我的牛人',name : '/my_big'}
-					]
-				},
+				// {
+				// 	submenu: '跟单系统',
+				// 	icon: 'ios-paperplane',
+				// 	submenuName: 'documentary',
+				// 	items: [
+				// 		{show : '牛人榜',name : '/ranking_list'},
+				// 		{show : '成为牛人',name : '/to_be_big'},
+				// 		{show : '我的粉丝',name : '/my_fans'},
+				// 		{show : '我的牛人',name : '/my_big'}
+				// 	]
+				// },
 				{
 					submenu: '个人设置',
 					icon: 'ios-person',
