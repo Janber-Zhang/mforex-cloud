@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 function checkSession(req, res, cb) {
-  req.session.user = {Name:'未登录'};
+  // req.session.user = {Name:'未登录'};
   if (req.session.user) {
     cb(req, res);
   } else {

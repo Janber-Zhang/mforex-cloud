@@ -7,5 +7,5 @@
 		"maxAge": 3600000
 	},
 	"apiWhitelist": ["Login", "Register", "GetCrmConfig"],
-	"basicAPI": "http://59.46.80.233:8002/API/Platform/Client.asmx"
+	"basicAPI": "http://test.im909.com:8002/API/Platform/Client.asmx"
 }

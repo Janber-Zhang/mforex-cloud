@@ -55,7 +55,6 @@ export default {
         httpType      :    'get',
         serviceUrl    :    'GetDealedOrder',
         apiModule     :    'basicAPI',
-        domain        :    'www.sohu.com',
         login         :    '4',
         page          :     this.pages.page,
         pageSize      :     this.pages.page_size

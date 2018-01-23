@@ -30,28 +30,42 @@ router.post('/queryData', (req, res, next) => {
   if (!('httpType' in params)) {
     params.httpType = 'get';
   }
-  if (!('serviceUrl' in params)) {     //未传serviceURL
+
+  /* 未传serviceURL */
+  if (!('serviceUrl' in params)) {
     res.send('{"refresh":1}');
     return;
   }
-  if (params.serviceUrl === 'Logout' ) {  //退出登录，强行置空session
+
+  /* 退出登录，强行置空session */
+  if (params.serviceUrl === 'Logout' ) {
     req.session.user=null;
     res.send('{"code":"0","data":"true"}');
   }
-  var timeout = 50000;                 //超时时间 50s
+
+  /* 超时时间 */
+  var timeout = 50000;                
   var serviceUrl = params.serviceUrl;
   var httpType = params.httpType;
   delete params["serviceUrl"];
   delete params["httpType"];
-  var apiUrl = config.basicAPI;        //匹配接口地址
+
+  /* 匹配接口地址 */
+  var apiUrl = config.basicAPI;
   if (params.apiModule) {
     apiUrl = config[params.apiModule];
     delete params["apiModule"];
   }
-  if (!checkSession(serviceUrl,req.session)) {        //判断登录状态
+  /* 判断登陆状态 */
+  if (!checkSession(serviceUrl,req.session)) {
     res.send({errno: '1111', errmsg: 'need login'});
     return
   }
+
+  /* 获取请求源域名 */
+  // params.domain = req.headers.host || '';
+  params.domain = 'www.baidu.com'
+
 
   var headers = {                              //header配置
     'custom-version': 50000,
