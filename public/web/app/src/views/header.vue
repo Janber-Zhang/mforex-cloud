@@ -6,6 +6,7 @@
           <breadcrumb-item v-for="item in headerTitle" :key="item">{{item}}</breadcrumb-item>
         </template>
     </Breadcrumb>
+    <i-button style="position:absolute;right:120px;" @click="skip2backend" shape="circle" size="small">控制台</i-button>
     <Dropdown @on-click="userHandle($event)">
       <a href="javascript:void(0)">
         <img :src="'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'" width="35" class="user-avator" alt="">
@@ -43,6 +44,9 @@
             util.logout();
             break;
         }
+      },
+      skip2backend: function() {
+        location.href = '/backend'
       }
     },
     components:{
