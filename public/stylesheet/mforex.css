@@ -238,14 +238,14 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   height: 100%;
 }
 .app-main .content-body {
-  margin-left: 200px;
+  margin-left: 180px;
   position: relative;
   height: 100%;
 }
 .app-main .content-body .content-app {
   position: absolute;
-  top: 60px;
-  bottom: 80px;
+  top: 50px;
+  bottom: 60px;
   left: 0;
   right: 0;
   padding: 10px;
@@ -278,7 +278,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 }
 .app-header {
   padding: 15px;
-  height: 60px;
+  height: 50px;
   background: #fff;
   box-shadow: 0 2px 1px 1px rgba(99, 99, 99, 0.1);
   position: relative;
@@ -292,11 +292,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   left: 0;
   right: 0;
   text-align: center;
-  padding: 10px 15px 20px;
+  padding: 5px 15px 5px;
   color: #9ea7b4;
 }
 .app-footer .tips {
-  margin: 10px 20px;
+  margin: 5px 20px;
   color: #70757c;
   font-size: 14px;
 }
@@ -304,7 +304,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   color: #57a3f3;
 }
 .left-bar {
-  width: 200px;
+  width: 180px;
   height: 100%;
   position: fixed;
   top: 0;

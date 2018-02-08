@@ -38,10 +38,7 @@ import dataStatistics    from './../components/dataStatistics.vue'
 import incomeStatistics    from './../components/incomeStatistics.vue'
 export default {
   created(){
-    let notice_count = util.getRandom(0,4)[0];
-    if (notice_count) {
-      this.notice_index = util.getRandom(0,3,notice_count,true);
-    }
+    this.notice_index = util.getRandom(0,3,1,true);
   },
   ready(){
 

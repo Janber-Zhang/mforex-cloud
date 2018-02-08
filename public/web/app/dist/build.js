@@ -15411,10 +15411,7 @@
 	// <script>
 	exports.default = {
 	  created: function created() {
-	    var notice_count = util.getRandom(0, 4)[0];
-	    if (notice_count) {
-	      this.notice_index = util.getRandom(0, 3, notice_count, true);
-	    }
+	    this.notice_index = util.getRandom(0, 3, 1, true);
 	  },
 	  ready: function ready() {},
 	  data: function data() {
