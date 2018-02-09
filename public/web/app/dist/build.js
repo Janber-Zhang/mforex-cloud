@@ -14965,7 +14965,7 @@
 	//     <Dropdown @on-click="userHandle($event)">
 	//       <a href="javascript:void(0)">
 	//         <img :src="'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'" width="35" class="user-avator" alt="">
-	//         {{userInfo.Name}}
+	//         {{userInfo.name}}
 	//         <Icon type="arrow-down-b"></Icon>
 	//       </a>
 	//       <Dropdown-menu slot="list">
@@ -15018,7 +15018,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"app-header\" flex=\"main:justify cross:center\">\n  <Breadcrumb>\n      <breadcrumb-item to=\"/\">主页</breadcrumb-item>\n      <template v-if=\"headerTitle.length\">\n        <breadcrumb-item v-for=\"item in headerTitle\" :key=\"item\">{{item}}</breadcrumb-item>\n      </template>\n  </Breadcrumb>\n  <i-button style=\"position:absolute;right:120px;\" @click=\"skip2backend\" shape=\"circle\" size=\"small\">控制台</i-button>\n  <Dropdown @on-click=\"userHandle($event)\">\n    <a href=\"javascript:void(0)\">\n      <img :src=\"'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'\" width=\"35\" class=\"user-avator\" alt=\"\">\n      {{userInfo.Name}}\n      <Icon type=\"arrow-down-b\"></Icon>\n    </a>\n    <Dropdown-menu slot=\"list\">\n      <Dropdown-item name=\"myProfile\">我的信息</Dropdown-item>\n      <Dropdown-item name=\"logout\">注销登录</Dropdown-item>\n    </Dropdown-menu>\n  </Dropdown>\n</div>\n";
+	module.exports = "\n<div class=\"app-header\" flex=\"main:justify cross:center\">\n  <Breadcrumb>\n      <breadcrumb-item to=\"/\">主页</breadcrumb-item>\n      <template v-if=\"headerTitle.length\">\n        <breadcrumb-item v-for=\"item in headerTitle\" :key=\"item\">{{item}}</breadcrumb-item>\n      </template>\n  </Breadcrumb>\n  <i-button style=\"position:absolute;right:120px;\" @click=\"skip2backend\" shape=\"circle\" size=\"small\">控制台</i-button>\n  <Dropdown @on-click=\"userHandle($event)\">\n    <a href=\"javascript:void(0)\">\n      <img :src=\"'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'\" width=\"35\" class=\"user-avator\" alt=\"\">\n      {{userInfo.name}}\n      <Icon type=\"arrow-down-b\"></Icon>\n    </a>\n    <Dropdown-menu slot=\"list\">\n      <Dropdown-item name=\"myProfile\">我的信息</Dropdown-item>\n      <Dropdown-item name=\"logout\">注销登录</Dropdown-item>\n    </Dropdown-menu>\n  </Dropdown>\n</div>\n";
 
 /***/ },
 /* 12 */

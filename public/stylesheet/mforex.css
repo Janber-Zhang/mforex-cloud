@@ -217,6 +217,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   border-radius: 4px;
   background-color: #f7f7f7;
 }
+.login.backend_login .login_box .login-tip {
+  font-size: 10px;
+  text-align: center;
+  color: #ed3f14;
+}
 .login.bg0 {
   background-image: url(/images/login_bg_0.jpg);
   background-size: cover;

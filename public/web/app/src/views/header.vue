@@ -10,7 +10,7 @@
     <Dropdown @on-click="userHandle($event)">
       <a href="javascript:void(0)">
         <img :src="'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg'" width="35" class="user-avator" alt="">
-        {{userInfo.Name}}
+        {{userInfo.name}}
         <Icon type="arrow-down-b"></Icon>
       </a>
       <Dropdown-menu slot="list">

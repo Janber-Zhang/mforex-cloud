@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div id="app" class="login backend_login" style="display: relative;">
-		<h1 class="title">CRM系统管理员后台登录</h1>
+		<h1 class="title">CRM系统管理员后台</h1>
 		<div class="login_box">
 			<Card :bordered="false">
                 <p slot="title">
@@ -97,11 +97,11 @@
 				var vm = this;
 				this.$refs.loginForm.validate(function(valid){
 	                if (valid) {
-	                	// if (vm.form.verifacation !== vm.verif.str) {
-	                	// 	vm.$Message.error('验证码错误！');
-	                	// 	vm.errorMsg = '验证码错误！';
-	                	// 	return 
-	                	// }
+	                	if (vm.form.verifacation !== vm.verif.str) {
+	                		vm.$Message.error('验证码错误！');
+	                		vm.errorMsg = '验证码错误！';
+	                		return 
+	                	}
 	                	var param = {
 							login         :     vm.form.userName,
 							password      :     vm.form.password
