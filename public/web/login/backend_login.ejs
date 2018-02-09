@@ -14,12 +14,13 @@
 	<script src="js/libs/iview.min.js"></script>
 </head>
 <body>
-	<div id="app" class="login bg0" style="display: relative;">
-		<div class="login-con">
-            <Card :bordered="false">
+	<div id="app" class="login backend_login" style="display: relative;">
+		<h1 class="title">CRM系统管理员后台登录</h1>
+		<div class="login_box">
+			<Card :bordered="false">
                 <p slot="title">
                     <Icon type="log-in"></Icon>
-                    欢迎登录后台
+                    欢迎登录
                 </p>
                 <div class="form-con">
                     <i-Form ref="loginForm" :model="form" :rules="rules">
@@ -38,7 +39,7 @@
                             </i-Input>
                         </form-item>
                         <form-item prop="verifacation">
-                    		<i-Input style="width:150px" v-model="form.verifacation" placeholder="请输入验证码">
+                    		<i-Input style="width:250px" v-model="form.verifacation" placeholder="请输入验证码">
                                 <span slot="prepend">
                                     <Icon :size="14" type="ios-gear"></Icon>
                                 </span>
@@ -52,7 +53,7 @@
                     <p class="login-tip" v-if="errorMsg">{{errorMsg}}</p>
                 </div>
             </Card>
-        </div>
+		</div>
 	</div>
 	<div id="loading"></div>
 </body>

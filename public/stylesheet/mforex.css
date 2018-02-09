@@ -183,6 +183,40 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   height: 100%;
   position: relative;
 }
+.login.backend_login {
+  background-color: #373d41;
+}
+.login.backend_login .title {
+  color: #fff;
+  position: absolute;
+  margin-top: -270px;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 50%;
+  font-size: 30px;
+}
+.login.backend_login .login_box {
+  width: 400px;
+  height: 260px;
+  border-radius: 4px;
+  background-color: #fff;
+  position: absolute;
+  margin-top: -200px;
+  margin-left: -200px;
+  left: 50%;
+  top: 50%;
+}
+.login.backend_login .login_box .verifacation {
+  cursor: pointer;
+  width: 100px;
+  height: 32px;
+  position: absolute;
+  right: 0;
+  top: 1px;
+  border: 1px solid #dddee1;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+}
 .login.bg0 {
   background-image: url(/images/login_bg_0.jpg);
   background-size: cover;
