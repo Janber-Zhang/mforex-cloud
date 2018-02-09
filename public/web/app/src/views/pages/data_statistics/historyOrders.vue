@@ -59,7 +59,7 @@ export default {
         page          :     this.pages.page,
         pageSize      :     this.pages.page_size
       }
-      util.ajaxQuery(param,function(res){
+      util.ajaxQuery('/query/queryData',param,function(res){
         if(res.code==='0'){
           vm.table_columns = [
             {title: '订单号', key: '_Order'},

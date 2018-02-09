@@ -1,9 +1,10 @@
 var util = {
-	ajaxQuery: function (param,cb) {           //通用请求
+	ajaxQuery: function (url,param,cb) {           //通用请求
 		$('#loading').show();
-		var promise_ =  axios.post('/query/queryData', param).then(function(res){
+		url = url || '/query/queryData';
+		console.log(url)
+		var promise_ =  axios.post(url, param).then(function(res){
 			$('#loading').hide();
-			console.log(res)
 			if (cb) {
 				cb(res.data)
 			}
@@ -12,12 +13,8 @@ var util = {
 	},
 
 	logout: function() {						//登出
-		var param = {
-			httpType      :    'post',
-			serviceUrl    :    'Logout'
-		}
-		var queryUserInfo = util.ajaxQuery(param, function(){
-			location.href = '/login';
+		var queryUserInfo = util.ajaxQuery('/query/logout',{}, function(){
+			window.location.reload();
 		});
 	},
 

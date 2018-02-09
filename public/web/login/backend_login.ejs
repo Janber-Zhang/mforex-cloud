@@ -19,7 +19,7 @@
             <Card :bordered="false">
                 <p slot="title">
                     <Icon type="log-in"></Icon>
-                    欢迎登录
+                    欢迎登录后台
                 </p>
                 <div class="form-con">
                     <i-Form ref="loginForm" :model="form" :rules="rules">
@@ -96,19 +96,16 @@
 				var vm = this;
 				this.$refs.loginForm.validate(function(valid){
 	                if (valid) {
-	                	if (vm.form.verifacation !== vm.verif.str) {
-	                		vm.$Message.error('验证码错误！');
-	                		vm.errorMsg = '验证码错误！';
-	                		return 
-	                	}
+	                	// if (vm.form.verifacation !== vm.verif.str) {
+	                	// 	vm.$Message.error('验证码错误！');
+	                	// 	vm.errorMsg = '验证码错误！';
+	                	// 	return 
+	                	// }
 	                	var param = {
-							httpType      :    'post',
-							serviceUrl    :    'Login',
-							apiModule     :    'basicAPI',
 							login         :     vm.form.userName,
 							password      :     vm.form.password
 						}
-						util.ajaxQuery(param,function(res){
+						util.ajaxQuery('/query/login',param,function(res){
 							if(res.code==='0'){
 								if (window.location.href.indexOf('login')>-1) {   //如果是从登录页面进去则进入首页
 									window.location.href = '/';

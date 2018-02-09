@@ -16179,7 +16179,7 @@
 	        page: this.pages.page,
 	        pageSize: this.pages.page_size
 	      };
-	      util.ajaxQuery(param, function (res) {
+	      util.ajaxQuery('/query/queryData', param, function (res) {
 	        if (res.code === '0') {
 	          vm.table_columns = [{ title: '订单号', key: '_Order' }, { title: '订单品种', key: 'Symbol' }, { title: '交易类型', key: 'Cmd' }, { title: '数量', key: 'Volume' }, { title: '开仓价格', key: 'OpenPrice' }, { title: '开仓时间', width: 150, key: 'OpenTime' }, { title: '平仓价格', key: 'ClosePrice' }, { title: '平仓时间', width: 150, key: 'CloseTime' }, { title: '利润', key: 'Profit' }];
 	          res.data.dealedorders.forEach(function (item) {
@@ -16344,7 +16344,7 @@
 	        page: this.pages.page,
 	        pageSize: this.pages.page_size
 	      };
-	      util.ajaxQuery(param, function (res) {
+	      util.ajaxQuery('/query/queryData', param, function (res) {
 	        if (res.code === '0') {
 	          vm.table_columns = [{ title: '订单号', key: '_Order' }, { title: '订单品种', key: 'Symbol' }, { title: '交易类型', key: 'Cmd' }, { title: '数量', key: 'Volume' }, { title: '开仓价格', key: 'OpenPrice' }, { title: '开仓时间', width: 150, key: 'OpenTime' }, { title: '平仓价格', key: 'ClosePrice' }, { title: '平仓时间', width: 150, key: 'CloseTime' }, { title: '利润', key: 'Profit' }];
 	          res.data.dealedorders.forEach(function (item) {

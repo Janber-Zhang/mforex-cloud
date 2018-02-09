@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>mforex-cloud</title>
+	<link rel="icon" href="../images/logo.jpg" type="image/x-icon">
+	<link rel="shortcut icon" href="../images/logo.jpg" type="image/x-icon">
+	<link rel="stylesheet" href="stylesheet/mforex.min.css">
+	<link rel="stylesheet" href="stylesheet/other.min.css">
+	<script src="js/dist/mforex.min.js"></script>
+	<script src="js/dist/other.min.js"></script>
+	<script src="js/libs/vue.min.js"></script>
+	<script src="js/libs/iview.min.js"></script>
+</head>
+<body>
+	<div id="app" class="login bg0" style="display: relative;">
+		<div class="login-con">
+            <Card :bordered="false">
+                <p slot="title">
+                    <Icon type="log-in"></Icon>
+                    欢迎登录
+                </p>
+                <div class="form-con">
+                    <i-Form ref="loginForm" :model="form" :rules="rules">
+                        <form-item prop="userName">
+                            <i-Input v-model="form.userName" placeholder="请输入用户名">
+                                <span slot="prepend">
+                                    <Icon :size="16" type="person"></Icon>
+                                </span>
+                            </i-Input>
+                        </form-item>
+                        <form-item prop="password">
+                            <i-Input type="password" v-model="form.password" placeholder="请输入密码">
+                                <span slot="prepend">
+                                    <Icon :size="14" type="locked"></Icon>
+                                </span>
+                            </i-Input>
+                        </form-item>
+                        <form-item prop="verifacation">
+                    		<i-Input style="width:150px" v-model="form.verifacation" placeholder="请输入验证码">
+                                <span slot="prepend">
+                                    <Icon :size="14" type="ios-gear"></Icon>
+                                </span>
+                        	</i-Input>
+         					<canvas @click="initVerifaacation()" ref="canvas" class="verifacation"></canvas>
+                        </form-item>
+                        <form-item>
+                            <i-Button @click="handleSubmit" type="primary" long>登录</i-Button>
+                        </form-item>
+                    </i-Form>
+                    <p class="login-tip" v-if="errorMsg">{{errorMsg}}</p>
+                </div>
+            </Card>
+        </div>
+	</div>
+	<div id="loading"></div>
+</body>
+<script>
+	new Vue({
+		el: '#app',
+		mounted(){
+			this.initVerifaacation();
+		},
+		data: {
+			form:{
+				userName: '',
+				password: '',
+				verifacation: ''
+			},
+			verif: false,
+			rules: {
+                userName: [
+                    { required: true, message: '账号不能为空', trigger: 'blur' }
+                ],
+                password: [
+                    { required: true, message: '密码不能为空', trigger: 'blur' }
+                ],
+                verifacation: [
+                	{ required: true, message: '验证码不能为空', trigger: 'blur' }
+                ]
+            },
+            errorMsg: ''
+		},
+		methods: {
+			initVerifaacation: function () {
+				if (!this.verif) {
+					this.verif = new captcha(this.$refs.canvas);
+					this.verif.NumberOrLetter();
+					console.log()
+				} else {
+					this.verif.getLetter();
+				}
+			},
+			handleSubmit: function () {
+				var vm = this;
+				this.$refs.loginForm.validate(function(valid){
+	                if (valid) {
+	                	if (vm.form.verifacation !== vm.verif.str) {
+	                		vm.$Message.error('验证码错误！');
+	                		vm.errorMsg = '验证码错误！';
+	                		return 
+	                	}
+	                	var param = {
+							login         :     vm.form.userName,
+							password      :     vm.form.password
+						}
+						util.ajaxQuery('/query/login',param,function(res){
+							if(res.code==='0'){
+								window.location.reload();
+							}else{
+								vm.$Message.error(res.message);
+								vm.errorMsg = res.message;
+							}
+						});
+	                }
+            	});
+			}
+		}
+	})
+</script>
+</html>
