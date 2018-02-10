@@ -269,19 +269,66 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   border-radius: 4px;
   background-color: #f7f7f7;
 }
-.app-main {
+#app.app {
+  /*
+ * 
+ * @ 首页 样式
+ * 
+ */
+  /*
+ * 
+ * @ 资金操作 样式
+ * 
+ */
+  /*
+ * 
+ * @ 资金操作 样式
+ * 
+ */
+  /*
+ * 
+ * @ 数据统计 样式
+ * 
+ */
+  /*
+ * 
+ * @ 数据统计 样式
+ * 
+ */
+  /*
+ * 
+ * @ 个人设置 样式
+ * 
+ */
+  /*
+ * 
+ * @ 个人设置 样式
+ * 
+ */
+  /*
+ * 
+ * @ 代理办公室 样式
+ * 
+ */
+  /*
+ * 
+ * @ 代理办公室 样式
+ * 
+ */
+}
+#app.app .app-main {
   border: 1px solid #d7dde4;
   background: #f5f7f9;
   position: relative;
   width: 100%;
   height: 100%;
 }
-.app-main .content-body {
+#app.app .app-main .content-body {
   margin-left: 180px;
   position: relative;
   height: 100%;
 }
-.app-main .content-body .content-app {
+#app.app .app-main .content-body .content-app {
   position: absolute;
   top: 50px;
   bottom: 60px;
@@ -289,43 +336,43 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   right: 0;
   padding: 10px;
 }
-.app-main .content-body .content-app > div {
+#app.app .app-main .content-body .content-app > div {
   width: 100%;
   height: 100%;
   overflow: auto;
 }
-.app-main .content-body .content-app .app-warp {
+#app.app .app-main .content-body .content-app .app-warp {
   background-color: #ffffff;
   border: 1px solid #e9eaec;
   border-radius: 4px;
 }
-.app-main .content-body .content-app .app-warp .filter-bar {
+#app.app .app-main .content-body .content-app .app-warp .filter-bar {
   width: 100%;
   padding: 0 20px;
   overflow: hidden;
 }
-.app-main .content-body .content-app .app-warp .filter-bar .filter-item {
+#app.app .app-main .content-body .content-app .app-warp .filter-bar .filter-item {
   width: 280px;
   float: left;
   margin: 14px 0;
 }
-.app-main .content-body .content-app .app-warp .filter-bar .filter-item .filter-item-name {
+#app.app .app-main .content-body .content-app .app-warp .filter-bar .filter-item .filter-item-name {
   margin-right: 10px;
 }
-.app-main .content-body .content-app .app-warp .list-table {
+#app.app .app-main .content-body .content-app .app-warp .list-table {
   margin: 0 20px;
 }
-.app-header {
+#app.app .app-header {
   padding: 15px;
   height: 50px;
   background: #fff;
   box-shadow: 0 2px 1px 1px rgba(99, 99, 99, 0.1);
   position: relative;
 }
-.app-header .user-avator {
+#app.app .app-header .user-avator {
   border-radius: 50%;
 }
-.app-footer {
+#app.app .app-footer {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -334,15 +381,15 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   padding: 5px 15px 5px;
   color: #9ea7b4;
 }
-.app-footer .tips {
+#app.app .app-footer .tips {
   margin: 5px 20px;
   color: #70757c;
   font-size: 14px;
 }
-.app-footer .tips:hover {
+#app.app .app-footer .tips:hover {
   color: #57a3f3;
 }
-.left-bar {
+#app.app .left-bar {
   width: 180px;
   height: 100%;
   position: fixed;
@@ -351,7 +398,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   background: #495060;
   overflow: auto;
 }
-.left-bar .left-bar-logo {
+#app.app .left-bar .left-bar-logo {
   width: 90%;
   height: 30px;
   background: #2d8cf0;
@@ -362,6 +409,191 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   color: #ffffff;
   border-radius: 13px 0;
   cursor: pointer;
+}
+#app.app .in-come {
+  padding: 20px 40px;
+  text-align: center;
+}
+#app.app .in-come-row {
+  margin: 20px auto 0;
+  width: 300px;
+}
+#app.app .in-come-row-title {
+  margin-right: 10px;
+}
+#app.app .in-come-row .ivu-input {
+  text-align: center;
+}
+#app.app .out-come {
+  padding: 20px 40px;
+  text-align: center;
+}
+#app.app .out-come-tips {
+  width: 50%;
+  margin: 0 auto 20px;
+}
+#app.app .out-come-row {
+  margin: 10px auto 0;
+  width: 514px;
+  text-align: left;
+}
+#app.app .out-come-row-title {
+  margin-right: 10px;
+  display: inline-block;
+  width: 100px;
+}
+#app.app .extract-commission {
+  padding: 20px 40px;
+  text-align: center;
+}
+#app.app .extract-commission-tips {
+  width: 50%;
+  margin: 0 auto 20px;
+}
+#app.app .extract-commission-row {
+  margin: 10px auto 0;
+  width: 300px;
+}
+#app.app .extract-commission-row-title {
+  margin-right: 10px;
+}
+#app.app .extract-commission-row .ivu-input {
+  text-align: center;
+}
+#app.app .profile-info-card {
+  margin: 10px 20px 20px;
+  border: 1px dashed #e1e6eb;
+  padding: 10px 30px 10px 20px;
+}
+#app.app .profile-info-card-title {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+#app.app .profile-info-card-base li {
+  padding: 10px 5px;
+  border-radius: 2px;
+}
+#app.app .profile-info-card-base li span {
+  display: inline-block;
+}
+#app.app .profile-info-card-base li:hover {
+  background-color: #f5f5f5;
+}
+#app.app .profile-info-card-base-title {
+  min-width: 300px;
+}
+#app.app .profile-info-card:last-child {
+  margin-bottom: 10px;
+}
+#app.app .certification-status {
+  color: #007e3b;
+  border: 1px solid #9ce4bc;
+  background-color: #e6f8ee;
+  margin: 10px 20px;
+  border-radius: 0;
+  font-size: 12px;
+  padding: 10px 30px 10px 20px;
+  vertical-align: middle;
+}
+#app.app .certification-info {
+  margin: 0 20px;
+  border: 1px dashed #e1e6eb;
+  padding: 10px 30px 10px 20px;
+}
+#app.app .certification-info-title {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+#app.app .certification-info-img {
+  width: 200px;
+  height: 150px;
+}
+#app.app .my-link {
+  padding-top: 20px;
+}
+#app.app .my-link h4,
+#app.app .my-link p {
+  text-align: center;
+}
+#app.app .my-link img {
+  display: block;
+  margin: 0 auto;
+}
+#app.app .infor-card-con {
+  height: 100px;
+}
+#app.app .infor-card-icon-con {
+  height: 100%;
+  color: white;
+  border-radius: 3px 0 0 3px;
+  width: 35%;
+}
+#app.app .infor-card-count-con {
+  width: 65%;
+}
+#app.app .infor-card-count-con span {
+  font-size: 30px;
+}
+#app.app .infor-intro-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: #C8C8C8;
+  text-align: center;
+}
+#app.app .user-infor-card .user-infor {
+  height: 120px;
+}
+#app.app .user-infor-card .avator-img {
+  display: block;
+  width: 80%;
+  max-width: 100px;
+  height: auto;
+}
+#app.app .user-infor-card .card-user-infor-name {
+  font-size: 2em;
+  color: #2d8cf0;
+}
+#app.app .user-infor-card .made-child-con-middle {
+  height: 100%;
+  position: relative;
+}
+#app.app .user-infor-card .status {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 20px;
+}
+#app.app .user-infor-card .is_authentication {
+  background: url(/images/is_authentication.svg) no-repeat top center !important;
+  background-size: cover !important;
+}
+#app.app .user-infor-card .not_authentication {
+  background: url(/images/not_authentication.svg) no-repeat top center;
+  background-size: cover;
+}
+#app.app .data-statistics .card-title {
+  color: #abafbd;
+}
+#app.app .data-statistics .data-source-row {
+  height: 400px;
+}
+@media (max-width: 1280px) {
+  #app.app .data-statistics .data-source-row {
+    height: 300px;
+  }
+}
+#app.app .income-statistics .card-title {
+  color: #abafbd;
+}
+#app.app .income-statistics .data-source-row {
+  height: 294px;
+  width: 100%;
+}
+@media (max-width: 1280px) {
+  #app.app .income-statistics .data-source-row {
+    height: 194px;
+  }
 }
 @keyframes error404animation {
   0% {
@@ -419,250 +651,20 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   padding: 20px 0;
   margin-bottom: 40px;
 }
-/*
- * 
- * @ 首页 样式
- * 
- */
-/*
- * 
- * @ 资金操作 样式
- * 
- */
-/*
- * 
- * @ 资金操作 样式
- * 
- */
-.in-come {
-  padding: 20px 40px;
-  text-align: center;
-}
-.in-come-row {
-  margin: 20px auto 0;
-  width: 300px;
-}
-.in-come-row-title {
-  margin-right: 10px;
-}
-.in-come-row .ivu-input {
-  text-align: center;
-}
-.out-come {
-  padding: 20px 40px;
-  text-align: center;
-}
-.out-come-tips {
-  width: 50%;
-  margin: 0 auto 20px;
-}
-.out-come-row {
-  margin: 10px auto 0;
-  width: 514px;
-  text-align: left;
-}
-.out-come-row-title {
-  margin-right: 10px;
-  display: inline-block;
-  width: 100px;
-}
-.extract-commission {
-  padding: 20px 40px;
-  text-align: center;
-}
-.extract-commission-tips {
-  width: 50%;
-  margin: 0 auto 20px;
-}
-.extract-commission-row {
-  margin: 10px auto 0;
-  width: 300px;
-}
-.extract-commission-row-title {
-  margin-right: 10px;
-}
-.extract-commission-row .ivu-input {
-  text-align: center;
-}
-/*
- * 
- * @ 数据统计 样式
- * 
- */
-/*
- * 
- * @ 数据统计 样式
- * 
- */
-/*
- * 
- * @ 个人设置 样式
- * 
- */
-/*
- * 
- * @ 个人设置 样式
- * 
- */
-.profile-info-card {
-  margin: 10px 20px 20px;
-  border: 1px dashed #e1e6eb;
-  padding: 10px 30px 10px 20px;
-}
-.profile-info-card-title {
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-.profile-info-card-base li {
-  padding: 10px 5px;
-  border-radius: 2px;
-}
-.profile-info-card-base li span {
-  display: inline-block;
-}
-.profile-info-card-base li:hover {
-  background-color: #f5f5f5;
-}
-.profile-info-card-base-title {
-  min-width: 300px;
-}
-.profile-info-card:last-child {
-  margin-bottom: 10px;
-}
-.certification-status {
-  color: #007e3b;
-  border: 1px solid #9ce4bc;
-  background-color: #e6f8ee;
-  margin: 10px 20px;
-  border-radius: 0;
-  font-size: 12px;
-  padding: 10px 30px 10px 20px;
-  vertical-align: middle;
-}
-.certification-info {
-  margin: 0 20px;
-  border: 1px dashed #e1e6eb;
-  padding: 10px 30px 10px 20px;
-}
-.certification-info-title {
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-.certification-info-img {
-  width: 200px;
-  height: 150px;
-}
-/*
- * 
- * @ 代理办公室 样式
- * 
- */
-/*
- * 
- * @ 代理办公室 样式
- * 
- */
-.my-link {
-  padding-top: 20px;
-}
-.my-link h4,
-.my-link p {
-  text-align: center;
-}
-.my-link img {
-  display: block;
-  margin: 0 auto;
-}
-.infor-card-con {
-  height: 100px;
-}
-.infor-card-icon-con {
-  height: 100%;
-  color: white;
-  border-radius: 3px 0 0 3px;
-  width: 35%;
-}
-.infor-card-count-con {
-  width: 65%;
-}
-.infor-card-count-con span {
-  font-size: 30px;
-}
-.infor-intro-text {
-  font-size: 12px;
-  font-weight: 500;
-  color: #C8C8C8;
-  text-align: center;
-}
-.user-infor-card .user-infor {
-  height: 120px;
-}
-.user-infor-card .avator-img {
-  display: block;
-  width: 80%;
-  max-width: 100px;
-  height: auto;
-}
-.user-infor-card .card-user-infor-name {
-  font-size: 2em;
-  color: #2d8cf0;
-}
-.user-infor-card .made-child-con-middle {
-  height: 100%;
-  position: relative;
-}
-.user-infor-card .status {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 50px;
-  height: 20px;
-}
-.user-infor-card .is_authentication {
-  background: url(/images/is_authentication.svg) no-repeat top center !important;
-  background-size: cover !important;
-}
-.user-infor-card .not_authentication {
-  background: url(/images/not_authentication.svg) no-repeat top center;
-  background-size: cover;
-}
-.data-statistics .card-title {
-  color: #abafbd;
-}
-.data-statistics .data-source-row {
-  height: 400px;
-}
-@media (max-width: 1280px) {
-  .data-statistics .data-source-row {
-    height: 300px;
-  }
-}
-.income-statistics .card-title {
-  color: #abafbd;
-}
-.income-statistics .data-source-row {
-  height: 294px;
-  width: 100%;
-}
-@media (max-width: 1280px) {
-  .income-statistics .data-source-row {
-    height: 194px;
-  }
-}
-.backend-main {
+#app.backend .backend-main {
   background: #eaedf1;
   position: relative;
   width: 100%;
   height: 100%;
 }
-.backend-main .content-body {
+#app.backend .backend-main .content-body {
   position: absolute;
   top: 50px;
   bottom: 0;
   left: 0;
   right: 0;
 }
-.backend-main .content-body .content-app {
+#app.backend .backend-main .content-body .content-app {
   position: absolute;
   top: 0;
   bottom: 20px;
@@ -670,38 +672,38 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   right: 0;
   padding: 10px;
 }
-.backend-main .content-body .content-app > div {
+#app.backend .backend-main .content-body .content-app > div {
   width: 100%;
   height: 100%;
   overflow: auto;
 }
-.backend-main .content-body .content-app .app-warp {
+#app.backend .backend-main .content-body .content-app .app-warp {
   background-color: #ffffff;
   border: 1px solid #e9eaec;
   border-radius: 4px;
 }
-.backend-main .content-body .content-app .app-warp .filter-bar {
+#app.backend .backend-main .content-body .content-app .app-warp .filter-bar {
   width: 100%;
   padding: 0 20px;
   overflow: hidden;
 }
-.backend-main .content-body .content-app .app-warp .filter-bar .filter-item {
+#app.backend .backend-main .content-body .content-app .app-warp .filter-bar .filter-item {
   width: 280px;
   float: left;
   margin: 14px 0;
 }
-.backend-main .content-body .content-app .app-warp .filter-bar .filter-item .filter-item-name {
+#app.backend .backend-main .content-body .content-app .app-warp .filter-bar .filter-item .filter-item-name {
   margin-right: 10px;
 }
-.backend-main .content-body .content-app .app-warp .list-table {
+#app.backend .backend-main .content-body .content-app .app-warp .list-table {
   margin: 0 20px;
 }
-.backend-header {
+#app.backend .backend-header {
   height: 50px;
   width: 100%;
   background-color: #373d41;
 }
-.backend-header .header-item {
+#app.backend .backend-header .header-item {
   height: 50px;
   line-height: 50px;
   color: #fff;
@@ -711,7 +713,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   cursor: pointer;
   position: relative;
 }
-.backend-header .header-item .more-info {
+#app.backend .backend-header .header-item .more-info {
   visibility: hidden;
   position: absolute;
   top: 100%;
@@ -722,30 +724,30 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   z-index: 1;
   transition: visibility .15s;
 }
-.backend-header .header-item .more-info .info-item {
+#app.backend .backend-header .header-item .more-info .info-item {
   min-width: 140px;
 }
-.backend-header .header-item .more-info.left {
+#app.backend .backend-header .header-item .more-info.left {
   left: 0;
 }
-.backend-header .header-item .more-info.right {
+#app.backend .backend-header .header-item .more-info.right {
   right: 0;
 }
-.backend-header .header-item:hover {
+#app.backend .backend-header .header-item:hover {
   background-color: #2a2f32;
 }
-.backend-header .header-item:hover .more-info {
+#app.backend .backend-header .header-item:hover .more-info {
   visibility: inherit;
 }
-.backend-header .floatL {
+#app.backend .backend-header .floatL {
   float: left;
   border-right: 1px solid #2a2f32;
 }
-.backend-header .floatR {
+#app.backend .backend-header .floatR {
   float: right;
   border-left: 1px solid #2a2f32;
 }
-.backend-footer {
+#app.backend .backend-footer {
   position: absolute;
   bottom: 0;
   left: 180px;
@@ -754,11 +756,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   padding: 5px 15px;
   color: #9ea7b4;
 }
-.backend-left-bar {
+#app.backend .backend-left-bar {
   width: 180px;
   height: 100%;
   background-color: #333744;
 }
-.backend-left-bar .ivu-menu-item {
+#app.backend .backend-left-bar .ivu-menu-item {
   background-color: #333744;
 }
