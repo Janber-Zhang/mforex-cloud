@@ -62,11 +62,11 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _index = __webpack_require__(19);
+	var _index = __webpack_require__(25);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _iview = __webpack_require__(23);
+	var _iview = __webpack_require__(29);
 
 	var _iview2 = _interopRequireDefault(_iview);
 
@@ -14678,11 +14678,11 @@
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _ = __webpack_require__(24);
+	var _ = __webpack_require__(19);
 
 	var _2 = _interopRequireDefault(_);
 
-	var _index = __webpack_require__(27);
+	var _index = __webpack_require__(22);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -15147,6 +15147,254 @@
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(20)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/error_pages/404.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(21)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-f30b4cac/404.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="error404">
+	//         <div class="error404-body-con">
+	//             <Card>
+	//                 <div class="error404-body-con-title">4<span><Icon size="230" type="ios-navigate-outline"></Icon></span>4</div>
+	//                 <p class="error404-body-con-message">暂未开放</p>
+	//                 <div class="error404-btn-con">
+	//                     <i-button @click="goHome" size="large" style="width: 200px;" type="text">返回首页</i-button>
+	//                     <i-button @click="backPage" size="large" style="width: 200px;margin-left: 40px;" type="primary">返回上一页</i-button>
+	//                 </div>
+	//             </Card>
+	//         </div>
+	//     </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	    name: 'Error404',
+	    methods: {
+	        backPage: function backPage() {
+	            this.$router.go(-1);
+	        },
+	        goHome: function goHome() {
+	            this.$router.push({ path: '/' });
+	        }
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">暂未开放</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(23)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/home/index.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(24)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-fc90296e/index.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="home">
+	//     <Row>
+	//       <Col span="8">
+	//         <Card style="margin-right:10px;">
+	//           <p slot="title">
+	//             <Icon type="ios-film-outline"></Icon>
+	//             MT4服务器情况
+	//           </p>
+	//           <ul class="list-info">
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4服务器地址</span><span class="value">182.16.85.211:7610</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4客户端登录地址</span><span class="value">MT-AD Server</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4管理员帐号</span><span class="value">3</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4管理员密码</span><span class="value">******</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">开户杠杆参数</span><span class="value">100|200|300|500</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4真实用户默认开户组</span><span class="value">IB202</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4真实用户开户帐号范围</span><span class="value">40360000-40390000</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4DEMO用户默认开户组</span><span class="value">1</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4DEMO用户初始入金数量</span><span class="value">3000</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4DEMO用户开户帐号范围</span><span class="value">700000-800000</span></li>
+	//             </ul>
+	//         </Card>
+	//         <Card style="margin-right:10px;">
+	//           <p slot="title">
+	//             <Icon type="ios-film-outline"></Icon>
+	//             网站设置
+	//           </p>
+	//           <ul class="list-info">
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">前台域名</span><span class="value">http://jjfly.pro:3000</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">网站名称</span><span class="value">mforex</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">联系电话</span><span class="value">02893932323</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">传真</span><span class="value">02893932323</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">地址</span><span class="value">mforex-02893932323</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">邮箱(只显示用)</span><span class="value">mforex-02893932323</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">主站点地址</span><span class="value">http://www.andaobo.com/</span></li>
+	//           </ul>
+	//         </Card>
+	//       </Col>
+	//       <Col span="8">
+	//         <Card style="margin-right:10px;">
+	//           <p slot="title">
+	//             <Icon type="ios-film-outline"></Icon>
+	//             支付设置
+	//           </p>
+	//           <ul class="list-info">
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">币种</span><span class="value">USD</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">出金扣款方式</span><span class="value">出金申请审核后从MT4扣款</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">出金汇率计算方式</span><span class="value">非实时汇率</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">出金默认汇率</span><span class="value">7.00</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">出金汇率调整值</span><span class="value">0.00</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">入金汇率计算方式</span><span class="value">7.00</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">入金汇率调整值</span><span class="value">0.00</span></li>
+	//           </ul>
+	//         </Card>
+	//         <Card style="margin-right:10px;">
+	//           <p slot="title">
+	//             <Icon type="ios-film-outline"></Icon>
+	//             邮件设置
+	//           </p>
+	//           <ul class="list-info">
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">邮件服务器地址</span><span class="value">smtp.exmail.qq.com</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">邮件服务器端口</span><span class="value">25</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">发件邮箱</span><span class="value">info@andaobo.com</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">发件账户</span><span class="value">info@andaobo.com</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">发件账户密码</span><span class="value">******</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">管理员邮箱</span><span class="value">info@andaobo.com</span></li>
+	//           </ul>
+	//         </Card>
+	//       </Col>
+	//       <Col span="8">
+	//         <Card style="margin-right:10px;">
+	//           <p slot="title">
+	//             <Icon type="ios-film-outline"></Icon>
+	//             客户情况
+	//           </p>
+	//           <ul class="list-info">
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">申请审核客户</span><span class="value">1</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">已认证客户</span><span class="value">3240</span></li>
+	//           </ul>
+	//         </Card>
+	//         <Card style="margin-right:10px;">
+	//           <p slot="title">
+	//             <Icon type="ios-film-outline"></Icon>
+	//             交易情况
+	//           </p>
+	//           <ul class="list-info">
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">买卖单总量</span><span class="value">40039</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">入金单总量</span><span class="value">2717</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">出金单总量</span><span class="value">24003</span></li>
+	//           </ul>
+	//         </Card>
+	//         <Card style="margin-right:10px;">
+	//           <p slot="title">
+	//             <Icon type="ios-film-outline"></Icon>
+	//             支付情况
+	//           </p>
+	//           <ul class="list-info">
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">入金支付总数</span><span class="value">919</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">有效入金支付总数</span><span class="value">148</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">出金申请总数</span><span class="value">301</span></li>
+	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">完成出金总数</span><span class="value">0</span></li>
+	//           </ul>
+	//         </Card>
+	//       </Col>
+	//     </Row>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {};
+	  },
+
+	  methods: {},
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"home\">\n  <Row>\n    <Col span=\"8\">\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          MT4服务器情况\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4服务器地址</span><span class=\"value\">182.16.85.211:7610</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4客户端登录地址</span><span class=\"value\">MT-AD Server</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4管理员帐号</span><span class=\"value\">3</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4管理员密码</span><span class=\"value\">******</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">开户杠杆参数</span><span class=\"value\">100|200|300|500</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4真实用户默认开户组</span><span class=\"value\">IB202</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4真实用户开户帐号范围</span><span class=\"value\">40360000-40390000</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4DEMO用户默认开户组</span><span class=\"value\">1</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4DEMO用户初始入金数量</span><span class=\"value\">3000</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4DEMO用户开户帐号范围</span><span class=\"value\">700000-800000</span></li>\n          </ul>\n      </Card>\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          网站设置\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">前台域名</span><span class=\"value\">http://jjfly.pro:3000</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">网站名称</span><span class=\"value\">mforex</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">联系电话</span><span class=\"value\">02893932323</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">传真</span><span class=\"value\">02893932323</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">地址</span><span class=\"value\">mforex-02893932323</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">邮箱(只显示用)</span><span class=\"value\">mforex-02893932323</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">主站点地址</span><span class=\"value\">http://www.andaobo.com/</span></li>\n        </ul>\n      </Card>\n    </Col>\n    <Col span=\"8\">\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          支付设置\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">币种</span><span class=\"value\">USD</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金扣款方式</span><span class=\"value\">出金申请审核后从MT4扣款</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金汇率计算方式</span><span class=\"value\">非实时汇率</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金默认汇率</span><span class=\"value\">7.00</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金汇率调整值</span><span class=\"value\">0.00</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">入金汇率计算方式</span><span class=\"value\">7.00</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">入金汇率调整值</span><span class=\"value\">0.00</span></li>\n        </ul>\n      </Card>\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          邮件设置\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">邮件服务器地址</span><span class=\"value\">smtp.exmail.qq.com</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">邮件服务器端口</span><span class=\"value\">25</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">发件邮箱</span><span class=\"value\">info@andaobo.com</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">发件账户</span><span class=\"value\">info@andaobo.com</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">发件账户密码</span><span class=\"value\">******</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">管理员邮箱</span><span class=\"value\">info@andaobo.com</span></li>\n        </ul>\n      </Card>\n    </Col>\n    <Col span=\"8\">\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          客户情况\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">申请审核客户</span><span class=\"value\">1</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">已认证客户</span><span class=\"value\">3240</span></li>\n        </ul>\n      </Card>\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          交易情况\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">买卖单总量</span><span class=\"value\">40039</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">入金单总量</span><span class=\"value\">2717</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金单总量</span><span class=\"value\">24003</span></li>\n        </ul>\n      </Card>\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          支付情况\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">入金支付总数</span><span class=\"value\">919</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">有效入金支付总数</span><span class=\"value\">148</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金申请总数</span><span class=\"value\">301</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">完成出金总数</span><span class=\"value\">0</span></li>\n        </ul>\n      </Card>\n    </Col>\n  </Row>\n</div>\n";
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -15161,15 +15409,15 @@
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _getters = __webpack_require__(20);
+	var _getters = __webpack_require__(26);
 
 	var _getters2 = _interopRequireDefault(_getters);
 
-	var _mutations = __webpack_require__(21);
+	var _mutations = __webpack_require__(27);
 
 	var _mutations2 = _interopRequireDefault(_mutations);
 
-	var _actions = __webpack_require__(22);
+	var _actions = __webpack_require__(28);
 
 	var _actions2 = _interopRequireDefault(_actions);
 
@@ -15190,7 +15438,7 @@
 	});
 
 /***/ },
-/* 20 */
+/* 26 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15210,7 +15458,7 @@
 	exports.default = getters;
 
 /***/ },
-/* 21 */
+/* 27 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15230,7 +15478,7 @@
 	exports.default = mutations;
 
 /***/ },
-/* 22 */
+/* 28 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15250,7 +15498,7 @@
 	exports.default = actions;
 
 /***/ },
-/* 23 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -49437,254 +49685,6 @@
 	/***/ })
 	/******/ ]);
 	});
-
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(25)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/error_pages/404.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(26)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-f30b4cac/404.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 25 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	// <template>
-	//     <div class="error404">
-	//         <div class="error404-body-con">
-	//             <Card>
-	//                 <div class="error404-body-con-title">4<span><Icon size="230" type="ios-navigate-outline"></Icon></span>4</div>
-	//                 <p class="error404-body-con-message">暂未开放</p>
-	//                 <div class="error404-btn-con">
-	//                     <i-button @click="goHome" size="large" style="width: 200px;" type="text">返回首页</i-button>
-	//                     <i-button @click="backPage" size="large" style="width: 200px;margin-left: 40px;" type="primary">返回上一页</i-button>
-	//                 </div>
-	//             </Card>
-	//         </div>
-	//     </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	    name: 'Error404',
-	    methods: {
-	        backPage: function backPage() {
-	            this.$router.go(-1);
-	        },
-	        goHome: function goHome() {
-	            this.$router.push({ path: '/' });
-	        }
-	    }
-	};
-	// </script>
-
-/***/ },
-/* 26 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">暂未开放</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
-
-/***/ },
-/* 27 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(28)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/home/index.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(29)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-fc90296e/index.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 28 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="home">
-	//     <Row>
-	//       <Col span="8">
-	//         <Card style="margin-right:10px;">
-	//           <p slot="title">
-	//             <Icon type="ios-film-outline"></Icon>
-	//             MT4服务器情况
-	//           </p>
-	//           <ul class="list-info">
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4服务器地址</span><span class="value">182.16.85.211:7610</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4客户端登录地址</span><span class="value">MT-AD Server</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4管理员帐号</span><span class="value">3</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4管理员密码</span><span class="value">******</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">开户杠杆参数</span><span class="value">100|200|300|500</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4真实用户默认开户组</span><span class="value">IB202</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4真实用户开户帐号范围</span><span class="value">40360000-40390000</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4DEMO用户默认开户组</span><span class="value">1</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4DEMO用户初始入金数量</span><span class="value">3000</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">MT4DEMO用户开户帐号范围</span><span class="value">700000-800000</span></li>
-	//             </ul>
-	//         </Card>
-	//         <Card style="margin-right:10px;">
-	//           <p slot="title">
-	//             <Icon type="ios-film-outline"></Icon>
-	//             网站设置
-	//           </p>
-	//           <ul class="list-info">
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">前台域名</span><span class="value">http://jjfly.pro:3000</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">网站名称</span><span class="value">mforex</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">联系电话</span><span class="value">02893932323</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">传真</span><span class="value">02893932323</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">地址</span><span class="value">mforex-02893932323</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">邮箱(只显示用)</span><span class="value">mforex-02893932323</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">主站点地址</span><span class="value">http://www.andaobo.com/</span></li>
-	//           </ul>
-	//         </Card>
-	//       </Col>
-	//       <Col span="8">
-	//         <Card style="margin-right:10px;">
-	//           <p slot="title">
-	//             <Icon type="ios-film-outline"></Icon>
-	//             支付设置
-	//           </p>
-	//           <ul class="list-info">
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">币种</span><span class="value">USD</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">出金扣款方式</span><span class="value">出金申请审核后从MT4扣款</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">出金汇率计算方式</span><span class="value">非实时汇率</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">出金默认汇率</span><span class="value">7.00</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">出金汇率调整值</span><span class="value">0.00</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">入金汇率计算方式</span><span class="value">7.00</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">入金汇率调整值</span><span class="value">0.00</span></li>
-	//           </ul>
-	//         </Card>
-	//         <Card style="margin-right:10px;">
-	//           <p slot="title">
-	//             <Icon type="ios-film-outline"></Icon>
-	//             邮件设置
-	//           </p>
-	//           <ul class="list-info">
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">邮件服务器地址</span><span class="value">smtp.exmail.qq.com</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">邮件服务器端口</span><span class="value">25</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">发件邮箱</span><span class="value">info@andaobo.com</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">发件账户</span><span class="value">info@andaobo.com</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">发件账户密码</span><span class="value">******</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">管理员邮箱</span><span class="value">info@andaobo.com</span></li>
-	//           </ul>
-	//         </Card>
-	//       </Col>
-	//       <Col span="8">
-	//         <Card style="margin-right:10px;">
-	//           <p slot="title">
-	//             <Icon type="ios-film-outline"></Icon>
-	//             客户情况
-	//           </p>
-	//           <ul class="list-info">
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">申请审核客户</span><span class="value">1</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">已认证客户</span><span class="value">3240</span></li>
-	//           </ul>
-	//         </Card>
-	//         <Card style="margin-right:10px;">
-	//           <p slot="title">
-	//             <Icon type="ios-film-outline"></Icon>
-	//             交易情况
-	//           </p>
-	//           <ul class="list-info">
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">买卖单总量</span><span class="value">40039</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">入金单总量</span><span class="value">2717</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">出金单总量</span><span class="value">24003</span></li>
-	//           </ul>
-	//         </Card>
-	//         <Card style="margin-right:10px;">
-	//           <p slot="title">
-	//             <Icon type="ios-film-outline"></Icon>
-	//             支付情况
-	//           </p>
-	//           <ul class="list-info">
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">入金支付总数</span><span class="value">919</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">有效入金支付总数</span><span class="value">148</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">出金申请总数</span><span class="value">301</span></li>
-	//             <li class="list-info-item" flex="main:left cross:center"><span class="title">完成出金总数</span><span class="value">0</span></li>
-	//           </ul>
-	//         </Card>
-	//       </Col>
-	//     </Row>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {};
-	  },
-
-	  methods: {},
-	  components: {},
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 29 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"home\">\n  <Row>\n    <Col span=\"8\">\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          MT4服务器情况\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4服务器地址</span><span class=\"value\">182.16.85.211:7610</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4客户端登录地址</span><span class=\"value\">MT-AD Server</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4管理员帐号</span><span class=\"value\">3</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4管理员密码</span><span class=\"value\">******</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">开户杠杆参数</span><span class=\"value\">100|200|300|500</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4真实用户默认开户组</span><span class=\"value\">IB202</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4真实用户开户帐号范围</span><span class=\"value\">40360000-40390000</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4DEMO用户默认开户组</span><span class=\"value\">1</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4DEMO用户初始入金数量</span><span class=\"value\">3000</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4DEMO用户开户帐号范围</span><span class=\"value\">700000-800000</span></li>\n          </ul>\n      </Card>\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          网站设置\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">前台域名</span><span class=\"value\">http://jjfly.pro:3000</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">网站名称</span><span class=\"value\">mforex</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">联系电话</span><span class=\"value\">02893932323</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">传真</span><span class=\"value\">02893932323</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">地址</span><span class=\"value\">mforex-02893932323</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">邮箱(只显示用)</span><span class=\"value\">mforex-02893932323</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">主站点地址</span><span class=\"value\">http://www.andaobo.com/</span></li>\n        </ul>\n      </Card>\n    </Col>\n    <Col span=\"8\">\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          支付设置\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">币种</span><span class=\"value\">USD</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金扣款方式</span><span class=\"value\">出金申请审核后从MT4扣款</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金汇率计算方式</span><span class=\"value\">非实时汇率</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金默认汇率</span><span class=\"value\">7.00</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金汇率调整值</span><span class=\"value\">0.00</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">入金汇率计算方式</span><span class=\"value\">7.00</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">入金汇率调整值</span><span class=\"value\">0.00</span></li>\n        </ul>\n      </Card>\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          邮件设置\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">邮件服务器地址</span><span class=\"value\">smtp.exmail.qq.com</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">邮件服务器端口</span><span class=\"value\">25</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">发件邮箱</span><span class=\"value\">info@andaobo.com</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">发件账户</span><span class=\"value\">info@andaobo.com</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">发件账户密码</span><span class=\"value\">******</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">管理员邮箱</span><span class=\"value\">info@andaobo.com</span></li>\n        </ul>\n      </Card>\n    </Col>\n    <Col span=\"8\">\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          客户情况\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">申请审核客户</span><span class=\"value\">1</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">已认证客户</span><span class=\"value\">3240</span></li>\n        </ul>\n      </Card>\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          交易情况\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">买卖单总量</span><span class=\"value\">40039</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">入金单总量</span><span class=\"value\">2717</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金单总量</span><span class=\"value\">24003</span></li>\n        </ul>\n      </Card>\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          支付情况\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">入金支付总数</span><span class=\"value\">919</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">有效入金支付总数</span><span class=\"value\">148</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金申请总数</span><span class=\"value\">301</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">完成出金总数</span><span class=\"value\">0</span></li>\n        </ul>\n      </Card>\n    </Col>\n  </Row>\n</div>\n";
 
 /***/ }
 /******/ ]);
