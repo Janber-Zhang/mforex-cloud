@@ -764,3 +764,20 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 #app.backend .backend-left-bar .ivu-menu-item {
   background-color: #333744;
 }
+#app.backend .home .ivu-card {
+  margin-bottom: 10px;
+}
+#app.backend .home .list-info-item {
+  padding: 5px 10px;
+}
+#app.backend .home .list-info-item .title {
+  color: #999;
+  max-width: 84px;
+  min-width: 84px;
+  margin-right: 30px;
+}
+#app.backend .home .list-info-item .value {
+  color: #666;
+  min-width: 100px;
+  max-width: 150px;
+}
