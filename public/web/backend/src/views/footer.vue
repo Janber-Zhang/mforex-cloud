@@ -1,5 +1,5 @@
 <template>
-	<div class="app-footer">
+	<div class="backend-footer">
 		<p class="copyright">2008-2017 &copy; MT4 CRM 后台管理平台。</p>
 	</div>
 </template>

@@ -1,11 +1,14 @@
 <template>
   <div class="backend-header">
-    <div class="floatL header-item">
+    <div class="floatL header-item" @click="toIndex">
       <img width="30" src="/images/backend_icon.svg" alt="">
     </div>
-    <div class="floatL header-item">管理控制台</div>
+    <div class="floatL header-item" @click="toIndex">管理控制台</div>
     <div class="floatR header-item">
       <img width="30" src="/images/avatar.svg" alt="">
+      <ul class="more-info right">
+        <li class="info-item" @click="logout">退出登录</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -24,18 +27,11 @@
       }
     },
     methods:{
-      userHandle: function(key) {
-        switch (key) {
-          case 'myProfile':
-            console.log('123')
-            break;
-          case 'logout':
-            util.logout();
-            break;
-        }
+      logout: function(key) {
+        util.logout();
       },
-      skip2backend: function() {
-        location.href = '/backend'
+      toIndex: function() {
+        this.$router.push({ path: '/' });
       }
     },
     components:{

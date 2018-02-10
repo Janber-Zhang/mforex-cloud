@@ -14678,12 +14678,24 @@
 
 	var _main2 = _interopRequireDefault(_main);
 
+	var _ = __webpack_require__(24);
+
+	var _2 = _interopRequireDefault(_);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// 未开放模块
 
 	var routes = [{
 		path: '/',
 		component: _main2.default,
-		children: []
+		children: [{
+			path: '/'
+			// component : homePage
+		}, {
+			path: '*',
+			component: _2.default
+		}]
 	}];
 	exports.default = routes;
 
@@ -14770,9 +14782,9 @@
 	//     <div class="content-body">
 	//       <left-bar></left-bar>
 	//       <div class="content-app">
-	//         <!-- <router-view></router-view> -->
+	//         <router-view></router-view>
 	//       </div>
-	//       <!-- <copy-footer></copy-footer> -->
+	//       <copy-footer></copy-footer>
 	//     </div>
 	//   </div>
 	// </template>
@@ -14823,12 +14835,15 @@
 	});
 	// <template>
 	//   <div class="backend-header">
-	//     <div class="floatL header-item">
+	//     <div class="floatL header-item" @click="toIndex">
 	//       <img width="30" src="/images/backend_icon.svg" alt="">
 	//     </div>
-	//     <div class="floatL header-item">管理控制台</div>
+	//     <div class="floatL header-item" @click="toIndex">管理控制台</div>
 	//     <div class="floatR header-item">
 	//       <img width="30" src="/images/avatar.svg" alt="">
+	//       <ul class="more-info right">
+	//         <li class="info-item" @click="logout">退出登录</li>
+	//       </ul>
 	//     </div>
 	//   </div>
 	// </template>
@@ -14844,18 +14859,11 @@
 	  },
 
 	  methods: {
-	    userHandle: function userHandle(key) {
-	      switch (key) {
-	        case 'myProfile':
-	          console.log('123');
-	          break;
-	        case 'logout':
-	          util.logout();
-	          break;
-	      }
+	    logout: function logout(key) {
+	      util.logout();
 	    },
-	    skip2backend: function skip2backend() {
-	      location.href = '/backend';
+	    toIndex: function toIndex() {
+	      this.$router.push({ path: '/' });
 	    }
 	  },
 	  components: {},
@@ -14875,7 +14883,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"backend-header\">\n  <div class=\"floatL header-item\">\n    <img width=\"30\" src=\"/images/backend_icon.svg\" alt=\"\">\n  </div>\n  <div class=\"floatL header-item\">管理控制台</div>\n  <div class=\"floatR header-item\">\n    <img width=\"30\" src=\"/images/avatar.svg\" alt=\"\">\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"backend-header\">\n  <div class=\"floatL header-item\" @click=\"toIndex\">\n    <img width=\"30\" src=\"/images/backend_icon.svg\" alt=\"\">\n  </div>\n  <div class=\"floatL header-item\" @click=\"toIndex\">管理控制台</div>\n  <div class=\"floatR header-item\">\n    <img width=\"30\" src=\"/images/avatar.svg\" alt=\"\">\n    <ul class=\"more-info right\">\n      <li class=\"info-item\" @click=\"logout\">退出登录</li>\n    </ul>\n  </div>\n</div>\n";
 
 /***/ },
 /* 12 */
@@ -14920,7 +14928,7 @@
 		value: true
 	});
 	// <template>
-	// 	<div class="app-footer">
+	// 	<div class="backend-footer">
 	// 		<p class="copyright">2008-2017 &copy; MT4 CRM 后台管理平台。</p>
 	// 	</div>
 	// </template>
@@ -14961,7 +14969,7 @@
 /* 14 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"app-footer\">\n\t<p class=\"copyright\">2008-2017 &copy; MT4 CRM 后台管理平台。</p>\n</div>\n";
+	module.exports = "\n<div class=\"backend-footer\">\n\t<p class=\"copyright\">2008-2017 &copy; MT4 CRM 后台管理平台。</p>\n</div>\n";
 
 /***/ },
 /* 15 */
@@ -15029,23 +15037,43 @@
 				menuList: [{
 					submenu: '基本设置',
 					icon: 'social-usd',
-					submenuName: 'capitalOperation',
-					items: []
+					submenuName: 'basic',
+					items: [{ show: '系统设置', name: '/basic_system' }, { show: '邮件设置', name: '/basic_email' }, { show: '邮件模版设置', name: '/basic_email_template' }, { show: '代理设置', name: '/basic_proxy' }, { show: '交易设置', name: '/basic_trade' }, { show: '代理名称设置', name: '/basic_proxy_level' }, { show: '支付设置', name: '/basic_payment' }, { show: 'LOGO设置', name: '/basic_logo' }, { show: '短信设置', name: '/basic_msg' }]
 				}, {
 					submenu: '客户管理',
 					icon: 'ios-box',
-					submenuName: 'dataStatistics',
-					items: [{ show: '历史交易订单', name: '/history_orders' }, { show: '当前交易订单', name: '/current_orders' }]
+					submenuName: 'customer',
+					items: [{ show: '客户管理', name: '/customer' }]
 				}, {
 					submenu: '财务管理',
 					icon: 'android-apps',
-					submenuName: 'agentRoom',
-					items: []
+					submenuName: 'finance',
+					items: [{ show: '出金审核', name: '/finance_out_appr' }, { show: '入金支付记录', name: '/finance_in_list' }]
 				}, {
 					submenu: '系统管理',
 					icon: 'ios-person',
-					submenuName: 'personalSetting',
-					items: [{ show: '账户设置', name: '/profile' }, { show: '实名认证', name: '/certification' }]
+					submenuName: 'system',
+					items: [{ show: '管理员管理', name: '/system_manager' }, { show: '角色管理', name: '/system_role' }]
+				}, {
+					submenu: 'MT4设置',
+					icon: 'ios-person',
+					submenuName: 'MT4',
+					items: [{ show: '基本参数设置', name: '/MT4_basic_init' }, { show: '初始化', name: '/MT4_init' }, { show: '组管理', name: '/MT4_group' }, { show: '符号管理', name: '/MT4_symbol' }, { show: '用户组分布', name: '/MT4_groups_map' }]
+				}, {
+					submenu: '统计',
+					icon: 'ios-person',
+					submenuName: 'statistics',
+					items: [{ show: '交易统计', name: '/statistics_trade' }, { show: '出入金统计', name: '/statistics_in_out' }, { show: '佣金统计', name: '/statistics_commission' }, { show: '持仓交易盈利统计', name: '/statistics_profit' }, { show: '历史交易盈利统计', name: '/statistics_profit_all' }]
+				}, {
+					submenu: '其他',
+					icon: 'ios-person',
+					submenuName: 'other',
+					items: [{ show: '邮件通知', name: '/other_email' }, { show: '文档管理', name: '/other_documents' }]
+				}, {
+					submenu: '跟单子系统',
+					icon: 'ios-person',
+					submenuName: 'follow',
+					items: [{ show: '跟单设置', name: '/follow_setting' }, { show: '牛人列表', name: '/follow_bigman' }, { show: '跟单记录', name: '/follow_list' }]
 				}],
 				openStatus: {
 					openNames: [],
@@ -15110,7 +15138,7 @@
 /* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"backend-main\">\n  <main-header></main-header>\n  <div class=\"content-body\">\n    <left-bar></left-bar>\n    <div class=\"content-app\">\n      <!-- <router-view></router-view> -->\n    </div>\n    <!-- <copy-footer></copy-footer> -->\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"backend-main\">\n  <main-header></main-header>\n  <div class=\"content-body\">\n    <left-bar></left-bar>\n    <div class=\"content-app\">\n      <router-view></router-view>\n    </div>\n    <copy-footer></copy-footer>\n  </div>\n</div>\n";
 
 /***/ },
 /* 19 */
@@ -49406,6 +49434,83 @@
 	/***/ })
 	/******/ ]);
 	});
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(25)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/error_pages/404.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(26)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-f30b4cac/404.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 25 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="error404">
+	//         <div class="error404-body-con">
+	//             <Card>
+	//                 <div class="error404-body-con-title">4<span><Icon size="230" type="ios-navigate-outline"></Icon></span>4</div>
+	//                 <p class="error404-body-con-message">暂未开放</p>
+	//                 <div class="error404-btn-con">
+	//                     <i-button @click="goHome" size="large" style="width: 200px;" type="text">返回首页</i-button>
+	//                     <i-button @click="backPage" size="large" style="width: 200px;margin-left: 40px;" type="primary">返回上一页</i-button>
+	//                 </div>
+	//             </Card>
+	//         </div>
+	//     </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	    name: 'Error404',
+	    methods: {
+	        backPage: function backPage() {
+	            this.$router.go(-1);
+	        },
+	        goHome: function goHome() {
+	            this.$router.push({ path: '/' });
+	        }
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">暂未开放</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
 
 /***/ }
 /******/ ]);

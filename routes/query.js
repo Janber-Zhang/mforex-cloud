@@ -9,7 +9,12 @@ var utils = require('../libs/utils.js')
 
 /* 登出，强行置空session */
 router.post('/logout', (req, res, next) => {
-  req.session.user=null;
+  var referer = req.headers.referer || '';
+  if (referer.indexOf('backend')>-1) {
+    req.session.user.backend = null;
+  } else {
+    req.session.user.app = null;
+  }
   res.send('{"code":"0","data":"true"}');
 });
 

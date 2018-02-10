@@ -4,9 +4,9 @@
     <div class="content-body">
       <left-bar></left-bar>
       <div class="content-app">
-        <!-- <router-view></router-view> -->
+        <router-view></router-view>
       </div>
-      <!-- <copy-footer></copy-footer> -->
+      <copy-footer></copy-footer>
     </div>
   </div>
 </template>
