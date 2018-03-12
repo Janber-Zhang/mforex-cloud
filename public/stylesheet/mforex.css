@@ -681,15 +681,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   background-color: #ffffff;
   border: 1px solid #e9eaec;
   border-radius: 4px;
-}
-#app.backend .backend-main .content-body .content-app .app-warp-title {
-  font-size: 16px;
-  padding: 5px 10px;
-  color: #888;
-  border-bottom: 1px solid #dedede;
-}
-#app.backend .backend-main .content-body .content-app .app-warp-content {
-  padding: 5px 10px;
+  padding: 10px;
 }
 #app.backend .backend-main .content-body .content-app .app-warp .filter-bar {
   width: 100%;

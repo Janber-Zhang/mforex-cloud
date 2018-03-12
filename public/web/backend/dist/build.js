@@ -14690,12 +14690,16 @@
 
 	var _system2 = _interopRequireDefault(_system);
 
+	var _email = __webpack_require__(33);
+
+	var _email2 = _interopRequireDefault(_email);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// 基本设置-系统设置
+	// 基本设置-邮件设置
 
 
-	// 未开放模块
+	// 主页
 
 	var routes = [{
 		path: '/',
@@ -14707,10 +14711,14 @@
 			path: '/basic_system',
 			component: _system2.default
 		}, {
+			path: '/basic_email',
+			component: _email2.default
+		}, {
 			path: '*',
 			component: _2.default
 		}]
-	}]; // 主页
+	}]; // 基本设置-系统设置
+	// 未开放模块
 
 	exports.default = routes;
 
@@ -49742,39 +49750,47 @@
 	});
 	// <template>
 	//   <div class="basic_system app-warp">
-	//     <div class="app-warp-title">系统参数</div>
-	//     <div class="app-warp-content">
+	//     <Card style="width:600px">
+	//       <p slot="title">系统参数</p>
+	//       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">
+	//         <Icon type="edit"></Icon>
+	//         编辑
+	//       </a>
+	//       <a href="#" slot="extra" v-if="!readonly" @click.prevent="switchModel(true)">
+	//         <Icon type="edit"></Icon>
+	//         取消
+	//       </a>
 	//       <Form :model="data" label-position="left" :label-width="120">
 	//         <form-item label="客户站点域名">
-	//             <Input style="width: 500px" :readonly="readonly" v-model="data.domain" placeholder="Enter something..."></Input>
+	//             <Input :disabled="readonly" v-model="data.domain" placeholder="Enter something..."></Input>
 	//         </form-item>
 	//         <form-item label="网站名称">
-	//             <Input style="width: 500px" :readonly="readonly" v-model="data.name" placeholder="Enter something..."></Input>
+	//             <Input :disabled="readonly" v-model="data.name" placeholder="Enter something..."></Input>
 	//         </form-item>
 	//         <form-item label="联系电话">
-	//             <Input style="width: 500px" :readonly="readonly" v-model="data.phone" placeholder="Enter something..."></Input>
+	//             <Input :disabled="readonly" v-model="data.phone" placeholder="Enter something..."></Input>
 	//         </form-item>
 	//         <form-item label="邮箱">
-	//             <Input style="width: 500px" :readonly="readonly" v-model="data.email" placeholder="Enter something..."></Input>
+	//             <Input :disabled="readonly" v-model="data.email" placeholder="Enter something..."></Input>
 	//         </form-item>
 	//         <form-item label="传真">
-	//             <Input style="width: 500px" :readonly="readonly" v-model="data.fax" placeholder="Enter something..."></Input>
+	//             <Input :disabled="readonly" v-model="data.fax" placeholder="Enter something..."></Input>
 	//         </form-item>
 	//         <form-item label="地址">
-	//             <Input style="width: 500px" :readonly="readonly" v-model="data.addr" placeholder="Enter something..."></Input>
+	//             <Input :disabled="readonly" v-model="data.addr" placeholder="Enter something..."></Input>
 	//         </form-item>
 	//         <form-item label="交易软件下载连接">
-	//             <Input style="width: 500px" :readonly="readonly" v-model="data.download_url" placeholder="Enter something..."></Input>
+	//             <Input :disabled="readonly" v-model="data.download_url" placeholder="Enter something..."></Input>
 	//         </form-item>
 	//         <form-item label="主站地址">
-	//             <Input style="width: 500px" :readonly="readonly" v-model="data.main_url" placeholder="Enter something..."></Input>
+	//             <Input :disabled="readonly" v-model="data.main_url" placeholder="Enter something..."></Input>
 	//         </form-item>
-	//         <form-item>
-	//             <Button type="primary">Submit</Button>
-	//             <Button type="ghost" style="margin-left: 8px">Cancel</Button>
+	//         <form-item v-if="!readonly">
+	//             <Button type="primary">提交</Button>
+	//             <Button type="ghost" @click="switchModel(true)" style="margin-left: 8px">取消</Button>
 	//         </form-item>
 	//       </Form>
-	//     </div>
+	//     </Card>
 	//   </div>
 	// </template>
 	//
@@ -49798,7 +49814,11 @@
 	    };
 	  },
 
-	  methods: {},
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    }
+	  },
 	  components: {},
 	  computed: {}
 	  // </script>
@@ -49809,7 +49829,116 @@
 /* 32 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_system app-warp\">\n  <div class=\"app-warp-title\">系统参数</div>\n  <div class=\"app-warp-content\">\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"客户站点域名\">\n          <Input style=\"width: 500px\" :readonly=\"readonly\" v-model=\"data.domain\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"网站名称\">\n          <Input style=\"width: 500px\" :readonly=\"readonly\" v-model=\"data.name\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"联系电话\">\n          <Input style=\"width: 500px\" :readonly=\"readonly\" v-model=\"data.phone\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"邮箱\">\n          <Input style=\"width: 500px\" :readonly=\"readonly\" v-model=\"data.email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"传真\">\n          <Input style=\"width: 500px\" :readonly=\"readonly\" v-model=\"data.fax\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"地址\">\n          <Input style=\"width: 500px\" :readonly=\"readonly\" v-model=\"data.addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"交易软件下载连接\">\n          <Input style=\"width: 500px\" :readonly=\"readonly\" v-model=\"data.download_url\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"主站地址\">\n          <Input style=\"width: 500px\" :readonly=\"readonly\" v-model=\"data.main_url\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item>\n          <Button type=\"primary\">Submit</Button>\n          <Button type=\"ghost\" style=\"margin-left: 8px\">Cancel</Button>\n      </form-item>\n    </Form>\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">系统参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"客户站点域名\">\n          <Input :disabled=\"readonly\" v-model=\"data.domain\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"网站名称\">\n          <Input :disabled=\"readonly\" v-model=\"data.name\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"联系电话\">\n          <Input :disabled=\"readonly\" v-model=\"data.phone\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"邮箱\">\n          <Input :disabled=\"readonly\" v-model=\"data.email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"传真\">\n          <Input :disabled=\"readonly\" v-model=\"data.fax\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"地址\">\n          <Input :disabled=\"readonly\" v-model=\"data.addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"交易软件下载连接\">\n          <Input :disabled=\"readonly\" v-model=\"data.download_url\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"主站地址\">\n          <Input :disabled=\"readonly\" v-model=\"data.main_url\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n          <Button type=\"primary\">提交</Button>\n          <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(34)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/basic/email.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(35)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-62436f64/email.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 34 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="basic_system app-warp">
+	//     <Card style="width:600px">
+	//         <p slot="title">邮件参数</p>
+	//         <a href="#" slot="extra" @click.prevent="changeLimit">
+	//           <Icon type="edit"></Icon>
+	//           编辑
+	//         </a>
+	//         <Form :model="data" label-position="left" :label-width="120">
+	//         <form-item label="smtp服务器地址">
+	//             <Input :readonly="readonly" v-model="data.smtp_addr" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="电子邮件地址">
+	//             <Input :readonly="readonly" v-model="data.email_addr" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="电子邮件用户名">
+	//             <Input :readonly="readonly" v-model="data.email_user" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="电子邮件用户密码">
+	//             <Input :readonly="readonly" v-model="data.email_pwd" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="管理员邮箱">
+	//             <Input :readonly="readonly" v-model="data.manager_email" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="smtp服务器端口">
+	//             <Input :readonly="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item>
+	//             <Button type="primary">Submit</Button>
+	//             <Button type="ghost" style="margin-left: 8px">Cancel</Button>
+	//         </form-item>
+	//       </Form>
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      data: {
+	        smtp_addr: 'smtp.exmail.qq.com',
+	        email_addr: 'info@andaobo.com',
+	        email_user: 'info@andaobo.com',
+	        email_pwd: 'A123456a',
+	        manager_email: 'info@andaobo.com',
+	        smtp_port: '25'
+	      },
+	      readonly: true
+	    };
+	  },
+
+	  methods: {},
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:600px\">\n      <p slot=\"title\">邮件参数</p>\n      <a href=\"#\" slot=\"extra\" @click.prevent=\"changeLimit\">\n        <Icon type=\"edit\"></Icon>\n        编辑\n      </a>\n      <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"smtp服务器地址\">\n          <Input :readonly=\"readonly\" v-model=\"data.smtp_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"电子邮件地址\">\n          <Input :readonly=\"readonly\" v-model=\"data.email_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"电子邮件用户名\">\n          <Input :readonly=\"readonly\" v-model=\"data.email_user\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"电子邮件用户密码\">\n          <Input :readonly=\"readonly\" v-model=\"data.email_pwd\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"管理员邮箱\">\n          <Input :readonly=\"readonly\" v-model=\"data.manager_email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"smtp服务器端口\">\n          <Input :readonly=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item>\n          <Button type=\"primary\">Submit</Button>\n          <Button type=\"ghost\" style=\"margin-left: 8px\">Cancel</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
 
 /***/ }
 /******/ ]);
