@@ -1,33 +1,37 @@
 <template>
   <div class="basic_system app-warp">
     <Card style="width:600px">
-        <p slot="title">邮件参数</p>
-        <a href="#" slot="extra" @click.prevent="changeLimit">
-          <Icon type="edit"></Icon>
-          编辑
-        </a>
-        <Form :model="data" label-position="left" :label-width="120">
+      <p slot="title">邮件参数</p>
+      <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">
+        <Icon type="edit"></Icon>
+        编辑
+      </a>
+      <a href="#" slot="extra" v-if="!readonly" @click.prevent="switchModel(true)">
+        <Icon type="edit"></Icon>
+        取消
+      </a>
+      <Form :model="data" label-position="left" :label-width="120">
         <form-item label="smtp服务器地址">
-            <Input :readonly="readonly" v-model="data.smtp_addr" placeholder="Enter something..."></Input>
+            <Input :disabled="readonly" v-model="data.smtp_addr" placeholder="Enter something..."></Input>
         </form-item>
         <form-item label="电子邮件地址">
-            <Input :readonly="readonly" v-model="data.email_addr" placeholder="Enter something..."></Input>
+            <Input :disabled="readonly" v-model="data.email_addr" placeholder="Enter something..."></Input>
         </form-item>
         <form-item label="电子邮件用户名">
-            <Input :readonly="readonly" v-model="data.email_user" placeholder="Enter something..."></Input>
+            <Input :disabled="readonly" v-model="data.email_user" placeholder="Enter something..."></Input>
         </form-item>
         <form-item label="电子邮件用户密码">
-            <Input :readonly="readonly" v-model="data.email_pwd" placeholder="Enter something..."></Input>
+            <Input :disabled="readonly" v-model="data.email_pwd" placeholder="Enter something..."></Input>
         </form-item>
         <form-item label="管理员邮箱">
-            <Input :readonly="readonly" v-model="data.manager_email" placeholder="Enter something..."></Input>
+            <Input :disabled="readonly" v-model="data.manager_email" placeholder="Enter something..."></Input>
         </form-item>
         <form-item label="smtp服务器端口">
-            <Input :readonly="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+            <Input :disabled="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
         </form-item>
-        <form-item>
-            <Button type="primary">Submit</Button>
-            <Button type="ghost" style="margin-left: 8px">Cancel</Button>
+        <form-item v-if="!readonly">
+            <Button type="primary">提交</Button>
+            <Button type="ghost" @click="switchModel(true)" style="margin-left: 8px">取消</Button>
         </form-item>
       </Form>
     </Card>
@@ -56,7 +60,9 @@ export default {
     }
   },
   methods:{
-    
+    switchModel(type){
+      this.readonly = type;
+    }
   },
   components:{
 
