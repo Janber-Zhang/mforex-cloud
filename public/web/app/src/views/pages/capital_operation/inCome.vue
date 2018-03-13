@@ -1,7 +1,7 @@
 <template>
   <div class="in-come app-warp">
     <div>
-      <img src="/images/unionpay.png" alt="">
+      <img src="/img/unionpay.png" alt="">
     </div>
     <div class="in-come-row">
       <span class="in-come-row-title">支付渠道</span>

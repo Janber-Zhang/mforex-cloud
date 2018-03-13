@@ -1,7 +1,7 @@
 <template>
   <div class="backend-header">
     <div class="floatL header-item" @click="toIndex">
-      <img width="30" src="/images/backend_icon.svg" alt="">
+      <img width="30" src="/img/backend_icon.svg" alt="">
     </div>
     <div class="floatL header-item" @click="toIndex">管理控制台</div>
     <div class="floatR header-item">

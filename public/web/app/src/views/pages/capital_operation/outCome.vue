@@ -1,7 +1,7 @@
 <template>
   <div class="out-come app-warp">
     <div>
-      <img src="/images/unionpay.png" alt="">
+      <img src="/img/unionpay.png" alt="">
       <p class="out-come-tips">客户可以在自己的任何一张银联卡上在中国的任何一个城市按照当天的汇率取得汇款。</p>
     </div>
     <div class="out-come-row">

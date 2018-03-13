@@ -1,7 +1,7 @@
 <template>
   <div class="extract-commission app-warp">
     <div>
-      <img src="/images/unionpay.png" alt="">
+      <img src="/img/unionpay.png" alt="">
       <p class="extract-commission-tips">客户可以将佣金提取到mt4平台中</p>
     </div>
     <div class="in-come-row">
