@@ -14879,7 +14879,7 @@
 	//     </div>
 	//     <div class="floatL header-item" @click="toIndex">管理控制台</div>
 	//     <div class="floatR header-item">
-	//       <img width="30" src="/images/avatar.svg" alt="">
+	//       <img width="30" src="/img/avatar.svg" alt="">
 	//       <ul class="more-info right">
 	//         <li class="info-item" @click="logout">退出登录</li>
 	//       </ul>
@@ -14922,7 +14922,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"backend-header\">\n  <div class=\"floatL header-item\" @click=\"toIndex\">\n    <img width=\"30\" src=\"/img/backend_icon.svg\" alt=\"\">\n  </div>\n  <div class=\"floatL header-item\" @click=\"toIndex\">管理控制台</div>\n  <div class=\"floatR header-item\">\n    <img width=\"30\" src=\"/images/avatar.svg\" alt=\"\">\n    <ul class=\"more-info right\">\n      <li class=\"info-item\" @click=\"logout\">退出登录</li>\n    </ul>\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"backend-header\">\n  <div class=\"floatL header-item\" @click=\"toIndex\">\n    <img width=\"30\" src=\"/img/backend_icon.svg\" alt=\"\">\n  </div>\n  <div class=\"floatL header-item\" @click=\"toIndex\">管理控制台</div>\n  <div class=\"floatR header-item\">\n    <img width=\"30\" src=\"/img/avatar.svg\" alt=\"\">\n    <ul class=\"more-info right\">\n      <li class=\"info-item\" @click=\"logout\">退出登录</li>\n    </ul>\n  </div>\n</div>\n";
 
 /***/ },
 /* 12 */

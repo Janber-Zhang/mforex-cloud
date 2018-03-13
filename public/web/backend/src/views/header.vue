@@ -5,7 +5,7 @@
     </div>
     <div class="floatL header-item" @click="toIndex">管理控制台</div>
     <div class="floatR header-item">
-      <img width="30" src="/images/avatar.svg" alt="">
+      <img width="30" src="/img/avatar.svg" alt="">
       <ul class="more-info right">
         <li class="info-item" @click="logout">退出登录</li>
       </ul>
