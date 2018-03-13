@@ -15,7 +15,7 @@ module.exports = function (grunt) {
         less: {
             compile: {
                 files: {
-                    "public/stylesheet/mforex.css": "public/less/mforex.less"
+                    "public/dist/mforex.css": "public/less/mforex.less"
                 }
             }
         },
@@ -29,19 +29,19 @@ module.exports = function (grunt) {
             mainCSS: {
                 src: ['public/css/global.css',
                     'public/css/common.css',
-                    'public/stylesheet/mforex.css'
+                    'public/dist/mforex.css'
                 ],
-                dest: 'public/stylesheet/mforex.css'
+                dest: 'public/dist/mforex.css'
             },
             otherCSS: {
                 src: ['public/css/libs/iview.css',
                     'public/css/libs/flex.css'
                 ],
-                dest: 'public/stylesheet/other.css'
+                dest: 'public/dist/other.css'
             },
             mainJS: {
                 src: ['public/js/util.js'],
-                dest: 'public/js/dist/mforex.js'
+                dest: 'public/dist/mforex.js'
             },
             otherJS: {
                 src: ['public/js/libs/jquery.min.js',
@@ -52,18 +52,18 @@ module.exports = function (grunt) {
                     'public/js/libs/countUp.js',
                     'public/js/libs/captcha.js'
                 ],
-                dest: 'public/js/dist/other.js'
+                dest: 'public/dist/other.js'
             }
         },
         cssmin: {
             css: {
-                src: 'public/stylesheet/mforex.css',
-                dest: 'public/stylesheet/mforex.min.css'
+                src: 'public/dist/mforex.css',
+                dest: 'public/dist/mforex.min.css'
 
             },
 			wechatcss: {
-                src: 'public/stylesheet/other.css',
-                dest: 'public/stylesheet/other.min.css'
+                src: 'public/dist/other.css',
+                dest: 'public/dist/other.min.css'
             }
         },
         uglify: {
@@ -77,12 +77,12 @@ module.exports = function (grunt) {
                 }
             },
             mforexJS: {
-                src: 'public/js/dist/mforex.js',
-                dest: 'public/js/dist/mforex.min.js'
+                src: 'public/dist/mforex.js',
+                dest: 'public/dist/mforex.min.js'
             },
             otherJS: {
-                src: 'public/js/dist/other.js',
-                dest: 'public/js/dist/other.min.js'
+                src: 'public/dist/other.js',
+                dest: 'public/dist/other.min.js'
             }
         }
     });
