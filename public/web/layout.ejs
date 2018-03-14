@@ -13,9 +13,13 @@
 	<script src="https://cdn.bootcss.com/echarts/3.8.5/echarts-en.common.js"></script>
 </head>
 <body>
+	<!-- 这里用来存node传过来的user_info -->
 	<input type="hidden" id="user_info" value="<%=userinfo%>">
+
 	<!-- loading放在前面，确保框架内的代码执行时已存在DOM中 -->
 	<div id="loading"></div>
+	
+	<!-- 这里是主体 -->
 	<div id="main" style="display: relative;">
 		<%-body%>
 	</div>
