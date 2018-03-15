@@ -1,7 +1,7 @@
 <template>
   <div class="basic_system app-warp">
     <Card style="width:600px">
-      <p slot="title">邮件参数</p>
+      <p slot="title">短信参数</p>
       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">
         <Icon type="edit"></Icon>
         编辑

@@ -14674,6 +14674,10 @@
 		value: true
 	});
 
+	var _keys = __webpack_require__(64);
+
+	var _keys2 = _interopRequireDefault(_keys);
+
 	var _main = __webpack_require__(7);
 
 	var _main2 = _interopRequireDefault(_main);
@@ -14694,6 +14698,10 @@
 
 	var _email2 = _interopRequireDefault(_email);
 
+	var _email_template = __webpack_require__(42);
+
+	var _email_template2 = _interopRequireDefault(_email_template);
+
 	var _proxy_level = __webpack_require__(31);
 
 	var _proxy_level2 = _interopRequireDefault(_proxy_level);
@@ -14702,11 +14710,45 @@
 
 	var _msg2 = _interopRequireDefault(_msg);
 
+	var _proxy = __webpack_require__(84);
+
+	var _proxy2 = _interopRequireDefault(_proxy);
+
+	var _trade = __webpack_require__(87);
+
+	var _trade2 = _interopRequireDefault(_trade);
+
+	var _payment = __webpack_require__(90);
+
+	var _payment2 = _interopRequireDefault(_payment);
+
+	var _logo = __webpack_require__(93);
+
+	var _logo2 = _interopRequireDefault(_logo);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// 基本设置-logo设置
+
+	// 基本设置-交易设置
 	// 基本设置-短信设置
+	// 基本设置-邮件模版
+	// 基本设置-系统设置
+	// 未开放模块
 
-
+	var routes_map = {
+		basic_system: _system2.default,
+		basic_email: _email2.default,
+		basic_email_template: _email_template2.default,
+		basic_proxy_level: _proxy_level2.default,
+		basic_msg: _msg2.default,
+		basic_proxy: _proxy2.default,
+		basic_trade: _trade2.default,
+		basic_payment: _payment2.default,
+		basic_logo: _logo2.default
+	}; // 基本设置—支付设置
+	// 基本设置-代理设置
+	// 基本设置-代理等级名称设置
 	// 基本设置-邮件设置
 	// 主页
 
@@ -14716,25 +14758,21 @@
 		children: [{
 			path: '/',
 			component: _index2.default
-		}, {
-			path: '/basic_system',
-			component: _system2.default
-		}, {
-			path: '/basic_email',
-			component: _email2.default
-		}, {
-			path: '/basic_proxy_level',
-			component: _proxy_level2.default
-		}, {
-			path: '/basic_msg',
-			component: _msg2.default
-		}, {
-			path: '*',
-			component: _2.default
 		}]
-	}]; // 基本设置-代理等级名称设置
-	// 基本设置-系统设置
-	// 未开放模块
+	}];
+
+	/* 路由注册 */
+	(0, _keys2.default)(routes_map).forEach(function (key) {
+		routes[0].children.push({
+			path: '/' + key,
+			component: routes_map[key]
+		});
+	});
+
+	routes[0].children.push({
+		path: '*',
+		component: _2.default
+	});
 
 	exports.default = routes;
 
@@ -15831,7 +15869,7 @@
 	// <template>
 	//   <div class="basic_system app-warp">
 	//     <Card style="width:600px">
-	//       <p slot="title">邮件参数</p>
+	//       <p slot="title">短信参数</p>
 	//       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">
 	//         <Icon type="edit"></Icon>
 	//         编辑
@@ -15902,7 +15940,7 @@
 /* 36 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">邮件参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Alert type=\"warning\">当前短信采用的是253云通讯的短信服务，如果您没有该短信服务，请不要选择启用短信功能。</Alert>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"是否启用短信验证\">\n        <Select :disabled=\"readonly\" v-model=\"data.status\">\n          <Option value=\"0\">否</Option>\n          <Option value=\"1\">是</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"短信用户名\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"短信密码\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_user\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"短信签名\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_pwd\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"管理员手机号\">\n        <Input :disabled=\"readonly\" v-model=\"data.manager_email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n        <Button type=\"primary\">提交</Button>\n        <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">短信参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Alert type=\"warning\">当前短信采用的是253云通讯的短信服务，如果您没有该短信服务，请不要选择启用短信功能。</Alert>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"是否启用短信验证\">\n        <Select :disabled=\"readonly\" v-model=\"data.status\">\n          <Option value=\"0\">否</Option>\n          <Option value=\"1\">是</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"短信用户名\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"短信密码\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_user\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"短信签名\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_pwd\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"管理员手机号\">\n        <Input :disabled=\"readonly\" v-model=\"data.manager_email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n        <Button type=\"primary\">提交</Button>\n        <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 37 */
@@ -50198,6 +50236,954 @@
 	/***/ })
 	/******/ ]);
 	});
+
+/***/ },
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(43)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/basic/email_template.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(44)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-314f04a5/email_template.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 43 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="basic_system app-warp">
+	//     <Card style="width:800px">
+	//       <p slot="title">邮件模版</p>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      data: {
+	        smtp_addr: 'smtp.exmail.qq.com',
+	        email_addr: 'info@andaobo.com',
+	        email_user: 'info@andaobo.com',
+	        email_pwd: 'A123456a',
+	        manager_email: 'info@andaobo.com',
+	        smtp_port: '25'
+	      },
+	      readonly: true
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 44 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:800px\">\n    <p slot=\"title\">邮件模版</p>\n          \n  </Card>\n</div>\n";
+
+/***/ },
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var global = __webpack_require__(50);
+	var core = __webpack_require__(51);
+	var ctx = __webpack_require__(52);
+	var hide = __webpack_require__(54);
+	var PROTOTYPE = 'prototype';
+
+	var $export = function (type, name, source) {
+	  var IS_FORCED = type & $export.F;
+	  var IS_GLOBAL = type & $export.G;
+	  var IS_STATIC = type & $export.S;
+	  var IS_PROTO = type & $export.P;
+	  var IS_BIND = type & $export.B;
+	  var IS_WRAP = type & $export.W;
+	  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
+	  var expProto = exports[PROTOTYPE];
+	  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
+	  var key, own, out;
+	  if (IS_GLOBAL) source = name;
+	  for (key in source) {
+	    // contains in native
+	    own = !IS_FORCED && target && target[key] !== undefined;
+	    if (own && key in exports) continue;
+	    // export native or passed
+	    out = own ? target[key] : source[key];
+	    // prevent global pollution for namespaces
+	    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+	    // bind timers to global for call from export context
+	    : IS_BIND && own ? ctx(out, global)
+	    // wrap global constructors for prevent change them in library
+	    : IS_WRAP && target[key] == out ? (function (C) {
+	      var F = function (a, b, c) {
+	        if (this instanceof C) {
+	          switch (arguments.length) {
+	            case 0: return new C();
+	            case 1: return new C(a);
+	            case 2: return new C(a, b);
+	          } return new C(a, b, c);
+	        } return C.apply(this, arguments);
+	      };
+	      F[PROTOTYPE] = C[PROTOTYPE];
+	      return F;
+	    // make static versions for prototype methods
+	    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+	    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
+	    if (IS_PROTO) {
+	      (exports.virtual || (exports.virtual = {}))[key] = out;
+	      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
+	      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
+	    }
+	  }
+	};
+	// type bitmap
+	$export.F = 1;   // forced
+	$export.G = 2;   // global
+	$export.S = 4;   // static
+	$export.P = 8;   // proto
+	$export.B = 16;  // bind
+	$export.W = 32;  // wrap
+	$export.U = 64;  // safe
+	$export.R = 128; // real proto method for `library`
+	module.exports = $export;
+
+
+/***/ },
+/* 50 */
+/***/ function(module, exports) {
+
+	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+	var global = module.exports = typeof window != 'undefined' && window.Math == Math
+	  ? window : typeof self != 'undefined' && self.Math == Math ? self
+	  // eslint-disable-next-line no-new-func
+	  : Function('return this')();
+	if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+
+
+/***/ },
+/* 51 */
+/***/ function(module, exports) {
+
+	var core = module.exports = { version: '2.5.1' };
+	if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// optional / simple context binding
+	var aFunction = __webpack_require__(53);
+	module.exports = function (fn, that, length) {
+	  aFunction(fn);
+	  if (that === undefined) return fn;
+	  switch (length) {
+	    case 1: return function (a) {
+	      return fn.call(that, a);
+	    };
+	    case 2: return function (a, b) {
+	      return fn.call(that, a, b);
+	    };
+	    case 3: return function (a, b, c) {
+	      return fn.call(that, a, b, c);
+	    };
+	  }
+	  return function (/* ...args */) {
+	    return fn.apply(that, arguments);
+	  };
+	};
+
+
+/***/ },
+/* 53 */
+/***/ function(module, exports) {
+
+	module.exports = function (it) {
+	  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
+	  return it;
+	};
+
+
+/***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var dP = __webpack_require__(55);
+	var createDesc = __webpack_require__(63);
+	module.exports = __webpack_require__(59) ? function (object, key, value) {
+	  return dP.f(object, key, createDesc(1, value));
+	} : function (object, key, value) {
+	  object[key] = value;
+	  return object;
+	};
+
+
+/***/ },
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var anObject = __webpack_require__(56);
+	var IE8_DOM_DEFINE = __webpack_require__(58);
+	var toPrimitive = __webpack_require__(62);
+	var dP = Object.defineProperty;
+
+	exports.f = __webpack_require__(59) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+	  anObject(O);
+	  P = toPrimitive(P, true);
+	  anObject(Attributes);
+	  if (IE8_DOM_DEFINE) try {
+	    return dP(O, P, Attributes);
+	  } catch (e) { /* empty */ }
+	  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
+	  if ('value' in Attributes) O[P] = Attributes.value;
+	  return O;
+	};
+
+
+/***/ },
+/* 56 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__(57);
+	module.exports = function (it) {
+	  if (!isObject(it)) throw TypeError(it + ' is not an object!');
+	  return it;
+	};
+
+
+/***/ },
+/* 57 */
+/***/ function(module, exports) {
+
+	module.exports = function (it) {
+	  return typeof it === 'object' ? it !== null : typeof it === 'function';
+	};
+
+
+/***/ },
+/* 58 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = !__webpack_require__(59) && !__webpack_require__(60)(function () {
+	  return Object.defineProperty(__webpack_require__(61)('div'), 'a', { get: function () { return 7; } }).a != 7;
+	});
+
+
+/***/ },
+/* 59 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// Thank's IE8 for his funny defineProperty
+	module.exports = !__webpack_require__(60)(function () {
+	  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
+	});
+
+
+/***/ },
+/* 60 */
+/***/ function(module, exports) {
+
+	module.exports = function (exec) {
+	  try {
+	    return !!exec();
+	  } catch (e) {
+	    return true;
+	  }
+	};
+
+
+/***/ },
+/* 61 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__(57);
+	var document = __webpack_require__(50).document;
+	// typeof document.createElement is 'object' in old IE
+	var is = isObject(document) && isObject(document.createElement);
+	module.exports = function (it) {
+	  return is ? document.createElement(it) : {};
+	};
+
+
+/***/ },
+/* 62 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 7.1.1 ToPrimitive(input [, PreferredType])
+	var isObject = __webpack_require__(57);
+	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+	// and the second argument - flag - preferred type is a string
+	module.exports = function (it, S) {
+	  if (!isObject(it)) return it;
+	  var fn, val;
+	  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+	  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
+	  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+	  throw TypeError("Can't convert object to primitive value");
+	};
+
+
+/***/ },
+/* 63 */
+/***/ function(module, exports) {
+
+	module.exports = function (bitmap, value) {
+	  return {
+	    enumerable: !(bitmap & 1),
+	    configurable: !(bitmap & 2),
+	    writable: !(bitmap & 4),
+	    value: value
+	  };
+	};
+
+
+/***/ },
+/* 64 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(65), __esModule: true };
+
+/***/ },
+/* 65 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(66);
+	module.exports = __webpack_require__(51).Object.keys;
+
+
+/***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 19.1.2.14 Object.keys(O)
+	var toObject = __webpack_require__(67);
+	var $keys = __webpack_require__(69);
+
+	__webpack_require__(83)('keys', function () {
+	  return function keys(it) {
+	    return $keys(toObject(it));
+	  };
+	});
+
+
+/***/ },
+/* 67 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 7.1.13 ToObject(argument)
+	var defined = __webpack_require__(68);
+	module.exports = function (it) {
+	  return Object(defined(it));
+	};
+
+
+/***/ },
+/* 68 */
+/***/ function(module, exports) {
+
+	// 7.2.1 RequireObjectCoercible(argument)
+	module.exports = function (it) {
+	  if (it == undefined) throw TypeError("Can't call method on  " + it);
+	  return it;
+	};
+
+
+/***/ },
+/* 69 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+	var $keys = __webpack_require__(70);
+	var enumBugKeys = __webpack_require__(82);
+
+	module.exports = Object.keys || function keys(O) {
+	  return $keys(O, enumBugKeys);
+	};
+
+
+/***/ },
+/* 70 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var has = __webpack_require__(71);
+	var toIObject = __webpack_require__(72);
+	var arrayIndexOf = __webpack_require__(75)(false);
+	var IE_PROTO = __webpack_require__(79)('IE_PROTO');
+
+	module.exports = function (object, names) {
+	  var O = toIObject(object);
+	  var i = 0;
+	  var result = [];
+	  var key;
+	  for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
+	  // Don't enum bug & hidden keys
+	  while (names.length > i) if (has(O, key = names[i++])) {
+	    ~arrayIndexOf(result, key) || result.push(key);
+	  }
+	  return result;
+	};
+
+
+/***/ },
+/* 71 */
+/***/ function(module, exports) {
+
+	var hasOwnProperty = {}.hasOwnProperty;
+	module.exports = function (it, key) {
+	  return hasOwnProperty.call(it, key);
+	};
+
+
+/***/ },
+/* 72 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// to indexed object, toObject with fallback for non-array-like ES3 strings
+	var IObject = __webpack_require__(73);
+	var defined = __webpack_require__(68);
+	module.exports = function (it) {
+	  return IObject(defined(it));
+	};
+
+
+/***/ },
+/* 73 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// fallback for non-array-like ES3 and non-enumerable old V8 strings
+	var cof = __webpack_require__(74);
+	// eslint-disable-next-line no-prototype-builtins
+	module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
+	  return cof(it) == 'String' ? it.split('') : Object(it);
+	};
+
+
+/***/ },
+/* 74 */
+/***/ function(module, exports) {
+
+	var toString = {}.toString;
+
+	module.exports = function (it) {
+	  return toString.call(it).slice(8, -1);
+	};
+
+
+/***/ },
+/* 75 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// false -> Array#indexOf
+	// true  -> Array#includes
+	var toIObject = __webpack_require__(72);
+	var toLength = __webpack_require__(76);
+	var toAbsoluteIndex = __webpack_require__(78);
+	module.exports = function (IS_INCLUDES) {
+	  return function ($this, el, fromIndex) {
+	    var O = toIObject($this);
+	    var length = toLength(O.length);
+	    var index = toAbsoluteIndex(fromIndex, length);
+	    var value;
+	    // Array#includes uses SameValueZero equality algorithm
+	    // eslint-disable-next-line no-self-compare
+	    if (IS_INCLUDES && el != el) while (length > index) {
+	      value = O[index++];
+	      // eslint-disable-next-line no-self-compare
+	      if (value != value) return true;
+	    // Array#indexOf ignores holes, Array#includes - not
+	    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
+	      if (O[index] === el) return IS_INCLUDES || index || 0;
+	    } return !IS_INCLUDES && -1;
+	  };
+	};
+
+
+/***/ },
+/* 76 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 7.1.15 ToLength
+	var toInteger = __webpack_require__(77);
+	var min = Math.min;
+	module.exports = function (it) {
+	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
+	};
+
+
+/***/ },
+/* 77 */
+/***/ function(module, exports) {
+
+	// 7.1.4 ToInteger
+	var ceil = Math.ceil;
+	var floor = Math.floor;
+	module.exports = function (it) {
+	  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
+	};
+
+
+/***/ },
+/* 78 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var toInteger = __webpack_require__(77);
+	var max = Math.max;
+	var min = Math.min;
+	module.exports = function (index, length) {
+	  index = toInteger(index);
+	  return index < 0 ? max(index + length, 0) : min(index, length);
+	};
+
+
+/***/ },
+/* 79 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var shared = __webpack_require__(80)('keys');
+	var uid = __webpack_require__(81);
+	module.exports = function (key) {
+	  return shared[key] || (shared[key] = uid(key));
+	};
+
+
+/***/ },
+/* 80 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var global = __webpack_require__(50);
+	var SHARED = '__core-js_shared__';
+	var store = global[SHARED] || (global[SHARED] = {});
+	module.exports = function (key) {
+	  return store[key] || (store[key] = {});
+	};
+
+
+/***/ },
+/* 81 */
+/***/ function(module, exports) {
+
+	var id = 0;
+	var px = Math.random();
+	module.exports = function (key) {
+	  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
+	};
+
+
+/***/ },
+/* 82 */
+/***/ function(module, exports) {
+
+	// IE 8- don't enum bug keys
+	module.exports = (
+	  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
+	).split(',');
+
+
+/***/ },
+/* 83 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// most Object methods by ES6 should accept primitives
+	var $export = __webpack_require__(49);
+	var core = __webpack_require__(51);
+	var fails = __webpack_require__(60);
+	module.exports = function (KEY, exec) {
+	  var fn = (core.Object || {})[KEY] || Object[KEY];
+	  var exp = {};
+	  exp[KEY] = exec(fn);
+	  $export($export.S + $export.F * fails(function () { fn(1); }), 'Object', exp);
+	};
+
+
+/***/ },
+/* 84 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(85)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/basic/proxy.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(86)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-70fd9594/proxy.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 85 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="basic_system app-warp">
+	//     <Card style="width:800px">
+	//       <p slot="title">代理参数</p>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      data: {
+	        smtp_addr: 'smtp.exmail.qq.com',
+	        email_addr: 'info@andaobo.com',
+	        email_user: 'info@andaobo.com',
+	        email_pwd: 'A123456a',
+	        manager_email: 'info@andaobo.com',
+	        smtp_port: '25'
+	      },
+	      readonly: true
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 86 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:800px\">\n    <p slot=\"title\">代理参数</p>\n          \n  </Card>\n</div>\n";
+
+/***/ },
+/* 87 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(88)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/basic/trade.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(89)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-10c0f12c/trade.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 88 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="basic_system app-warp">
+	//     <Card style="width:800px">
+	//       <p slot="title">交易参数</p>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      data: {
+	        smtp_addr: 'smtp.exmail.qq.com',
+	        email_addr: 'info@andaobo.com',
+	        email_user: 'info@andaobo.com',
+	        email_pwd: 'A123456a',
+	        manager_email: 'info@andaobo.com',
+	        smtp_port: '25'
+	      },
+	      readonly: true
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 89 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:800px\">\n    <p slot=\"title\">交易参数</p>\n          \n  </Card>\n</div>\n";
+
+/***/ },
+/* 90 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(91)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/basic/payment.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(92)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-522504ce/payment.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 91 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="basic_system app-warp">
+	//     <Card style="width:800px">
+	//       <p slot="title">支付参数</p>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      data: {
+	        smtp_addr: 'smtp.exmail.qq.com',
+	        email_addr: 'info@andaobo.com',
+	        email_user: 'info@andaobo.com',
+	        email_pwd: 'A123456a',
+	        manager_email: 'info@andaobo.com',
+	        smtp_port: '25'
+	      },
+	      readonly: true
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 92 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:800px\">\n    <p slot=\"title\">支付参数</p>\n          \n  </Card>\n</div>\n";
+
+/***/ },
+/* 93 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(94)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/basic/logo.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(95)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-2d8e6593/logo.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 94 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="basic_system app-warp">
+	//     <Card style="width:800px">
+	//       <p slot="title">Logo设置</p>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      data: {
+	        smtp_addr: 'smtp.exmail.qq.com',
+	        email_addr: 'info@andaobo.com',
+	        email_user: 'info@andaobo.com',
+	        email_pwd: 'A123456a',
+	        manager_email: 'info@andaobo.com',
+	        smtp_port: '25'
+	      },
+	      readonly: true
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 95 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:800px\">\n    <p slot=\"title\">Logo设置</p>\n          \n  </Card>\n</div>\n";
 
 /***/ }
 /******/ ]);
