@@ -1,3 +1,9 @@
+/*
+ * @name Grunt配置文件
+ * @auther Janber
+ * @created 17-11-22
+ */
+
 var d = new Date();
 var date = d.getFullYear() + '.' + (d.getMonth() + 1) + '.' + d.getDate() + '.' + d.getHours();
 var last_day = d.getFullYear() + '.' + (d.getMonth() + 1) + '.' + (d.getDate() - 1);

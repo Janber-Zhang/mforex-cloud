@@ -178,10 +178,17 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 [v-cloak]{
     display: none;
 }
+/*
+ * @name 全局样式入口
+ * @auther Janber
+ * @created 17-12-22
+ */
 /* 登录页面 */
-/* 登录页面样式 */
-/* @auther Janber */
-/* @created 17-12-12 */
+/*
+ * @name 登录页面样式
+ * @auther Janber
+ * @created 17-12-22
+ */
 .login {
   width: 100%;
   height: 100%;
@@ -277,7 +284,32 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   background-color: #f7f7f7;
 }
 /* app */
+/*
+ * @name app样式入口
+ * @auther Janber
+ * @created 17-12-22
+ */
 #app.app {
+  /*
+ * @name app主体框架
+ * @auther Janber
+ * @created 17-12-22
+ */
+  /*
+ * @name app头部
+ * @auther Janber
+ * @created 17-12-22
+ */
+  /*
+ * @name app页脚
+ * @auther Janber
+ * @created 17-12-22
+ */
+  /*
+ * @name app左侧导航
+ * @auther Janber
+ * @created 17-12-22
+ */
   /*
  * 
  * @ 首页 样式
@@ -294,14 +326,29 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
  * 
  */
   /*
- * 
- * @ 数据统计 样式
- * 
+ * @name 资金操作-账户入金
+ * @auther Janber
+ * @created 17-12-22
+ */
+  /*
+ * @name 资金操作-账户出金
+ * @auther Janber
+ * @created 17-12-22
+ */
+  /*
+ * @name 资金操作-提取佣金
+ * @auther Janber
+ * @created 17-12-22
  */
   /*
  * 
  * @ 数据统计 样式
  * 
+ */
+  /*
+ * @name 数据统计 样式
+ * @auther Janber
+ * @created 17-12-22
  */
   /*
  * 
@@ -314,6 +361,16 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
  * 
  */
   /*
+ * @name 个人设置-个人信息
+ * @auther Janber
+ * @created 17-12-22
+ */
+  /*
+ * @name 个人设置-身份认证
+ * @auther Janber
+ * @created 17-12-22
+ */
+  /*
  * 
  * @ 代理办公室 样式
  * 
@@ -322,6 +379,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
  * 
  * @ 代理办公室 样式
  * 
+ */
+  /*
+ * @name 代理商办公室-邀请链接
+ * @auther Janber
+ * @created 17-12-22
  */
   /* 首页-用户信息卡片 */
 }
@@ -605,6 +667,16 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   }
 }
 /* error_page */
+/*
+ * @name 错误页面-入口
+ * @auther Janber
+ * @created 17-12-22
+ */
+/*
+ * @name 404组件样式
+ * @auther Janber
+ * @created 17-12-22
+ */
 @keyframes error404animation {
   0% {
     transform: rotateZ(0deg);
@@ -662,6 +734,38 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   margin-bottom: 40px;
 }
 /* backend */
+/*
+ * @name 后台样式入口
+ * @auther Janber
+ * @created 17-12-22
+ */
+#app.backend {
+  /*
+ * @name 后台主体框架
+ * @auther Janber
+ * @created 17-12-22
+ */
+  /*
+ * @name 后台头部
+ * @auther Janber
+ * @created 17-12-22
+ */
+  /*
+ * @name 后台页脚
+ * @auther Janber
+ * @created 17-12-22
+ */
+  /*
+ * @name 后台导航
+ * @auther Janber
+ * @created 17-12-22
+ */
+  /*
+ * @name 后台主页样式
+ * @auther Janber
+ * @created 17-12-22
+ */
+}
 #app.backend .backend-main {
   background: #eaedf1;
   position: relative;
