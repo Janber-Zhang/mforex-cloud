@@ -1,3 +1,9 @@
+/*
+ * @name 全局插件
+ * @auther Janber
+ * @created 17-12-02
+ */
+
 var util = {
    /**
 	* @func: ajaxQuery
@@ -5,7 +11,7 @@ var util = {
 	* @param url     {String}   请求路径
 	* @param param   {Object}   请求参数(serviceUrl, httpType, apiModule, ...otherParams) 
 	* @param cb      {Function} 请求成功回调函数
-	* @return promise
+	* @returns promise
 	* @author janber
 	* @version 1.0.0
 	*/
@@ -25,7 +31,7 @@ var util = {
 	/**
 	* @func: logout
 	* @desc: 全局注销登录
-	* @return void
+	* @returns void
 	* @author janber
 	* @version 1.0.0
 	*/
@@ -43,7 +49,7 @@ var util = {
 	* @param count   {Number}   获取数量
 	* @param diff    {Bollean}  是否互异
 	* @param diff    {Bollean}  是否互异
-	* @return Array
+	* @returns Array
 	* @author janber
 	* @version 1.0.0
 	*/
@@ -71,7 +77,7 @@ var util = {
 	* @func: arrayFlat
 	* @desc: 数组扁平化
 	* @param arr     {Array}   需要处理的多维数组
-	* @return {Array} 一维数组
+	* @returns {Array} 一维数组
 	* @author janber
 	* @version 1.0.0
 	*/
@@ -88,5 +94,17 @@ var util = {
         }
     }
     return newArr;
-	}
+	},
+
+	/**
+	* @func: isArr
+	* @desc: 判断是否为数组
+	* @param arr     {Array}   判断对象
+	* @returns {Bollean} 返回值
+	* @author janber
+	* @version 1.0.0
+	*/
+	isArr: function(arr) {
+		return Object.prototype.toString.call(arr) == '[object Array]'
+    },
 }
