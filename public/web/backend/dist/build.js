@@ -50904,8 +50904,10 @@
 	// <template>
 	//   <div class="basic_system app-warp">
 	//     <Card style="width:800px">
-	//       <p slot="title">代理参数</p>
-	//
+	//       <p slot="title">佣金设置</p>
+	//       <ul>
+	//         <li v-for="item in type_list" :key="item">{{item}}</li>
+	//       </ul>
 	//     </Card>
 	//   </div>
 	// </template>
@@ -50916,14 +50918,7 @@
 	  ready: function ready() {},
 	  data: function data() {
 	    return {
-	      data: {
-	        smtp_addr: 'smtp.exmail.qq.com',
-	        email_addr: 'info@andaobo.com',
-	        email_user: 'info@andaobo.com',
-	        email_pwd: 'A123456a',
-	        manager_email: 'info@andaobo.com',
-	        smtp_port: '25'
-	      },
+	      type_list: ['ESP35', 'JPN225', 'ITA40', 'SUI30', 'GER30', 'US30', 'NAS100', 'SPX500', 'FRA40', 'EUSTX50', 'UK100', 'USDJPY'],
 	      readonly: true
 	    };
 	  },
@@ -50943,7 +50938,7 @@
 /* 86 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:800px\">\n    <p slot=\"title\">代理参数</p>\n          \n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:800px\">\n    <p slot=\"title\">佣金设置</p>\n    <ul>\n      <li v-for=\"item in type_list\" :key=\"item\">{{item}}</li>\n    </ul>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 87 */
@@ -50989,9 +50984,58 @@
 	});
 	// <template>
 	//   <div class="basic_system app-warp">
-	//     <Card style="width:800px">
+	//     <Card style="width:600px">
 	//       <p slot="title">交易参数</p>
-	//
+	//       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">
+	//         <Icon type="edit"></Icon>
+	//         编辑
+	//       </a>
+	//       <a href="#" slot="extra" v-if="!readonly" @click.prevent="switchModel(true)">
+	//         <Icon type="edit"></Icon>
+	//         取消
+	//       </a>
+	//       <Form :model="data" label-position="left" :label-width="100">
+	//         <form-item label="币种" prop="currency_type">
+	//           <Select v-model="data.currency_type" :disabled="readonly" placeholder="选择币种">
+	//             <Option value="USD">美元/USD</Option>
+	//             <Option value="CNY">人民币/CNY</Option>
+	//           </Select>
+	//         </form-item>
+	//         <form-item label="入金汇率模式" prop="in_come_model">
+	//           <Select v-model="data.in_come_model" :disabled="readonly" placeholder="选择入金汇率模式">
+	//             <Option value="0">实时汇率</Option>
+	//             <Option value="1">非实时汇率</Option>
+	//           </Select>
+	//         </form-item>
+	//         <form-item label="入金默认汇率" prop="in_come_exchange_rate">
+	//           <input-number :max="10000000" :min="0" :step="1" :disabled="readonly" v-model="data.in_come_exchange_rate"></input-number>
+	//         </form-item>
+	//         <form-item label="入金汇率调整" prop="in_come_exchange_rate_change">
+	//           <input-number :max="10000000" :min="0" :step="1" :disabled="readonly" v-model="data.in_come_exchange_rate_change"></input-number>
+	//         </form-item>
+	//         <form-item label="出金汇率模式" prop="out_come_model">
+	//           <Select v-model="data.out_come_model" :disabled="readonly" placeholder="选择入金汇率模式">
+	//             <Option value="0">实时汇率</Option>
+	//             <Option value="1">非实时汇率</Option>
+	//           </Select>
+	//         </form-item>
+	//         <form-item label="出金默认汇率" prop="out_come_exchange_rate">
+	//           <input-number :max="10000000" :min="0" :step="1" :disabled="readonly" v-model="data.out_come_exchange_rate"></input-number>
+	//         </form-item>
+	//         <form-item label="出金汇率调整" prop="out_come_exchange_rate_change">
+	//           <input-number :max="10000000" :min="0" :step="1" :disabled="readonly" v-model="data.out_come_exchange_rate_change"></input-number>
+	//         </form-item>
+	//         <form-item label="出金扣款方式" prop="out_come_type">
+	//           <Select v-model="data.out_come_model" :disabled="readonly" placeholder="选择入金汇率模式">
+	//             <Option value="0">出金申请审核后从MT4扣款</Option>
+	//             <Option value="1">客户出金申请后从MT4扣款</Option>
+	//           </Select>
+	//         </form-item>
+	//         <form-item v-if="!readonly">
+	//             <Button type="primary">提交</Button>
+	//             <Button type="ghost" @click="switchModel(true)" style="margin-left: 8px">取消</Button>
+	//         </form-item>
+	//       </Form>
 	//     </Card>
 	//   </div>
 	// </template>
@@ -51003,12 +51047,14 @@
 	  data: function data() {
 	    return {
 	      data: {
-	        smtp_addr: 'smtp.exmail.qq.com',
-	        email_addr: 'info@andaobo.com',
-	        email_user: 'info@andaobo.com',
-	        email_pwd: 'A123456a',
-	        manager_email: 'info@andaobo.com',
-	        smtp_port: '25'
+	        currency_type: 'USD',
+	        in_come_model: '1',
+	        in_come_exchange_rate: 7,
+	        in_come_exchange_rate_change: 0,
+	        out_come_model: '1',
+	        out_come_exchange_rate: 7,
+	        out_come_exchange_rate_change: 0,
+	        out_come_type: '0'
 	      },
 	      readonly: true
 	    };
@@ -51029,7 +51075,7 @@
 /* 89 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:800px\">\n    <p slot=\"title\">交易参数</p>\n          \n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">交易参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"100\">\n      <form-item label=\"币种\" prop=\"currency_type\">\n        <Select v-model=\"data.currency_type\" :disabled=\"readonly\" placeholder=\"选择币种\">\n          <Option value=\"USD\">美元/USD</Option>\n          <Option value=\"CNY\">人民币/CNY</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"入金汇率模式\" prop=\"in_come_model\">\n        <Select v-model=\"data.in_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">实时汇率</Option>\n          <Option value=\"1\">非实时汇率</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"入金默认汇率\" prop=\"in_come_exchange_rate\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.in_come_exchange_rate\"></input-number>\n      </form-item>\n      <form-item label=\"入金汇率调整\" prop=\"in_come_exchange_rate_change\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.in_come_exchange_rate_change\"></input-number>\n      </form-item>\n      <form-item label=\"出金汇率模式\" prop=\"out_come_model\">\n        <Select v-model=\"data.out_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">实时汇率</Option>\n          <Option value=\"1\">非实时汇率</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"出金默认汇率\" prop=\"out_come_exchange_rate\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.out_come_exchange_rate\"></input-number>\n      </form-item>\n      <form-item label=\"出金汇率调整\" prop=\"out_come_exchange_rate_change\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.out_come_exchange_rate_change\"></input-number>\n      </form-item>\n      <form-item label=\"出金扣款方式\" prop=\"out_come_type\">\n        <Select v-model=\"data.out_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">出金申请审核后从MT4扣款</Option>\n          <Option value=\"1\">客户出金申请后从MT4扣款</Option>\n        </Select>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n          <Button type=\"primary\">提交</Button>\n          <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 90 */

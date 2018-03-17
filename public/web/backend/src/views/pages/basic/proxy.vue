@@ -1,8 +1,10 @@
 <template>
   <div class="basic_system app-warp">
     <Card style="width:800px">
-      <p slot="title">代理参数</p>
-            
+      <p slot="title">佣金设置</p>
+      <ul>
+        <li v-for="item in type_list" :key="item">{{item}}</li>
+      </ul>
     </Card>
   </div>
 </template>
@@ -17,14 +19,7 @@ export default {
   },
   data(){
     return {
-      data: {
-        smtp_addr: 'smtp.exmail.qq.com',
-        email_addr: 'info@andaobo.com',
-        email_user: 'info@andaobo.com',
-        email_pwd: 'A123456a',
-        manager_email: 'info@andaobo.com',
-        smtp_port: '25'
-      },
+      type_list: ['ESP35', 'JPN225', 'ITA40', 'SUI30', 'GER30', 'US30', 'NAS100', 'SPX500', 'FRA40', 'EUSTX50', 'UK100', 'USDJPY'],
       readonly: true
     }
   },
