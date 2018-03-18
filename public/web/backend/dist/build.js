@@ -50909,6 +50909,19 @@
 	//         <li>代理名称</li>
 	//         <li v-for="item in type_list" :key="item">{{item}}</li>
 	//       </ul>
+	//       <div class="basic_proxy-edit">
+	//         <Row>
+	//             <Col span="4">
+	//               <p>入门iB</p>
+	//             </Col>
+	//             <Col span="10" offset="1">
+	//
+	//             </Col>
+	//             <Col span="10" offset="1">
+	//
+	//             </Col>
+	//         </Row>
+	//       </div>
 	//     </Card>
 	//   </div>
 	// </template>
@@ -50939,7 +50952,7 @@
 /* 86 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_proxy app-warp\">\n  <Card style=\"width:800px; height: 100%;positon: relative;\">\n    <p slot=\"title\">佣金设置</p>\n    <ul class=\"basic_proxy-list\">\n      <li>代理名称</li>\n      <li v-for=\"item in type_list\" :key=\"item\">{{item}}</li>\n    </ul>\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_proxy app-warp\">\n  <Card style=\"width:800px; height: 100%;positon: relative;\">\n    <p slot=\"title\">佣金设置</p>\n    <ul class=\"basic_proxy-list\">\n      <li>代理名称</li>\n      <li v-for=\"item in type_list\" :key=\"item\">{{item}}</li>\n    </ul>\n    <div class=\"basic_proxy-edit\">\n      <Row>\n          <Col span=\"4\">\n            <p>入门iB</p>\n          </Col>\n          <Col span=\"10\" offset=\"1\">\n\n          </Col>\n          <Col span=\"10\" offset=\"1\">\n            \n          </Col>\n      </Row>\n    </div>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 87 */

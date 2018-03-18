@@ -983,3 +983,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 #app.backend .basic_proxy-list li:not(:last-child):hover {
   background-color: #ebf7ff;
 }
+#app.backend .basic_proxy-edit {
+  position: absolute;
+  left: 250px;
+  right: 16px;
+  top: 16px;
+  bottom: 16px;
+  border: 1px solid #dedede;
+}

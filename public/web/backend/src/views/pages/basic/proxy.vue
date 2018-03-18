@@ -6,6 +6,19 @@
         <li>代理名称</li>
         <li v-for="item in type_list" :key="item">{{item}}</li>
       </ul>
+      <div class="basic_proxy-edit">
+        <Row>
+            <Col span="4">
+              <p>入门iB</p>
+            </Col>
+            <Col span="10" offset="1">
+
+            </Col>
+            <Col span="10" offset="1">
+              
+            </Col>
+        </Row>
+      </div>
     </Card>
   </div>
 </template>
