@@ -42,6 +42,48 @@ var util = {
 	},
 
 	/**
+	* @func: uploadFile
+	* @desc: 上传文件
+	* @param cb 上传成功回调函数
+	* @returns void
+	* @author janber
+	* @version 1.0.0
+	*/
+	uploadFile: function(cb) {
+	    $('#uploadFileInput').click();
+	    console.log($('#uploadFileInput'))
+		$('#uploadFileInput').unbind().change(function (e) {
+		    if(e.target.files.length == 0) {
+                return
+            }
+            $('#loading').show();
+            var file = e.target.files[0];
+            var fd = new FormData();
+            fd.append('file', file);
+            // url = 'http://autot.mobimedical.cn/ProjectAdmin/File/upFile';
+			// $.ajax({
+			// 	type: 'post',
+			// 	url: url,
+			// 	data: fd,
+			// 	processData : false,
+			// 	contentType : false,
+			// 	success:function(res){
+			// 		if (cb && res.code === 10000) {
+			// 			cb(res)
+			// 		} else {
+			// 			alert('操作失败');
+			// 		}
+			// 		$('#loading').hide();
+			// 	},
+			// 	error:function(err){
+			// 		console.log(err)
+			// 		$('#loading').hide();
+			// 	}
+			// })
+	    });
+	},
+
+	/**
 	* @func: getRandom
 	* @desc: 获取随机数
 	* @param max     {Number}   最大值

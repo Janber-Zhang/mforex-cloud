@@ -1,5 +1,5 @@
 <template>
-  <div class="basic_system app-warp">
+  <div class="basic_email-template app-warp">
     <Card style="width:100%">
       <p slot="title">邮件模版</p>
       <table class="list-table">

@@ -765,6 +765,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
  * @auther Janber
  * @created 17-12-22
  */
+  /*
+ * @name 基本设置-logo设置
+ * @auther Janber
+ * @created 18-03-18
+ */
 }
 #app.backend .backend-main {
   background: #eaedf1;
@@ -823,6 +828,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   text-align: center;
   font-size: 12px;
   padding: 10px 0;
+  word-break: break-all;
 }
 #app.backend .backend-main .content-body .content-app .app-warp .list-table thead tr th {
   background: #f5f5f5;
@@ -926,4 +932,19 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   color: #666;
   min-width: 100px;
   max-width: 150px;
+}
+#app.backend .basic_logo-info {
+  position: relative;
+}
+#app.backend .basic_logo-info img {
+  width: 200px;
+  height: 200px;
+  border-radius: 4px;
+  display: inline-block;
+  border: 1px dashed #dedede;
+}
+#app.backend .basic_logo-info-edit {
+  position: absolute;
+  left: 230px;
+  top: 0;
 }

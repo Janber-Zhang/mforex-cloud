@@ -1,5 +1,5 @@
 <template>
-  <div class="basic_system app-warp">
+  <div class="basic_email app-warp">
     <Card style="width:600px">
       <p slot="title">邮件参数</p>
       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">

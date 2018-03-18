@@ -1,6 +1,6 @@
 <template>
-  <div class="basic_system app-warp">
-    <Card style="width:800px">
+  <div class="basic_proxy app-warp">
+    <Card style="width:800px; height: 100%;">
       <p slot="title">佣金设置</p>
       <ul>
         <li v-for="item in type_list" :key="item">{{item}}</li>

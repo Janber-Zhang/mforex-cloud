@@ -1,5 +1,5 @@
 <template>
-  <div class="basic_system app-warp">
+  <div class="basic_proxy-level app-warp">
     <Card style="width:600px">
       <p slot="title">代理等级参数</p>
       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">

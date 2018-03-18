@@ -15633,7 +15633,7 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="basic_system app-warp">
+	//   <div class="basic_email app-warp">
 	//     <Card style="width:600px">
 	//       <p slot="title">邮件参数</p>
 	//       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">
@@ -15705,7 +15705,7 @@
 /* 30 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">邮件参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"smtp服务器地址\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"电子邮件地址\">\n          <Input :disabled=\"readonly\" v-model=\"data.email_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"电子邮件用户名\">\n          <Input :disabled=\"readonly\" v-model=\"data.email_user\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"电子邮件用户密码\">\n          <Input :disabled=\"readonly\" v-model=\"data.email_pwd\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"管理员邮箱\">\n          <Input :disabled=\"readonly\" v-model=\"data.manager_email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"smtp服务器端口\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n          <Button type=\"primary\">提交</Button>\n          <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_email app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">邮件参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"smtp服务器地址\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"电子邮件地址\">\n          <Input :disabled=\"readonly\" v-model=\"data.email_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"电子邮件用户名\">\n          <Input :disabled=\"readonly\" v-model=\"data.email_user\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"电子邮件用户密码\">\n          <Input :disabled=\"readonly\" v-model=\"data.email_pwd\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"管理员邮箱\">\n          <Input :disabled=\"readonly\" v-model=\"data.manager_email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"smtp服务器端口\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n          <Button type=\"primary\">提交</Button>\n          <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 31 */
@@ -15750,7 +15750,7 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="basic_system app-warp">
+	//   <div class="basic_proxy-level app-warp">
 	//     <Card style="width:600px">
 	//       <p slot="title">代理等级参数</p>
 	//       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">
@@ -15822,7 +15822,7 @@
 /* 33 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">代理等级参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"无返佣级别\">\n        <Input :disabled=\"readonly\" v-model=\"data.no_level\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级1\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_1\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级2\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_2\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级3\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_3\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级4\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_4\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级5\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_5\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n        <Button type=\"primary\">提交</Button>\n        <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_proxy-level app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">代理等级参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"无返佣级别\">\n        <Input :disabled=\"readonly\" v-model=\"data.no_level\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级1\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_1\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级2\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_2\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级3\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_3\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级4\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_4\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级5\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_5\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n        <Button type=\"primary\">提交</Button>\n        <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 34 */
@@ -15867,7 +15867,7 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="basic_system app-warp">
+	//   <div class="basic_msg app-warp">
 	//     <Card style="width:600px">
 	//       <p slot="title">短信参数</p>
 	//       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">
@@ -15940,7 +15940,7 @@
 /* 36 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">短信参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Alert type=\"warning\">当前短信采用的是253云通讯的短信服务，如果您没有该短信服务，请不要选择启用短信功能。</Alert>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"是否启用短信验证\">\n        <Select :disabled=\"readonly\" v-model=\"data.status\">\n          <Option value=\"0\">否</Option>\n          <Option value=\"1\">是</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"短信用户名\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"短信密码\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_user\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"短信签名\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_pwd\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"管理员手机号\">\n        <Input :disabled=\"readonly\" v-model=\"data.manager_email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n        <Button type=\"primary\">提交</Button>\n        <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_msg app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">短信参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Alert type=\"warning\">当前短信采用的是253云通讯的短信服务，如果您没有该短信服务，请不要选择启用短信功能。</Alert>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"是否启用短信验证\">\n        <Select :disabled=\"readonly\" v-model=\"data.status\">\n          <Option value=\"0\">否</Option>\n          <Option value=\"1\">是</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"短信用户名\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"短信密码\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_user\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"短信签名\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_pwd\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"管理员手机号\">\n        <Input :disabled=\"readonly\" v-model=\"data.manager_email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n        <Button type=\"primary\">提交</Button>\n        <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 37 */
@@ -50280,7 +50280,7 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="basic_system app-warp">
+	//   <div class="basic_email-template app-warp">
 	//     <Card style="width:100%">
 	//       <p slot="title">邮件模版</p>
 	//       <table class="list-table">
@@ -50339,7 +50339,7 @@
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">邮件模版</p>\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"300\">代码</th>\n          <th width=\"200\">名称</th>\n          <th width=\"200\">通知对象</th>\n          <th width=\"200\">模版内容</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"(item, index) in data_list\" :key=\"item.code\">\n          <td>{{index}}</td>\n          <td>{{item.code}}</td>\n          <td>{{item.name}}</td>\n          <td>{{item.target}}</td>\n          <td>\n            <span class=\"handle\" @click=\"showDetail\">编辑</span>\n            <span class=\"handle\" @click=\"showDetail\">查看</span>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_email-template app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">邮件模版</p>\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"300\">代码</th>\n          <th width=\"200\">名称</th>\n          <th width=\"200\">通知对象</th>\n          <th width=\"200\">模版内容</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"(item, index) in data_list\" :key=\"item.code\">\n          <td>{{index}}</td>\n          <td>{{item.code}}</td>\n          <td>{{item.name}}</td>\n          <td>{{item.target}}</td>\n          <td>\n            <span class=\"handle\" @click=\"showDetail\">编辑</span>\n            <span class=\"handle\" @click=\"showDetail\">查看</span>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 45 */,
@@ -50902,8 +50902,8 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="basic_system app-warp">
-	//     <Card style="width:800px">
+	//   <div class="basic_proxy app-warp">
+	//     <Card style="width:800px; height: 100%;">
 	//       <p slot="title">佣金设置</p>
 	//       <ul>
 	//         <li v-for="item in type_list" :key="item">{{item}}</li>
@@ -50938,7 +50938,7 @@
 /* 86 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:800px\">\n    <p slot=\"title\">佣金设置</p>\n    <ul>\n      <li v-for=\"item in type_list\" :key=\"item\">{{item}}</li>\n    </ul>\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_proxy app-warp\">\n  <Card style=\"width:800px; height: 100%;\">\n    <p slot=\"title\">佣金设置</p>\n    <ul>\n      <li v-for=\"item in type_list\" :key=\"item\">{{item}}</li>\n    </ul>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 87 */
@@ -50983,7 +50983,7 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="basic_system app-warp">
+	//   <div class="basic_trade app-warp">
 	//     <Card style="width:600px">
 	//       <p slot="title">交易参数</p>
 	//       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">
@@ -51075,7 +51075,7 @@
 /* 89 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">交易参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"100\">\n      <form-item label=\"币种\" prop=\"currency_type\">\n        <Select v-model=\"data.currency_type\" :disabled=\"readonly\" placeholder=\"选择币种\">\n          <Option value=\"USD\">美元/USD</Option>\n          <Option value=\"CNY\">人民币/CNY</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"入金汇率模式\" prop=\"in_come_model\">\n        <Select v-model=\"data.in_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">实时汇率</Option>\n          <Option value=\"1\">非实时汇率</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"入金默认汇率\" prop=\"in_come_exchange_rate\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.in_come_exchange_rate\"></input-number>\n      </form-item>\n      <form-item label=\"入金汇率调整\" prop=\"in_come_exchange_rate_change\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.in_come_exchange_rate_change\"></input-number>\n      </form-item>\n      <form-item label=\"出金汇率模式\" prop=\"out_come_model\">\n        <Select v-model=\"data.out_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">实时汇率</Option>\n          <Option value=\"1\">非实时汇率</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"出金默认汇率\" prop=\"out_come_exchange_rate\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.out_come_exchange_rate\"></input-number>\n      </form-item>\n      <form-item label=\"出金汇率调整\" prop=\"out_come_exchange_rate_change\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.out_come_exchange_rate_change\"></input-number>\n      </form-item>\n      <form-item label=\"出金扣款方式\" prop=\"out_come_type\">\n        <Select v-model=\"data.out_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">出金申请审核后从MT4扣款</Option>\n          <Option value=\"1\">客户出金申请后从MT4扣款</Option>\n        </Select>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n          <Button type=\"primary\">提交</Button>\n          <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_trade app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">交易参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"100\">\n      <form-item label=\"币种\" prop=\"currency_type\">\n        <Select v-model=\"data.currency_type\" :disabled=\"readonly\" placeholder=\"选择币种\">\n          <Option value=\"USD\">美元/USD</Option>\n          <Option value=\"CNY\">人民币/CNY</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"入金汇率模式\" prop=\"in_come_model\">\n        <Select v-model=\"data.in_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">实时汇率</Option>\n          <Option value=\"1\">非实时汇率</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"入金默认汇率\" prop=\"in_come_exchange_rate\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.in_come_exchange_rate\"></input-number>\n      </form-item>\n      <form-item label=\"入金汇率调整\" prop=\"in_come_exchange_rate_change\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.in_come_exchange_rate_change\"></input-number>\n      </form-item>\n      <form-item label=\"出金汇率模式\" prop=\"out_come_model\">\n        <Select v-model=\"data.out_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">实时汇率</Option>\n          <Option value=\"1\">非实时汇率</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"出金默认汇率\" prop=\"out_come_exchange_rate\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.out_come_exchange_rate\"></input-number>\n      </form-item>\n      <form-item label=\"出金汇率调整\" prop=\"out_come_exchange_rate_change\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.out_come_exchange_rate_change\"></input-number>\n      </form-item>\n      <form-item label=\"出金扣款方式\" prop=\"out_come_type\">\n        <Select v-model=\"data.out_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">出金申请审核后从MT4扣款</Option>\n          <Option value=\"1\">客户出金申请后从MT4扣款</Option>\n        </Select>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n          <Button type=\"primary\">提交</Button>\n          <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 90 */
@@ -51120,10 +51120,31 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="basic_system app-warp">
-	//     <Card style="width:800px">
-	//       <p slot="title">支付参数</p>
-	//
+	//   <div class="basic_payment app-warp">
+	//     <Card style="100%;">
+	//       <p slot="title">支付设置</p>
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="100">编号</th>
+	//             <th width="200">代码</th>
+	//             <th width="200">名称</th>
+	//             <th width="200">配置</th>
+	//             <th width="100">状态</th>
+	//             <th width="300">插件地址</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="(item, index) in data_list" :key="item.code">
+	//             <td>{{item.id}}</td>
+	//             <td>{{item.code}}</td>
+	//             <td>{{item.name}}</td>
+	//             <td>{{'详情页查看'}}</td>
+	//             <td>{{item.status}}</td>
+	//             <td>{{item.plugin}}</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
 	//     </Card>
 	//   </div>
 	// </template>
@@ -51134,14 +51155,28 @@
 	  ready: function ready() {},
 	  data: function data() {
 	    return {
-	      data: {
-	        smtp_addr: 'smtp.exmail.qq.com',
-	        email_addr: 'info@andaobo.com',
-	        email_user: 'info@andaobo.com',
-	        email_pwd: 'A123456a',
-	        manager_email: 'info@andaobo.com',
-	        smtp_port: '25'
-	      },
+	      data_list: [{
+	        id: 31,
+	        code: 'gfbbank',
+	        name: '国付宝网银',
+	        config: '{"sellerid":"0000115127","sellerkey":"abcd1234123","accountid":"0000000002000051021","gateway":"https://gateway.gopay.com.cn/Trans/WebClientAction.do","paydomain":"http://pay.sannew.cn","fronturl":"/payment/gfb/choosebanks.aspx"}',
+	        status: '启用',
+	        plugin: '/payment/gfb/jump.aspx?paymentcode=gfbbank'
+	      }, {
+	        id: 1,
+	        code: 'ainong',
+	        name: '爱农支付',
+	        config: '{"sellerid":"","sellerkey":"","frontapiurl":"http://pay.chinagpay.com/bas/FrontTrans","backapiurl":"http://180.169.129.78:38280/bas/FrontTrans"}',
+	        status: '禁用',
+	        plugin: '/payment/ainong/pay.aspx'
+	      }, {
+	        id: 2,
+	        code: 'alipay',
+	        name: '支付宝',
+	        config: '',
+	        status: '禁用',
+	        plugin: '/payment/alipay/payment.aspx'
+	      }],
 	      readonly: true
 	    };
 	  },
@@ -51161,7 +51196,7 @@
 /* 92 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:800px\">\n    <p slot=\"title\">支付参数</p>\n          \n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_payment app-warp\">\n  <Card style=\"100%;\">\n    <p slot=\"title\">支付设置</p>\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"200\">代码</th>\n          <th width=\"200\">名称</th>\n          <th width=\"200\">配置</th>\n          <th width=\"100\">状态</th>\n          <th width=\"300\">插件地址</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"(item, index) in data_list\" :key=\"item.code\">\n          <td>{{item.id}}</td>\n          <td>{{item.code}}</td>\n          <td>{{item.name}}</td>\n          <td>{{'详情页查看'}}</td>\n          <td>{{item.status}}</td>\n          <td>{{item.plugin}}</td>\n        </tr>\n      </tbody>\n    </table>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 93 */
@@ -51206,10 +51241,26 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="basic_system app-warp">
-	//     <Card style="width:800px">
+	//   <div class="basic_logo app-warp">
+	//     <Card style="width:600px;margin-bottom: 10px;">
 	//       <p slot="title">Logo设置</p>
-	//
+	//       <div class="basic_logo-info">
+	//         <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1681391545,4187928589&fm=27&gp=0.jpg" alt="">
+	//         <div class="basic_logo-info-edit">
+	//           <Alert show-icon type="warning">要求图片格式为PNG格式，高64宽64。</Alert>
+	//           <i-button icon="ios-cloud-upload-outline" type="primary">上传图片</i-button>
+	//         </div>
+	//       </div>  
+	//     </Card>
+	//     <Card style="width:600px">
+	//       <p slot="title">Icon设置</p>
+	//       <div class="basic_logo-info">
+	//         <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2918321103,763089997&fm=27&gp=0.jpg" alt="">
+	//         <div class="basic_logo-info-edit">
+	//           <Alert show-icon type="warning">必须为icon文件。</Alert>
+	//           <i-button icon="ios-cloud-upload-outline" type="primary">上传图片</i-button>
+	//         </div>
+	//       </div>
 	//     </Card>
 	//   </div>
 	// </template>
@@ -51247,7 +51298,7 @@
 /* 95 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:800px\">\n    <p slot=\"title\">Logo设置</p>\n          \n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_logo app-warp\">\n  <Card style=\"width:600px;margin-bottom: 10px;\">\n    <p slot=\"title\">Logo设置</p>\n    <div class=\"basic_logo-info\">\n      <img src=\"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1681391545,4187928589&fm=27&gp=0.jpg\" alt=\"\">\n      <div class=\"basic_logo-info-edit\">\n        <Alert show-icon type=\"warning\">要求图片格式为PNG格式，高64宽64。</Alert>\n        <i-button icon=\"ios-cloud-upload-outline\" type=\"primary\">上传图片</i-button>\n      </div>\n    </div>  \n  </Card>\n  <Card style=\"width:600px\">\n    <p slot=\"title\">Icon设置</p>\n    <div class=\"basic_logo-info\">\n      <img src=\"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2918321103,763089997&fm=27&gp=0.jpg\" alt=\"\">\n      <div class=\"basic_logo-info-edit\">\n        <Alert show-icon type=\"warning\">必须为icon文件。</Alert>\n        <i-button icon=\"ios-cloud-upload-outline\" type=\"primary\">上传图片</i-button>\n      </div>\n    </div>\n  </Card>\n</div>\n";
 
 /***/ }
 /******/ ]);
