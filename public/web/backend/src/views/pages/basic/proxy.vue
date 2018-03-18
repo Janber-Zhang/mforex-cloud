@@ -1,8 +1,9 @@
 <template>
   <div class="basic_proxy app-warp">
-    <Card style="width:800px; height: 100%;">
+    <Card style="width:800px; height: 100%;positon: relative;">
       <p slot="title">佣金设置</p>
-      <ul>
+      <ul class="basic_proxy-list">
+        <li>代理名称</li>
         <li v-for="item in type_list" :key="item">{{item}}</li>
       </ul>
     </Card>
@@ -19,7 +20,7 @@ export default {
   },
   data(){
     return {
-      type_list: ['ESP35', 'JPN225', 'ITA40', 'SUI30', 'GER30', 'US30', 'NAS100', 'SPX500', 'FRA40', 'EUSTX50', 'UK100', 'USDJPY'],
+      type_list: ['ESP35', 'JPN225', 'ITA40', 'SUI30', 'GER30', 'US30', 'NAS100', 'SPX500', 'FRA40', 'EUSTX50', 'UK100', 'USDJPY', 'USDJPY1', 'USDJPY2', 'USDJPY3', 'USDJPY4', 'USDJPY5', 'USDJPY6', 'USDJPY7', 'USDJPY8', 'USDJPY9', 'USDJPY0','ESP351','ESP352','ESP353','ESP354','ESP355','ESP356','ESP357','ESP358','ESP359'],
       readonly: true
     }
   },
