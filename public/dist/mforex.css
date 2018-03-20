@@ -996,4 +996,22 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   top: 16px;
   bottom: 16px;
   border: 1px solid #dedede;
+  text-align: center;
+}
+#app.backend .basic_proxy-edit-header {
+  height: 30px;
+  border-bottom: 1px solid #dedede;
+  background-color: #f5f5f5;
+  text-align: right;
+}
+#app.backend .basic_proxy-edit-body {
+  width: 100%;
+}
+#app.backend .basic_proxy-edit-body tr {
+  height: 40px;
+  line-height: 40px;
+}
+#app.backend .basic_proxy-edit-body tr th,
+#app.backend .basic_proxy-edit-body tr td {
+  text-align: center;
 }
