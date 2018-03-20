@@ -30,8 +30,14 @@
 		li:last-child{
 			border-bottom: none;
 		}
-		li:not(:last-child):hover{
-			background-color: #ebf7ff;
+		li:not(:first-child){
+			cursor: pointer;
+			&:hover{
+				background-color: #ebf7ff;
+			}
+			&.active{
+				background-color: #2d8cf03d;
+			}
 		}
 	}
 	&-edit{

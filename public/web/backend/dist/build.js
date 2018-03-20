@@ -50907,20 +50907,10 @@
 	//       <p slot="title">佣金设置</p>
 	//       <ul class="basic_proxy-list">
 	//         <li>代理名称</li>
-	//         <li v-for="item in type_list" :key="item">{{item}}</li>
+	//         <li v-for="item in type_list" v-bind:class="{'active': item==type_selected}" @click="selectType(item)" :key="item">{{item}}</li>
 	//       </ul>
 	//       <div class="basic_proxy-edit">
-	//         <Row>
-	//             <Col span="4">
-	//               <p>入门iB</p>
-	//             </Col>
-	//             <Col span="10" offset="1">
 	//
-	//             </Col>
-	//             <Col span="10" offset="1">
-	//
-	//             </Col>
-	//         </Row>
 	//       </div>
 	//     </Card>
 	//   </div>
@@ -50933,13 +50923,20 @@
 	  data: function data() {
 	    return {
 	      type_list: ['ESP35', 'JPN225', 'ITA40', 'SUI30', 'GER30', 'US30', 'NAS100', 'SPX500', 'FRA40', 'EUSTX50', 'UK100', 'USDJPY', 'USDJPY1', 'USDJPY2', 'USDJPY3', 'USDJPY4', 'USDJPY5', 'USDJPY6', 'USDJPY7', 'USDJPY8', 'USDJPY9', 'USDJPY0', 'ESP351', 'ESP352', 'ESP353', 'ESP354', 'ESP355', 'ESP356', 'ESP357', 'ESP358', 'ESP359'],
-	      readonly: true
+	      type_selected: '',
+	      data: {
+	        level1: '', _level1: '',
+	        level2: '', _level2: '',
+	        level3: '', _level3: '',
+	        level4: '', _level4: '',
+	        level5: '', _level5: ''
+	      }
 	    };
 	  },
 
 	  methods: {
-	    switchModel: function switchModel(type) {
-	      this.readonly = type;
+	    selectType: function selectType(type) {
+	      this.type_selected = type;
 	    }
 	  },
 	  components: {},
@@ -50952,7 +50949,7 @@
 /* 86 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_proxy app-warp\">\n  <Card style=\"width:800px; height: 100%;positon: relative;\">\n    <p slot=\"title\">佣金设置</p>\n    <ul class=\"basic_proxy-list\">\n      <li>代理名称</li>\n      <li v-for=\"item in type_list\" :key=\"item\">{{item}}</li>\n    </ul>\n    <div class=\"basic_proxy-edit\">\n      <Row>\n          <Col span=\"4\">\n            <p>入门iB</p>\n          </Col>\n          <Col span=\"10\" offset=\"1\">\n\n          </Col>\n          <Col span=\"10\" offset=\"1\">\n            \n          </Col>\n      </Row>\n    </div>\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_proxy app-warp\">\n  <Card style=\"width:800px; height: 100%;positon: relative;\">\n    <p slot=\"title\">佣金设置</p>\n    <ul class=\"basic_proxy-list\">\n      <li>代理名称</li>\n      <li v-for=\"item in type_list\" v-bind:class=\"{'active': item==type_selected}\" @click=\"selectType(item)\" :key=\"item\">{{item}}</li>\n    </ul>\n    <div class=\"basic_proxy-edit\">\n      \n    </div>\n  </Card>\n</div>\n";
 
 /***/ },
 /* 87 */
@@ -51262,7 +51259,7 @@
 	//         <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1681391545,4187928589&fm=27&gp=0.jpg" alt="">
 	//         <div class="basic_logo-info-edit">
 	//           <Alert show-icon type="warning">要求图片格式为PNG格式，高64宽64。</Alert>
-	//           <i-button icon="ios-cloud-upload-outline" type="primary">上传图片</i-button>
+	//           <i-button icon="ios-cloud-upload-outline" @click="uploadImg('logo')" type="primary">上传图片</i-button>
 	//         </div>
 	//       </div>  
 	//     </Card>
@@ -51272,7 +51269,7 @@
 	//         <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2918321103,763089997&fm=27&gp=0.jpg" alt="">
 	//         <div class="basic_logo-info-edit">
 	//           <Alert show-icon type="warning">必须为icon文件。</Alert>
-	//           <i-button icon="ios-cloud-upload-outline" type="primary">上传图片</i-button>
+	//           <i-button icon="ios-cloud-upload-outline" @click="uploadImg('icon')" type="primary">上传图片</i-button>
 	//         </div>
 	//       </div>
 	//     </Card>
@@ -51300,6 +51297,10 @@
 	  methods: {
 	    switchModel: function switchModel(type) {
 	      this.readonly = type;
+	    },
+	    uploadImg: function uploadImg(type) {
+	      var vm = this;
+	      util.uploadFile(function (res) {});
 	    }
 	  },
 	  components: {},
@@ -51312,7 +51313,7 @@
 /* 95 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"basic_logo app-warp\">\n  <Card style=\"width:600px;margin-bottom: 10px;\">\n    <p slot=\"title\">Logo设置</p>\n    <div class=\"basic_logo-info\">\n      <img src=\"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1681391545,4187928589&fm=27&gp=0.jpg\" alt=\"\">\n      <div class=\"basic_logo-info-edit\">\n        <Alert show-icon type=\"warning\">要求图片格式为PNG格式，高64宽64。</Alert>\n        <i-button icon=\"ios-cloud-upload-outline\" type=\"primary\">上传图片</i-button>\n      </div>\n    </div>  \n  </Card>\n  <Card style=\"width:600px\">\n    <p slot=\"title\">Icon设置</p>\n    <div class=\"basic_logo-info\">\n      <img src=\"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2918321103,763089997&fm=27&gp=0.jpg\" alt=\"\">\n      <div class=\"basic_logo-info-edit\">\n        <Alert show-icon type=\"warning\">必须为icon文件。</Alert>\n        <i-button icon=\"ios-cloud-upload-outline\" type=\"primary\">上传图片</i-button>\n      </div>\n    </div>\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"basic_logo app-warp\">\n  <Card style=\"width:600px;margin-bottom: 10px;\">\n    <p slot=\"title\">Logo设置</p>\n    <div class=\"basic_logo-info\">\n      <img src=\"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1681391545,4187928589&fm=27&gp=0.jpg\" alt=\"\">\n      <div class=\"basic_logo-info-edit\">\n        <Alert show-icon type=\"warning\">要求图片格式为PNG格式，高64宽64。</Alert>\n        <i-button icon=\"ios-cloud-upload-outline\" @click=\"uploadImg('logo')\" type=\"primary\">上传图片</i-button>\n      </div>\n    </div>  \n  </Card>\n  <Card style=\"width:600px\">\n    <p slot=\"title\">Icon设置</p>\n    <div class=\"basic_logo-info\">\n      <img src=\"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2918321103,763089997&fm=27&gp=0.jpg\" alt=\"\">\n      <div class=\"basic_logo-info-edit\">\n        <Alert show-icon type=\"warning\">必须为icon文件。</Alert>\n        <i-button icon=\"ios-cloud-upload-outline\" @click=\"uploadImg('icon')\" type=\"primary\">上传图片</i-button>\n      </div>\n    </div>\n  </Card>\n</div>\n";
 
 /***/ }
 /******/ ]);
