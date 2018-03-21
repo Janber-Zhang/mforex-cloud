@@ -14726,15 +14726,19 @@
 
 	var _logo2 = _interopRequireDefault(_logo);
 
+	var _index3 = __webpack_require__(96);
+
+	var _index4 = _interopRequireDefault(_index3);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// 基本设置-logo设置
+	// 客户管理
 
-	// 基本设置-交易设置
-	// 基本设置-短信设置
-	// 基本设置-邮件模版
-	// 基本设置-系统设置
-	// 未开放模块
+	// 基本设置—支付设置
+	// 基本设置-代理设置
+	// 基本设置-代理等级名称设置
+	// 基本设置-邮件设置
+	// 主页
 
 	var routes_map = {
 		basic_system: _system2.default,
@@ -14745,12 +14749,15 @@
 		basic_proxy: _proxy2.default,
 		basic_trade: _trade2.default,
 		basic_payment: _payment2.default,
-		basic_logo: _logo2.default
-	}; // 基本设置—支付设置
-	// 基本设置-代理设置
-	// 基本设置-代理等级名称设置
-	// 基本设置-邮件设置
-	// 主页
+		basic_logo: _logo2.default,
+		customer: _index4.default
+	}; // 基本设置-logo设置
+
+	// 基本设置-交易设置
+	// 基本设置-短信设置
+	// 基本设置-邮件模版
+	// 基本设置-系统设置
+	// 未开放模块
 
 	var routes = [{
 		path: '/',
@@ -51353,6 +51360,131 @@
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"basic_logo app-warp\">\n  <Card style=\"width:600px;margin-bottom: 10px;\">\n    <p slot=\"title\">Logo设置</p>\n    <div class=\"basic_logo-info\">\n      <img src=\"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1681391545,4187928589&fm=27&gp=0.jpg\" alt=\"\">\n      <div class=\"basic_logo-info-edit\">\n        <Alert show-icon type=\"warning\">要求图片格式为PNG格式，高64宽64。</Alert>\n        <i-button icon=\"ios-cloud-upload-outline\" @click=\"uploadImg('logo')\" type=\"primary\">上传图片</i-button>\n      </div>\n    </div>  \n  </Card>\n  <Card style=\"width:600px\">\n    <p slot=\"title\">Icon设置</p>\n    <div class=\"basic_logo-info\">\n      <img src=\"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2918321103,763089997&fm=27&gp=0.jpg\" alt=\"\">\n      <div class=\"basic_logo-info-edit\">\n        <Alert show-icon type=\"warning\">必须为icon文件。</Alert>\n        <i-button icon=\"ios-cloud-upload-outline\" @click=\"uploadImg('icon')\" type=\"primary\">上传图片</i-button>\n      </div>\n    </div>\n  </Card>\n</div>\n";
+
+/***/ },
+/* 96 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(97)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/customer/index.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(98)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-5b686408/index.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 97 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="customer app-warp">
+	//     <Card style="width:100%">
+	//       <p slot="title">客户管理</p>
+	//       <!-- 操作按钮 -->
+	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="plus">新建</Button>
+	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit">编辑</Button>
+	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark">启用</Button>
+	//       <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close">停用</Button>
+	//       <Button type="warning" style="margin-right:10px" size="small" slot="extra" icon="information">查看明细</Button>
+	//       <Button style="margin-right:10px" size="small" slot="extra" icon="network">查看代理树</Button>
+	//       <Button type="dashed" style="margin-right:10px" size="small" slot="extra" icon="key">修改密码</Button>
+	//       <Button type="primary" size="small" slot="extra" icon="forward">转到会员中心</Button>
+	//
+	//       <!-- 列表 -->
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="150">MT4账号</th>
+	//             <th width="200">姓名</th>
+	//             <th width="100">组</th>
+	//             <th width="300">邮箱</th>
+	//             <th width="200">电话</th>
+	//             <th width="100">杠杆</th>
+	//             <th width="200">上级代理帐号</th>
+	//             <th width="100">代理等级</th>
+	//             <th width="300">注册时间</th>
+	//             <th width="100">是否验证</th>
+	//             <th width="100">余额</th>
+	//             <th width="100">盈亏值</th>
+	//             <th width="100">启用状态</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="i in 10" :key="i">
+	//             <td>wanger</td>
+	//             <td>王二</td>
+	//             <td>USD1</td>
+	//             <td>janber@gmail.com</td>
+	//             <td>18200115617</td>
+	//             <td>100</td>
+	//             <td>zhangsan</td>
+	//             <td>2</td>
+	//             <td>2018-02-12 18:00</td>
+	//             <td>已验证</td>
+	//             <td>200000</td>
+	//             <td>-1222</td>
+	//             <td>启用</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      readonly: true
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 98 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">客户管理</p>\n    <!-- 操作按钮 -->\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\">新建</Button>\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\">编辑</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\">启用</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\">停用</Button>\n    <Button type=\"warning\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\">查看明细</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"network\">查看代理树</Button>\n    <Button type=\"dashed\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"key\">修改密码</Button>\n    <Button type=\"primary\" size=\"small\" slot=\"extra\" icon=\"forward\">转到会员中心</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"150\">MT4账号</th>\n          <th width=\"200\">姓名</th>\n          <th width=\"100\">组</th>\n          <th width=\"300\">邮箱</th>\n          <th width=\"200\">电话</th>\n          <th width=\"100\">杠杆</th>\n          <th width=\"200\">上级代理帐号</th>\n          <th width=\"100\">代理等级</th>\n          <th width=\"300\">注册时间</th>\n          <th width=\"100\">是否验证</th>\n          <th width=\"100\">余额</th>\n          <th width=\"100\">盈亏值</th>\n          <th width=\"100\">启用状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\">\n          <td>wanger</td>\n          <td>王二</td>\n          <td>USD1</td>\n          <td>janber@gmail.com</td>\n          <td>18200115617</td>\n          <td>100</td>\n          <td>zhangsan</td>\n          <td>2</td>\n          <td>2018-02-12 18:00</td>\n          <td>已验证</td>\n          <td>200000</td>\n          <td>-1222</td>\n          <td>启用</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
 
 /***/ }
 /******/ ]);

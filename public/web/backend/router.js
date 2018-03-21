@@ -15,6 +15,8 @@ import basic_trade           from './src/views/pages/basic/trade.vue'           
 import basic_payment         from './src/views/pages/basic/payment.vue'             // 基本设置—支付设置
 import basic_logo            from './src/views/pages/basic/logo.vue'                // 基本设置-logo设置
 
+import customer              from './src/views/pages/customer/index.vue'            // 客户管理
+
 const routes_map = {
 	basic_system,
 	basic_email,
@@ -24,7 +26,8 @@ const routes_map = {
 	basic_proxy,
 	basic_trade,
 	basic_payment,
-	basic_logo
+	basic_logo,
+	customer
 }
 
 const routes = [
