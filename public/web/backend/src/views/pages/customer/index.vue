@@ -4,13 +4,13 @@
       <p slot="title">客户管理</p>
       <!-- 操作按钮 -->
       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="plus">新建</Button>
-      <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit">编辑</Button>
-      <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark">启用</Button>
-      <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close">停用</Button>
-      <Button type="warning" style="margin-right:10px" size="small" slot="extra" icon="information">查看明细</Button>
-      <Button style="margin-right:10px" size="small" slot="extra" icon="network">查看代理树</Button>
-      <Button type="dashed" style="margin-right:10px" size="small" slot="extra" icon="key">修改密码</Button>
-      <Button type="primary" size="small" slot="extra" icon="forward">转到会员中心</Button>
+      <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">编辑</Button>
+      <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">启用</Button>
+      <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">停用</Button>
+      <Button type="warning" style="margin-right:10px" size="small" slot="extra" icon="information" :disabled="disabled">查看明细</Button>
+      <Button style="margin-right:10px" size="small" slot="extra" icon="network" :disabled="disabled">查看代理树</Button>
+      <Button type="dashed" style="margin-right:10px" size="small" slot="extra" icon="key" :disabled="disabled">修改密码</Button>
+      <Button type="primary" size="small" slot="extra" icon="forward" :disabled="disabled">转到会员中心</Button>
       
       <!-- 列表 -->
       <table class="list-table">
@@ -32,7 +32,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="i in 10" :key="i">
+          <tr v-for="i in 10" :key="i" @click="selectUser(i)" v-bind:class="{'active': selected_key==i}">
             <td>wanger</td>
             <td>王二</td>
             <td>USD1</td>
@@ -64,19 +64,29 @@ export default {
   },
   data(){
     return {
-      readonly: true
+      readonly: true,
+      selected_key: ''
     }
   },
   methods:{
     switchModel(type){
       this.readonly = type;
+    },
+    selectUser(key){
+      if (this.selected_key === key) {
+        this.selected_key = '';
+      } else {
+        this.selected_key = key;
+      }
     }
   },
   components:{
 
   },
   computed:{
-
+    disabled: function(){
+      return this.selected_key === ''
+    }
   }
 }
 </script>

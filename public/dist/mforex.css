@@ -847,6 +847,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 #app.backend .backend-main .content-body .content-app .app-warp .list-table tbody tr:hover {
   background-color: rgba(16, 141, 233, 0.09803922);
 }
+#app.backend .backend-main .content-body .content-app .app-warp .list-table tbody tr.active {
+  background-color: #2d8cf03d;
+}
 #app.backend .backend-main .content-body .content-app .app-warp .list-table tbody tr td .handle {
   cursor: pointer;
   color: #2d8cf0;

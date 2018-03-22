@@ -51398,7 +51398,7 @@
 /* 97 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -51409,13 +51409,13 @@
 	//       <p slot="title">客户管理</p>
 	//       <!-- 操作按钮 -->
 	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="plus">新建</Button>
-	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit">编辑</Button>
-	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark">启用</Button>
-	//       <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close">停用</Button>
-	//       <Button type="warning" style="margin-right:10px" size="small" slot="extra" icon="information">查看明细</Button>
-	//       <Button style="margin-right:10px" size="small" slot="extra" icon="network">查看代理树</Button>
-	//       <Button type="dashed" style="margin-right:10px" size="small" slot="extra" icon="key">修改密码</Button>
-	//       <Button type="primary" size="small" slot="extra" icon="forward">转到会员中心</Button>
+	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">编辑</Button>
+	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">启用</Button>
+	//       <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">停用</Button>
+	//       <Button type="warning" style="margin-right:10px" size="small" slot="extra" icon="information" :disabled="disabled">查看明细</Button>
+	//       <Button style="margin-right:10px" size="small" slot="extra" icon="network" :disabled="disabled">查看代理树</Button>
+	//       <Button type="dashed" style="margin-right:10px" size="small" slot="extra" icon="key" :disabled="disabled">修改密码</Button>
+	//       <Button type="primary" size="small" slot="extra" icon="forward" :disabled="disabled">转到会员中心</Button>
 	//
 	//       <!-- 列表 -->
 	//       <table class="list-table">
@@ -51437,7 +51437,7 @@
 	//           </tr>
 	//         </thead>
 	//         <tbody>
-	//           <tr v-for="i in 10" :key="i">
+	//           <tr v-for="i in 10" :key="i" @click="selectUser(i)" v-bind:class="{'active': selected_key==i}">
 	//             <td>wanger</td>
 	//             <td>王二</td>
 	//             <td>USD1</td>
@@ -51465,17 +51465,29 @@
 	  ready: function ready() {},
 	  data: function data() {
 	    return {
-	      readonly: true
+	      readonly: true,
+	      selected_key: ''
 	    };
 	  },
 
 	  methods: {
 	    switchModel: function switchModel(type) {
 	      this.readonly = type;
+	    },
+	    selectUser: function selectUser(key) {
+	      if (this.selected_key === key) {
+	        this.selected_key = '';
+	      } else {
+	        this.selected_key = key;
+	      }
 	    }
 	  },
 	  components: {},
-	  computed: {}
+	  computed: {
+	    disabled: function disabled() {
+	      return this.selected_key === '';
+	    }
+	  }
 	  // </script>
 
 	};
@@ -51484,7 +51496,7 @@
 /* 98 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">客户管理</p>\n    <!-- 操作按钮 -->\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\">新建</Button>\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\">编辑</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\">启用</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\">停用</Button>\n    <Button type=\"warning\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\">查看明细</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"network\">查看代理树</Button>\n    <Button type=\"dashed\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"key\">修改密码</Button>\n    <Button type=\"primary\" size=\"small\" slot=\"extra\" icon=\"forward\">转到会员中心</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"150\">MT4账号</th>\n          <th width=\"200\">姓名</th>\n          <th width=\"100\">组</th>\n          <th width=\"300\">邮箱</th>\n          <th width=\"200\">电话</th>\n          <th width=\"100\">杠杆</th>\n          <th width=\"200\">上级代理帐号</th>\n          <th width=\"100\">代理等级</th>\n          <th width=\"300\">注册时间</th>\n          <th width=\"100\">是否验证</th>\n          <th width=\"100\">余额</th>\n          <th width=\"100\">盈亏值</th>\n          <th width=\"100\">启用状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\">\n          <td>wanger</td>\n          <td>王二</td>\n          <td>USD1</td>\n          <td>janber@gmail.com</td>\n          <td>18200115617</td>\n          <td>100</td>\n          <td>zhangsan</td>\n          <td>2</td>\n          <td>2018-02-12 18:00</td>\n          <td>已验证</td>\n          <td>200000</td>\n          <td>-1222</td>\n          <td>启用</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">客户管理</p>\n    <!-- 操作按钮 -->\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\">新建</Button>\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">编辑</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">启用</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\" :disabled=\"disabled\">停用</Button>\n    <Button type=\"warning\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"network\" :disabled=\"disabled\">查看代理树</Button>\n    <Button type=\"dashed\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"key\" :disabled=\"disabled\">修改密码</Button>\n    <Button type=\"primary\" size=\"small\" slot=\"extra\" icon=\"forward\" :disabled=\"disabled\">转到会员中心</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"150\">MT4账号</th>\n          <th width=\"200\">姓名</th>\n          <th width=\"100\">组</th>\n          <th width=\"300\">邮箱</th>\n          <th width=\"200\">电话</th>\n          <th width=\"100\">杠杆</th>\n          <th width=\"200\">上级代理帐号</th>\n          <th width=\"100\">代理等级</th>\n          <th width=\"300\">注册时间</th>\n          <th width=\"100\">是否验证</th>\n          <th width=\"100\">余额</th>\n          <th width=\"100\">盈亏值</th>\n          <th width=\"100\">启用状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>wanger</td>\n          <td>王二</td>\n          <td>USD1</td>\n          <td>janber@gmail.com</td>\n          <td>18200115617</td>\n          <td>100</td>\n          <td>zhangsan</td>\n          <td>2</td>\n          <td>2018-02-12 18:00</td>\n          <td>已验证</td>\n          <td>200000</td>\n          <td>-1222</td>\n          <td>启用</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
 
 /***/ }
 /******/ ]);
