@@ -14730,15 +14730,21 @@
 
 	var _index4 = _interopRequireDefault(_index3);
 
+	var _outAppr = __webpack_require__(99);
+
+	var _outAppr2 = _interopRequireDefault(_outAppr);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// 客户管理
+	// 出金审核
 
-	// 基本设置—支付设置
-	// 基本设置-代理设置
-	// 基本设置-代理等级名称设置
-	// 基本设置-邮件设置
-	// 主页
+	// 基本设置-logo设置
+
+	// 基本设置-交易设置
+	// 基本设置-短信设置
+	// 基本设置-邮件模版
+	// 基本设置-系统设置
+	// 未开放模块
 
 	var routes_map = {
 		basic_system: _system2.default,
@@ -14750,14 +14756,15 @@
 		basic_trade: _trade2.default,
 		basic_payment: _payment2.default,
 		basic_logo: _logo2.default,
-		customer: _index4.default
-	}; // 基本设置-logo设置
+		customer: _index4.default,
+		finance_out_appr: _outAppr2.default
+	}; // 客户管理
 
-	// 基本设置-交易设置
-	// 基本设置-短信设置
-	// 基本设置-邮件模版
-	// 基本设置-系统设置
-	// 未开放模块
+	// 基本设置—支付设置
+	// 基本设置-代理设置
+	// 基本设置-代理等级名称设置
+	// 基本设置-邮件设置
+	// 主页
 
 	var routes = [{
 		path: '/',
@@ -51414,8 +51421,8 @@
 	//       <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">停用</Button>
 	//       <Button type="warning" style="margin-right:10px" size="small" slot="extra" icon="information" :disabled="disabled">查看明细</Button>
 	//       <Button style="margin-right:10px" size="small" slot="extra" icon="network" :disabled="disabled">查看代理树</Button>
-	//       <Button type="dashed" style="margin-right:10px" size="small" slot="extra" icon="key" :disabled="disabled">修改密码</Button>
-	//       <Button type="primary" size="small" slot="extra" icon="forward" :disabled="disabled">转到会员中心</Button>
+	//       <Button style="margin-right:10px" size="small" slot="extra" icon="key" :disabled="disabled">修改密码</Button>
+	//       <Button size="small" slot="extra" icon="forward" :disabled="disabled">转到会员中心</Button>
 	//
 	//       <!-- 列表 -->
 	//       <table class="list-table">
@@ -51496,7 +51503,139 @@
 /* 98 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">客户管理</p>\n    <!-- 操作按钮 -->\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\">新建</Button>\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">编辑</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">启用</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\" :disabled=\"disabled\">停用</Button>\n    <Button type=\"warning\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"network\" :disabled=\"disabled\">查看代理树</Button>\n    <Button type=\"dashed\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"key\" :disabled=\"disabled\">修改密码</Button>\n    <Button type=\"primary\" size=\"small\" slot=\"extra\" icon=\"forward\" :disabled=\"disabled\">转到会员中心</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"150\">MT4账号</th>\n          <th width=\"200\">姓名</th>\n          <th width=\"100\">组</th>\n          <th width=\"300\">邮箱</th>\n          <th width=\"200\">电话</th>\n          <th width=\"100\">杠杆</th>\n          <th width=\"200\">上级代理帐号</th>\n          <th width=\"100\">代理等级</th>\n          <th width=\"300\">注册时间</th>\n          <th width=\"100\">是否验证</th>\n          <th width=\"100\">余额</th>\n          <th width=\"100\">盈亏值</th>\n          <th width=\"100\">启用状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>wanger</td>\n          <td>王二</td>\n          <td>USD1</td>\n          <td>janber@gmail.com</td>\n          <td>18200115617</td>\n          <td>100</td>\n          <td>zhangsan</td>\n          <td>2</td>\n          <td>2018-02-12 18:00</td>\n          <td>已验证</td>\n          <td>200000</td>\n          <td>-1222</td>\n          <td>启用</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">客户管理</p>\n    <!-- 操作按钮 -->\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\">新建</Button>\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">编辑</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">启用</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\" :disabled=\"disabled\">停用</Button>\n    <Button type=\"warning\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"network\" :disabled=\"disabled\">查看代理树</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"key\" :disabled=\"disabled\">修改密码</Button>\n    <Button size=\"small\" slot=\"extra\" icon=\"forward\" :disabled=\"disabled\">转到会员中心</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"150\">MT4账号</th>\n          <th width=\"200\">姓名</th>\n          <th width=\"100\">组</th>\n          <th width=\"300\">邮箱</th>\n          <th width=\"200\">电话</th>\n          <th width=\"100\">杠杆</th>\n          <th width=\"200\">上级代理帐号</th>\n          <th width=\"100\">代理等级</th>\n          <th width=\"300\">注册时间</th>\n          <th width=\"100\">是否验证</th>\n          <th width=\"100\">余额</th>\n          <th width=\"100\">盈亏值</th>\n          <th width=\"100\">启用状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>wanger</td>\n          <td>王二</td>\n          <td>USD1</td>\n          <td>janber@gmail.com</td>\n          <td>18200115617</td>\n          <td>100</td>\n          <td>zhangsan</td>\n          <td>2</td>\n          <td>2018-02-12 18:00</td>\n          <td>已验证</td>\n          <td>200000</td>\n          <td>-1222</td>\n          <td>启用</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+
+/***/ },
+/* 99 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(100)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/finance/outAppr.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(101)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-1e21e2da/outAppr.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 100 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="customer app-warp">
+	//     <Card style="width:100%">
+	//       <p slot="title">出金审核</p>
+	//       <!-- 操作按钮 -->
+	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="plus" :disabled="disabled">查看明细</Button>
+	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">审核</Button>
+	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">设置为已转账</Button>
+	//
+	//       <!-- 列表 -->
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="100">编号</th>
+	//             <th width="200">MT4账号</th>
+	//             <th width="150">客户名称</th>
+	//             <th width="200">申请出金数量</th>
+	//             <th width="300">申请时间</th>
+	//             <th width="100">审核意见</th>
+	//             <th width="300">扣款方式</th>
+	//             <th width="200">汇率模式</th>
+	//             <th width="200">汇率转换后金额</th>
+	//             <th width="100">汇率</th>
+	//             <th width="200">汇率计算公式</th>
+	//             <th width="100">币种</th>
+	//             <th width="100">状态</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="i in 10" :key="i" @click="selectUser(i)" v-bind:class="{'active': selected_key==i}">
+	//             <td>319</td>
+	//             <td>40353082</td>
+	//             <td>莫秀娟--高级</td>
+	//             <td>300</td>
+	//             <td>2018/3/6 10:51:55</td>
+	//             <td>ok</td>
+	//             <td>管理员审核后mt4扣款</td>
+	//             <td>非实时汇率</td>
+	//             <td>2100</td>
+	//             <td>7</td>
+	//             <td>(7.00) + (0.00)</td>
+	//             <td>USD</td>
+	//             <td>已审核</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      readonly: true,
+	      selected_key: ''
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    },
+	    selectUser: function selectUser(key) {
+	      if (this.selected_key === key) {
+	        this.selected_key = '';
+	      } else {
+	        this.selected_key = key;
+	      }
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    disabled: function disabled() {
+	      return this.selected_key === '';
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 101 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">出金审核</p>\n    <!-- 操作按钮 -->\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\" :disabled=\"disabled\">查看明细</Button>\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">审核</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">设置为已转账</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">客户名称</th>\n          <th width=\"200\">申请出金数量</th>\n          <th width=\"300\">申请时间</th>\n          <th width=\"100\">审核意见</th>\n          <th width=\"300\">扣款方式</th>\n          <th width=\"200\">汇率模式</th>\n          <th width=\"200\">汇率转换后金额</th>\n          <th width=\"100\">汇率</th>\n          <th width=\"200\">汇率计算公式</th>\n          <th width=\"100\">币种</th>\n          <th width=\"100\">状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>319</td>\n          <td>40353082</td>\n          <td>莫秀娟--高级</td>\n          <td>300</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>ok</td>\n          <td>管理员审核后mt4扣款</td>\n          <td>非实时汇率</td>\n          <td>2100</td>\n          <td>7</td>\n          <td>(7.00) + (0.00)</td>\n          <td>USD</td>\n          <td>已审核</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
 
 /***/ }
 /******/ ]);

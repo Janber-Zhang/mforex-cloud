@@ -17,6 +17,8 @@ import basic_logo            from './src/views/pages/basic/logo.vue'            
 
 import customer              from './src/views/pages/customer/index.vue'            // 客户管理
 
+import finance_out_appr      from './src/views/pages/finance/outAppr.vue'           // 出金审核
+
 const routes_map = {
 	basic_system,
 	basic_email,
@@ -27,7 +29,8 @@ const routes_map = {
 	basic_trade,
 	basic_payment,
 	basic_logo,
-	customer
+	customer,
+	finance_out_appr
 }
 
 const routes = [

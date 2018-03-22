@@ -898,6 +898,9 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 #app.backend .backend-header .header-item:hover .more-info {
   visibility: inherit;
 }
+#app.backend .backend-header .header-item:hover .more-info:hover {
+  background-color: #f8f8f8;
+}
 #app.backend .backend-header .floatL {
   float: left;
   border-right: 1px solid #2a2f32;

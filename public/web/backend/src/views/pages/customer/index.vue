@@ -9,8 +9,8 @@
       <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">停用</Button>
       <Button type="warning" style="margin-right:10px" size="small" slot="extra" icon="information" :disabled="disabled">查看明细</Button>
       <Button style="margin-right:10px" size="small" slot="extra" icon="network" :disabled="disabled">查看代理树</Button>
-      <Button type="dashed" style="margin-right:10px" size="small" slot="extra" icon="key" :disabled="disabled">修改密码</Button>
-      <Button type="primary" size="small" slot="extra" icon="forward" :disabled="disabled">转到会员中心</Button>
+      <Button style="margin-right:10px" size="small" slot="extra" icon="key" :disabled="disabled">修改密码</Button>
+      <Button size="small" slot="extra" icon="forward" :disabled="disabled">转到会员中心</Button>
       
       <!-- 列表 -->
       <table class="list-table">
