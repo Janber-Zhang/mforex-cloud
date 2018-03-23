@@ -34,16 +34,23 @@
         padding: 10px;
         // 列表页筛选器
         .filter-bar{
-          width: 100%;
-          padding: 0 20px;
+          background-color: #f5f5f5;
+          margin-bottom: 10px;
+          padding: 10px 5px;
           overflow: hidden;
           .filter-item{
-            width: 280px;
             float: left;
-            margin: 14px 0;
-            .filter-item-name{
+            padding: 5px;
+            min-width: 250px;
+            margin-right: 20px;
+            &-title{
+              min-width: 50px;
               margin-right: 10px;
             }
+          }
+          .filter-handle{
+            float: left;
+            padding: 5px;
           }
         }
         // 列表主体table
@@ -59,6 +66,7 @@
             font-size: 12px;
             padding: 10px 0;
             word-break: break-all;
+            white-space: nowrap;
           }
           thead tr th{
             background: #f5f5f5;

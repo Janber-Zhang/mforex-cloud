@@ -31,7 +31,8 @@ const routes_map = {
 	basic_payment,
 	basic_logo,
 	customer,
-	finance_out_appr
+	finance_out_appr,
+	finance_in_list
 }
 
 const routes = [

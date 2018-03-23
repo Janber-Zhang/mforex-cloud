@@ -62,11 +62,11 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _index = __webpack_require__(37);
+	var _index = __webpack_require__(96);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _iview = __webpack_require__(41);
+	var _iview = __webpack_require__(100);
 
 	var _iview2 = _interopRequireDefault(_iview);
 
@@ -14674,67 +14674,67 @@
 		value: true
 	});
 
-	var _keys = __webpack_require__(64);
+	var _keys = __webpack_require__(7);
 
 	var _keys2 = _interopRequireDefault(_keys);
 
-	var _main = __webpack_require__(7);
+	var _main = __webpack_require__(42);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _ = __webpack_require__(19);
+	var _ = __webpack_require__(54);
 
 	var _2 = _interopRequireDefault(_);
 
-	var _index = __webpack_require__(22);
+	var _index = __webpack_require__(57);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _system = __webpack_require__(25);
+	var _system = __webpack_require__(60);
 
 	var _system2 = _interopRequireDefault(_system);
 
-	var _email = __webpack_require__(28);
+	var _email = __webpack_require__(63);
 
 	var _email2 = _interopRequireDefault(_email);
 
-	var _email_template = __webpack_require__(42);
+	var _email_template = __webpack_require__(66);
 
 	var _email_template2 = _interopRequireDefault(_email_template);
 
-	var _proxy_level = __webpack_require__(31);
+	var _proxy_level = __webpack_require__(69);
 
 	var _proxy_level2 = _interopRequireDefault(_proxy_level);
 
-	var _msg = __webpack_require__(34);
+	var _msg = __webpack_require__(72);
 
 	var _msg2 = _interopRequireDefault(_msg);
 
-	var _proxy = __webpack_require__(84);
+	var _proxy = __webpack_require__(75);
 
 	var _proxy2 = _interopRequireDefault(_proxy);
 
-	var _trade = __webpack_require__(87);
+	var _trade = __webpack_require__(78);
 
 	var _trade2 = _interopRequireDefault(_trade);
 
-	var _payment = __webpack_require__(90);
+	var _payment = __webpack_require__(81);
 
 	var _payment2 = _interopRequireDefault(_payment);
 
-	var _logo = __webpack_require__(93);
+	var _logo = __webpack_require__(84);
 
 	var _logo2 = _interopRequireDefault(_logo);
 
-	var _index3 = __webpack_require__(96);
+	var _index3 = __webpack_require__(87);
 
 	var _index4 = _interopRequireDefault(_index3);
 
-	var _outAppr = __webpack_require__(99);
+	var _outAppr = __webpack_require__(90);
 
 	var _outAppr2 = _interopRequireDefault(_outAppr);
 
-	var _inList = __webpack_require__(102);
+	var _inList = __webpack_require__(93);
 
 	var _inList2 = _interopRequireDefault(_inList);
 
@@ -14761,7 +14761,8 @@
 		basic_payment: _payment2.default,
 		basic_logo: _logo2.default,
 		customer: _index4.default,
-		finance_out_appr: _outAppr2.default
+		finance_out_appr: _outAppr2.default,
+		finance_in_list: _inList2.default
 	}; // 出金审核
 	// 基本设置-logo设置
 
@@ -14799,12 +14800,526 @@
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = { "default": __webpack_require__(8), __esModule: true };
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(9);
+	module.exports = __webpack_require__(29).Object.keys;
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 19.1.2.14 Object.keys(O)
+	var toObject = __webpack_require__(10);
+	var $keys = __webpack_require__(12);
+
+	__webpack_require__(27)('keys', function () {
+	  return function keys(it) {
+	    return $keys(toObject(it));
+	  };
+	});
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 7.1.13 ToObject(argument)
+	var defined = __webpack_require__(11);
+	module.exports = function (it) {
+	  return Object(defined(it));
+	};
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	// 7.2.1 RequireObjectCoercible(argument)
+	module.exports = function (it) {
+	  if (it == undefined) throw TypeError("Can't call method on  " + it);
+	  return it;
+	};
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+	var $keys = __webpack_require__(13);
+	var enumBugKeys = __webpack_require__(26);
+
+	module.exports = Object.keys || function keys(O) {
+	  return $keys(O, enumBugKeys);
+	};
+
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var has = __webpack_require__(14);
+	var toIObject = __webpack_require__(15);
+	var arrayIndexOf = __webpack_require__(18)(false);
+	var IE_PROTO = __webpack_require__(22)('IE_PROTO');
+
+	module.exports = function (object, names) {
+	  var O = toIObject(object);
+	  var i = 0;
+	  var result = [];
+	  var key;
+	  for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
+	  // Don't enum bug & hidden keys
+	  while (names.length > i) if (has(O, key = names[i++])) {
+	    ~arrayIndexOf(result, key) || result.push(key);
+	  }
+	  return result;
+	};
+
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	var hasOwnProperty = {}.hasOwnProperty;
+	module.exports = function (it, key) {
+	  return hasOwnProperty.call(it, key);
+	};
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// to indexed object, toObject with fallback for non-array-like ES3 strings
+	var IObject = __webpack_require__(16);
+	var defined = __webpack_require__(11);
+	module.exports = function (it) {
+	  return IObject(defined(it));
+	};
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// fallback for non-array-like ES3 and non-enumerable old V8 strings
+	var cof = __webpack_require__(17);
+	// eslint-disable-next-line no-prototype-builtins
+	module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
+	  return cof(it) == 'String' ? it.split('') : Object(it);
+	};
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	var toString = {}.toString;
+
+	module.exports = function (it) {
+	  return toString.call(it).slice(8, -1);
+	};
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// false -> Array#indexOf
+	// true  -> Array#includes
+	var toIObject = __webpack_require__(15);
+	var toLength = __webpack_require__(19);
+	var toAbsoluteIndex = __webpack_require__(21);
+	module.exports = function (IS_INCLUDES) {
+	  return function ($this, el, fromIndex) {
+	    var O = toIObject($this);
+	    var length = toLength(O.length);
+	    var index = toAbsoluteIndex(fromIndex, length);
+	    var value;
+	    // Array#includes uses SameValueZero equality algorithm
+	    // eslint-disable-next-line no-self-compare
+	    if (IS_INCLUDES && el != el) while (length > index) {
+	      value = O[index++];
+	      // eslint-disable-next-line no-self-compare
+	      if (value != value) return true;
+	    // Array#indexOf ignores holes, Array#includes - not
+	    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
+	      if (O[index] === el) return IS_INCLUDES || index || 0;
+	    } return !IS_INCLUDES && -1;
+	  };
+	};
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 7.1.15 ToLength
+	var toInteger = __webpack_require__(20);
+	var min = Math.min;
+	module.exports = function (it) {
+	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
+	};
+
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	// 7.1.4 ToInteger
+	var ceil = Math.ceil;
+	var floor = Math.floor;
+	module.exports = function (it) {
+	  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
+	};
+
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var toInteger = __webpack_require__(20);
+	var max = Math.max;
+	var min = Math.min;
+	module.exports = function (index, length) {
+	  index = toInteger(index);
+	  return index < 0 ? max(index + length, 0) : min(index, length);
+	};
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var shared = __webpack_require__(23)('keys');
+	var uid = __webpack_require__(25);
+	module.exports = function (key) {
+	  return shared[key] || (shared[key] = uid(key));
+	};
+
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var global = __webpack_require__(24);
+	var SHARED = '__core-js_shared__';
+	var store = global[SHARED] || (global[SHARED] = {});
+	module.exports = function (key) {
+	  return store[key] || (store[key] = {});
+	};
+
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+	var global = module.exports = typeof window != 'undefined' && window.Math == Math
+	  ? window : typeof self != 'undefined' && self.Math == Math ? self
+	  // eslint-disable-next-line no-new-func
+	  : Function('return this')();
+	if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+
+
+/***/ },
+/* 25 */
+/***/ function(module, exports) {
+
+	var id = 0;
+	var px = Math.random();
+	module.exports = function (key) {
+	  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
+	};
+
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	// IE 8- don't enum bug keys
+	module.exports = (
+	  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
+	).split(',');
+
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// most Object methods by ES6 should accept primitives
+	var $export = __webpack_require__(28);
+	var core = __webpack_require__(29);
+	var fails = __webpack_require__(38);
+	module.exports = function (KEY, exec) {
+	  var fn = (core.Object || {})[KEY] || Object[KEY];
+	  var exp = {};
+	  exp[KEY] = exec(fn);
+	  $export($export.S + $export.F * fails(function () { fn(1); }), 'Object', exp);
+	};
+
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var global = __webpack_require__(24);
+	var core = __webpack_require__(29);
+	var ctx = __webpack_require__(30);
+	var hide = __webpack_require__(32);
+	var PROTOTYPE = 'prototype';
+
+	var $export = function (type, name, source) {
+	  var IS_FORCED = type & $export.F;
+	  var IS_GLOBAL = type & $export.G;
+	  var IS_STATIC = type & $export.S;
+	  var IS_PROTO = type & $export.P;
+	  var IS_BIND = type & $export.B;
+	  var IS_WRAP = type & $export.W;
+	  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
+	  var expProto = exports[PROTOTYPE];
+	  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
+	  var key, own, out;
+	  if (IS_GLOBAL) source = name;
+	  for (key in source) {
+	    // contains in native
+	    own = !IS_FORCED && target && target[key] !== undefined;
+	    if (own && key in exports) continue;
+	    // export native or passed
+	    out = own ? target[key] : source[key];
+	    // prevent global pollution for namespaces
+	    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+	    // bind timers to global for call from export context
+	    : IS_BIND && own ? ctx(out, global)
+	    // wrap global constructors for prevent change them in library
+	    : IS_WRAP && target[key] == out ? (function (C) {
+	      var F = function (a, b, c) {
+	        if (this instanceof C) {
+	          switch (arguments.length) {
+	            case 0: return new C();
+	            case 1: return new C(a);
+	            case 2: return new C(a, b);
+	          } return new C(a, b, c);
+	        } return C.apply(this, arguments);
+	      };
+	      F[PROTOTYPE] = C[PROTOTYPE];
+	      return F;
+	    // make static versions for prototype methods
+	    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+	    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
+	    if (IS_PROTO) {
+	      (exports.virtual || (exports.virtual = {}))[key] = out;
+	      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
+	      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
+	    }
+	  }
+	};
+	// type bitmap
+	$export.F = 1;   // forced
+	$export.G = 2;   // global
+	$export.S = 4;   // static
+	$export.P = 8;   // proto
+	$export.B = 16;  // bind
+	$export.W = 32;  // wrap
+	$export.U = 64;  // safe
+	$export.R = 128; // real proto method for `library`
+	module.exports = $export;
+
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	var core = module.exports = { version: '2.5.1' };
+	if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// optional / simple context binding
+	var aFunction = __webpack_require__(31);
+	module.exports = function (fn, that, length) {
+	  aFunction(fn);
+	  if (that === undefined) return fn;
+	  switch (length) {
+	    case 1: return function (a) {
+	      return fn.call(that, a);
+	    };
+	    case 2: return function (a, b) {
+	      return fn.call(that, a, b);
+	    };
+	    case 3: return function (a, b, c) {
+	      return fn.call(that, a, b, c);
+	    };
+	  }
+	  return function (/* ...args */) {
+	    return fn.apply(that, arguments);
+	  };
+	};
+
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+	module.exports = function (it) {
+	  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
+	  return it;
+	};
+
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var dP = __webpack_require__(33);
+	var createDesc = __webpack_require__(41);
+	module.exports = __webpack_require__(37) ? function (object, key, value) {
+	  return dP.f(object, key, createDesc(1, value));
+	} : function (object, key, value) {
+	  object[key] = value;
+	  return object;
+	};
+
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var anObject = __webpack_require__(34);
+	var IE8_DOM_DEFINE = __webpack_require__(36);
+	var toPrimitive = __webpack_require__(40);
+	var dP = Object.defineProperty;
+
+	exports.f = __webpack_require__(37) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+	  anObject(O);
+	  P = toPrimitive(P, true);
+	  anObject(Attributes);
+	  if (IE8_DOM_DEFINE) try {
+	    return dP(O, P, Attributes);
+	  } catch (e) { /* empty */ }
+	  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
+	  if ('value' in Attributes) O[P] = Attributes.value;
+	  return O;
+	};
+
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__(35);
+	module.exports = function (it) {
+	  if (!isObject(it)) throw TypeError(it + ' is not an object!');
+	  return it;
+	};
+
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	module.exports = function (it) {
+	  return typeof it === 'object' ? it !== null : typeof it === 'function';
+	};
+
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = !__webpack_require__(37) && !__webpack_require__(38)(function () {
+	  return Object.defineProperty(__webpack_require__(39)('div'), 'a', { get: function () { return 7; } }).a != 7;
+	});
+
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// Thank's IE8 for his funny defineProperty
+	module.exports = !__webpack_require__(38)(function () {
+	  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
+	});
+
+
+/***/ },
+/* 38 */
+/***/ function(module, exports) {
+
+	module.exports = function (exec) {
+	  try {
+	    return !!exec();
+	  } catch (e) {
+	    return true;
+	  }
+	};
+
+
+/***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__(35);
+	var document = __webpack_require__(24).document;
+	// typeof document.createElement is 'object' in old IE
+	var is = isObject(document) && isObject(document.createElement);
+	module.exports = function (it) {
+	  return is ? document.createElement(it) : {};
+	};
+
+
+/***/ },
+/* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 7.1.1 ToPrimitive(input [, PreferredType])
+	var isObject = __webpack_require__(35);
+	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+	// and the second argument - flag - preferred type is a string
+	module.exports = function (it, S) {
+	  if (!isObject(it)) return it;
+	  var fn, val;
+	  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+	  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
+	  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+	  throw TypeError("Can't convert object to primitive value");
+	};
+
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	module.exports = function (bitmap, value) {
+	  return {
+	    enumerable: !(bitmap & 1),
+	    configurable: !(bitmap & 2),
+	    writable: !(bitmap & 4),
+	    value: value
+	  };
+	};
+
+
+/***/ },
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(8)
+	__vue_script__ = __webpack_require__(43)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/main.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(18)
+	__vue_template__ = __webpack_require__(53)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14829,7 +15344,7 @@
 	})()}
 
 /***/ },
-/* 8 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14838,15 +15353,15 @@
 	  value: true
 	});
 
-	var _header = __webpack_require__(9);
+	var _header = __webpack_require__(44);
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _footer = __webpack_require__(12);
+	var _footer = __webpack_require__(47);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
-	var _leftBar = __webpack_require__(15);
+	var _leftBar = __webpack_require__(50);
 
 	var _leftBar2 = _interopRequireDefault(_leftBar);
 
@@ -14888,15 +15403,15 @@
 	// <script>
 
 /***/ },
-/* 9 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(10)
+	__vue_script__ = __webpack_require__(45)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/header.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(11)
+	__vue_template__ = __webpack_require__(46)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14921,7 +15436,7 @@
 	})()}
 
 /***/ },
-/* 10 */
+/* 45 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14976,21 +15491,21 @@
 	};
 
 /***/ },
-/* 11 */
+/* 46 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"backend-header\">\n  <div class=\"floatL header-item\" @click=\"toIndex\">\n    <img width=\"30\" src=\"/img/backend_icon.svg\" alt=\"\">\n  </div>\n  <div class=\"floatL header-item\" @click=\"toIndex\">管理控制台</div>\n  <div class=\"floatR header-item\">\n    <img width=\"30\" src=\"/img/avatar.svg\" alt=\"\">\n    <ul class=\"more-info right\">\n      <li class=\"info-item\" @click=\"logout\">退出登录</li>\n    </ul>\n  </div>\n</div>\n";
 
 /***/ },
-/* 12 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(13)
+	__vue_script__ = __webpack_require__(48)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/footer.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(14)
+	__vue_template__ = __webpack_require__(49)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15015,7 +15530,7 @@
 	})()}
 
 /***/ },
-/* 13 */
+/* 48 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15062,21 +15577,21 @@
 	};
 
 /***/ },
-/* 14 */
+/* 49 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"backend-footer\">\n\t<p class=\"copyright\">2008-2017 &copy; MT4 CRM 后台管理平台。</p>\n</div>\n";
 
 /***/ },
-/* 15 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(16)
+	__vue_script__ = __webpack_require__(51)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/leftBar.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(17)
+	__vue_template__ = __webpack_require__(52)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15101,7 +15616,7 @@
 	})()}
 
 /***/ },
-/* 16 */
+/* 51 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15225,27 +15740,27 @@
 	};
 
 /***/ },
-/* 17 */
+/* 52 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"backend-left-bar\">\n\t<i-Menu ref=\"sideMenu\" :active-name=\"openStatus.activeName\" :accordion=\"false\" @on-select=\"onchange\" theme=\"dark\" width=\"auto\" :open-names=\"openStatus.openNames\">\n\t\t<Submenu v-for=\"submenuItem in menuList\" :name=\"submenuItem.submenuName\" :key=\"submenuItem.submenuName\">\n\t\t\t<template slot=\"title\">\n\t\t\t\t<Icon :type=\"submenuItem.icon\"></Icon>\n\t\t\t\t{{submenuItem.submenu}}\n\t\t\t</template>\n\t\t\t<menu-item v-for=\"menuItem in submenuItem.items\" :name=\"menuItem.name\" :key=\"menuItem.name\">{{menuItem.show}}</menu-item>\n\t\t</Submenu>\n\t</i-Menu>\n</div>\n";
 
 /***/ },
-/* 18 */
+/* 53 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"backend-main\">\n  <main-header></main-header>\n  <div class=\"content-body\">\n    <left-bar></left-bar>\n    <div class=\"content-app\">\n      <router-view></router-view>\n    </div>\n    <copy-footer></copy-footer>\n  </div>\n</div>\n";
 
 /***/ },
-/* 19 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(20)
+	__vue_script__ = __webpack_require__(55)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/error_pages/404.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(21)
+	__vue_template__ = __webpack_require__(56)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15270,7 +15785,7 @@
 	})()}
 
 /***/ },
-/* 20 */
+/* 55 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15308,21 +15823,21 @@
 	// </script>
 
 /***/ },
-/* 21 */
+/* 56 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"error404\">\n    <div class=\"error404-body-con\">\n        <Card>\n            <div class=\"error404-body-con-title\">4<span><Icon size=\"230\" type=\"ios-navigate-outline\"></Icon></span>4</div>\n            <p class=\"error404-body-con-message\">暂未开放</p>\n            <div class=\"error404-btn-con\">\n                <i-button @click=\"goHome\" size=\"large\" style=\"width: 200px;\" type=\"text\">返回首页</i-button>\n                <i-button @click=\"backPage\" size=\"large\" style=\"width: 200px;margin-left: 40px;\" type=\"primary\">返回上一页</i-button>\n            </div>\n        </Card>\n    </div>\n</div>\n";
 
 /***/ },
-/* 22 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(23)
+	__vue_script__ = __webpack_require__(58)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/pages/home/index.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(24)
+	__vue_template__ = __webpack_require__(59)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15347,7 +15862,7 @@
 	})()}
 
 /***/ },
-/* 23 */
+/* 58 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15479,21 +15994,21 @@
 	};
 
 /***/ },
-/* 24 */
+/* 59 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"home\">\n  <Row>\n    <Col span=\"8\">\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          MT4服务器情况\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4服务器地址</span><span class=\"value\">182.16.85.211:7610</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4客户端登录地址</span><span class=\"value\">MT-AD Server</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4管理员帐号</span><span class=\"value\">3</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4管理员密码</span><span class=\"value\">******</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">开户杠杆参数</span><span class=\"value\">100|200|300|500</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4真实用户默认开户组</span><span class=\"value\">IB202</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4真实用户开户帐号范围</span><span class=\"value\">40360000-40390000</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4DEMO用户默认开户组</span><span class=\"value\">1</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4DEMO用户初始入金数量</span><span class=\"value\">3000</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">MT4DEMO用户开户帐号范围</span><span class=\"value\">700000-800000</span></li>\n          </ul>\n      </Card>\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          网站设置\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">前台域名</span><span class=\"value\">http://jjfly.pro:3000</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">网站名称</span><span class=\"value\">mforex</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">联系电话</span><span class=\"value\">02893932323</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">传真</span><span class=\"value\">02893932323</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">地址</span><span class=\"value\">mforex-02893932323</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">邮箱(只显示用)</span><span class=\"value\">mforex-02893932323</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">主站点地址</span><span class=\"value\">http://www.andaobo.com/</span></li>\n        </ul>\n      </Card>\n    </Col>\n    <Col span=\"8\">\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          支付设置\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">币种</span><span class=\"value\">USD</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金扣款方式</span><span class=\"value\">出金申请审核后从MT4扣款</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金汇率计算方式</span><span class=\"value\">非实时汇率</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金默认汇率</span><span class=\"value\">7.00</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金汇率调整值</span><span class=\"value\">0.00</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">入金汇率计算方式</span><span class=\"value\">7.00</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">入金汇率调整值</span><span class=\"value\">0.00</span></li>\n        </ul>\n      </Card>\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          邮件设置\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">邮件服务器地址</span><span class=\"value\">smtp.exmail.qq.com</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">邮件服务器端口</span><span class=\"value\">25</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">发件邮箱</span><span class=\"value\">info@andaobo.com</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">发件账户</span><span class=\"value\">info@andaobo.com</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">发件账户密码</span><span class=\"value\">******</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">管理员邮箱</span><span class=\"value\">info@andaobo.com</span></li>\n        </ul>\n      </Card>\n    </Col>\n    <Col span=\"8\">\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          客户情况\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">申请审核客户</span><span class=\"value\">1</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">已认证客户</span><span class=\"value\">3240</span></li>\n        </ul>\n      </Card>\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          交易情况\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">买卖单总量</span><span class=\"value\">40039</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">入金单总量</span><span class=\"value\">2717</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金单总量</span><span class=\"value\">24003</span></li>\n        </ul>\n      </Card>\n      <Card style=\"margin-right:10px;\">\n        <p slot=\"title\">\n          <Icon type=\"ios-film-outline\"></Icon>\n          支付情况\n        </p>\n        <ul class=\"list-info\">\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">入金支付总数</span><span class=\"value\">919</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">有效入金支付总数</span><span class=\"value\">148</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">出金申请总数</span><span class=\"value\">301</span></li>\n          <li class=\"list-info-item\" flex=\"main:left cross:center\"><span class=\"title\">完成出金总数</span><span class=\"value\">0</span></li>\n        </ul>\n      </Card>\n    </Col>\n  </Row>\n</div>\n";
 
 /***/ },
-/* 25 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(26)
+	__vue_script__ = __webpack_require__(61)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/pages/basic/system.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(27)
+	__vue_template__ = __webpack_require__(62)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15518,7 +16033,7 @@
 	})()}
 
 /***/ },
-/* 26 */
+/* 61 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15604,21 +16119,21 @@
 	};
 
 /***/ },
-/* 27 */
+/* 62 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"basic_system app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">系统参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"客户站点域名\">\n          <Input :disabled=\"readonly\" v-model=\"data.domain\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"网站名称\">\n          <Input :disabled=\"readonly\" v-model=\"data.name\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"联系电话\">\n          <Input :disabled=\"readonly\" v-model=\"data.phone\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"邮箱\">\n          <Input :disabled=\"readonly\" v-model=\"data.email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"传真\">\n          <Input :disabled=\"readonly\" v-model=\"data.fax\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"地址\">\n          <Input :disabled=\"readonly\" v-model=\"data.addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"交易软件下载连接\">\n          <Input :disabled=\"readonly\" v-model=\"data.download_url\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"主站地址\">\n          <Input :disabled=\"readonly\" v-model=\"data.main_url\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n          <Button type=\"primary\">提交</Button>\n          <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
 
 /***/ },
-/* 28 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(29)
+	__vue_script__ = __webpack_require__(64)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/pages/basic/email.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(30)
+	__vue_template__ = __webpack_require__(65)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15643,7 +16158,7 @@
 	})()}
 
 /***/ },
-/* 29 */
+/* 64 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15721,21 +16236,125 @@
 	};
 
 /***/ },
-/* 30 */
+/* 65 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"basic_email app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">邮件参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"smtp服务器地址\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"电子邮件地址\">\n          <Input :disabled=\"readonly\" v-model=\"data.email_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"电子邮件用户名\">\n          <Input :disabled=\"readonly\" v-model=\"data.email_user\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"电子邮件用户密码\">\n          <Input :disabled=\"readonly\" v-model=\"data.email_pwd\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"管理员邮箱\">\n          <Input :disabled=\"readonly\" v-model=\"data.manager_email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"smtp服务器端口\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n          <Button type=\"primary\">提交</Button>\n          <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
 
 /***/ },
-/* 31 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(32)
+	__vue_script__ = __webpack_require__(67)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/basic/email_template.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(68)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-314f04a5/email_template.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 67 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="basic_email-template app-warp">
+	//     <Card style="width:100%">
+	//       <p slot="title">邮件模版</p>
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="100">编号</th>
+	//             <th width="300">代码</th>
+	//             <th width="200">名称</th>
+	//             <th width="200">通知对象</th>
+	//             <th width="200">模版内容</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="(item, index) in data_list" :key="item.code">
+	//             <td>{{index}}</td>
+	//             <td>{{item.code}}</td>
+	//             <td>{{item.name}}</td>
+	//             <td>{{item.target}}</td>
+	//             <td>
+	//               <span class="handle" @click="showDetail">编辑</span>
+	//               <span class="handle" @click="showDetail">查看</span>
+	//             </td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      data_list: [{ code: 'REGISTER_SUCCESS_NOTIFY_TO_USER', name: '注册成功', target: '客户' }, { code: 'REGISTER_SUCCESS_NOTIFY_TO_MANAGER', name: '用户注册', target: '管理员' }, { code: 'APPLY_VERIFY_NOTIFY_TO_MANAGER', name: '提交认证', target: '管理员' }, { code: 'VERIFY_SUCCESS_TO_USER', name: '认证成功', target: '客户' }, { code: 'VERIFY_FAIL_TO_USER', name: '认证失败', target: '客户' }, { code: 'APPLY_WITHDRAW_NOTIFY_TO_MANAGER', name: '申请出金', target: '管理员' }, { code: 'WITHDRAW_CHECK_SUCCESS_NOTIFY_TO_USER', name: '出金审核成功', target: '客户' }, { code: 'WITHDRAW_CHECK_FAIL_NOTIFY_TO_USER', name: '出金审核失败', target: '客户' }, { code: 'WITHDRAW_TRANSACTION_SUCCESS_NOTIFY_TO_USER', name: '出金转账通知', target: '客户' }, { code: 'DEPOSIT_SUCCESS_TO_MANAGER', name: '入金成功通知', target: '管理员' }],
+	      readonly: true
+	    };
+	  },
+
+	  methods: {
+	    showDetail: function showDetail() {
+	      this.$Modal.warning({
+	        title: '温馨提示',
+	        content: '<p>暂未开放该模块</p>'
+	      });
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 68 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"basic_email-template app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">邮件模版</p>\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"300\">代码</th>\n          <th width=\"200\">名称</th>\n          <th width=\"200\">通知对象</th>\n          <th width=\"200\">模版内容</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"(item, index) in data_list\" :key=\"item.code\">\n          <td>{{index}}</td>\n          <td>{{item.code}}</td>\n          <td>{{item.name}}</td>\n          <td>{{item.target}}</td>\n          <td>\n            <span class=\"handle\" @click=\"showDetail\">编辑</span>\n            <span class=\"handle\" @click=\"showDetail\">查看</span>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </Card>\n</div>\n";
+
+/***/ },
+/* 69 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(70)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/pages/basic/proxy_level.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(33)
+	__vue_template__ = __webpack_require__(71)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15760,7 +16379,7 @@
 	})()}
 
 /***/ },
-/* 32 */
+/* 70 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15838,21 +16457,21 @@
 	};
 
 /***/ },
-/* 33 */
+/* 71 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"basic_proxy-level app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">代理等级参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"无返佣级别\">\n        <Input :disabled=\"readonly\" v-model=\"data.no_level\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级1\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_1\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级2\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_2\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级3\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_3\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级4\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_4\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"等级5\">\n        <Input :disabled=\"readonly\" v-model=\"data.level_5\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n        <Button type=\"primary\">提交</Button>\n        <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
 
 /***/ },
-/* 34 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(35)
+	__vue_script__ = __webpack_require__(73)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src/views/pages/basic/msg.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(36)
+	__vue_template__ = __webpack_require__(74)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15877,7 +16496,7 @@
 	})()}
 
 /***/ },
-/* 35 */
+/* 73 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15956,13 +16575,951 @@
 	};
 
 /***/ },
-/* 36 */
+/* 74 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"basic_msg app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">短信参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Alert type=\"warning\">当前短信采用的是253云通讯的短信服务，如果您没有该短信服务，请不要选择启用短信功能。</Alert>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"是否启用短信验证\">\n        <Select :disabled=\"readonly\" v-model=\"data.status\">\n          <Option value=\"0\">否</Option>\n          <Option value=\"1\">是</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"短信用户名\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"短信密码\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_user\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"短信签名\">\n        <Input :disabled=\"readonly\" v-model=\"data.email_pwd\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"管理员手机号\">\n        <Input :disabled=\"readonly\" v-model=\"data.manager_email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n        <Button type=\"primary\">提交</Button>\n        <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
 
 /***/ },
-/* 37 */
+/* 75 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(76)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/basic/proxy.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(77)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-70fd9594/proxy.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 76 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="basic_proxy app-warp">
+	//     <Card style="width:800px; height: 100%;positon: relative;">
+	//       <p slot="title">佣金设置</p>
+	//       <ul class="basic_proxy-list">
+	//         <li>代理名称</li>
+	//         <li v-for="item in type_list" v-bind:class="{'active': item==type_selected}" @click="selectType(item)" :key="item">{{item}}</li>
+	//       </ul>
+	//       <div class="basic_proxy-edit">
+	//         <div class="basic_proxy-edit-header">
+	//           <Button type="text" @click="switchEdit" icon="edit">{{isreadonly? '编辑':'取消'}}</Button>
+	//         </div>
+	//         <table class="basic_proxy-edit-body">
+	//           <thead>
+	//             <tr><th width="100">代理级别</th><th width="100">直接佣金比例</th><th width="100">间接佣金比例</th></tr>
+	//           </thead>
+	//           <tbody>
+	//             <tr>
+	//               <td>入门iB</td>
+	//               <td><span v-if="isreadonly">{{data.level1}}</span><Input  v-else style="width:60px;" v-model="data.level1"></Input></td>
+	//               <td><span v-if="isreadonly">{{data._level1}}</span><Input  v-else style="width:60px;" v-model="data._level1"></Input></td>
+	//             </tr>
+	//             <tr>
+	//               <td>初级iB</td>
+	//               <td><span v-if="isreadonly">{{data.level2}}</span><Input  v-else style="width:60px;" v-model="data.level2"></Input></td>
+	//               <td><span v-if="isreadonly">{{data._level2}}</span><Input  v-else style="width:60px;" v-model="data._level2"></Input></td>
+	//             </tr>
+	//             <tr>
+	//               <td>高级iB</td>
+	//               <td><span v-if="isreadonly">{{data.level3}}</span><Input  v-else style="width:60px;" v-model="data.level3"></Input></td>
+	//               <td><span v-if="isreadonly">{{data._level3}}</span><Input  v-else style="width:60px;" v-model="data._level3"></Input></td>
+	//             </tr>
+	//             <tr>
+	//               <td>机构iB</td>
+	//               <td><span v-if="isreadonly">{{data.level4}}</span><Input  v-else style="width:60px;" v-model="data.level4"></Input></td>
+	//               <td><span v-if="isreadonly">{{data._level4}}</span><Input  v-else style="width:60px;" v-model="data._level4"></Input></td>
+	//             </tr>
+	//             <tr>
+	//               <td>区域iB</td>
+	//               <td><span v-if="isreadonly">{{data.level5}}</span><Input  v-else style="width:60px;" v-model="data.level5"></Input></td>
+	//               <td><span v-if="isreadonly">{{data._level5}}</span><Input  v-else style="width:60px;" v-model="data._level5"></Input></td>
+	//             </tr>
+	//           </tbody>
+	//         </table>
+	//         <Button type="primary" v-if="!isreadonly" style="width:120px;margin-top:20px;" @click="switchEdit">提交</Button>
+	//       </div>
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      type_list: ['ESP35', 'JPN225', 'ITA40', 'SUI30', 'GER30', 'US30', 'NAS100', 'SPX500', 'FRA40', 'EUSTX50', 'UK100', 'USDJPY', 'USDJPY1', 'USDJPY2', 'USDJPY3', 'USDJPY4', 'USDJPY5', 'USDJPY6', 'USDJPY7', 'USDJPY8', 'USDJPY9', 'USDJPY0', 'ESP351', 'ESP352', 'ESP353', 'ESP354', 'ESP355', 'ESP356', 'ESP357', 'ESP358', 'ESP359'],
+	      type_selected: '',
+	      data: {
+	        level1: '0.1', _level1: '0.2',
+	        level2: '0.2', _level2: '0.1',
+	        level3: '0.4', _level3: '0.5',
+	        level4: '0.1', _level4: '0.2',
+	        level5: '0.2', _level5: '0.9'
+	      },
+	      isreadonly: true
+	    };
+	  },
+
+	  methods: {
+	    selectType: function selectType(type) {
+	      this.type_selected = type;
+	    },
+	    switchEdit: function switchEdit() {
+	      this.isreadonly = !this.isreadonly;
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 77 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"basic_proxy app-warp\">\n  <Card style=\"width:800px; height: 100%;positon: relative;\">\n    <p slot=\"title\">佣金设置</p>\n    <ul class=\"basic_proxy-list\">\n      <li>代理名称</li>\n      <li v-for=\"item in type_list\" v-bind:class=\"{'active': item==type_selected}\" @click=\"selectType(item)\" :key=\"item\">{{item}}</li>\n    </ul>\n    <div class=\"basic_proxy-edit\">\n      <div class=\"basic_proxy-edit-header\">\n        <Button type=\"text\" @click=\"switchEdit\" icon=\"edit\">{{isreadonly? '编辑':'取消'}}</Button>\n      </div>\n      <table class=\"basic_proxy-edit-body\">\n        <thead>\n          <tr><th width=\"100\">代理级别</th><th width=\"100\">直接佣金比例</th><th width=\"100\">间接佣金比例</th></tr>\n        </thead>\n        <tbody>\n          <tr>\n            <td>入门iB</td>\n            <td><span v-if=\"isreadonly\">{{data.level1}}</span><Input  v-else style=\"width:60px;\" v-model=\"data.level1\"></Input></td>\n            <td><span v-if=\"isreadonly\">{{data._level1}}</span><Input  v-else style=\"width:60px;\" v-model=\"data._level1\"></Input></td>\n          </tr>\n          <tr>\n            <td>初级iB</td>\n            <td><span v-if=\"isreadonly\">{{data.level2}}</span><Input  v-else style=\"width:60px;\" v-model=\"data.level2\"></Input></td>\n            <td><span v-if=\"isreadonly\">{{data._level2}}</span><Input  v-else style=\"width:60px;\" v-model=\"data._level2\"></Input></td>\n          </tr>\n          <tr>\n            <td>高级iB</td>\n            <td><span v-if=\"isreadonly\">{{data.level3}}</span><Input  v-else style=\"width:60px;\" v-model=\"data.level3\"></Input></td>\n            <td><span v-if=\"isreadonly\">{{data._level3}}</span><Input  v-else style=\"width:60px;\" v-model=\"data._level3\"></Input></td>\n          </tr>\n          <tr>\n            <td>机构iB</td>\n            <td><span v-if=\"isreadonly\">{{data.level4}}</span><Input  v-else style=\"width:60px;\" v-model=\"data.level4\"></Input></td>\n            <td><span v-if=\"isreadonly\">{{data._level4}}</span><Input  v-else style=\"width:60px;\" v-model=\"data._level4\"></Input></td>\n          </tr>\n          <tr>\n            <td>区域iB</td>\n            <td><span v-if=\"isreadonly\">{{data.level5}}</span><Input  v-else style=\"width:60px;\" v-model=\"data.level5\"></Input></td>\n            <td><span v-if=\"isreadonly\">{{data._level5}}</span><Input  v-else style=\"width:60px;\" v-model=\"data._level5\"></Input></td>\n          </tr>\n        </tbody>\n      </table>\n      <Button type=\"primary\" v-if=\"!isreadonly\" style=\"width:120px;margin-top:20px;\" @click=\"switchEdit\">提交</Button>\n    </div>\n  </Card>\n</div>\n";
+
+/***/ },
+/* 78 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(79)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/basic/trade.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(80)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-10c0f12c/trade.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 79 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="basic_trade app-warp">
+	//     <Card style="width:600px">
+	//       <p slot="title">交易参数</p>
+	//       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">
+	//         <Icon type="edit"></Icon>
+	//         编辑
+	//       </a>
+	//       <a href="#" slot="extra" v-if="!readonly" @click.prevent="switchModel(true)">
+	//         <Icon type="edit"></Icon>
+	//         取消
+	//       </a>
+	//       <Form :model="data" label-position="left" :label-width="100">
+	//         <form-item label="币种" prop="currency_type">
+	//           <Select v-model="data.currency_type" :disabled="readonly" placeholder="选择币种">
+	//             <Option value="USD">美元/USD</Option>
+	//             <Option value="CNY">人民币/CNY</Option>
+	//           </Select>
+	//         </form-item>
+	//         <form-item label="入金汇率模式" prop="in_come_model">
+	//           <Select v-model="data.in_come_model" :disabled="readonly" placeholder="选择入金汇率模式">
+	//             <Option value="0">实时汇率</Option>
+	//             <Option value="1">非实时汇率</Option>
+	//           </Select>
+	//         </form-item>
+	//         <form-item label="入金默认汇率" prop="in_come_exchange_rate">
+	//           <input-number :max="10000000" :min="0" :step="1" :disabled="readonly" v-model="data.in_come_exchange_rate"></input-number>
+	//         </form-item>
+	//         <form-item label="入金汇率调整" prop="in_come_exchange_rate_change">
+	//           <input-number :max="10000000" :min="0" :step="1" :disabled="readonly" v-model="data.in_come_exchange_rate_change"></input-number>
+	//         </form-item>
+	//         <form-item label="出金汇率模式" prop="out_come_model">
+	//           <Select v-model="data.out_come_model" :disabled="readonly" placeholder="选择入金汇率模式">
+	//             <Option value="0">实时汇率</Option>
+	//             <Option value="1">非实时汇率</Option>
+	//           </Select>
+	//         </form-item>
+	//         <form-item label="出金默认汇率" prop="out_come_exchange_rate">
+	//           <input-number :max="10000000" :min="0" :step="1" :disabled="readonly" v-model="data.out_come_exchange_rate"></input-number>
+	//         </form-item>
+	//         <form-item label="出金汇率调整" prop="out_come_exchange_rate_change">
+	//           <input-number :max="10000000" :min="0" :step="1" :disabled="readonly" v-model="data.out_come_exchange_rate_change"></input-number>
+	//         </form-item>
+	//         <form-item label="出金扣款方式" prop="out_come_type">
+	//           <Select v-model="data.out_come_model" :disabled="readonly" placeholder="选择入金汇率模式">
+	//             <Option value="0">出金申请审核后从MT4扣款</Option>
+	//             <Option value="1">客户出金申请后从MT4扣款</Option>
+	//           </Select>
+	//         </form-item>
+	//         <form-item v-if="!readonly">
+	//             <Button type="primary">提交</Button>
+	//             <Button type="ghost" @click="switchModel(true)" style="margin-left: 8px">取消</Button>
+	//         </form-item>
+	//       </Form>
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      data: {
+	        currency_type: 'USD',
+	        in_come_model: '1',
+	        in_come_exchange_rate: 7,
+	        in_come_exchange_rate_change: 0,
+	        out_come_model: '1',
+	        out_come_exchange_rate: 7,
+	        out_come_exchange_rate_change: 0,
+	        out_come_type: '0'
+	      },
+	      readonly: true
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 80 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"basic_trade app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">交易参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"100\">\n      <form-item label=\"币种\" prop=\"currency_type\">\n        <Select v-model=\"data.currency_type\" :disabled=\"readonly\" placeholder=\"选择币种\">\n          <Option value=\"USD\">美元/USD</Option>\n          <Option value=\"CNY\">人民币/CNY</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"入金汇率模式\" prop=\"in_come_model\">\n        <Select v-model=\"data.in_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">实时汇率</Option>\n          <Option value=\"1\">非实时汇率</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"入金默认汇率\" prop=\"in_come_exchange_rate\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.in_come_exchange_rate\"></input-number>\n      </form-item>\n      <form-item label=\"入金汇率调整\" prop=\"in_come_exchange_rate_change\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.in_come_exchange_rate_change\"></input-number>\n      </form-item>\n      <form-item label=\"出金汇率模式\" prop=\"out_come_model\">\n        <Select v-model=\"data.out_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">实时汇率</Option>\n          <Option value=\"1\">非实时汇率</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"出金默认汇率\" prop=\"out_come_exchange_rate\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.out_come_exchange_rate\"></input-number>\n      </form-item>\n      <form-item label=\"出金汇率调整\" prop=\"out_come_exchange_rate_change\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.out_come_exchange_rate_change\"></input-number>\n      </form-item>\n      <form-item label=\"出金扣款方式\" prop=\"out_come_type\">\n        <Select v-model=\"data.out_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">出金申请审核后从MT4扣款</Option>\n          <Option value=\"1\">客户出金申请后从MT4扣款</Option>\n        </Select>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n          <Button type=\"primary\">提交</Button>\n          <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
+
+/***/ },
+/* 81 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(82)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/basic/payment.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(83)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-522504ce/payment.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 82 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="basic_payment app-warp">
+	//     <Card style="100%;">
+	//       <p slot="title">支付设置</p>
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="100">编号</th>
+	//             <th width="200">代码</th>
+	//             <th width="200">名称</th>
+	//             <th width="200">配置</th>
+	//             <th width="100">状态</th>
+	//             <th width="300">插件地址</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="(item, index) in data_list" :key="item.code">
+	//             <td>{{item.id}}</td>
+	//             <td>{{item.code}}</td>
+	//             <td>{{item.name}}</td>
+	//             <td>{{'详情页查看'}}</td>
+	//             <td>{{item.status}}</td>
+	//             <td>{{item.plugin}}</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      data_list: [{
+	        id: 31,
+	        code: 'gfbbank',
+	        name: '国付宝网银',
+	        config: '{"sellerid":"0000115127","sellerkey":"abcd1234123","accountid":"0000000002000051021","gateway":"https://gateway.gopay.com.cn/Trans/WebClientAction.do","paydomain":"http://pay.sannew.cn","fronturl":"/payment/gfb/choosebanks.aspx"}',
+	        status: '启用',
+	        plugin: '/payment/gfb/jump.aspx?paymentcode=gfbbank'
+	      }, {
+	        id: 1,
+	        code: 'ainong',
+	        name: '爱农支付',
+	        config: '{"sellerid":"","sellerkey":"","frontapiurl":"http://pay.chinagpay.com/bas/FrontTrans","backapiurl":"http://180.169.129.78:38280/bas/FrontTrans"}',
+	        status: '禁用',
+	        plugin: '/payment/ainong/pay.aspx'
+	      }, {
+	        id: 2,
+	        code: 'alipay',
+	        name: '支付宝',
+	        config: '',
+	        status: '禁用',
+	        plugin: '/payment/alipay/payment.aspx'
+	      }],
+	      readonly: true
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 83 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"basic_payment app-warp\">\n  <Card style=\"100%;\">\n    <p slot=\"title\">支付设置</p>\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"200\">代码</th>\n          <th width=\"200\">名称</th>\n          <th width=\"200\">配置</th>\n          <th width=\"100\">状态</th>\n          <th width=\"300\">插件地址</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"(item, index) in data_list\" :key=\"item.code\">\n          <td>{{item.id}}</td>\n          <td>{{item.code}}</td>\n          <td>{{item.name}}</td>\n          <td>{{'详情页查看'}}</td>\n          <td>{{item.status}}</td>\n          <td>{{item.plugin}}</td>\n        </tr>\n      </tbody>\n    </table>\n  </Card>\n</div>\n";
+
+/***/ },
+/* 84 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(85)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/basic/logo.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(86)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-2d8e6593/logo.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 85 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="basic_logo app-warp">
+	//     <Card style="width:600px;margin-bottom: 10px;">
+	//       <p slot="title">Logo设置</p>
+	//       <div class="basic_logo-info">
+	//         <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1681391545,4187928589&fm=27&gp=0.jpg" alt="">
+	//         <div class="basic_logo-info-edit">
+	//           <Alert show-icon type="warning">要求图片格式为PNG格式，高64宽64。</Alert>
+	//           <i-button icon="ios-cloud-upload-outline" @click="uploadImg('logo')" type="primary">上传图片</i-button>
+	//         </div>
+	//       </div>  
+	//     </Card>
+	//     <Card style="width:600px">
+	//       <p slot="title">Icon设置</p>
+	//       <div class="basic_logo-info">
+	//         <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2918321103,763089997&fm=27&gp=0.jpg" alt="">
+	//         <div class="basic_logo-info-edit">
+	//           <Alert show-icon type="warning">必须为icon文件。</Alert>
+	//           <i-button icon="ios-cloud-upload-outline" @click="uploadImg('icon')" type="primary">上传图片</i-button>
+	//         </div>
+	//       </div>
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      data: {
+	        smtp_addr: 'smtp.exmail.qq.com',
+	        email_addr: 'info@andaobo.com',
+	        email_user: 'info@andaobo.com',
+	        email_pwd: 'A123456a',
+	        manager_email: 'info@andaobo.com',
+	        smtp_port: '25'
+	      },
+	      readonly: true
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    },
+	    uploadImg: function uploadImg(type) {
+	      var vm = this;
+	      util.uploadFile(function (res) {});
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 86 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"basic_logo app-warp\">\n  <Card style=\"width:600px;margin-bottom: 10px;\">\n    <p slot=\"title\">Logo设置</p>\n    <div class=\"basic_logo-info\">\n      <img src=\"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1681391545,4187928589&fm=27&gp=0.jpg\" alt=\"\">\n      <div class=\"basic_logo-info-edit\">\n        <Alert show-icon type=\"warning\">要求图片格式为PNG格式，高64宽64。</Alert>\n        <i-button icon=\"ios-cloud-upload-outline\" @click=\"uploadImg('logo')\" type=\"primary\">上传图片</i-button>\n      </div>\n    </div>  \n  </Card>\n  <Card style=\"width:600px\">\n    <p slot=\"title\">Icon设置</p>\n    <div class=\"basic_logo-info\">\n      <img src=\"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2918321103,763089997&fm=27&gp=0.jpg\" alt=\"\">\n      <div class=\"basic_logo-info-edit\">\n        <Alert show-icon type=\"warning\">必须为icon文件。</Alert>\n        <i-button icon=\"ios-cloud-upload-outline\" @click=\"uploadImg('icon')\" type=\"primary\">上传图片</i-button>\n      </div>\n    </div>\n  </Card>\n</div>\n";
+
+/***/ },
+/* 87 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(88)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/customer/index.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(89)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-5b686408/index.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 88 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="customer app-warp">
+	//     <Card style="width:100%">
+	//       <p slot="title">客户管理</p>
+	//       <!-- 操作按钮 -->
+	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="plus">新建</Button>
+	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">编辑</Button>
+	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">启用</Button>
+	//       <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">停用</Button>
+	//       <Button type="warning" style="margin-right:10px" size="small" slot="extra" icon="information" :disabled="disabled">查看明细</Button>
+	//       <Button style="margin-right:10px" size="small" slot="extra" icon="network" :disabled="disabled">查看代理树</Button>
+	//       <Button style="margin-right:10px" size="small" slot="extra" icon="key" :disabled="disabled">修改密码</Button>
+	//       <Button size="small" slot="extra" icon="forward" :disabled="disabled">转到会员中心</Button>
+	//
+	//       <!-- 列表 -->
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="150">MT4账号</th>
+	//             <th width="200">姓名</th>
+	//             <th width="100">组</th>
+	//             <th width="300">邮箱</th>
+	//             <th width="200">电话</th>
+	//             <th width="100">杠杆</th>
+	//             <th width="200">上级代理帐号</th>
+	//             <th width="100">代理等级</th>
+	//             <th width="300">注册时间</th>
+	//             <th width="100">是否验证</th>
+	//             <th width="100">余额</th>
+	//             <th width="100">盈亏值</th>
+	//             <th width="100">启用状态</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="i in 10" :key="i" @click="selectUser(i)" v-bind:class="{'active': selected_key==i}">
+	//             <td>wanger</td>
+	//             <td>王二</td>
+	//             <td>USD1</td>
+	//             <td>janber@gmail.com</td>
+	//             <td>18200115617</td>
+	//             <td>100</td>
+	//             <td>zhangsan</td>
+	//             <td>2</td>
+	//             <td>2018-02-12 18:00</td>
+	//             <td>已验证</td>
+	//             <td>200000</td>
+	//             <td>-1222</td>
+	//             <td>启用</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      readonly: true,
+	      selected_key: ''
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    },
+	    selectUser: function selectUser(key) {
+	      if (this.selected_key === key) {
+	        this.selected_key = '';
+	      } else {
+	        this.selected_key = key;
+	      }
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    disabled: function disabled() {
+	      return this.selected_key === '';
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 89 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">客户管理</p>\n    <!-- 操作按钮 -->\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\">新建</Button>\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">编辑</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">启用</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\" :disabled=\"disabled\">停用</Button>\n    <Button type=\"warning\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"network\" :disabled=\"disabled\">查看代理树</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"key\" :disabled=\"disabled\">修改密码</Button>\n    <Button size=\"small\" slot=\"extra\" icon=\"forward\" :disabled=\"disabled\">转到会员中心</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"150\">MT4账号</th>\n          <th width=\"200\">姓名</th>\n          <th width=\"100\">组</th>\n          <th width=\"300\">邮箱</th>\n          <th width=\"200\">电话</th>\n          <th width=\"100\">杠杆</th>\n          <th width=\"200\">上级代理帐号</th>\n          <th width=\"100\">代理等级</th>\n          <th width=\"300\">注册时间</th>\n          <th width=\"100\">是否验证</th>\n          <th width=\"100\">余额</th>\n          <th width=\"100\">盈亏值</th>\n          <th width=\"100\">启用状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>wanger</td>\n          <td>王二</td>\n          <td>USD1</td>\n          <td>janber@gmail.com</td>\n          <td>18200115617</td>\n          <td>100</td>\n          <td>zhangsan</td>\n          <td>2</td>\n          <td>2018-02-12 18:00</td>\n          <td>已验证</td>\n          <td>200000</td>\n          <td>-1222</td>\n          <td>启用</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+
+/***/ },
+/* 90 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(91)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/finance/outAppr.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(92)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-1e21e2da/outAppr.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 91 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="customer app-warp">
+	//     <Card style="width:100%">
+	//       <p slot="title">出金审核</p>
+	//       <!-- 操作按钮 -->
+	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="information" :disabled="disabled">查看明细</Button>
+	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">审核</Button>
+	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">设置为已转账</Button>
+	//
+	//       <!-- 列表 -->
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="100">编号</th>
+	//             <th width="200">MT4账号</th>
+	//             <th width="150">客户名称</th>
+	//             <th width="200">申请出金数量</th>
+	//             <th width="300">申请时间</th>
+	//             <th width="100">审核意见</th>
+	//             <th width="300">扣款方式</th>
+	//             <th width="200">汇率模式</th>
+	//             <th width="200">汇率转换后金额</th>
+	//             <th width="100">汇率</th>
+	//             <th width="200">汇率计算公式</th>
+	//             <th width="100">币种</th>
+	//             <th width="100">状态</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="i in 10" :key="i" @click="selectUser(i)" v-bind:class="{'active': selected_key==i}">
+	//             <td>319</td>
+	//             <td>40353082</td>
+	//             <td>莫秀娟--高级</td>
+	//             <td>300</td>
+	//             <td>2018/3/6 10:51:55</td>
+	//             <td>ok</td>
+	//             <td>管理员审核后mt4扣款</td>
+	//             <td>非实时汇率</td>
+	//             <td>2100</td>
+	//             <td>7</td>
+	//             <td>(7.00) + (0.00)</td>
+	//             <td>USD</td>
+	//             <td>已审核</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      readonly: true,
+	      selected_key: ''
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    },
+	    selectUser: function selectUser(key) {
+	      if (this.selected_key === key) {
+	        this.selected_key = '';
+	      } else {
+	        this.selected_key = key;
+	      }
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    disabled: function disabled() {
+	      return this.selected_key === '';
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 92 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">出金审核</p>\n    <!-- 操作按钮 -->\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">审核</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">设置为已转账</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">客户名称</th>\n          <th width=\"200\">申请出金数量</th>\n          <th width=\"300\">申请时间</th>\n          <th width=\"100\">审核意见</th>\n          <th width=\"300\">扣款方式</th>\n          <th width=\"200\">汇率模式</th>\n          <th width=\"200\">汇率转换后金额</th>\n          <th width=\"100\">汇率</th>\n          <th width=\"200\">汇率计算公式</th>\n          <th width=\"100\">币种</th>\n          <th width=\"100\">状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>319</td>\n          <td>40353082</td>\n          <td>莫秀娟--高级</td>\n          <td>300</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>ok</td>\n          <td>管理员审核后mt4扣款</td>\n          <td>非实时汇率</td>\n          <td>2100</td>\n          <td>7</td>\n          <td>(7.00) + (0.00)</td>\n          <td>USD</td>\n          <td>已审核</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+
+/***/ },
+/* 93 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(94)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/finance/inList.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(95)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-356b105f/inList.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 94 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="customer app-warp">
+	//     <Card style="width:100%">
+	//       <!-- 标题 -->
+	//       <p slot="title">入金纪录</p>
+	//
+	//       <!-- 筛选器 -->
+	//       <div class="filter-bar">
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">账号</span>
+	//           <Input v-model="filter_obj.account" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//         </div>
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">代理账号</span>
+	//           <Input v-model="filter_obj.proxy_account" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//         </div>
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">组名</span>
+	//           <Input v-model="filter_obj.group_name" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//         </div>
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">订单号</span>
+	//           <Input v-model="filter_obj.order_id" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//         </div>
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">支付时间</span>
+	//           <date-picker type="daterange" confirm placement="bottom-start" placeholder="请选择日期范围" :value="filter_obj.created_range" style="width: 200px"></date-picker>
+	//         </div>
+	//         <div class="filter-handle" flex="main:left cross:center">
+	//           <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+	//           <i-button @click="clearFilter()">清除</i-button>
+	//         </div>
+	//
+	//       </div>
+	//
+	//       <!-- 列表 -->
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="300">订单号</th>
+	//             <th width="200">MT4账号</th>
+	//             <th width="150">姓名</th>
+	//             <th width="100">组名</th>
+	//             <th width="100">入金数量</th>
+	//             <th width="100">转账金额</th>
+	//             <th width="100">币种</th>
+	//             <th width="300">创建时间</th>
+	//             <th width="100">支付状态</th>
+	//             <th width="300">完成时间</th>
+	//             <th width="100">入金状态</th>
+	//             <th width="300">入金时间</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="i in 30" :key="i" @click="selectOrder(i)" v-bind:class="{'active': selected_key==i}">
+	//             <td>dingpaybank2017090400000001</td>
+	//             <td>40331504</td>
+	//             <td>技术测试 勿删</td>
+	//             <td>IB206</td>
+	//             <td>100</td>
+	//             <td>700</td>
+	//             <td>USD</td>
+	//             <td>2018/3/6 10:51:55</td>
+	//             <td>已支付</td>
+	//             <td>2018/3/6 10:51:55</td>
+	//             <td>已入金</td>
+	//             <td>2018/3/6 10:51:55</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.initFilterObj();
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      readonly: true,
+	      selected_key: '',
+	      filter_obj: null //筛选参数
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    },
+	    selectOrder: function selectOrder(key) {
+	      if (this.selected_key === key) {
+	        this.selected_key = '';
+	      } else {
+	        this.selected_key = key;
+	      }
+	    },
+	    clearFilter: function clearFilter() {
+	      this.initFilterObj();
+	    },
+	    initFilterObj: function initFilterObj() {
+	      this.filter_obj = {
+	        account: '',
+	        proxy_account: '',
+	        g_name: '',
+	        order_id: '',
+	        created_range: []
+	      };
+	    },
+	    search: function search() {
+	      this.$Message.error('暂未开放此功能');
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    disabled: function disabled() {
+	      return this.selected_key === '';
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 95 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <!-- 标题 -->\n    <p slot=\"title\">入金纪录</p>\n\n    <!-- 筛选器 -->\n    <div class=\"filter-bar\">\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">账号</span>\n        <Input v-model=\"filter_obj.account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">代理账号</span>\n        <Input v-model=\"filter_obj.proxy_account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">组名</span>\n        <Input v-model=\"filter_obj.group_name\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">订单号</span>\n        <Input v-model=\"filter_obj.order_id\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">支付时间</span>\n        <date-picker type=\"daterange\" confirm placement=\"bottom-start\" placeholder=\"请选择日期范围\" :value=\"filter_obj.created_range\" style=\"width: 200px\"></date-picker>\n      </div>\n      <div class=\"filter-handle\" flex=\"main:left cross:center\">\n        <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n        <i-button @click=\"clearFilter()\">清除</i-button>\n      </div>\n      \n    </div>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"300\">订单号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">姓名</th>\n          <th width=\"100\">组名</th>\n          <th width=\"100\">入金数量</th>\n          <th width=\"100\">转账金额</th>\n          <th width=\"100\">币种</th>\n          <th width=\"300\">创建时间</th>\n          <th width=\"100\">支付状态</th>\n          <th width=\"300\">完成时间</th>\n          <th width=\"100\">入金状态</th>\n          <th width=\"300\">入金时间</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 30\" :key=\"i\" @click=\"selectOrder(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>dingpaybank2017090400000001</td>\n          <td>40331504</td>\n          <td>技术测试 勿删</td>\n          <td>IB206</td>\n          <td>100</td>\n          <td>700</td>\n          <td>USD</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>已支付</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>已入金</td>\n          <td>2018/3/6 10:51:55</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+
+/***/ },
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15979,15 +17536,15 @@
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _getters = __webpack_require__(38);
+	var _getters = __webpack_require__(97);
 
 	var _getters2 = _interopRequireDefault(_getters);
 
-	var _mutations = __webpack_require__(39);
+	var _mutations = __webpack_require__(98);
 
 	var _mutations2 = _interopRequireDefault(_mutations);
 
-	var _actions = __webpack_require__(40);
+	var _actions = __webpack_require__(99);
 
 	var _actions2 = _interopRequireDefault(_actions);
 
@@ -16008,7 +17565,7 @@
 	});
 
 /***/ },
-/* 38 */
+/* 97 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -16028,7 +17585,7 @@
 	exports.default = getters;
 
 /***/ },
-/* 39 */
+/* 98 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -16048,7 +17605,7 @@
 	exports.default = mutations;
 
 /***/ },
-/* 40 */
+/* 99 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16068,7 +17625,7 @@
 	exports.default = actions;
 
 /***/ },
-/* 41 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -50255,1524 +51812,6 @@
 	/***/ })
 	/******/ ]);
 	});
-
-/***/ },
-/* 42 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(43)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/basic/email_template.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(44)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-314f04a5/email_template.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 43 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="basic_email-template app-warp">
-	//     <Card style="width:100%">
-	//       <p slot="title">邮件模版</p>
-	//       <table class="list-table">
-	//         <thead>
-	//           <tr>
-	//             <th width="100">编号</th>
-	//             <th width="300">代码</th>
-	//             <th width="200">名称</th>
-	//             <th width="200">通知对象</th>
-	//             <th width="200">模版内容</th>
-	//           </tr>
-	//         </thead>
-	//         <tbody>
-	//           <tr v-for="(item, index) in data_list" :key="item.code">
-	//             <td>{{index}}</td>
-	//             <td>{{item.code}}</td>
-	//             <td>{{item.name}}</td>
-	//             <td>{{item.target}}</td>
-	//             <td>
-	//               <span class="handle" @click="showDetail">编辑</span>
-	//               <span class="handle" @click="showDetail">查看</span>
-	//             </td>
-	//           </tr>
-	//         </tbody>
-	//       </table>
-	//     </Card>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      data_list: [{ code: 'REGISTER_SUCCESS_NOTIFY_TO_USER', name: '注册成功', target: '客户' }, { code: 'REGISTER_SUCCESS_NOTIFY_TO_MANAGER', name: '用户注册', target: '管理员' }, { code: 'APPLY_VERIFY_NOTIFY_TO_MANAGER', name: '提交认证', target: '管理员' }, { code: 'VERIFY_SUCCESS_TO_USER', name: '认证成功', target: '客户' }, { code: 'VERIFY_FAIL_TO_USER', name: '认证失败', target: '客户' }, { code: 'APPLY_WITHDRAW_NOTIFY_TO_MANAGER', name: '申请出金', target: '管理员' }, { code: 'WITHDRAW_CHECK_SUCCESS_NOTIFY_TO_USER', name: '出金审核成功', target: '客户' }, { code: 'WITHDRAW_CHECK_FAIL_NOTIFY_TO_USER', name: '出金审核失败', target: '客户' }, { code: 'WITHDRAW_TRANSACTION_SUCCESS_NOTIFY_TO_USER', name: '出金转账通知', target: '客户' }, { code: 'DEPOSIT_SUCCESS_TO_MANAGER', name: '入金成功通知', target: '管理员' }],
-	      readonly: true
-	    };
-	  },
-
-	  methods: {
-	    showDetail: function showDetail() {
-	      this.$Modal.warning({
-	        title: '温馨提示',
-	        content: '<p>暂未开放该模块</p>'
-	      });
-	    }
-	  },
-	  components: {},
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 44 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"basic_email-template app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">邮件模版</p>\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"300\">代码</th>\n          <th width=\"200\">名称</th>\n          <th width=\"200\">通知对象</th>\n          <th width=\"200\">模版内容</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"(item, index) in data_list\" :key=\"item.code\">\n          <td>{{index}}</td>\n          <td>{{item.code}}</td>\n          <td>{{item.name}}</td>\n          <td>{{item.target}}</td>\n          <td>\n            <span class=\"handle\" @click=\"showDetail\">编辑</span>\n            <span class=\"handle\" @click=\"showDetail\">查看</span>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </Card>\n</div>\n";
-
-/***/ },
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var global = __webpack_require__(50);
-	var core = __webpack_require__(51);
-	var ctx = __webpack_require__(52);
-	var hide = __webpack_require__(54);
-	var PROTOTYPE = 'prototype';
-
-	var $export = function (type, name, source) {
-	  var IS_FORCED = type & $export.F;
-	  var IS_GLOBAL = type & $export.G;
-	  var IS_STATIC = type & $export.S;
-	  var IS_PROTO = type & $export.P;
-	  var IS_BIND = type & $export.B;
-	  var IS_WRAP = type & $export.W;
-	  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
-	  var expProto = exports[PROTOTYPE];
-	  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
-	  var key, own, out;
-	  if (IS_GLOBAL) source = name;
-	  for (key in source) {
-	    // contains in native
-	    own = !IS_FORCED && target && target[key] !== undefined;
-	    if (own && key in exports) continue;
-	    // export native or passed
-	    out = own ? target[key] : source[key];
-	    // prevent global pollution for namespaces
-	    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-	    // bind timers to global for call from export context
-	    : IS_BIND && own ? ctx(out, global)
-	    // wrap global constructors for prevent change them in library
-	    : IS_WRAP && target[key] == out ? (function (C) {
-	      var F = function (a, b, c) {
-	        if (this instanceof C) {
-	          switch (arguments.length) {
-	            case 0: return new C();
-	            case 1: return new C(a);
-	            case 2: return new C(a, b);
-	          } return new C(a, b, c);
-	        } return C.apply(this, arguments);
-	      };
-	      F[PROTOTYPE] = C[PROTOTYPE];
-	      return F;
-	    // make static versions for prototype methods
-	    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-	    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-	    if (IS_PROTO) {
-	      (exports.virtual || (exports.virtual = {}))[key] = out;
-	      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-	      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
-	    }
-	  }
-	};
-	// type bitmap
-	$export.F = 1;   // forced
-	$export.G = 2;   // global
-	$export.S = 4;   // static
-	$export.P = 8;   // proto
-	$export.B = 16;  // bind
-	$export.W = 32;  // wrap
-	$export.U = 64;  // safe
-	$export.R = 128; // real proto method for `library`
-	module.exports = $export;
-
-
-/***/ },
-/* 50 */
-/***/ function(module, exports) {
-
-	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-	var global = module.exports = typeof window != 'undefined' && window.Math == Math
-	  ? window : typeof self != 'undefined' && self.Math == Math ? self
-	  // eslint-disable-next-line no-new-func
-	  : Function('return this')();
-	if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-
-/***/ },
-/* 51 */
-/***/ function(module, exports) {
-
-	var core = module.exports = { version: '2.5.1' };
-	if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-
-/***/ },
-/* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// optional / simple context binding
-	var aFunction = __webpack_require__(53);
-	module.exports = function (fn, that, length) {
-	  aFunction(fn);
-	  if (that === undefined) return fn;
-	  switch (length) {
-	    case 1: return function (a) {
-	      return fn.call(that, a);
-	    };
-	    case 2: return function (a, b) {
-	      return fn.call(that, a, b);
-	    };
-	    case 3: return function (a, b, c) {
-	      return fn.call(that, a, b, c);
-	    };
-	  }
-	  return function (/* ...args */) {
-	    return fn.apply(that, arguments);
-	  };
-	};
-
-
-/***/ },
-/* 53 */
-/***/ function(module, exports) {
-
-	module.exports = function (it) {
-	  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
-	  return it;
-	};
-
-
-/***/ },
-/* 54 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var dP = __webpack_require__(55);
-	var createDesc = __webpack_require__(63);
-	module.exports = __webpack_require__(59) ? function (object, key, value) {
-	  return dP.f(object, key, createDesc(1, value));
-	} : function (object, key, value) {
-	  object[key] = value;
-	  return object;
-	};
-
-
-/***/ },
-/* 55 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var anObject = __webpack_require__(56);
-	var IE8_DOM_DEFINE = __webpack_require__(58);
-	var toPrimitive = __webpack_require__(62);
-	var dP = Object.defineProperty;
-
-	exports.f = __webpack_require__(59) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-	  anObject(O);
-	  P = toPrimitive(P, true);
-	  anObject(Attributes);
-	  if (IE8_DOM_DEFINE) try {
-	    return dP(O, P, Attributes);
-	  } catch (e) { /* empty */ }
-	  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-	  if ('value' in Attributes) O[P] = Attributes.value;
-	  return O;
-	};
-
-
-/***/ },
-/* 56 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isObject = __webpack_require__(57);
-	module.exports = function (it) {
-	  if (!isObject(it)) throw TypeError(it + ' is not an object!');
-	  return it;
-	};
-
-
-/***/ },
-/* 57 */
-/***/ function(module, exports) {
-
-	module.exports = function (it) {
-	  return typeof it === 'object' ? it !== null : typeof it === 'function';
-	};
-
-
-/***/ },
-/* 58 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = !__webpack_require__(59) && !__webpack_require__(60)(function () {
-	  return Object.defineProperty(__webpack_require__(61)('div'), 'a', { get: function () { return 7; } }).a != 7;
-	});
-
-
-/***/ },
-/* 59 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// Thank's IE8 for his funny defineProperty
-	module.exports = !__webpack_require__(60)(function () {
-	  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
-	});
-
-
-/***/ },
-/* 60 */
-/***/ function(module, exports) {
-
-	module.exports = function (exec) {
-	  try {
-	    return !!exec();
-	  } catch (e) {
-	    return true;
-	  }
-	};
-
-
-/***/ },
-/* 61 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isObject = __webpack_require__(57);
-	var document = __webpack_require__(50).document;
-	// typeof document.createElement is 'object' in old IE
-	var is = isObject(document) && isObject(document.createElement);
-	module.exports = function (it) {
-	  return is ? document.createElement(it) : {};
-	};
-
-
-/***/ },
-/* 62 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 7.1.1 ToPrimitive(input [, PreferredType])
-	var isObject = __webpack_require__(57);
-	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-	// and the second argument - flag - preferred type is a string
-	module.exports = function (it, S) {
-	  if (!isObject(it)) return it;
-	  var fn, val;
-	  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-	  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
-	  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-	  throw TypeError("Can't convert object to primitive value");
-	};
-
-
-/***/ },
-/* 63 */
-/***/ function(module, exports) {
-
-	module.exports = function (bitmap, value) {
-	  return {
-	    enumerable: !(bitmap & 1),
-	    configurable: !(bitmap & 2),
-	    writable: !(bitmap & 4),
-	    value: value
-	  };
-	};
-
-
-/***/ },
-/* 64 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(65), __esModule: true };
-
-/***/ },
-/* 65 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(66);
-	module.exports = __webpack_require__(51).Object.keys;
-
-
-/***/ },
-/* 66 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.14 Object.keys(O)
-	var toObject = __webpack_require__(67);
-	var $keys = __webpack_require__(69);
-
-	__webpack_require__(83)('keys', function () {
-	  return function keys(it) {
-	    return $keys(toObject(it));
-	  };
-	});
-
-
-/***/ },
-/* 67 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 7.1.13 ToObject(argument)
-	var defined = __webpack_require__(68);
-	module.exports = function (it) {
-	  return Object(defined(it));
-	};
-
-
-/***/ },
-/* 68 */
-/***/ function(module, exports) {
-
-	// 7.2.1 RequireObjectCoercible(argument)
-	module.exports = function (it) {
-	  if (it == undefined) throw TypeError("Can't call method on  " + it);
-	  return it;
-	};
-
-
-/***/ },
-/* 69 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-	var $keys = __webpack_require__(70);
-	var enumBugKeys = __webpack_require__(82);
-
-	module.exports = Object.keys || function keys(O) {
-	  return $keys(O, enumBugKeys);
-	};
-
-
-/***/ },
-/* 70 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var has = __webpack_require__(71);
-	var toIObject = __webpack_require__(72);
-	var arrayIndexOf = __webpack_require__(75)(false);
-	var IE_PROTO = __webpack_require__(79)('IE_PROTO');
-
-	module.exports = function (object, names) {
-	  var O = toIObject(object);
-	  var i = 0;
-	  var result = [];
-	  var key;
-	  for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
-	  // Don't enum bug & hidden keys
-	  while (names.length > i) if (has(O, key = names[i++])) {
-	    ~arrayIndexOf(result, key) || result.push(key);
-	  }
-	  return result;
-	};
-
-
-/***/ },
-/* 71 */
-/***/ function(module, exports) {
-
-	var hasOwnProperty = {}.hasOwnProperty;
-	module.exports = function (it, key) {
-	  return hasOwnProperty.call(it, key);
-	};
-
-
-/***/ },
-/* 72 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// to indexed object, toObject with fallback for non-array-like ES3 strings
-	var IObject = __webpack_require__(73);
-	var defined = __webpack_require__(68);
-	module.exports = function (it) {
-	  return IObject(defined(it));
-	};
-
-
-/***/ },
-/* 73 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// fallback for non-array-like ES3 and non-enumerable old V8 strings
-	var cof = __webpack_require__(74);
-	// eslint-disable-next-line no-prototype-builtins
-	module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
-	  return cof(it) == 'String' ? it.split('') : Object(it);
-	};
-
-
-/***/ },
-/* 74 */
-/***/ function(module, exports) {
-
-	var toString = {}.toString;
-
-	module.exports = function (it) {
-	  return toString.call(it).slice(8, -1);
-	};
-
-
-/***/ },
-/* 75 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// false -> Array#indexOf
-	// true  -> Array#includes
-	var toIObject = __webpack_require__(72);
-	var toLength = __webpack_require__(76);
-	var toAbsoluteIndex = __webpack_require__(78);
-	module.exports = function (IS_INCLUDES) {
-	  return function ($this, el, fromIndex) {
-	    var O = toIObject($this);
-	    var length = toLength(O.length);
-	    var index = toAbsoluteIndex(fromIndex, length);
-	    var value;
-	    // Array#includes uses SameValueZero equality algorithm
-	    // eslint-disable-next-line no-self-compare
-	    if (IS_INCLUDES && el != el) while (length > index) {
-	      value = O[index++];
-	      // eslint-disable-next-line no-self-compare
-	      if (value != value) return true;
-	    // Array#indexOf ignores holes, Array#includes - not
-	    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
-	      if (O[index] === el) return IS_INCLUDES || index || 0;
-	    } return !IS_INCLUDES && -1;
-	  };
-	};
-
-
-/***/ },
-/* 76 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 7.1.15 ToLength
-	var toInteger = __webpack_require__(77);
-	var min = Math.min;
-	module.exports = function (it) {
-	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
-	};
-
-
-/***/ },
-/* 77 */
-/***/ function(module, exports) {
-
-	// 7.1.4 ToInteger
-	var ceil = Math.ceil;
-	var floor = Math.floor;
-	module.exports = function (it) {
-	  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
-	};
-
-
-/***/ },
-/* 78 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var toInteger = __webpack_require__(77);
-	var max = Math.max;
-	var min = Math.min;
-	module.exports = function (index, length) {
-	  index = toInteger(index);
-	  return index < 0 ? max(index + length, 0) : min(index, length);
-	};
-
-
-/***/ },
-/* 79 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var shared = __webpack_require__(80)('keys');
-	var uid = __webpack_require__(81);
-	module.exports = function (key) {
-	  return shared[key] || (shared[key] = uid(key));
-	};
-
-
-/***/ },
-/* 80 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var global = __webpack_require__(50);
-	var SHARED = '__core-js_shared__';
-	var store = global[SHARED] || (global[SHARED] = {});
-	module.exports = function (key) {
-	  return store[key] || (store[key] = {});
-	};
-
-
-/***/ },
-/* 81 */
-/***/ function(module, exports) {
-
-	var id = 0;
-	var px = Math.random();
-	module.exports = function (key) {
-	  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
-	};
-
-
-/***/ },
-/* 82 */
-/***/ function(module, exports) {
-
-	// IE 8- don't enum bug keys
-	module.exports = (
-	  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
-	).split(',');
-
-
-/***/ },
-/* 83 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// most Object methods by ES6 should accept primitives
-	var $export = __webpack_require__(49);
-	var core = __webpack_require__(51);
-	var fails = __webpack_require__(60);
-	module.exports = function (KEY, exec) {
-	  var fn = (core.Object || {})[KEY] || Object[KEY];
-	  var exp = {};
-	  exp[KEY] = exec(fn);
-	  $export($export.S + $export.F * fails(function () { fn(1); }), 'Object', exp);
-	};
-
-
-/***/ },
-/* 84 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(85)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/basic/proxy.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(86)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-70fd9594/proxy.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 85 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="basic_proxy app-warp">
-	//     <Card style="width:800px; height: 100%;positon: relative;">
-	//       <p slot="title">佣金设置</p>
-	//       <ul class="basic_proxy-list">
-	//         <li>代理名称</li>
-	//         <li v-for="item in type_list" v-bind:class="{'active': item==type_selected}" @click="selectType(item)" :key="item">{{item}}</li>
-	//       </ul>
-	//       <div class="basic_proxy-edit">
-	//         <div class="basic_proxy-edit-header">
-	//           <Button type="text" @click="switchEdit" icon="edit">{{isreadonly? '编辑':'取消'}}</Button>
-	//         </div>
-	//         <table class="basic_proxy-edit-body">
-	//           <thead>
-	//             <tr><th width="100">代理级别</th><th width="100">直接佣金比例</th><th width="100">间接佣金比例</th></tr>
-	//           </thead>
-	//           <tbody>
-	//             <tr>
-	//               <td>入门iB</td>
-	//               <td><span v-if="isreadonly">{{data.level1}}</span><Input  v-else style="width:60px;" v-model="data.level1"></Input></td>
-	//               <td><span v-if="isreadonly">{{data._level1}}</span><Input  v-else style="width:60px;" v-model="data._level1"></Input></td>
-	//             </tr>
-	//             <tr>
-	//               <td>初级iB</td>
-	//               <td><span v-if="isreadonly">{{data.level2}}</span><Input  v-else style="width:60px;" v-model="data.level2"></Input></td>
-	//               <td><span v-if="isreadonly">{{data._level2}}</span><Input  v-else style="width:60px;" v-model="data._level2"></Input></td>
-	//             </tr>
-	//             <tr>
-	//               <td>高级iB</td>
-	//               <td><span v-if="isreadonly">{{data.level3}}</span><Input  v-else style="width:60px;" v-model="data.level3"></Input></td>
-	//               <td><span v-if="isreadonly">{{data._level3}}</span><Input  v-else style="width:60px;" v-model="data._level3"></Input></td>
-	//             </tr>
-	//             <tr>
-	//               <td>机构iB</td>
-	//               <td><span v-if="isreadonly">{{data.level4}}</span><Input  v-else style="width:60px;" v-model="data.level4"></Input></td>
-	//               <td><span v-if="isreadonly">{{data._level4}}</span><Input  v-else style="width:60px;" v-model="data._level4"></Input></td>
-	//             </tr>
-	//             <tr>
-	//               <td>区域iB</td>
-	//               <td><span v-if="isreadonly">{{data.level5}}</span><Input  v-else style="width:60px;" v-model="data.level5"></Input></td>
-	//               <td><span v-if="isreadonly">{{data._level5}}</span><Input  v-else style="width:60px;" v-model="data._level5"></Input></td>
-	//             </tr>
-	//           </tbody>
-	//         </table>
-	//         <Button type="primary" v-if="!isreadonly" style="width:120px;margin-top:20px;" @click="switchEdit">提交</Button>
-	//       </div>
-	//     </Card>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      type_list: ['ESP35', 'JPN225', 'ITA40', 'SUI30', 'GER30', 'US30', 'NAS100', 'SPX500', 'FRA40', 'EUSTX50', 'UK100', 'USDJPY', 'USDJPY1', 'USDJPY2', 'USDJPY3', 'USDJPY4', 'USDJPY5', 'USDJPY6', 'USDJPY7', 'USDJPY8', 'USDJPY9', 'USDJPY0', 'ESP351', 'ESP352', 'ESP353', 'ESP354', 'ESP355', 'ESP356', 'ESP357', 'ESP358', 'ESP359'],
-	      type_selected: '',
-	      data: {
-	        level1: '0.1', _level1: '0.2',
-	        level2: '0.2', _level2: '0.1',
-	        level3: '0.4', _level3: '0.5',
-	        level4: '0.1', _level4: '0.2',
-	        level5: '0.2', _level5: '0.9'
-	      },
-	      isreadonly: true
-	    };
-	  },
-
-	  methods: {
-	    selectType: function selectType(type) {
-	      this.type_selected = type;
-	    },
-	    switchEdit: function switchEdit() {
-	      this.isreadonly = !this.isreadonly;
-	    }
-	  },
-	  components: {},
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 86 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"basic_proxy app-warp\">\n  <Card style=\"width:800px; height: 100%;positon: relative;\">\n    <p slot=\"title\">佣金设置</p>\n    <ul class=\"basic_proxy-list\">\n      <li>代理名称</li>\n      <li v-for=\"item in type_list\" v-bind:class=\"{'active': item==type_selected}\" @click=\"selectType(item)\" :key=\"item\">{{item}}</li>\n    </ul>\n    <div class=\"basic_proxy-edit\">\n      <div class=\"basic_proxy-edit-header\">\n        <Button type=\"text\" @click=\"switchEdit\" icon=\"edit\">{{isreadonly? '编辑':'取消'}}</Button>\n      </div>\n      <table class=\"basic_proxy-edit-body\">\n        <thead>\n          <tr><th width=\"100\">代理级别</th><th width=\"100\">直接佣金比例</th><th width=\"100\">间接佣金比例</th></tr>\n        </thead>\n        <tbody>\n          <tr>\n            <td>入门iB</td>\n            <td><span v-if=\"isreadonly\">{{data.level1}}</span><Input  v-else style=\"width:60px;\" v-model=\"data.level1\"></Input></td>\n            <td><span v-if=\"isreadonly\">{{data._level1}}</span><Input  v-else style=\"width:60px;\" v-model=\"data._level1\"></Input></td>\n          </tr>\n          <tr>\n            <td>初级iB</td>\n            <td><span v-if=\"isreadonly\">{{data.level2}}</span><Input  v-else style=\"width:60px;\" v-model=\"data.level2\"></Input></td>\n            <td><span v-if=\"isreadonly\">{{data._level2}}</span><Input  v-else style=\"width:60px;\" v-model=\"data._level2\"></Input></td>\n          </tr>\n          <tr>\n            <td>高级iB</td>\n            <td><span v-if=\"isreadonly\">{{data.level3}}</span><Input  v-else style=\"width:60px;\" v-model=\"data.level3\"></Input></td>\n            <td><span v-if=\"isreadonly\">{{data._level3}}</span><Input  v-else style=\"width:60px;\" v-model=\"data._level3\"></Input></td>\n          </tr>\n          <tr>\n            <td>机构iB</td>\n            <td><span v-if=\"isreadonly\">{{data.level4}}</span><Input  v-else style=\"width:60px;\" v-model=\"data.level4\"></Input></td>\n            <td><span v-if=\"isreadonly\">{{data._level4}}</span><Input  v-else style=\"width:60px;\" v-model=\"data._level4\"></Input></td>\n          </tr>\n          <tr>\n            <td>区域iB</td>\n            <td><span v-if=\"isreadonly\">{{data.level5}}</span><Input  v-else style=\"width:60px;\" v-model=\"data.level5\"></Input></td>\n            <td><span v-if=\"isreadonly\">{{data._level5}}</span><Input  v-else style=\"width:60px;\" v-model=\"data._level5\"></Input></td>\n          </tr>\n        </tbody>\n      </table>\n      <Button type=\"primary\" v-if=\"!isreadonly\" style=\"width:120px;margin-top:20px;\" @click=\"switchEdit\">提交</Button>\n    </div>\n  </Card>\n</div>\n";
-
-/***/ },
-/* 87 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(88)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/basic/trade.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(89)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-10c0f12c/trade.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 88 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="basic_trade app-warp">
-	//     <Card style="width:600px">
-	//       <p slot="title">交易参数</p>
-	//       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">
-	//         <Icon type="edit"></Icon>
-	//         编辑
-	//       </a>
-	//       <a href="#" slot="extra" v-if="!readonly" @click.prevent="switchModel(true)">
-	//         <Icon type="edit"></Icon>
-	//         取消
-	//       </a>
-	//       <Form :model="data" label-position="left" :label-width="100">
-	//         <form-item label="币种" prop="currency_type">
-	//           <Select v-model="data.currency_type" :disabled="readonly" placeholder="选择币种">
-	//             <Option value="USD">美元/USD</Option>
-	//             <Option value="CNY">人民币/CNY</Option>
-	//           </Select>
-	//         </form-item>
-	//         <form-item label="入金汇率模式" prop="in_come_model">
-	//           <Select v-model="data.in_come_model" :disabled="readonly" placeholder="选择入金汇率模式">
-	//             <Option value="0">实时汇率</Option>
-	//             <Option value="1">非实时汇率</Option>
-	//           </Select>
-	//         </form-item>
-	//         <form-item label="入金默认汇率" prop="in_come_exchange_rate">
-	//           <input-number :max="10000000" :min="0" :step="1" :disabled="readonly" v-model="data.in_come_exchange_rate"></input-number>
-	//         </form-item>
-	//         <form-item label="入金汇率调整" prop="in_come_exchange_rate_change">
-	//           <input-number :max="10000000" :min="0" :step="1" :disabled="readonly" v-model="data.in_come_exchange_rate_change"></input-number>
-	//         </form-item>
-	//         <form-item label="出金汇率模式" prop="out_come_model">
-	//           <Select v-model="data.out_come_model" :disabled="readonly" placeholder="选择入金汇率模式">
-	//             <Option value="0">实时汇率</Option>
-	//             <Option value="1">非实时汇率</Option>
-	//           </Select>
-	//         </form-item>
-	//         <form-item label="出金默认汇率" prop="out_come_exchange_rate">
-	//           <input-number :max="10000000" :min="0" :step="1" :disabled="readonly" v-model="data.out_come_exchange_rate"></input-number>
-	//         </form-item>
-	//         <form-item label="出金汇率调整" prop="out_come_exchange_rate_change">
-	//           <input-number :max="10000000" :min="0" :step="1" :disabled="readonly" v-model="data.out_come_exchange_rate_change"></input-number>
-	//         </form-item>
-	//         <form-item label="出金扣款方式" prop="out_come_type">
-	//           <Select v-model="data.out_come_model" :disabled="readonly" placeholder="选择入金汇率模式">
-	//             <Option value="0">出金申请审核后从MT4扣款</Option>
-	//             <Option value="1">客户出金申请后从MT4扣款</Option>
-	//           </Select>
-	//         </form-item>
-	//         <form-item v-if="!readonly">
-	//             <Button type="primary">提交</Button>
-	//             <Button type="ghost" @click="switchModel(true)" style="margin-left: 8px">取消</Button>
-	//         </form-item>
-	//       </Form>
-	//     </Card>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      data: {
-	        currency_type: 'USD',
-	        in_come_model: '1',
-	        in_come_exchange_rate: 7,
-	        in_come_exchange_rate_change: 0,
-	        out_come_model: '1',
-	        out_come_exchange_rate: 7,
-	        out_come_exchange_rate_change: 0,
-	        out_come_type: '0'
-	      },
-	      readonly: true
-	    };
-	  },
-
-	  methods: {
-	    switchModel: function switchModel(type) {
-	      this.readonly = type;
-	    }
-	  },
-	  components: {},
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 89 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"basic_trade app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">交易参数</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"100\">\n      <form-item label=\"币种\" prop=\"currency_type\">\n        <Select v-model=\"data.currency_type\" :disabled=\"readonly\" placeholder=\"选择币种\">\n          <Option value=\"USD\">美元/USD</Option>\n          <Option value=\"CNY\">人民币/CNY</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"入金汇率模式\" prop=\"in_come_model\">\n        <Select v-model=\"data.in_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">实时汇率</Option>\n          <Option value=\"1\">非实时汇率</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"入金默认汇率\" prop=\"in_come_exchange_rate\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.in_come_exchange_rate\"></input-number>\n      </form-item>\n      <form-item label=\"入金汇率调整\" prop=\"in_come_exchange_rate_change\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.in_come_exchange_rate_change\"></input-number>\n      </form-item>\n      <form-item label=\"出金汇率模式\" prop=\"out_come_model\">\n        <Select v-model=\"data.out_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">实时汇率</Option>\n          <Option value=\"1\">非实时汇率</Option>\n        </Select>\n      </form-item>\n      <form-item label=\"出金默认汇率\" prop=\"out_come_exchange_rate\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.out_come_exchange_rate\"></input-number>\n      </form-item>\n      <form-item label=\"出金汇率调整\" prop=\"out_come_exchange_rate_change\">\n        <input-number :max=\"10000000\" :min=\"0\" :step=\"1\" :disabled=\"readonly\" v-model=\"data.out_come_exchange_rate_change\"></input-number>\n      </form-item>\n      <form-item label=\"出金扣款方式\" prop=\"out_come_type\">\n        <Select v-model=\"data.out_come_model\" :disabled=\"readonly\" placeholder=\"选择入金汇率模式\">\n          <Option value=\"0\">出金申请审核后从MT4扣款</Option>\n          <Option value=\"1\">客户出金申请后从MT4扣款</Option>\n        </Select>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n          <Button type=\"primary\">提交</Button>\n          <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
-
-/***/ },
-/* 90 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(91)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/basic/payment.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(92)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-522504ce/payment.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 91 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="basic_payment app-warp">
-	//     <Card style="100%;">
-	//       <p slot="title">支付设置</p>
-	//       <table class="list-table">
-	//         <thead>
-	//           <tr>
-	//             <th width="100">编号</th>
-	//             <th width="200">代码</th>
-	//             <th width="200">名称</th>
-	//             <th width="200">配置</th>
-	//             <th width="100">状态</th>
-	//             <th width="300">插件地址</th>
-	//           </tr>
-	//         </thead>
-	//         <tbody>
-	//           <tr v-for="(item, index) in data_list" :key="item.code">
-	//             <td>{{item.id}}</td>
-	//             <td>{{item.code}}</td>
-	//             <td>{{item.name}}</td>
-	//             <td>{{'详情页查看'}}</td>
-	//             <td>{{item.status}}</td>
-	//             <td>{{item.plugin}}</td>
-	//           </tr>
-	//         </tbody>
-	//       </table>
-	//     </Card>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      data_list: [{
-	        id: 31,
-	        code: 'gfbbank',
-	        name: '国付宝网银',
-	        config: '{"sellerid":"0000115127","sellerkey":"abcd1234123","accountid":"0000000002000051021","gateway":"https://gateway.gopay.com.cn/Trans/WebClientAction.do","paydomain":"http://pay.sannew.cn","fronturl":"/payment/gfb/choosebanks.aspx"}',
-	        status: '启用',
-	        plugin: '/payment/gfb/jump.aspx?paymentcode=gfbbank'
-	      }, {
-	        id: 1,
-	        code: 'ainong',
-	        name: '爱农支付',
-	        config: '{"sellerid":"","sellerkey":"","frontapiurl":"http://pay.chinagpay.com/bas/FrontTrans","backapiurl":"http://180.169.129.78:38280/bas/FrontTrans"}',
-	        status: '禁用',
-	        plugin: '/payment/ainong/pay.aspx'
-	      }, {
-	        id: 2,
-	        code: 'alipay',
-	        name: '支付宝',
-	        config: '',
-	        status: '禁用',
-	        plugin: '/payment/alipay/payment.aspx'
-	      }],
-	      readonly: true
-	    };
-	  },
-
-	  methods: {
-	    switchModel: function switchModel(type) {
-	      this.readonly = type;
-	    }
-	  },
-	  components: {},
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 92 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"basic_payment app-warp\">\n  <Card style=\"100%;\">\n    <p slot=\"title\">支付设置</p>\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"200\">代码</th>\n          <th width=\"200\">名称</th>\n          <th width=\"200\">配置</th>\n          <th width=\"100\">状态</th>\n          <th width=\"300\">插件地址</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"(item, index) in data_list\" :key=\"item.code\">\n          <td>{{item.id}}</td>\n          <td>{{item.code}}</td>\n          <td>{{item.name}}</td>\n          <td>{{'详情页查看'}}</td>\n          <td>{{item.status}}</td>\n          <td>{{item.plugin}}</td>\n        </tr>\n      </tbody>\n    </table>\n  </Card>\n</div>\n";
-
-/***/ },
-/* 93 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(94)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/basic/logo.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(95)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-2d8e6593/logo.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 94 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="basic_logo app-warp">
-	//     <Card style="width:600px;margin-bottom: 10px;">
-	//       <p slot="title">Logo设置</p>
-	//       <div class="basic_logo-info">
-	//         <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1681391545,4187928589&fm=27&gp=0.jpg" alt="">
-	//         <div class="basic_logo-info-edit">
-	//           <Alert show-icon type="warning">要求图片格式为PNG格式，高64宽64。</Alert>
-	//           <i-button icon="ios-cloud-upload-outline" @click="uploadImg('logo')" type="primary">上传图片</i-button>
-	//         </div>
-	//       </div>  
-	//     </Card>
-	//     <Card style="width:600px">
-	//       <p slot="title">Icon设置</p>
-	//       <div class="basic_logo-info">
-	//         <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2918321103,763089997&fm=27&gp=0.jpg" alt="">
-	//         <div class="basic_logo-info-edit">
-	//           <Alert show-icon type="warning">必须为icon文件。</Alert>
-	//           <i-button icon="ios-cloud-upload-outline" @click="uploadImg('icon')" type="primary">上传图片</i-button>
-	//         </div>
-	//       </div>
-	//     </Card>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      data: {
-	        smtp_addr: 'smtp.exmail.qq.com',
-	        email_addr: 'info@andaobo.com',
-	        email_user: 'info@andaobo.com',
-	        email_pwd: 'A123456a',
-	        manager_email: 'info@andaobo.com',
-	        smtp_port: '25'
-	      },
-	      readonly: true
-	    };
-	  },
-
-	  methods: {
-	    switchModel: function switchModel(type) {
-	      this.readonly = type;
-	    },
-	    uploadImg: function uploadImg(type) {
-	      var vm = this;
-	      util.uploadFile(function (res) {});
-	    }
-	  },
-	  components: {},
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 95 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"basic_logo app-warp\">\n  <Card style=\"width:600px;margin-bottom: 10px;\">\n    <p slot=\"title\">Logo设置</p>\n    <div class=\"basic_logo-info\">\n      <img src=\"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1681391545,4187928589&fm=27&gp=0.jpg\" alt=\"\">\n      <div class=\"basic_logo-info-edit\">\n        <Alert show-icon type=\"warning\">要求图片格式为PNG格式，高64宽64。</Alert>\n        <i-button icon=\"ios-cloud-upload-outline\" @click=\"uploadImg('logo')\" type=\"primary\">上传图片</i-button>\n      </div>\n    </div>  \n  </Card>\n  <Card style=\"width:600px\">\n    <p slot=\"title\">Icon设置</p>\n    <div class=\"basic_logo-info\">\n      <img src=\"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2918321103,763089997&fm=27&gp=0.jpg\" alt=\"\">\n      <div class=\"basic_logo-info-edit\">\n        <Alert show-icon type=\"warning\">必须为icon文件。</Alert>\n        <i-button icon=\"ios-cloud-upload-outline\" @click=\"uploadImg('icon')\" type=\"primary\">上传图片</i-button>\n      </div>\n    </div>\n  </Card>\n</div>\n";
-
-/***/ },
-/* 96 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(97)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/customer/index.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(98)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-5b686408/index.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 97 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="customer app-warp">
-	//     <Card style="width:100%">
-	//       <p slot="title">客户管理</p>
-	//       <!-- 操作按钮 -->
-	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="plus">新建</Button>
-	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">编辑</Button>
-	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">启用</Button>
-	//       <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">停用</Button>
-	//       <Button type="warning" style="margin-right:10px" size="small" slot="extra" icon="information" :disabled="disabled">查看明细</Button>
-	//       <Button style="margin-right:10px" size="small" slot="extra" icon="network" :disabled="disabled">查看代理树</Button>
-	//       <Button style="margin-right:10px" size="small" slot="extra" icon="key" :disabled="disabled">修改密码</Button>
-	//       <Button size="small" slot="extra" icon="forward" :disabled="disabled">转到会员中心</Button>
-	//
-	//       <!-- 列表 -->
-	//       <table class="list-table">
-	//         <thead>
-	//           <tr>
-	//             <th width="150">MT4账号</th>
-	//             <th width="200">姓名</th>
-	//             <th width="100">组</th>
-	//             <th width="300">邮箱</th>
-	//             <th width="200">电话</th>
-	//             <th width="100">杠杆</th>
-	//             <th width="200">上级代理帐号</th>
-	//             <th width="100">代理等级</th>
-	//             <th width="300">注册时间</th>
-	//             <th width="100">是否验证</th>
-	//             <th width="100">余额</th>
-	//             <th width="100">盈亏值</th>
-	//             <th width="100">启用状态</th>
-	//           </tr>
-	//         </thead>
-	//         <tbody>
-	//           <tr v-for="i in 10" :key="i" @click="selectUser(i)" v-bind:class="{'active': selected_key==i}">
-	//             <td>wanger</td>
-	//             <td>王二</td>
-	//             <td>USD1</td>
-	//             <td>janber@gmail.com</td>
-	//             <td>18200115617</td>
-	//             <td>100</td>
-	//             <td>zhangsan</td>
-	//             <td>2</td>
-	//             <td>2018-02-12 18:00</td>
-	//             <td>已验证</td>
-	//             <td>200000</td>
-	//             <td>-1222</td>
-	//             <td>启用</td>
-	//           </tr>
-	//         </tbody>
-	//       </table>
-	//
-	//     </Card>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      readonly: true,
-	      selected_key: ''
-	    };
-	  },
-
-	  methods: {
-	    switchModel: function switchModel(type) {
-	      this.readonly = type;
-	    },
-	    selectUser: function selectUser(key) {
-	      if (this.selected_key === key) {
-	        this.selected_key = '';
-	      } else {
-	        this.selected_key = key;
-	      }
-	    }
-	  },
-	  components: {},
-	  computed: {
-	    disabled: function disabled() {
-	      return this.selected_key === '';
-	    }
-	  }
-	  // </script>
-
-	};
-
-/***/ },
-/* 98 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">客户管理</p>\n    <!-- 操作按钮 -->\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\">新建</Button>\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">编辑</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">启用</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\" :disabled=\"disabled\">停用</Button>\n    <Button type=\"warning\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"network\" :disabled=\"disabled\">查看代理树</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"key\" :disabled=\"disabled\">修改密码</Button>\n    <Button size=\"small\" slot=\"extra\" icon=\"forward\" :disabled=\"disabled\">转到会员中心</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"150\">MT4账号</th>\n          <th width=\"200\">姓名</th>\n          <th width=\"100\">组</th>\n          <th width=\"300\">邮箱</th>\n          <th width=\"200\">电话</th>\n          <th width=\"100\">杠杆</th>\n          <th width=\"200\">上级代理帐号</th>\n          <th width=\"100\">代理等级</th>\n          <th width=\"300\">注册时间</th>\n          <th width=\"100\">是否验证</th>\n          <th width=\"100\">余额</th>\n          <th width=\"100\">盈亏值</th>\n          <th width=\"100\">启用状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>wanger</td>\n          <td>王二</td>\n          <td>USD1</td>\n          <td>janber@gmail.com</td>\n          <td>18200115617</td>\n          <td>100</td>\n          <td>zhangsan</td>\n          <td>2</td>\n          <td>2018-02-12 18:00</td>\n          <td>已验证</td>\n          <td>200000</td>\n          <td>-1222</td>\n          <td>启用</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
-
-/***/ },
-/* 99 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(100)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/finance/outAppr.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(101)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-1e21e2da/outAppr.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 100 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="customer app-warp">
-	//     <Card style="width:100%">
-	//       <p slot="title">出金审核</p>
-	//       <!-- 操作按钮 -->
-	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="information" :disabled="disabled">查看明细</Button>
-	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">审核</Button>
-	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">设置为已转账</Button>
-	//
-	//       <!-- 列表 -->
-	//       <table class="list-table">
-	//         <thead>
-	//           <tr>
-	//             <th width="100">编号</th>
-	//             <th width="200">MT4账号</th>
-	//             <th width="150">客户名称</th>
-	//             <th width="200">申请出金数量</th>
-	//             <th width="300">申请时间</th>
-	//             <th width="100">审核意见</th>
-	//             <th width="300">扣款方式</th>
-	//             <th width="200">汇率模式</th>
-	//             <th width="200">汇率转换后金额</th>
-	//             <th width="100">汇率</th>
-	//             <th width="200">汇率计算公式</th>
-	//             <th width="100">币种</th>
-	//             <th width="100">状态</th>
-	//           </tr>
-	//         </thead>
-	//         <tbody>
-	//           <tr v-for="i in 10" :key="i" @click="selectUser(i)" v-bind:class="{'active': selected_key==i}">
-	//             <td>319</td>
-	//             <td>40353082</td>
-	//             <td>莫秀娟--高级</td>
-	//             <td>300</td>
-	//             <td>2018/3/6 10:51:55</td>
-	//             <td>ok</td>
-	//             <td>管理员审核后mt4扣款</td>
-	//             <td>非实时汇率</td>
-	//             <td>2100</td>
-	//             <td>7</td>
-	//             <td>(7.00) + (0.00)</td>
-	//             <td>USD</td>
-	//             <td>已审核</td>
-	//           </tr>
-	//         </tbody>
-	//       </table>
-	//
-	//     </Card>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      readonly: true,
-	      selected_key: ''
-	    };
-	  },
-
-	  methods: {
-	    switchModel: function switchModel(type) {
-	      this.readonly = type;
-	    },
-	    selectUser: function selectUser(key) {
-	      if (this.selected_key === key) {
-	        this.selected_key = '';
-	      } else {
-	        this.selected_key = key;
-	      }
-	    }
-	  },
-	  components: {},
-	  computed: {
-	    disabled: function disabled() {
-	      return this.selected_key === '';
-	    }
-	  }
-	  // </script>
-
-	};
-
-/***/ },
-/* 101 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">出金审核</p>\n    <!-- 操作按钮 -->\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">审核</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">设置为已转账</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">客户名称</th>\n          <th width=\"200\">申请出金数量</th>\n          <th width=\"300\">申请时间</th>\n          <th width=\"100\">审核意见</th>\n          <th width=\"300\">扣款方式</th>\n          <th width=\"200\">汇率模式</th>\n          <th width=\"200\">汇率转换后金额</th>\n          <th width=\"100\">汇率</th>\n          <th width=\"200\">汇率计算公式</th>\n          <th width=\"100\">币种</th>\n          <th width=\"100\">状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>319</td>\n          <td>40353082</td>\n          <td>莫秀娟--高级</td>\n          <td>300</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>ok</td>\n          <td>管理员审核后mt4扣款</td>\n          <td>非实时汇率</td>\n          <td>2100</td>\n          <td>7</td>\n          <td>(7.00) + (0.00)</td>\n          <td>USD</td>\n          <td>已审核</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
-
-/***/ },
-/* 102 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(103)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/pages/finance/inList.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(104)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-356b105f/inList.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 103 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="customer app-warp">
-	//     <Card style="width:100%">
-	//       <p slot="title">出金审核</p>
-	//       <!-- 操作按钮 -->
-	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="information" :disabled="disabled">查看明细</Button>
-	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">审核</Button>
-	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">设置为已转账</Button>
-	//
-	//       <!-- 列表 -->
-	//       <table class="list-table">
-	//         <thead>
-	//           <tr>
-	//             <th width="100">编号</th>
-	//             <th width="200">MT4账号</th>
-	//             <th width="150">客户名称</th>
-	//             <th width="200">申请出金数量</th>
-	//             <th width="300">申请时间</th>
-	//             <th width="100">审核意见</th>
-	//             <th width="300">扣款方式</th>
-	//             <th width="200">汇率模式</th>
-	//             <th width="200">汇率转换后金额</th>
-	//             <th width="100">汇率</th>
-	//             <th width="200">汇率计算公式</th>
-	//             <th width="100">币种</th>
-	//             <th width="100">状态</th>
-	//           </tr>
-	//         </thead>
-	//         <tbody>
-	//           <tr v-for="i in 10" :key="i" @click="selectUser(i)" v-bind:class="{'active': selected_key==i}">
-	//             <td>319</td>
-	//             <td>40353082</td>
-	//             <td>莫秀娟--高级</td>
-	//             <td>300</td>
-	//             <td>2018/3/6 10:51:55</td>
-	//             <td>ok</td>
-	//             <td>管理员审核后mt4扣款</td>
-	//             <td>非实时汇率</td>
-	//             <td>2100</td>
-	//             <td>7</td>
-	//             <td>(7.00) + (0.00)</td>
-	//             <td>USD</td>
-	//             <td>已审核</td>
-	//           </tr>
-	//         </tbody>
-	//       </table>
-	//
-	//     </Card>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {},
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      readonly: true,
-	      selected_key: ''
-	    };
-	  },
-
-	  methods: {
-	    switchModel: function switchModel(type) {
-	      this.readonly = type;
-	    },
-	    selectUser: function selectUser(key) {
-	      if (this.selected_key === key) {
-	        this.selected_key = '';
-	      } else {
-	        this.selected_key = key;
-	      }
-	    }
-	  },
-	  components: {},
-	  computed: {
-	    disabled: function disabled() {
-	      return this.selected_key === '';
-	    }
-	  }
-	  // </script>
-
-	};
-
-/***/ },
-/* 104 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">出金审核</p>\n    <!-- 操作按钮 -->\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">审核</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">设置为已转账</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">客户名称</th>\n          <th width=\"200\">申请出金数量</th>\n          <th width=\"300\">申请时间</th>\n          <th width=\"100\">审核意见</th>\n          <th width=\"300\">扣款方式</th>\n          <th width=\"200\">汇率模式</th>\n          <th width=\"200\">汇率转换后金额</th>\n          <th width=\"100\">汇率</th>\n          <th width=\"200\">汇率计算公式</th>\n          <th width=\"100\">币种</th>\n          <th width=\"100\">状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>319</td>\n          <td>40353082</td>\n          <td>莫秀娟--高级</td>\n          <td>300</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>ok</td>\n          <td>管理员审核后mt4扣款</td>\n          <td>非实时汇率</td>\n          <td>2100</td>\n          <td>7</td>\n          <td>(7.00) + (0.00)</td>\n          <td>USD</td>\n          <td>已审核</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
 
 /***/ }
 /******/ ]);

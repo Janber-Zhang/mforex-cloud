@@ -775,6 +775,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
  * @auther Janber
  * @created 18-03-18
  */
+  /*
+ * @name 财务管理-出金审核
+ * @auther Janber
+ * @created 18-03-23
+ */
 }
 #app.backend .backend-main {
   background: #eaedf1;
@@ -808,17 +813,24 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   padding: 10px;
 }
 #app.backend .backend-main .content-body .content-app .app-warp .filter-bar {
-  width: 100%;
-  padding: 0 20px;
+  background-color: #f5f5f5;
+  margin-bottom: 10px;
+  padding: 10px 5px;
   overflow: hidden;
 }
 #app.backend .backend-main .content-body .content-app .app-warp .filter-bar .filter-item {
-  width: 280px;
   float: left;
-  margin: 14px 0;
+  padding: 5px;
+  min-width: 250px;
+  margin-right: 20px;
 }
-#app.backend .backend-main .content-body .content-app .app-warp .filter-bar .filter-item .filter-item-name {
+#app.backend .backend-main .content-body .content-app .app-warp .filter-bar .filter-item-title {
+  min-width: 50px;
   margin-right: 10px;
+}
+#app.backend .backend-main .content-body .content-app .app-warp .filter-bar .filter-handle {
+  float: left;
+  padding: 5px;
 }
 #app.backend .backend-main .content-body .content-app .app-warp .list-table {
   width: 100%;
@@ -834,6 +846,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
   font-size: 12px;
   padding: 10px 0;
   word-break: break-all;
+  white-space: nowrap;
 }
 #app.backend .backend-main .content-body .content-app .app-warp .list-table thead tr th {
   background: #f5f5f5;
