@@ -12,6 +12,42 @@
       <Button style="margin-right:10px" size="small" slot="extra" icon="key" :disabled="disabled">修改密码</Button>
       <Button size="small" slot="extra" icon="forward" :disabled="disabled">转到会员中心</Button>
       
+      <!-- 筛选器 -->
+      <div class="filter-bar">
+        <div class="filter-item" flex="main:left cross:center">
+          <span class="filter-item-title">姓名</span>
+          <Input v-model="filter_obj.name" style="width: 200px" placeholder="请输入查询关键字"></Input>
+        </div>
+        <div class="filter-item" flex="main:left cross:center">
+          <span class="filter-item-title">MT4账号</span>
+          <Input v-model="filter_obj.mt4_account" style="width: 200px" placeholder="请输入查询关键字"></Input>
+        </div>
+        <div class="filter-item" flex="main:left cross:center">
+          <span class="filter-item-title">邮箱</span>
+          <Input v-model="filter_obj.email" style="width: 200px" placeholder="请输入查询关键字"></Input>
+        </div>
+        <div class="filter-item" flex="main:left cross:center">
+          <span class="filter-item-title">电话</span>
+          <Input v-model="filter_obj.phone" style="width: 200px" placeholder="请输入查询关键字"></Input>
+        </div>
+        <div class="filter-item" flex="main:left cross:center">
+          <span class="filter-item-title">组</span>
+          <Input v-model="filter_obj.group" style="width: 200px" placeholder="请输入查询关键字"></Input>
+        </div>
+        <div class="filter-item" flex="main:left cross:center">
+          <span class="filter-item-title">注册时间</span>
+          <date-picker type="daterange" confirm placement="bottom-start" placeholder="请选择日期范围" :value="filter_obj.created_range" style="width: 200px"></date-picker>
+        </div>
+        <div class="filter-item" flex="main:left cross:center">
+          <span class="filter-item-title">代理账号</span>
+          <Input v-model="filter_obj.proxy_account" style="width: 200px" placeholder="请输入查询关键字"></Input>
+        </div>
+        <div class="filter-handle" flex="main:left cross:center">
+          <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+          <i-button @click="clearFilter()">清除</i-button>
+        </div>
+      </div>
+
       <!-- 列表 -->
       <table class="list-table">
         <thead>
@@ -57,7 +93,7 @@
 <script>
 export default {
   created(){
-
+    this.initFilterObj();
   },
   ready(){
 
@@ -65,7 +101,8 @@ export default {
   data(){
     return {
       readonly: true,
-      selected_key: ''
+      selected_key: '',
+      filter_obj: null
     }
   },
   methods:{
@@ -78,6 +115,23 @@ export default {
       } else {
         this.selected_key = key;
       }
+    },
+    initFilterObj(){
+      this.filter_obj = {
+        name: '',
+        mt4_account: '',
+        email: '',
+        phone: '',
+        group: '',
+        created_range: [],
+        proxy_account: ''
+      }
+    },
+    clearFilter(){
+      this.initFilterObj();
+    },
+    search(){
+      this.$Message.error('暂未开放此功能')
     }
   },
   components:{

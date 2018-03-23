@@ -7,6 +7,24 @@
       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">审核</Button>
       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">设置为已转账</Button>
       
+       <!-- 筛选器 -->
+      <div class="filter-bar">
+        <div class="filter-item" flex="main:left cross:center">
+          <span class="filter-item-title">状态</span>
+          <Select v-model="filter_obj.status" style="width:200px">
+            <Option value="-1">全部</Option>
+            <Option value="0">申请中</Option>
+            <Option value="1">已驳回</Option>
+            <Option value="2">已审核</Option>
+            <Option value="3">已转账</Option>
+        </Select>
+        </div>
+        <div class="filter-handle" flex="main:left cross:center">
+          <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+          <i-button @click="clearFilter()">清除</i-button>
+        </div>
+      </div>
+
       <!-- 列表 -->
       <table class="list-table">
         <thead>
@@ -52,7 +70,7 @@
 <script>
 export default {
   created(){
-
+    this.initFilterObj();
   },
   ready(){
 
@@ -60,7 +78,8 @@ export default {
   data(){
     return {
       readonly: true,
-      selected_key: ''
+      selected_key: '',
+      filter_obj: null
     }
   },
   methods:{
@@ -73,6 +92,17 @@ export default {
       } else {
         this.selected_key = key;
       }
+    },
+    initFilterObj(){
+      this.filter_obj = {
+        status: ''
+      }
+    },
+    clearFilter(){
+      this.initFilterObj();
+    },
+    search(){
+      this.$Message.error('暂未开放此功能')
     }
   },
   components:{

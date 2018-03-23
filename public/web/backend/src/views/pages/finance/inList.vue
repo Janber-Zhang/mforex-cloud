@@ -30,7 +30,6 @@
           <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
           <i-button @click="clearFilter()">清除</i-button>
         </div>
-        
       </div>
 
       <!-- 列表 -->
