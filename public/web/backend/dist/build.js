@@ -14734,17 +14734,21 @@
 
 	var _outAppr2 = _interopRequireDefault(_outAppr);
 
+	var _inList = __webpack_require__(102);
+
+	var _inList2 = _interopRequireDefault(_inList);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// 出金审核
+	// 入金支付记录
 
-	// 基本设置-logo设置
+	// 客户管理
 
-	// 基本设置-交易设置
-	// 基本设置-短信设置
-	// 基本设置-邮件模版
-	// 基本设置-系统设置
-	// 未开放模块
+	// 基本设置—支付设置
+	// 基本设置-代理设置
+	// 基本设置-代理等级名称设置
+	// 基本设置-邮件设置
+	// 主页
 
 	var routes_map = {
 		basic_system: _system2.default,
@@ -14758,13 +14762,14 @@
 		basic_logo: _logo2.default,
 		customer: _index4.default,
 		finance_out_appr: _outAppr2.default
-	}; // 客户管理
+	}; // 出金审核
+	// 基本设置-logo设置
 
-	// 基本设置—支付设置
-	// 基本设置-代理设置
-	// 基本设置-代理等级名称设置
-	// 基本设置-邮件设置
-	// 主页
+	// 基本设置-交易设置
+	// 基本设置-短信设置
+	// 基本设置-邮件模版
+	// 基本设置-系统设置
+	// 未开放模块
 
 	var routes = [{
 		path: '/',
@@ -51552,7 +51557,7 @@
 	//     <Card style="width:100%">
 	//       <p slot="title">出金审核</p>
 	//       <!-- 操作按钮 -->
-	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="plus" :disabled="disabled">查看明细</Button>
+	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="information" :disabled="disabled">查看明细</Button>
 	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">审核</Button>
 	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">设置为已转账</Button>
 	//
@@ -51635,7 +51640,139 @@
 /* 101 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">出金审核</p>\n    <!-- 操作按钮 -->\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\" :disabled=\"disabled\">查看明细</Button>\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">审核</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">设置为已转账</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">客户名称</th>\n          <th width=\"200\">申请出金数量</th>\n          <th width=\"300\">申请时间</th>\n          <th width=\"100\">审核意见</th>\n          <th width=\"300\">扣款方式</th>\n          <th width=\"200\">汇率模式</th>\n          <th width=\"200\">汇率转换后金额</th>\n          <th width=\"100\">汇率</th>\n          <th width=\"200\">汇率计算公式</th>\n          <th width=\"100\">币种</th>\n          <th width=\"100\">状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>319</td>\n          <td>40353082</td>\n          <td>莫秀娟--高级</td>\n          <td>300</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>ok</td>\n          <td>管理员审核后mt4扣款</td>\n          <td>非实时汇率</td>\n          <td>2100</td>\n          <td>7</td>\n          <td>(7.00) + (0.00)</td>\n          <td>USD</td>\n          <td>已审核</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">出金审核</p>\n    <!-- 操作按钮 -->\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">审核</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">设置为已转账</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">客户名称</th>\n          <th width=\"200\">申请出金数量</th>\n          <th width=\"300\">申请时间</th>\n          <th width=\"100\">审核意见</th>\n          <th width=\"300\">扣款方式</th>\n          <th width=\"200\">汇率模式</th>\n          <th width=\"200\">汇率转换后金额</th>\n          <th width=\"100\">汇率</th>\n          <th width=\"200\">汇率计算公式</th>\n          <th width=\"100\">币种</th>\n          <th width=\"100\">状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>319</td>\n          <td>40353082</td>\n          <td>莫秀娟--高级</td>\n          <td>300</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>ok</td>\n          <td>管理员审核后mt4扣款</td>\n          <td>非实时汇率</td>\n          <td>2100</td>\n          <td>7</td>\n          <td>(7.00) + (0.00)</td>\n          <td>USD</td>\n          <td>已审核</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+
+/***/ },
+/* 102 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(103)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/finance/inList.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(104)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-356b105f/inList.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 103 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="customer app-warp">
+	//     <Card style="width:100%">
+	//       <p slot="title">出金审核</p>
+	//       <!-- 操作按钮 -->
+	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="information" :disabled="disabled">查看明细</Button>
+	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">审核</Button>
+	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">设置为已转账</Button>
+	//
+	//       <!-- 列表 -->
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="100">编号</th>
+	//             <th width="200">MT4账号</th>
+	//             <th width="150">客户名称</th>
+	//             <th width="200">申请出金数量</th>
+	//             <th width="300">申请时间</th>
+	//             <th width="100">审核意见</th>
+	//             <th width="300">扣款方式</th>
+	//             <th width="200">汇率模式</th>
+	//             <th width="200">汇率转换后金额</th>
+	//             <th width="100">汇率</th>
+	//             <th width="200">汇率计算公式</th>
+	//             <th width="100">币种</th>
+	//             <th width="100">状态</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="i in 10" :key="i" @click="selectUser(i)" v-bind:class="{'active': selected_key==i}">
+	//             <td>319</td>
+	//             <td>40353082</td>
+	//             <td>莫秀娟--高级</td>
+	//             <td>300</td>
+	//             <td>2018/3/6 10:51:55</td>
+	//             <td>ok</td>
+	//             <td>管理员审核后mt4扣款</td>
+	//             <td>非实时汇率</td>
+	//             <td>2100</td>
+	//             <td>7</td>
+	//             <td>(7.00) + (0.00)</td>
+	//             <td>USD</td>
+	//             <td>已审核</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      readonly: true,
+	      selected_key: ''
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    },
+	    selectUser: function selectUser(key) {
+	      if (this.selected_key === key) {
+	        this.selected_key = '';
+	      } else {
+	        this.selected_key = key;
+	      }
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    disabled: function disabled() {
+	      return this.selected_key === '';
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 104 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">出金审核</p>\n    <!-- 操作按钮 -->\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">审核</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">设置为已转账</Button>\n    \n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">客户名称</th>\n          <th width=\"200\">申请出金数量</th>\n          <th width=\"300\">申请时间</th>\n          <th width=\"100\">审核意见</th>\n          <th width=\"300\">扣款方式</th>\n          <th width=\"200\">汇率模式</th>\n          <th width=\"200\">汇率转换后金额</th>\n          <th width=\"100\">汇率</th>\n          <th width=\"200\">汇率计算公式</th>\n          <th width=\"100\">币种</th>\n          <th width=\"100\">状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>319</td>\n          <td>40353082</td>\n          <td>莫秀娟--高级</td>\n          <td>300</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>ok</td>\n          <td>管理员审核后mt4扣款</td>\n          <td>非实时汇率</td>\n          <td>2100</td>\n          <td>7</td>\n          <td>(7.00) + (0.00)</td>\n          <td>USD</td>\n          <td>已审核</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
 
 /***/ }
 /******/ ]);
