@@ -2,6 +2,7 @@
   <div class="customer app-warp">
     <Card style="width:100%">
       <p slot="title">客户管理</p>
+      
       <!-- 操作按钮 -->
       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="plus">新建</Button>
       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">编辑</Button>

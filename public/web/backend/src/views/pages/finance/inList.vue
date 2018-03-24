@@ -1,5 +1,5 @@
 <template>
-  <div class="customer app-warp">
+  <div class="app-warp">
     <Card style="width:100%">
       <!-- 标题 -->
       <p slot="title">入金纪录</p>

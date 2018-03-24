@@ -69,11 +69,11 @@ export default {
 					icon: 'ios-person',
 					submenuName: 'MT4',
 					items: [
-						{show : '基本参数设置',name : '/MT4_basic_init'},
-						{show : '初始化',name : '/MT4_init'},
-						{show : '组管理',name : '/MT4_group'},
-						{show : '符号管理',name : '/MT4_symbol'},
-						{show : '用户组分布',name : '/MT4_groups_map'},
+						{show : '基本参数设置',name : '/mt4_basic_param'},
+						{show : '初始化',name : '/mt4_init'},
+						{show : '组管理',name : '/mt4_group'},
+						{show : '符号管理',name : '/mt4_symbol'},
+						{show : '用户组分布',name : '/mt4_groups_map'},
 					]
 				},
 				{

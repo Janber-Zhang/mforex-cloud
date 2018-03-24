@@ -14738,11 +14738,31 @@
 
 	var _inList2 = _interopRequireDefault(_inList);
 
+	var _manager = __webpack_require__(101);
+
+	var _manager2 = _interopRequireDefault(_manager);
+
+	var _role = __webpack_require__(104);
+
+	var _role2 = _interopRequireDefault(_role);
+
+	var _basicParam = __webpack_require__(107);
+
+	var _basicParam2 = _interopRequireDefault(_basicParam);
+
+	var _init = __webpack_require__(110);
+
+	var _init2 = _interopRequireDefault(_init);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// 入金支付记录
+	// MT4设置-初始化
 
-	// 客户管理
+	// 系统管理-角色管理
+
+	// 财务管理-入金支付记录
+
+	// 客户管理-客户管理
 
 	// 基本设置—支付设置
 	// 基本设置-代理设置
@@ -14762,8 +14782,14 @@
 		basic_logo: _logo2.default,
 		customer: _index4.default,
 		finance_out_appr: _outAppr2.default,
-		finance_in_list: _inList2.default
-	}; // 出金审核
+		finance_in_list: _inList2.default,
+		system_manager: _manager2.default,
+		system_role: _role2.default,
+		mt4_basic_param: _basicParam2.default,
+		mt4_init: _init2.default
+	}; // MT4设置-基本参数设置
+	// 系统管理-管理员管理
+	// 财务管理-出金审核
 	// 基本设置-logo设置
 
 	// 基本设置-交易设置
@@ -15669,7 +15695,7 @@
 					submenu: 'MT4设置',
 					icon: 'ios-person',
 					submenuName: 'MT4',
-					items: [{ show: '基本参数设置', name: '/MT4_basic_init' }, { show: '初始化', name: '/MT4_init' }, { show: '组管理', name: '/MT4_group' }, { show: '符号管理', name: '/MT4_symbol' }, { show: '用户组分布', name: '/MT4_groups_map' }]
+					items: [{ show: '基本参数设置', name: '/mt4_basic_param' }, { show: '初始化', name: '/mt4_init' }, { show: '组管理', name: '/mt4_group' }, { show: '符号管理', name: '/mt4_symbol' }, { show: '用户组分布', name: '/mt4_groups_map' }]
 				}, {
 					submenu: '统计',
 					icon: 'ios-person',
@@ -17121,6 +17147,7 @@
 	//   <div class="customer app-warp">
 	//     <Card style="width:100%">
 	//       <p slot="title">客户管理</p>
+	//
 	//       <!-- 操作按钮 -->
 	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="plus">新建</Button>
 	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">编辑</Button>
@@ -17266,7 +17293,7 @@
 /* 89 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">客户管理</p>\n    <!-- 操作按钮 -->\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\">新建</Button>\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">编辑</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">启用</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\" :disabled=\"disabled\">停用</Button>\n    <Button type=\"warning\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"network\" :disabled=\"disabled\">查看代理树</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"key\" :disabled=\"disabled\">修改密码</Button>\n    <Button size=\"small\" slot=\"extra\" icon=\"forward\" :disabled=\"disabled\">转到会员中心</Button>\n    \n    <!-- 筛选器 -->\n    <div class=\"filter-bar\">\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">姓名</span>\n        <Input v-model=\"filter_obj.name\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">MT4账号</span>\n        <Input v-model=\"filter_obj.mt4_account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">邮箱</span>\n        <Input v-model=\"filter_obj.email\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">电话</span>\n        <Input v-model=\"filter_obj.phone\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">组</span>\n        <Input v-model=\"filter_obj.group\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">注册时间</span>\n        <date-picker type=\"daterange\" confirm placement=\"bottom-start\" placeholder=\"请选择日期范围\" :value=\"filter_obj.created_range\" style=\"width: 200px\"></date-picker>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">代理账号</span>\n        <Input v-model=\"filter_obj.proxy_account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-handle\" flex=\"main:left cross:center\">\n        <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n        <i-button @click=\"clearFilter()\">清除</i-button>\n      </div>\n    </div>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"150\">MT4账号</th>\n          <th width=\"200\">姓名</th>\n          <th width=\"100\">组</th>\n          <th width=\"300\">邮箱</th>\n          <th width=\"200\">电话</th>\n          <th width=\"100\">杠杆</th>\n          <th width=\"200\">上级代理帐号</th>\n          <th width=\"100\">代理等级</th>\n          <th width=\"300\">注册时间</th>\n          <th width=\"100\">是否验证</th>\n          <th width=\"100\">余额</th>\n          <th width=\"100\">盈亏值</th>\n          <th width=\"100\">启用状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>wanger</td>\n          <td>王二</td>\n          <td>USD1</td>\n          <td>janber@gmail.com</td>\n          <td>18200115617</td>\n          <td>100</td>\n          <td>zhangsan</td>\n          <td>2</td>\n          <td>2018-02-12 18:00</td>\n          <td>已验证</td>\n          <td>200000</td>\n          <td>-1222</td>\n          <td>启用</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">客户管理</p>\n    \n    <!-- 操作按钮 -->\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\">新建</Button>\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">编辑</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">启用</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\" :disabled=\"disabled\">停用</Button>\n    <Button type=\"warning\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"network\" :disabled=\"disabled\">查看代理树</Button>\n    <Button style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"key\" :disabled=\"disabled\">修改密码</Button>\n    <Button size=\"small\" slot=\"extra\" icon=\"forward\" :disabled=\"disabled\">转到会员中心</Button>\n    \n    <!-- 筛选器 -->\n    <div class=\"filter-bar\">\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">姓名</span>\n        <Input v-model=\"filter_obj.name\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">MT4账号</span>\n        <Input v-model=\"filter_obj.mt4_account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">邮箱</span>\n        <Input v-model=\"filter_obj.email\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">电话</span>\n        <Input v-model=\"filter_obj.phone\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">组</span>\n        <Input v-model=\"filter_obj.group\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">注册时间</span>\n        <date-picker type=\"daterange\" confirm placement=\"bottom-start\" placeholder=\"请选择日期范围\" :value=\"filter_obj.created_range\" style=\"width: 200px\"></date-picker>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">代理账号</span>\n        <Input v-model=\"filter_obj.proxy_account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-handle\" flex=\"main:left cross:center\">\n        <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n        <i-button @click=\"clearFilter()\">清除</i-button>\n      </div>\n    </div>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"150\">MT4账号</th>\n          <th width=\"200\">姓名</th>\n          <th width=\"100\">组</th>\n          <th width=\"300\">邮箱</th>\n          <th width=\"200\">电话</th>\n          <th width=\"100\">杠杆</th>\n          <th width=\"200\">上级代理帐号</th>\n          <th width=\"100\">代理等级</th>\n          <th width=\"300\">注册时间</th>\n          <th width=\"100\">是否验证</th>\n          <th width=\"100\">余额</th>\n          <th width=\"100\">盈亏值</th>\n          <th width=\"100\">启用状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>wanger</td>\n          <td>王二</td>\n          <td>USD1</td>\n          <td>janber@gmail.com</td>\n          <td>18200115617</td>\n          <td>100</td>\n          <td>zhangsan</td>\n          <td>2</td>\n          <td>2018-02-12 18:00</td>\n          <td>已验证</td>\n          <td>200000</td>\n          <td>-1222</td>\n          <td>启用</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
 
 /***/ },
 /* 90 */
@@ -17311,7 +17338,7 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="customer app-warp">
+	//   <div class="app-warp">
 	//     <Card style="width:100%">
 	//       <p slot="title">出金审核</p>
 	//       <!-- 操作按钮 -->
@@ -17430,7 +17457,7 @@
 /* 92 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">出金审核</p>\n    <!-- 操作按钮 -->\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">审核</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">设置为已转账</Button>\n    \n     <!-- 筛选器 -->\n    <div class=\"filter-bar\">\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">状态</span>\n        <Select v-model=\"filter_obj.status\" style=\"width:200px\">\n          <Option value=\"-1\">全部</Option>\n          <Option value=\"0\">申请中</Option>\n          <Option value=\"1\">已驳回</Option>\n          <Option value=\"2\">已审核</Option>\n          <Option value=\"3\">已转账</Option>\n      </Select>\n      </div>\n      <div class=\"filter-handle\" flex=\"main:left cross:center\">\n        <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n        <i-button @click=\"clearFilter()\">清除</i-button>\n      </div>\n    </div>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">客户名称</th>\n          <th width=\"200\">申请出金数量</th>\n          <th width=\"300\">申请时间</th>\n          <th width=\"100\">审核意见</th>\n          <th width=\"300\">扣款方式</th>\n          <th width=\"200\">汇率模式</th>\n          <th width=\"200\">汇率转换后金额</th>\n          <th width=\"100\">汇率</th>\n          <th width=\"200\">汇率计算公式</th>\n          <th width=\"100\">币种</th>\n          <th width=\"100\">状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>319</td>\n          <td>40353082</td>\n          <td>莫秀娟--高级</td>\n          <td>300</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>ok</td>\n          <td>管理员审核后mt4扣款</td>\n          <td>非实时汇率</td>\n          <td>2100</td>\n          <td>7</td>\n          <td>(7.00) + (0.00)</td>\n          <td>USD</td>\n          <td>已审核</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"app-warp\">\n  <Card style=\"width:100%\">\n    <p slot=\"title\">出金审核</p>\n    <!-- 操作按钮 -->\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"information\" :disabled=\"disabled\">查看明细</Button>\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">审核</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">设置为已转账</Button>\n    \n     <!-- 筛选器 -->\n    <div class=\"filter-bar\">\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">状态</span>\n        <Select v-model=\"filter_obj.status\" style=\"width:200px\">\n          <Option value=\"-1\">全部</Option>\n          <Option value=\"0\">申请中</Option>\n          <Option value=\"1\">已驳回</Option>\n          <Option value=\"2\">已审核</Option>\n          <Option value=\"3\">已转账</Option>\n      </Select>\n      </div>\n      <div class=\"filter-handle\" flex=\"main:left cross:center\">\n        <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n        <i-button @click=\"clearFilter()\">清除</i-button>\n      </div>\n    </div>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">客户名称</th>\n          <th width=\"200\">申请出金数量</th>\n          <th width=\"300\">申请时间</th>\n          <th width=\"100\">审核意见</th>\n          <th width=\"300\">扣款方式</th>\n          <th width=\"200\">汇率模式</th>\n          <th width=\"200\">汇率转换后金额</th>\n          <th width=\"100\">汇率</th>\n          <th width=\"200\">汇率计算公式</th>\n          <th width=\"100\">币种</th>\n          <th width=\"100\">状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectUser(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>319</td>\n          <td>40353082</td>\n          <td>莫秀娟--高级</td>\n          <td>300</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>ok</td>\n          <td>管理员审核后mt4扣款</td>\n          <td>非实时汇率</td>\n          <td>2100</td>\n          <td>7</td>\n          <td>(7.00) + (0.00)</td>\n          <td>USD</td>\n          <td>已审核</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
 
 /***/ },
 /* 93 */
@@ -17475,7 +17502,7 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="customer app-warp">
+	//   <div class="app-warp">
 	//     <Card style="width:100%">
 	//       <!-- 标题 -->
 	//       <p slot="title">入金纪录</p>
@@ -17603,7 +17630,7 @@
 /* 95 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"customer app-warp\">\n  <Card style=\"width:100%\">\n    <!-- 标题 -->\n    <p slot=\"title\">入金纪录</p>\n\n    <!-- 筛选器 -->\n    <div class=\"filter-bar\">\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">账号</span>\n        <Input v-model=\"filter_obj.account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">代理账号</span>\n        <Input v-model=\"filter_obj.proxy_account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">组名</span>\n        <Input v-model=\"filter_obj.group_name\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">订单号</span>\n        <Input v-model=\"filter_obj.order_id\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">支付时间</span>\n        <date-picker type=\"daterange\" confirm placement=\"bottom-start\" placeholder=\"请选择日期范围\" :value=\"filter_obj.created_range\" style=\"width: 200px\"></date-picker>\n      </div>\n      <div class=\"filter-handle\" flex=\"main:left cross:center\">\n        <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n        <i-button @click=\"clearFilter()\">清除</i-button>\n      </div>\n    </div>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"300\">订单号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">姓名</th>\n          <th width=\"100\">组名</th>\n          <th width=\"100\">入金数量</th>\n          <th width=\"100\">转账金额</th>\n          <th width=\"100\">币种</th>\n          <th width=\"300\">创建时间</th>\n          <th width=\"100\">支付状态</th>\n          <th width=\"300\">完成时间</th>\n          <th width=\"100\">入金状态</th>\n          <th width=\"300\">入金时间</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 30\" :key=\"i\" @click=\"selectOrder(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>dingpaybank2017090400000001</td>\n          <td>40331504</td>\n          <td>技术测试 勿删</td>\n          <td>IB206</td>\n          <td>100</td>\n          <td>700</td>\n          <td>USD</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>已支付</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>已入金</td>\n          <td>2018/3/6 10:51:55</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"app-warp\">\n  <Card style=\"width:100%\">\n    <!-- 标题 -->\n    <p slot=\"title\">入金纪录</p>\n\n    <!-- 筛选器 -->\n    <div class=\"filter-bar\">\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">账号</span>\n        <Input v-model=\"filter_obj.account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">代理账号</span>\n        <Input v-model=\"filter_obj.proxy_account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">组名</span>\n        <Input v-model=\"filter_obj.group_name\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">订单号</span>\n        <Input v-model=\"filter_obj.order_id\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">支付时间</span>\n        <date-picker type=\"daterange\" confirm placement=\"bottom-start\" placeholder=\"请选择日期范围\" :value=\"filter_obj.created_range\" style=\"width: 200px\"></date-picker>\n      </div>\n      <div class=\"filter-handle\" flex=\"main:left cross:center\">\n        <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n        <i-button @click=\"clearFilter()\">清除</i-button>\n      </div>\n    </div>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"300\">订单号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">姓名</th>\n          <th width=\"100\">组名</th>\n          <th width=\"100\">入金数量</th>\n          <th width=\"100\">转账金额</th>\n          <th width=\"100\">币种</th>\n          <th width=\"300\">创建时间</th>\n          <th width=\"100\">支付状态</th>\n          <th width=\"300\">完成时间</th>\n          <th width=\"100\">入金状态</th>\n          <th width=\"300\">入金时间</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 30\" :key=\"i\" @click=\"selectOrder(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>dingpaybank2017090400000001</td>\n          <td>40331504</td>\n          <td>技术测试 勿删</td>\n          <td>IB206</td>\n          <td>100</td>\n          <td>700</td>\n          <td>USD</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>已支付</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>已入金</td>\n          <td>2018/3/6 10:51:55</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
 
 /***/ },
 /* 96 */
@@ -51899,6 +51926,505 @@
 	/***/ })
 	/******/ ]);
 	});
+
+/***/ },
+/* 101 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(102)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/system/manager.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(103)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-ff9e4318/manager.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 102 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="app-warp">
+	//     <Card style="width:100%">
+	//       <!-- 标题 -->
+	//       <p slot="title">管理员设置</p>
+	//
+	//       <!-- 操作按钮 -->
+	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="plus">新建</Button>
+	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">编辑</Button>
+	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">分配组权限</Button>
+	//       <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">删除</Button>
+	//
+	//       <!-- 列表 -->
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="100">编号</th>
+	//             <th width="300">登录名</th>
+	//             <th width="200">角色</th>
+	//             <th width="200">添加时间</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="i in 10" :key="i" @click="selectOrder(i)" v-bind:class="{'active': selected_key==i}">
+	//             <td>{{i}}</td>
+	//             <td>{{'测试-00'+ i}}</td>
+	//             <td>{{'技术测试 勿删'}}</td>
+	//             <td>2017/9/2 21:07:08</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.initFilterObj();
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      readonly: true,
+	      selected_key: '',
+	      filter_obj: null //筛选参数
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    },
+	    selectOrder: function selectOrder(key) {
+	      if (this.selected_key === key) {
+	        this.selected_key = '';
+	      } else {
+	        this.selected_key = key;
+	      }
+	    },
+	    clearFilter: function clearFilter() {
+	      this.initFilterObj();
+	    },
+	    initFilterObj: function initFilterObj() {
+	      this.filter_obj = {
+	        account: '',
+	        proxy_account: '',
+	        g_name: '',
+	        order_id: '',
+	        created_range: []
+	      };
+	    },
+	    search: function search() {
+	      this.$Message.error('暂未开放此功能');
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    disabled: function disabled() {
+	      return this.selected_key === '';
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 103 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"app-warp\">\n  <Card style=\"width:100%\">\n    <!-- 标题 -->\n    <p slot=\"title\">管理员设置</p>\n\n    <!-- 操作按钮 -->\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\">新建</Button>\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">编辑</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">分配组权限</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\" :disabled=\"disabled\">删除</Button>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">编号</th>\n          <th width=\"300\">登录名</th>\n          <th width=\"200\">角色</th>\n          <th width=\"200\">添加时间</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectOrder(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>{{i}}</td>\n          <td>{{'测试-00'+ i}}</td>\n          <td>{{'技术测试 勿删'}}</td>\n          <td>2017/9/2 21:07:08</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+
+/***/ },
+/* 104 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(105)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/system/role.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(106)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-4dc23882/role.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 105 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="app-warp">
+	//     <Card style="width:100%">
+	//       <!-- 标题 -->
+	//       <p slot="title">角色管理</p>
+	//
+	//       <!-- 操作按钮 -->
+	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="plus">新建</Button>
+	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">编辑</Button>
+	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">设置权限</Button>
+	//       <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">删除</Button>
+	//
+	//       <!-- 列表 -->
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="100">角色编码</th>
+	//             <th width="300">角色名称</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="i in 10" :key="i" @click="selectOrder(i)" v-bind:class="{'active': selected_key==i}">
+	//             <td>{{i}}</td>
+	//             <td>{{'测试-00'+ i}}</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.initFilterObj();
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      readonly: true,
+	      selected_key: '',
+	      filter_obj: null //筛选参数
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    },
+	    selectOrder: function selectOrder(key) {
+	      if (this.selected_key === key) {
+	        this.selected_key = '';
+	      } else {
+	        this.selected_key = key;
+	      }
+	    },
+	    clearFilter: function clearFilter() {
+	      this.initFilterObj();
+	    },
+	    initFilterObj: function initFilterObj() {
+	      this.filter_obj = {
+	        account: '',
+	        proxy_account: '',
+	        g_name: '',
+	        order_id: '',
+	        created_range: []
+	      };
+	    },
+	    search: function search() {
+	      this.$Message.error('暂未开放此功能');
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    disabled: function disabled() {
+	      return this.selected_key === '';
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 106 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"app-warp\">\n  <Card style=\"width:100%\">\n    <!-- 标题 -->\n    <p slot=\"title\">角色管理</p>\n\n    <!-- 操作按钮 -->\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\">新建</Button>\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">编辑</Button>\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">设置权限</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\" :disabled=\"disabled\">删除</Button>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"100\">角色编码</th>\n          <th width=\"300\">角色名称</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectOrder(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>{{i}}</td>\n          <td>{{'测试-00'+ i}}</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+
+/***/ },
+/* 107 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(108)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/mt4/basicParam.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(109)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-41a30988/basicParam.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 108 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="mt4_basic-param app-warp">
+	//     <Card style="width:600px">
+	//       <p slot="title">基本参数设置</p>
+	//       <a href="#" slot="extra" v-if="readonly" @click.prevent="switchModel(false)">
+	//         <Icon type="edit"></Icon>
+	//         编辑
+	//       </a>
+	//       <a href="#" slot="extra" v-if="!readonly" @click.prevent="switchModel(true)">
+	//         <Icon type="edit"></Icon>
+	//         取消
+	//       </a>
+	//       <Form :model="data" label-position="left" :label-width="120">
+	//         <form-item label="mt4账户ID范围开始">
+	//             <Input :disabled="readonly" v-model="data.smtp_addr" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="mt4账户ID范围结束">
+	//             <Input :disabled="readonly" v-model="data.email_addr" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="mt4账户默认组">
+	//             <Input :disabled="readonly" v-model="data.email_user" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="mt4账户默认杠杆">
+	//             <Input :disabled="readonly" v-model="data.email_pwd" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="mt4管理员帐号">
+	//             <Input :disabled="readonly" v-model="data.manager_email" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="mt4管理员密码">
+	//             <Input :disabled="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="mt4服务器地址">
+	//             <Input :disabled="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="demo mt4账户ID范围开始">
+	//             <Input :disabled="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="demo mt4账户ID范围结束">
+	//             <Input :disabled="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="demo mt4账户默认组">
+	//             <Input :disabled="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="mt4登录地址">
+	//             <Input :disabled="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="模拟账户资金">
+	//             <Input :disabled="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="是否已初始化">
+	//             <Input :disabled="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="开放demo账户注册">
+	//             <Input :disabled="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="最低入金数量">
+	//             <Input :disabled="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item label="入金需要先审核">
+	//             <Input :disabled="readonly" v-model="data.smtp_port" placeholder="Enter something..."></Input>
+	//         </form-item>
+	//         <form-item v-if="!readonly">
+	//             <Button type="primary">提交</Button>
+	//             <Button type="ghost" @click="switchModel(true)" style="margin-left: 8px">取消</Button>
+	//         </form-item>
+	//       </Form>
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      data: {
+	        smtp_addr: 'smtp.exmail.qq.com',
+	        email_addr: 'info@andaobo.com',
+	        email_user: 'info@andaobo.com',
+	        email_pwd: 'A123456a',
+	        manager_email: 'info@andaobo.com',
+	        smtp_port: '25'
+	      },
+	      readonly: true
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 109 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"mt4_basic-param app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">基本参数设置</p>\n    <a href=\"#\" slot=\"extra\" v-if=\"readonly\" @click.prevent=\"switchModel(false)\">\n      <Icon type=\"edit\"></Icon>\n      编辑\n    </a>\n    <a href=\"#\" slot=\"extra\" v-if=\"!readonly\" @click.prevent=\"switchModel(true)\">\n      <Icon type=\"edit\"></Icon>\n      取消\n    </a>\n    <Form :model=\"data\" label-position=\"left\" :label-width=\"120\">\n      <form-item label=\"mt4账户ID范围开始\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"mt4账户ID范围结束\">\n          <Input :disabled=\"readonly\" v-model=\"data.email_addr\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"mt4账户默认组\">\n          <Input :disabled=\"readonly\" v-model=\"data.email_user\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"mt4账户默认杠杆\">\n          <Input :disabled=\"readonly\" v-model=\"data.email_pwd\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"mt4管理员帐号\">\n          <Input :disabled=\"readonly\" v-model=\"data.manager_email\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"mt4管理员密码\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"mt4服务器地址\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"demo mt4账户ID范围开始\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"demo mt4账户ID范围结束\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"demo mt4账户默认组\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"mt4登录地址\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"模拟账户资金\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"是否已初始化\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"开放demo账户注册\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"最低入金数量\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item label=\"入金需要先审核\">\n          <Input :disabled=\"readonly\" v-model=\"data.smtp_port\" placeholder=\"Enter something...\"></Input>\n      </form-item>\n      <form-item v-if=\"!readonly\">\n          <Button type=\"primary\">提交</Button>\n          <Button type=\"ghost\" @click=\"switchModel(true)\" style=\"margin-left: 8px\">取消</Button>\n      </form-item>\n    </Form>\n  </Card>\n</div>\n";
+
+/***/ },
+/* 110 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(111)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/mt4/init.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(112)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-c999344e/init.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 111 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="mt4_init app-warp">
+	//     <Card style="width:600px">
+	//       <p slot="title">初始化</p>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {},
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      data: {
+	        smtp_addr: 'smtp.exmail.qq.com',
+	        email_addr: 'info@andaobo.com',
+	        email_user: 'info@andaobo.com',
+	        email_pwd: 'A123456a',
+	        manager_email: 'info@andaobo.com',
+	        smtp_port: '25'
+	      },
+	      readonly: true
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    }
+	  },
+	  components: {},
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 112 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"mt4_init app-warp\">\n  <Card style=\"width:600px\">\n    <p slot=\"title\">初始化</p>\n    \n  </Card>\n</div>\n";
 
 /***/ }
 /******/ ]);

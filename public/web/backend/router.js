@@ -15,10 +15,16 @@ import basic_trade           from './src/views/pages/basic/trade.vue'           
 import basic_payment         from './src/views/pages/basic/payment.vue'             // 基本设置—支付设置
 import basic_logo            from './src/views/pages/basic/logo.vue'                // 基本设置-logo设置
 
-import customer              from './src/views/pages/customer/index.vue'            // 客户管理
+import customer              from './src/views/pages/customer/index.vue'            // 客户管理-客户管理
 
-import finance_out_appr      from './src/views/pages/finance/outAppr.vue'           // 出金审核
-import finance_in_list       from './src/views/pages/finance/inList.vue'            // 入金支付记录
+import finance_out_appr      from './src/views/pages/finance/outAppr.vue'           // 财务管理-出金审核
+import finance_in_list       from './src/views/pages/finance/inList.vue'            // 财务管理-入金支付记录
+
+import system_manager        from './src/views/pages/system/manager.vue'            // 系统管理-管理员管理
+import system_role           from './src/views/pages/system/role.vue'               // 系统管理-角色管理
+
+import mt4_basic_param       from './src/views/pages/mt4/basicParam.vue'            // MT4设置-基本参数设置
+import mt4_init              from './src/views/pages/mt4/init.vue'                  // MT4设置-初始化
 
 const routes_map = {
 	basic_system,
@@ -32,7 +38,11 @@ const routes_map = {
 	basic_logo,
 	customer,
 	finance_out_appr,
-	finance_in_list
+	finance_in_list,
+	system_manager,
+	system_role,
+	mt4_basic_param,
+	mt4_init
 }
 
 const routes = [

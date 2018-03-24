@@ -1,5 +1,5 @@
 <template>
-  <div class="customer app-warp">
+  <div class="app-warp">
     <Card style="width:100%">
       <p slot="title">出金审核</p>
       <!-- 操作按钮 -->
