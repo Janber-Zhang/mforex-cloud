@@ -14792,16 +14792,16 @@
 		basic_trade: _trade2.default,
 		basic_payment: _payment2.default,
 		basic_logo: _logo2.default,
-		customer: _index4.default,
-		finance_out_appr: _outAppr2.default,
-		finance_in_list: _inList2.default,
-		system_manager: _manager2.default,
-		system_role: _role2.default,
-		mt4_basic_param: _basicParam2.default,
-		mt4_init: _init2.default,
-		mt4_group: _group2.default,
-		mt4_symbol: _symbol2.default,
-		mt4_groups_map: _groupsMap2.default
+		customer: _index4.default
+		// finance_out_appr,
+		// finance_in_list,
+		// system_manager,
+		// system_role,
+		// mt4_basic_param,
+		// mt4_init,
+		// mt4_group,
+		// mt4_symbol,
+		// mt4_groups_map
 	}; // MT4设置-符号管理
 	// MT4设置-初始化
 	// 系统管理-角色管理
