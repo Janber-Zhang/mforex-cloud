@@ -114,6 +114,17 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
     background-color: #dedede;  /*滚动条的背景颜色*/
 }
+
+
+/* 
+ *
+ * iview style imporve
+ *
+ *
+ */
+ .ivu-modal-confirm-body-icon .ivu-icon {
+  font-size: 36px !important;
+ }
 .margin-top-8{
     margin-top: 8px;
 }
@@ -780,6 +791,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
  * @auther Janber
  * @created 18-03-23
  */
+  /*
+ * @name mt4设置-初始化
+ * @auther Janber
+ * @created 18-03-25
+ */
 }
 #app.backend .backend-main {
   background: #eaedf1;
@@ -1033,4 +1049,12 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
 #app.backend .basic_proxy-edit-body tr th,
 #app.backend .basic_proxy-edit-body tr td {
   text-align: center;
+}
+#app.backend .mt4_init-title {
+  color: #ff9900;
+}
+#app.backend .mt4_init-content {
+  color: #495060;
+  line-height: 20px;
+  margin: 10px 5px;
 }
