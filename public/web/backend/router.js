@@ -25,6 +25,9 @@ import system_role           from './src/views/pages/system/role.vue'           
 
 import mt4_basic_param       from './src/views/pages/mt4/basicParam.vue'            // MT4设置-基本参数设置
 import mt4_init              from './src/views/pages/mt4/init.vue'                  // MT4设置-初始化
+import mt4_group             from './src/views/pages/mt4/group.vue'                 // MT4设置-组管理
+import mt4_symbol            from './src/views/pages/mt4/symbol.vue'                // MT4设置-符号管理
+import mt4_groups_map        from './src/views/pages/mt4/groupsMap.vue'             // MT4设置-用户组分布
 
 const routes_map = {
 	basic_system,
@@ -42,7 +45,10 @@ const routes_map = {
 	system_manager,
 	system_role,
 	mt4_basic_param,
-	mt4_init
+	mt4_init,
+	mt4_group,
+	mt4_symbol,
+	mt4_groups_map
 }
 
 const routes = [

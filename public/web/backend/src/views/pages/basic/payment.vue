@@ -1,7 +1,13 @@
 <template>
   <div class="basic_payment app-warp">
     <Card style="100%;">
+      <!-- 标题 -->
       <p slot="title">支付设置</p>
+      
+      <!-- 操作按钮 -->
+      <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">编辑</Button>
+
+      <!-- 列表 -->
       <table class="list-table">
         <thead>
           <tr>
@@ -14,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in data_list" :key="item.code">
+          <tr v-for="(item, index) in data_list" :key="item.code" @click="selectItem(item.code)" v-bind:class="{'active': selected_key==item.code}">
             <td>{{item.id}}</td>
             <td>{{item.code}}</td>
             <td>{{item.name}}</td>
@@ -64,19 +70,25 @@ export default {
           plugin: '/payment/alipay/payment.aspx'
         }
       ],
-      readonly: true
+      selected_key: ''
     }
   },
   methods:{
-    switchModel(type){
-      this.readonly = type;
-    }
+    selectItem(key){
+      if (this.selected_key === key) {
+        this.selected_key = '';
+      } else {
+        this.selected_key = key;
+      }
+    },
   },
   components:{
 
   },
   computed:{
-
+    disabled: function(){
+      return this.selected_key === ''
+    }
   }
 }
 </script>

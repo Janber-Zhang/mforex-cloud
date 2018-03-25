@@ -69,7 +69,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="i in 10" :key="i" @click="selectUser(i)" v-bind:class="{'active': selected_key==i}">
+          <tr v-for="i in 10" :key="i" @click="selectItem(i)" v-bind:class="{'active': selected_key==i}">
             <td>wanger</td>
             <td>王二</td>
             <td>USD1</td>
@@ -110,7 +110,7 @@ export default {
     switchModel(type){
       this.readonly = type;
     },
-    selectUser(key){
+    selectItem(key){
       if (this.selected_key === key) {
         this.selected_key = '';
       } else {

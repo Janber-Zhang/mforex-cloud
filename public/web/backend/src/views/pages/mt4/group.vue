@@ -2,30 +2,25 @@
   <div class="app-warp">
     <Card style="width:100%">
       <!-- 标题 -->
-      <p slot="title">管理员设置</p>
+      <p slot="title">组管理</p>
 
       <!-- 操作按钮 -->
-      <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="plus">新建</Button>
-      <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">编辑</Button>
-      <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">分配组权限</Button>
-      <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">删除</Button>
+      <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="loop">同步组</Button>
+      <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">启用</Button>
+      <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">停用</Button>
 
       <!-- 列表 -->
       <table class="list-table">
         <thead>
           <tr>
-            <th width="100">编号</th>
-            <th width="300">登录名</th>
-            <th width="200">角色</th>
-            <th width="200">添加时间</th>
+            <th width="300">组名称</th>
+            <th width="300">状态</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="i in 10" :key="i" @click="selectItem(i)" v-bind:class="{'active': selected_key==i}">
-            <td>{{i}}</td>
-            <td>{{'测试-00'+ i}}</td>
-            <td>{{'技术测试 勿删'}}</td>
-            <td>2017/9/2 21:07:08</td>
+            <td>{{'测试组-00'+ i}}</td>
+            <td>{{'启用'}}</td>
           </tr>
         </tbody>
       </table>

@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="i in 10" :key="i" @click="selectOrder(i)" v-bind:class="{'active': selected_key==i}">
+          <tr v-for="i in 10" :key="i" @click="selectItem(i)" v-bind:class="{'active': selected_key==i}">
             <td>{{i}}</td>
             <td>{{'测试-00'+ i}}</td>
           </tr>
@@ -49,7 +49,7 @@ export default {
     switchModel(type){
       this.readonly = type;
     },
-    selectOrder(key){
+    selectItem(key){
       if (this.selected_key === key) {
         this.selected_key = '';
       } else {
