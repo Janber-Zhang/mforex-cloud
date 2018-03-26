@@ -6,8 +6,10 @@
 
       <!-- 操作按钮 -->
       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="loop">同步符号</Button>
-      <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">启用</Button>
-      <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">停用</Button>
+      <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="plus">新建</Button>
+      <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">编辑</Button>
+      <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">启用返佣</Button>
+      <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">停用返佣</Button>
 
       <!-- 列表 -->
       <table class="list-table">

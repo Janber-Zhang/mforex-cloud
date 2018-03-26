@@ -14766,43 +14766,15 @@
 
 	var _groupsMap2 = _interopRequireDefault(_groupsMap);
 
+	var _trade3 = __webpack_require__(122);
+
+	var _trade4 = _interopRequireDefault(_trade3);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// MT4设置-用户组分布
+	// 统计-交易统计
 
-	// MT4设置-组管理
-	// MT4设置-基本参数设置
-	// 系统管理-管理员管理
-	// 财务管理-出金审核
-	// 基本设置-logo设置
-
-	// 基本设置-交易设置
-	// 基本设置-短信设置
-	// 基本设置-邮件模版
-	// 基本设置-系统设置
-	// 未开放模块
-
-	var routes_map = {
-		basic_system: _system2.default,
-		basic_email: _email2.default,
-		basic_email_template: _email_template2.default,
-		basic_proxy_level: _proxy_level2.default,
-		basic_msg: _msg2.default,
-		basic_proxy: _proxy2.default,
-		basic_trade: _trade2.default,
-		basic_payment: _payment2.default,
-		basic_logo: _logo2.default,
-		customer: _index4.default
-		// finance_out_appr,
-		// finance_in_list,
-		// system_manager,
-		// system_role,
-		// mt4_basic_param,
-		// mt4_init,
-		// mt4_group,
-		// mt4_symbol,
-		// mt4_groups_map
-	}; // MT4设置-符号管理
+	// MT4设置-符号管理
 	// MT4设置-初始化
 	// 系统管理-角色管理
 
@@ -14815,6 +14787,41 @@
 	// 基本设置-代理等级名称设置
 	// 基本设置-邮件设置
 	// 主页
+
+	var routes_map = {
+		basic_system: _system2.default,
+		basic_email: _email2.default,
+		basic_email_template: _email_template2.default,
+		basic_proxy_level: _proxy_level2.default,
+		basic_msg: _msg2.default,
+		basic_proxy: _proxy2.default,
+		basic_trade: _trade2.default,
+		basic_payment: _payment2.default,
+		basic_logo: _logo2.default,
+		customer: _index4.default,
+		finance_out_appr: _outAppr2.default,
+		finance_in_list: _inList2.default,
+		system_manager: _manager2.default,
+		system_role: _role2.default,
+		mt4_basic_param: _basicParam2.default,
+		mt4_init: _init2.default,
+		mt4_group: _group2.default,
+		mt4_symbol: _symbol2.default,
+		mt4_groups_map: _groupsMap2.default,
+		statistics_trade: _trade4.default
+	}; // MT4设置-用户组分布
+
+	// MT4设置-组管理
+	// MT4设置-基本参数设置
+	// 系统管理-管理员管理
+	// 财务管理-出金审核
+	// 基本设置-logo设置
+
+	// 基本设置-交易设置
+	// 基本设置-短信设置
+	// 基本设置-邮件模版
+	// 基本设置-系统设置
+	// 未开放模块
 
 	var routes = [{
 		path: '/',
@@ -52653,8 +52660,10 @@
 	//
 	//       <!-- 操作按钮 -->
 	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="loop">同步符号</Button>
-	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">启用</Button>
-	//       <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">停用</Button>
+	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="plus">新建</Button>
+	//       <Button type="info" style="margin-right:10px" size="small" slot="extra" icon="edit" :disabled="disabled">编辑</Button>
+	//       <Button type="success" style="margin-right:10px" size="small" slot="extra" icon="checkmark" :disabled="disabled">启用返佣</Button>
+	//       <Button type="error" style="margin-right:10px" size="small" slot="extra" icon="close" :disabled="disabled">停用返佣</Button>
 	//
 	//       <!-- 列表 -->
 	//       <table class="list-table">
@@ -52738,7 +52747,7 @@
 /* 118 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"app-warp\">\n  <Card style=\"width:100%\">\n    <!-- 标题 -->\n    <p slot=\"title\">符号管理</p>\n\n    <!-- 操作按钮 -->\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"loop\">同步符号</Button>\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">启用</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\" :disabled=\"disabled\">停用</Button>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"300\">名称</th>\n          <th width=\"300\">每手佣金</th>\n          <th width=\"300\">状态</th>\n          <!-- <th width=\"300\">操作</th> -->\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectItem(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>{{'测试组-00'+ i}}</td>\n          <td>{{'100'}}</td>\n          <td>{{'已禁用返佣'}}</td>\n          <!-- <td>\n            <Button type=\"success\"  style=\"margin-right:10px\" size=\"small\" icon=\"checkmark\">启用</Button>\n            <Button type=\"error\" size=\"small\" icon=\"close\">禁用</Button>\n          </td> -->\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+	module.exports = "\n<div class=\"app-warp\">\n  <Card style=\"width:100%\">\n    <!-- 标题 -->\n    <p slot=\"title\">符号管理</p>\n\n    <!-- 操作按钮 -->\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"loop\">同步符号</Button>\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"plus\">新建</Button>\n    <Button type=\"info\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"edit\" :disabled=\"disabled\">编辑</Button>\n    <Button type=\"success\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"checkmark\" :disabled=\"disabled\">启用返佣</Button>\n    <Button type=\"error\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"close\" :disabled=\"disabled\">停用返佣</Button>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"300\">名称</th>\n          <th width=\"300\">每手佣金</th>\n          <th width=\"300\">状态</th>\n          <!-- <th width=\"300\">操作</th> -->\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectItem(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>{{'测试组-00'+ i}}</td>\n          <td>{{'100'}}</td>\n          <td>{{'已禁用返佣'}}</td>\n          <!-- <td>\n            <Button type=\"success\"  style=\"margin-right:10px\" size=\"small\" icon=\"checkmark\">启用</Button>\n            <Button type=\"error\" size=\"small\" icon=\"close\">禁用</Button>\n          </td> -->\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
 
 /***/ },
 /* 119 */
@@ -52867,6 +52876,170 @@
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"app-warp\">\n  <Card style=\"width:100%\">\n    <!-- 标题 -->\n    <p slot=\"title\">组分布</p>\n\n    <!-- 操作按钮 -->\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"loop\">刷新</Button>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"300\">名称</th>\n          <th width=\"200\">mt4内用户数量</th>\n          <th width=\"200\">平台用户数量</th>\n          <th width=\"200\">启用状态</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 10\" :key=\"i\" @click=\"selectItem(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>{{'测试组-00'+ i}}</td>\n          <td>{{'1212'}}</td>\n          <td>{{'100'}}</td>\n          <td>{{'启用'}}</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+
+/***/ },
+/* 122 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(123)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/statistics/trade.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(124)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-103c4adf/trade.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 123 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="app-warp">
+	//     <Card style="width:100%">
+	//       <!-- 标题 -->
+	//       <p slot="title">交易统计</p>
+	//
+	//       <!-- 筛选器 -->
+	//       <div class="filter-bar">
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">商品名</span>
+	//           <Input v-model="filter_obj.product_name" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//         </div>
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">MT4账号</span>
+	//           <Input v-model="filter_obj.mt4_account" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//         </div>
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">代理账号</span>
+	//           <Input v-model="filter_obj.proxy_account" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//         </div>
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">平仓时间</span>
+	//           <date-picker type="daterange" confirm placement="bottom-start" placeholder="请选择日期范围" :value="filter_obj.over_range" style="width: 200px"></date-picker>
+	//         </div>
+	//         <div class="filter-handle" flex="main:left cross:center">
+	//           <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+	//           <i-button @click="clearFilter()">清除</i-button>
+	//         </div>
+	//       </div>
+	//
+	//       <!-- 列表 -->
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="200">订单编号</th>
+	//             <th width="200">MT4账号</th>
+	//             <th width="150">商品</th>
+	//             <th width="100">数量</th>
+	//             <th width="100">命令</th>
+	//             <th width="100">开仓价格</th>
+	//             <th width="300">开仓时间</th>
+	//             <th width="100">平仓价格</th>
+	//             <th width="300">平仓时间</th>
+	//             <th width="200">盈亏</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="i in 30" :key="i" @click="selectItem(i)" v-bind:class="{'active': selected_key==i}">
+	//             <td>{{'2018032600'+i}}</td>
+	//             <td>40331504</td>
+	//             <td>NZDJPYbo</td>
+	//             <td>121</td>
+	//             <td>卖</td>
+	//             <td>82.80</td>
+	//             <td>2018/3/6 10:51:55</td>
+	//             <td>82.851</td>
+	//             <td>2018/3/6 10:51:55</td>
+	//             <td>-20</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.initFilterObj();
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      readonly: true,
+	      selected_key: '',
+	      filter_obj: null //筛选参数
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    },
+	    selectItem: function selectItem(key) {
+	      if (this.selected_key === key) {
+	        this.selected_key = '';
+	      } else {
+	        this.selected_key = key;
+	      }
+	    },
+	    clearFilter: function clearFilter() {
+	      this.initFilterObj();
+	    },
+	    initFilterObj: function initFilterObj() {
+	      this.filter_obj = {
+	        product_name: '',
+	        proxy_account: '',
+	        mt4_account: '',
+	        over_range: []
+	      };
+	    },
+	    search: function search() {
+	      this.$Message.error('暂未开放此功能');
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    disabled: function disabled() {
+	      return this.selected_key === '';
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 124 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"app-warp\">\n  <Card style=\"width:100%\">\n    <!-- 标题 -->\n    <p slot=\"title\">交易统计</p>\n\n    <!-- 筛选器 -->\n    <div class=\"filter-bar\">\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">商品名</span>\n        <Input v-model=\"filter_obj.product_name\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">MT4账号</span>\n        <Input v-model=\"filter_obj.mt4_account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">代理账号</span>\n        <Input v-model=\"filter_obj.proxy_account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">平仓时间</span>\n        <date-picker type=\"daterange\" confirm placement=\"bottom-start\" placeholder=\"请选择日期范围\" :value=\"filter_obj.over_range\" style=\"width: 200px\"></date-picker>\n      </div>\n      <div class=\"filter-handle\" flex=\"main:left cross:center\">\n        <i-button style=\"margin-right: 20px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n        <i-button @click=\"clearFilter()\">清除</i-button>\n      </div>\n    </div>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"200\">订单编号</th>\n          <th width=\"200\">MT4账号</th>\n          <th width=\"150\">商品</th>\n          <th width=\"100\">数量</th>\n          <th width=\"100\">命令</th>\n          <th width=\"100\">开仓价格</th>\n          <th width=\"300\">开仓时间</th>\n          <th width=\"100\">平仓价格</th>\n          <th width=\"300\">平仓时间</th>\n          <th width=\"200\">盈亏</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 30\" :key=\"i\" @click=\"selectItem(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>{{'2018032600'+i}}</td>\n          <td>40331504</td>\n          <td>NZDJPYbo</td>\n          <td>121</td>\n          <td>卖</td>\n          <td>82.80</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>82.851</td>\n          <td>2018/3/6 10:51:55</td>\n          <td>-20</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
 
 /***/ }
 /******/ ]);
