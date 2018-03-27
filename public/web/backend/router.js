@@ -30,6 +30,7 @@ import mt4_symbol            from './src/views/pages/mt4/symbol.vue'            
 import mt4_groups_map        from './src/views/pages/mt4/groupsMap.vue'             // MT4设置-用户组分布
 
 import statistics_trade      from './src/views/pages/statistics/trade.vue'          // 统计-交易统计
+import statistics_in_out     from './src/views/pages/statistics/inOut.vue'          // 统计-出入金统计
 
 const routes_map = {
 	basic_system,
@@ -42,16 +43,17 @@ const routes_map = {
 	basic_payment,
 	basic_logo,
 	customer,
-	// finance_out_appr,
-	// finance_in_list,
-	// system_manager,
-	// system_role,
-	// mt4_basic_param,
-	// mt4_init,
-	// mt4_group,
-	// mt4_symbol,
-	// mt4_groups_map,
-	// statistics_trade
+	finance_out_appr,
+	finance_in_list,
+	system_manager,
+	system_role,
+	mt4_basic_param,
+	mt4_init,
+	mt4_group,
+	mt4_symbol,
+	mt4_groups_map,
+	statistics_trade,
+	statistics_in_out
 }
 
 const routes = [

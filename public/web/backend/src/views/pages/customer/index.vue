@@ -44,7 +44,7 @@
           <Input v-model="filter_obj.proxy_account" style="width: 200px" placeholder="请输入查询关键字"></Input>
         </div>
         <div class="filter-handle" flex="main:left cross:center">
-          <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+          <i-button style="margin-right: 10px;" type="primary" @click="search()">查询</i-button>
           <i-button @click="clearFilter()">清除</i-button>
         </div>
       </div>

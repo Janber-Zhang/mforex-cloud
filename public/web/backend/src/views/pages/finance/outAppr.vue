@@ -17,10 +17,10 @@
             <Option value="1">已驳回</Option>
             <Option value="2">已审核</Option>
             <Option value="3">已转账</Option>
-        </Select>
+          </Select>
         </div>
         <div class="filter-handle" flex="main:left cross:center">
-          <i-button style="margin-right: 20px;" type="primary" @click="search()">查询</i-button>
+          <i-button style="margin-right: 10px;" type="primary" @click="search()">查询</i-button>
           <i-button @click="clearFilter()">清除</i-button>
         </div>
       </div>
