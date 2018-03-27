@@ -42,16 +42,16 @@ const routes_map = {
 	basic_payment,
 	basic_logo,
 	customer,
-	finance_out_appr,
-	finance_in_list,
-	system_manager,
-	system_role,
-	mt4_basic_param,
-	mt4_init,
-	mt4_group,
-	mt4_symbol,
-	mt4_groups_map,
-	statistics_trade
+	// finance_out_appr,
+	// finance_in_list,
+	// system_manager,
+	// system_role,
+	// mt4_basic_param,
+	// mt4_init,
+	// mt4_group,
+	// mt4_symbol,
+	// mt4_groups_map,
+	// statistics_trade
 }
 
 const routes = [
