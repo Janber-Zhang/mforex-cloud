@@ -31,6 +31,9 @@ import mt4_groups_map        from './src/views/pages/mt4/groupsMap.vue'         
 
 import statistics_trade      from './src/views/pages/statistics/trade.vue'          // 统计-交易统计
 import statistics_in_out     from './src/views/pages/statistics/inOut.vue'          // 统计-出入金统计
+import statistics_commission from './src/views/pages/statistics/commission.vue'     // 统计-佣金统计
+import statistics_profit     from './src/views/pages/statistics/profit.vue'         // 统计-用户持仓交易盈利统计
+import statistics_profit_all from './src/views/pages/statistics/profitAll.vue'      // 统计-用户历史交易盈利统计
 
 const routes_map = {
 	basic_system,
@@ -53,7 +56,10 @@ const routes_map = {
 	mt4_symbol,
 	mt4_groups_map,
 	statistics_trade,
-	statistics_in_out
+	statistics_in_out,
+	statistics_commission,
+	statistics_profit,
+	statistics_profit_all
 }
 
 const routes = [

@@ -15011,23 +15011,37 @@
 
 	var _inOut2 = _interopRequireDefault(_inOut);
 
+	var _commission = __webpack_require__(128);
+
+	var _commission2 = _interopRequireDefault(_commission);
+
+	var _profit = __webpack_require__(131);
+
+	var _profit2 = _interopRequireDefault(_profit);
+
+	var _profitAll = __webpack_require__(134);
+
+	var _profitAll2 = _interopRequireDefault(_profitAll);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// 统计-出入金统计
+	// 统计-用户历史交易盈利统计
 
-	// MT4设置-用户组分布
+	// 统计-佣金统计
+	// 统计-交易统计
+	// MT4设置-符号管理
+	// MT4设置-初始化
+	// 系统管理-角色管理
 
-	// MT4设置-组管理
-	// MT4设置-基本参数设置
-	// 系统管理-管理员管理
-	// 财务管理-出金审核
-	// 基本设置-logo设置
+	// 财务管理-入金支付记录
 
-	// 基本设置-交易设置
-	// 基本设置-短信设置
-	// 基本设置-邮件模版
-	// 基本设置-系统设置
-	// 未开放模块
+	// 客户管理-客户管理
+
+	// 基本设置—支付设置
+	// 基本设置-代理设置
+	// 基本设置-代理等级名称设置
+	// 基本设置-邮件设置
+	// 主页
 
 	var routes_map = {
 		basic_system: _system2.default,
@@ -15050,21 +15064,25 @@
 		mt4_symbol: _symbol2.default,
 		mt4_groups_map: _groupsMap2.default,
 		statistics_trade: _trade4.default,
-		statistics_in_out: _inOut2.default
-	}; // 统计-交易统计
-	// MT4设置-符号管理
-	// MT4设置-初始化
-	// 系统管理-角色管理
+		statistics_in_out: _inOut2.default,
+		statistics_commission: _commission2.default,
+		statistics_profit: _profit2.default,
+		statistics_profit_all: _profitAll2.default
+	}; // 统计-用户持仓交易盈利统计
+	// 统计-出入金统计
+	// MT4设置-用户组分布
 
-	// 财务管理-入金支付记录
+	// MT4设置-组管理
+	// MT4设置-基本参数设置
+	// 系统管理-管理员管理
+	// 财务管理-出金审核
+	// 基本设置-logo设置
 
-	// 客户管理-客户管理
-
-	// 基本设置—支付设置
-	// 基本设置-代理设置
-	// 基本设置-代理等级名称设置
-	// 基本设置-邮件设置
-	// 主页
+	// 基本设置-交易设置
+	// 基本设置-短信设置
+	// 基本设置-邮件模版
+	// 基本设置-系统设置
+	// 未开放模块
 
 	var routes = [{
 		path: '/',
@@ -54255,6 +54273,434 @@
 	/******/ ]);
 	});
 	//# sourceMappingURL=iview.js.map
+
+/***/ },
+/* 128 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(129)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/statistics/commission.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(130)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-71e3df00/commission.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 129 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="app-warp">
+	//     <Card style="width:100%">
+	//       <!-- 标题 -->
+	//       <p slot="title">佣金统计</p>
+	//
+	//       <!-- 筛选器 -->
+	//       <div class="filter-bar">
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">订单账号</span>
+	//           <Input v-model="filter_obj.account" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//         </div>
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">订单号</span>
+	//           <Input v-model="filter_obj.order_id" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//         </div>
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">获佣金账号</span>
+	//           <Input v-model="filter_obj.get_account" style="width: 200px" placeholder="请输入查询关键字"></Input>
+	//         </div>
+	//         <div class="filter-item" flex="main:left cross:center">
+	//           <span class="filter-item-title">日期范围</span>
+	//           <date-picker type="daterange" confirm placement="bottom-start" placeholder="请选择日期范围" :value="filter_obj.date_range" style="width: 200px"></date-picker>
+	//         </div>
+	//         <div class="filter-handle" flex="main:left cross:center">
+	//           <i-button style="margin-right: 10px;" type="primary" @click="search()">查询</i-button>
+	//           <i-button @click="clearFilter()">清除</i-button>
+	//         </div>
+	//       </div>
+	//
+	//       <!-- 列表 -->
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="200">订单编号</th>
+	//             <th width="200">订单交易用户</th>
+	//             <th width="200">获得佣金用户</th>
+	//             <th width="150">交易商品</th>
+	//             <th width="100">数量</th>
+	//             <th width="200">返佣类型</th>
+	//             <th width="300">返佣计算公式</th>
+	//             <th width="100">佣金</th>
+	//             <th width="200">时间</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="i in 30" :key="i" @click="selectItem(i)" v-bind:class="{'active': selected_key==i}">
+	//             <td>{{'2018032600'+i}}</td>
+	//             <td>40331504</td>
+	//             <td>40331504</td>
+	//             <td>GBPAUDbo</td>
+	//             <td>1</td>
+	//             <td>nodirectagent</td>
+	//             <td>上级佣金(0.125000000)*间接佣金比例(0.50)</td>
+	//             <td>88.20</td>
+	//             <td>2018/3/6 10:51:55</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.initFilterObj();
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      readonly: true,
+	      selected_key: '',
+	      filter_obj: null //筛选参数
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    },
+	    selectItem: function selectItem(key) {
+	      if (this.selected_key === key) {
+	        this.selected_key = '';
+	      } else {
+	        this.selected_key = key;
+	      }
+	    },
+	    clearFilter: function clearFilter() {
+	      this.initFilterObj();
+	    },
+	    initFilterObj: function initFilterObj() {
+	      this.filter_obj = {
+	        account: '',
+	        order_id: '',
+	        get_account: '',
+	        date_range: []
+	      };
+	    },
+	    search: function search() {
+	      this.$Message.error('暂未开放此功能');
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    disabled: function disabled() {
+	      return this.selected_key === '';
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 130 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"app-warp\">\n  <Card style=\"width:100%\">\n    <!-- 标题 -->\n    <p slot=\"title\">佣金统计</p>\n\n    <!-- 筛选器 -->\n    <div class=\"filter-bar\">\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">订单账号</span>\n        <Input v-model=\"filter_obj.account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">订单号</span>\n        <Input v-model=\"filter_obj.order_id\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">获佣金账号</span>\n        <Input v-model=\"filter_obj.get_account\" style=\"width: 200px\" placeholder=\"请输入查询关键字\"></Input>\n      </div>\n      <div class=\"filter-item\" flex=\"main:left cross:center\">\n        <span class=\"filter-item-title\">日期范围</span>\n        <date-picker type=\"daterange\" confirm placement=\"bottom-start\" placeholder=\"请选择日期范围\" :value=\"filter_obj.date_range\" style=\"width: 200px\"></date-picker>\n      </div>\n      <div class=\"filter-handle\" flex=\"main:left cross:center\">\n        <i-button style=\"margin-right: 10px;\" type=\"primary\" @click=\"search()\">查询</i-button>\n        <i-button @click=\"clearFilter()\">清除</i-button>\n      </div>\n    </div>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"200\">订单编号</th>\n          <th width=\"200\">订单交易用户</th>\n          <th width=\"200\">获得佣金用户</th>\n          <th width=\"150\">交易商品</th>\n          <th width=\"100\">数量</th>\n          <th width=\"200\">返佣类型</th>\n          <th width=\"300\">返佣计算公式</th>\n          <th width=\"100\">佣金</th>\n          <th width=\"200\">时间</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 30\" :key=\"i\" @click=\"selectItem(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>{{'2018032600'+i}}</td>\n          <td>40331504</td>\n          <td>40331504</td>\n          <td>GBPAUDbo</td>\n          <td>1</td>\n          <td>nodirectagent</td>\n          <td>上级佣金(0.125000000)*间接佣金比例(0.50)</td>\n          <td>88.20</td>\n          <td>2018/3/6 10:51:55</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+
+/***/ },
+/* 131 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(132)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/statistics/profit.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(133)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-48d15259/profit.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 132 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="app-warp">
+	//     <Card style="width:100%">
+	//       <!-- 标题 -->
+	//       <p slot="title">用户持仓交易盈利统计</p>
+	//
+	//       <!-- 操作按钮 -->
+	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="loop">刷新</Button>
+	//
+	//       <!-- 列表 -->
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="200">交易账号</th>
+	//             <th width="200">客户名称</th>
+	//             <th width="200">交易量</th>
+	//             <th width="200">投资金额</th>
+	//             <th width="200">盈利</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="i in 30" :key="i" @click="selectItem(i)" v-bind:class="{'active': selected_key==i}">
+	//             <td>{{'2018032600'+i}}</td>
+	//             <td>bhjycgh</td>
+	//             <td>1</td>
+	//             <td>1231.1</td>
+	//             <td>1</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.initFilterObj();
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      readonly: true,
+	      selected_key: '',
+	      filter_obj: null //筛选参数
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    },
+	    selectItem: function selectItem(key) {
+	      if (this.selected_key === key) {
+	        this.selected_key = '';
+	      } else {
+	        this.selected_key = key;
+	      }
+	    },
+	    clearFilter: function clearFilter() {
+	      this.initFilterObj();
+	    },
+	    initFilterObj: function initFilterObj() {
+	      this.filter_obj = {
+	        account: '',
+	        order_id: '',
+	        get_account: '',
+	        date_range: []
+	      };
+	    },
+	    search: function search() {
+	      this.$Message.error('暂未开放此功能');
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    disabled: function disabled() {
+	      return this.selected_key === '';
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 133 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"app-warp\">\n  <Card style=\"width:100%\">\n    <!-- 标题 -->\n    <p slot=\"title\">用户持仓交易盈利统计</p>\n\n    <!-- 操作按钮 -->\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"loop\">刷新</Button>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"200\">交易账号</th>\n          <th width=\"200\">客户名称</th>\n          <th width=\"200\">交易量</th>\n          <th width=\"200\">投资金额</th>\n          <th width=\"200\">盈利</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 30\" :key=\"i\" @click=\"selectItem(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>{{'2018032600'+i}}</td>\n          <td>bhjycgh</td>\n          <td>1</td>\n          <td>1231.1</td>\n          <td>1</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
+
+/***/ },
+/* 134 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(135)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/pages/statistics/profitAll.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(136)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-8b246f90/profitAll.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 135 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="app-warp">
+	//     <Card style="width:100%">
+	//       <!-- 标题 -->
+	//       <p slot="title">用户历史交易盈亏统计</p>
+	//
+	//       <!-- 操作按钮 -->
+	//       <Button type="primary" style="margin-right:10px" size="small" slot="extra" icon="loop">刷新</Button>
+	//
+	//       <!-- 列表 -->
+	//       <table class="list-table">
+	//         <thead>
+	//           <tr>
+	//             <th width="200">交易账号</th>
+	//             <th width="200">客户名称</th>
+	//             <th width="200">交易量</th>
+	//             <th width="200">投资金额</th>
+	//             <th width="200">盈利</th>
+	//           </tr>
+	//         </thead>
+	//         <tbody>
+	//           <tr v-for="i in 30" :key="i" @click="selectItem(i)" v-bind:class="{'active': selected_key==i}">
+	//             <td>{{'2018032600'+i}}</td>
+	//             <td>bhjycgh</td>
+	//             <td>1</td>
+	//             <td>1231.1</td>
+	//             <td>1</td>
+	//           </tr>
+	//         </tbody>
+	//       </table>
+	//
+	//     </Card>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.initFilterObj();
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      readonly: true,
+	      selected_key: '',
+	      filter_obj: null //筛选参数
+	    };
+	  },
+
+	  methods: {
+	    switchModel: function switchModel(type) {
+	      this.readonly = type;
+	    },
+	    selectItem: function selectItem(key) {
+	      if (this.selected_key === key) {
+	        this.selected_key = '';
+	      } else {
+	        this.selected_key = key;
+	      }
+	    },
+	    clearFilter: function clearFilter() {
+	      this.initFilterObj();
+	    },
+	    initFilterObj: function initFilterObj() {
+	      this.filter_obj = {
+	        account: '',
+	        order_id: '',
+	        get_account: '',
+	        date_range: []
+	      };
+	    },
+	    search: function search() {
+	      this.$Message.error('暂未开放此功能');
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    disabled: function disabled() {
+	      return this.selected_key === '';
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 136 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"app-warp\">\n  <Card style=\"width:100%\">\n    <!-- 标题 -->\n    <p slot=\"title\">用户历史交易盈亏统计</p>\n\n    <!-- 操作按钮 -->\n    <Button type=\"primary\" style=\"margin-right:10px\" size=\"small\" slot=\"extra\" icon=\"loop\">刷新</Button>\n\n    <!-- 列表 -->\n    <table class=\"list-table\">\n      <thead>\n        <tr>\n          <th width=\"200\">交易账号</th>\n          <th width=\"200\">客户名称</th>\n          <th width=\"200\">交易量</th>\n          <th width=\"200\">投资金额</th>\n          <th width=\"200\">盈利</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr v-for=\"i in 30\" :key=\"i\" @click=\"selectItem(i)\" v-bind:class=\"{'active': selected_key==i}\">\n          <td>{{'2018032600'+i}}</td>\n          <td>bhjycgh</td>\n          <td>1</td>\n          <td>1231.1</td>\n          <td>1</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </Card>\n</div>\n";
 
 /***/ }
 /******/ ]);
