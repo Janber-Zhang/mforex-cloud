@@ -35,6 +35,13 @@ import statistics_commission from './src/views/pages/statistics/commission.vue' 
 import statistics_profit     from './src/views/pages/statistics/profit.vue'         // 统计-用户持仓交易盈利统计
 import statistics_profit_all from './src/views/pages/statistics/profitAll.vue'      // 统计-用户历史交易盈利统计
 
+import other_email           from './src/views/pages/other/email.vue'               // 其他-邮件通知
+import other_documents       from './src/views/pages/other/document.vue'            // 其他-文档管理
+
+import follow_setting        from './src/views/pages/follow/setting.vue'            // 跟单子系统-跟单设置
+import follow_bigman         from './src/views/pages/follow/bigman.vue'             // 跟单子系统-跟单设置
+import follow_list           from './src/views/pages/follow/list.vue'               // 跟单子系统-跟单设置
+
 const routes_map = {
 	basic_system,
 	basic_email,
@@ -59,7 +66,12 @@ const routes_map = {
 	statistics_in_out,
 	statistics_commission,
 	statistics_profit,
-	statistics_profit_all
+	statistics_profit_all,
+	other_email,
+	other_documents,
+	follow_setting,
+	follow_bigman,
+	follow_list
 }
 
 const routes = [
